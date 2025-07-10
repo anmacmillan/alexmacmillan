@@ -6,34 +6,30 @@
     <title>Alex MacMillan | Employment Law Barrister</title>
     <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="site-wrapper">
-        <!-- The fixed sidebar for identity and navigation -->
         <aside class="sidebar">
             <div class="sidebar-content">
                 <header>
                     <img 
-                        src="https://placehold.co/150x150/FFFFFF/003366?text=AM" 
-                        alt="Alex MacMillan professional headshot" 
-                        class="profile-photo"
-                        onerror="this.onerror=null;this.src='https://placehold.co/150x150/EFEFEF/333333?text=Photo';">
+                        src="professional_headshot.jpg" 
+                        alt="Professional headshot of Alexander MacMillan, Barrister" 
+                        class="profile-photo">
                     
                     <h1>Alex MacMillan</h1>
                     <p class="subtitle">Employment Law Barrister</p>
                 </header>
 
                 <nav class="sidebar-nav">
-                    <a href="#your-chambers-profile-url" target="_blank" rel="noopener noreferrer">Chambers Profile</a>
-                    <a href="#your-linkedin-profile-url" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                    <a href="https://st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Chambers Profile</a>
+                    <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
                 </nav>
 
                 <div class="contact-box">
@@ -52,7 +48,6 @@
             </div>
         </aside>
 
-        <!-- The main, scrollable content area -->
         <main class="main-content">
             <section id="about">
                 <h2>Profile</h2>
@@ -60,100 +55,4 @@
                     An employment specialist with complementary expertise at the complex interface of employment and commercial contractual dispute resolution, Alexander MacMillan is one of the most active employment barristers on the circuit. Clients come to Alex, in part, because of his all-round capability in the employment arena, as well as the measured, thorough and reassuring way in which he works. Alex also maintains a particularly lively advisory practice and is, quite increasingly, sought out on some of the most esoteric and complicated points of employment law.
                 </p>
                 <p>
-                    Comfortable in the appellate courts, and with several recent appearances before the EAT, High Court, and Court of Appeal, Alex’s robust and precise style of advocacy leaves no stone unturned, whilst also leading to practical and pragmatic results. Alex shines in matters requiring a deep analytical assessment of the prevailing issues and laws, and has the rare ability to boil down the most complex of issues into plain and easy-to-digest points, as well as provide his clients with viable, feasible and pragmatic options in the context of a litigation or dispute.
-                </p>
-                <p>
-                    Aside from a thriving employment and wider commercial practice, Alex also has a personal interest in law practised across different jurisdictions, and the intersection of law and where different legal systems conflict. To that extent, he has a growing cross-border practice, which Alex’s global clients or UK-based clients with international operations particularly value.
-                </p>
-                <p>
-                    Alex brings a wealth of wider understanding and experience from a distinguished background in international relations and also in humanitarian work. Prior to becoming a barrister, Alex worked for the Permanent Delegation of Japan to the OECD. A keen advocate against discrimination, Alex also worked as an advocacy advisor for the AIDS Law Unit of the Legal Assistance Centre in Windhoek, Namibia, visited a Syrian refugee camp in northern Greece, and liaised with a legal NGO in Bangalore (India) working on building understanding between the judiciary and sex workers vulnerable to exploitation.
-                </p>
-            </section>
-
-            <section id="developments">
-                <h2>Recent Developments</h2>
-                <div class="development-item">
-                    <h3>Fictional Case: Smith v. Acme Corp (2024)</h3>
-                    <p class="legal-text">
-                        The Employment Appeal Tribunal (EAT) has provided new guidance on the territorial scope of the Equality Act 2010 in the context of remote-working employees. The ruling clarifies that an employee working exclusively from a foreign jurisdiction, but for a UK-based employer and with their work having a 'strong connection' to Great Britain, may still fall under the Act's protection. The key determinant was the nature of the contractual obligations and the operational integration into the British business entity.
-                    </p>
-                    <button class="gemini-button" onclick="generateSummary(this)">
-                        ✨ Generate Plain-English Summary
-                    </button>
-                    <div class="summary-container">
-                        <div class="loader" style="display: none;"></div>
-                        <pre class="summary-output"></pre>
-                    </div>
-                </div>
-            </section>
-
-            <section id="publications">
-                <h2>Publications</h2>
-                <ul class="content-list">
-                    <li><a href="#">"The Evolving Landscape of Vicarious Liability"</a>, Employment Law Journal, 2023</li>
-                    <li><a href="#">"Restrictive Covenants: A Practical Guide"</a>, LexisNexis, 2022</li>
-                    <li><a href="#">"Case Note: Harpur Trust v Brazel"</a>, Counsel Magazine, 2022</li>
-                </ul>
-            </section>
-
-            <section id="seminars">
-                <h2>Seminars & Speaking</h2>
-                <ul class="content-list">
-                    <li>"Unfair Dismissal Update", Annual Employment Law Conference, London, 2024</li>
-                    <li>"Discrimination Law Masterclass", Webinar Series, 2023</li>
-                    <li>"Managing Redundancy Processes", In-house training for FTSE 100 Company, 2023</li>
-                </ul>
-            </section>
-        </main>
-    </div>
-
-    <!-- Gemini API Integration Script -->
-    <script>
-        async function generateSummary(button) {
-            const developmentItem = button.closest('.development-item');
-            const legalTextElement = developmentItem.querySelector('.legal-text');
-            const summaryOutputElement = developmentItem.querySelector('.summary-output');
-            const loaderElement = developmentItem.querySelector('.loader');
-            const legalText = legalTextElement.innerText;
-
-            loaderElement.style.display = 'block';
-            summaryOutputElement.innerText = '';
-            button.disabled = true;
-            button.style.cursor = 'wait';
-
-            const prompt = `You are an expert legal analyst who excels at making complex topics understandable. Summarize the following legal text in clear, simple, plain English, as if explaining it to a non-lawyer. Focus on the main takeaway or what has changed. Keep it concise (2-3 sentences). Do not offer advice. Legal Text: "${legalText}"`;
-
-            try {
-                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-                const apiKey = ""; // Handled by environment
-                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\${apiKey}\`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error(\`API request failed: \${response.status}\`);
-                
-                const result = await response.json();
-
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    summaryOutputElement.innerText = result.candidates[0].content.parts[0].text;
-                } else {
-                    throw new Error("Unexpected API response structure.");
-                }
-
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                summaryOutputElement.innerText = "An error occurred while generating the summary. Please try again later.";
-            } finally {
-                loaderElement.style.display = 'none';
-                button.disabled = false;
-                button.style.cursor = 'pointer';
-            }
-        }
-    </script>
-
-</body>
-</html>
+                    Comfortable in the appellate courts, and with several recent appearances before the EAT, High Court, and Court of Appeal, Alex’s robust and precise style of advocacy leaves no stone unturned, whilst also leading to practical and pragmatic results. Alex shines in matters requiring a deep analytical assessment of the prevailing issues and laws, and has the rare ability to boil down the most complex of issues into plain and easy-to-digest poin
