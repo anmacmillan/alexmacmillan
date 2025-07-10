@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex MacMillan | Employment Law Barrister</title>
+    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="site-wrapper">
+        <!-- The fixed sidebar for identity and navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <header>
+                    <img 
+                        src="https://placehold.co/150x150/FFFFFF/003366?text=AM" 
+                        alt="Alex MacMillan professional headshot" 
+                        class="profile-photo"
+                        onerror="this.onerror=null;this.src='https://placehold.co/150x150/EFEFEF/333333?text=Photo';">
+                    
+                    <h1>Alex MacMillan</h1>
+                    <p class="subtitle">Employment Law Barrister</p>
+                </header>
+
+                <nav class="sidebar-nav">
+                    <a href="#your-chambers-profile-url" target="_blank" rel="noopener noreferrer">Chambers Profile</a>
+                    <a href="#your-linkedin-profile-url" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                </nav>
+
+                <div class="contact-box">
+                    <h3>Contact</h3>
+                    <p class="chambers-details">
+                        <strong>Chambers of John Doe QC</strong><br>
+                        123 Legal Lane<br>
+                        London, WC1N 3XX<br>
+                        Email: <a href="mailto:clerks@examplechambers.co.uk">clerks@examplechambers.co.uk</a><br>
+                        Tel: 020 7123 4567
+                    </p>
+                </div>
+                
+                <footer>
+                    <p>&copy; 2024 Alex MacMillan</p>
+                </footer>
+            </div>
+        </aside>
+
+        <!-- The main, scrollable content area -->
+        <main class="main-content">
+            <section id="about">
+                <h2>Profile</h2>
+                <p>
+                    Alex MacMillan is a barrister practising in English employment law. He has extensive experience across the full spectrum of employment litigation, including unfair dismissal, discrimination, whistleblowing, and contractual disputes. He regularly appears in Employment Tribunals, the Employment Appeal Tribunal, and the High Court.
+                </p>
+                 <p>
+                    He is known for his incisive analysis, robust advocacy, and commercial approach to litigation. He is instructed by a wide range of clients, from multinational corporations to senior executives.
+                </p>
+            </section>
+
+            <section id="developments">
+                <h2>Recent Developments</h2>
+                <div class="development-item">
+                    <h3>Fictional Case: Smith v. Acme Corp (2024)</h3>
+                    <p class="legal-text">
+                        The Employment Appeal Tribunal (EAT) has provided new guidance on the territorial scope of the Equality Act 2010 in the context of remote-working employees. The ruling clarifies that an employee working exclusively from a foreign jurisdiction, but for a UK-based employer and with their work having a 'strong connection' to Great Britain, may still fall under the Act's protection. The key determinant was the nature of the contractual obligations and the operational integration into the British business entity.
+                    </p>
+                    <button class="gemini-button" onclick="generateSummary(this)">
+                        ✨ Generate Plain-English Summary
+                    </button>
+                    <div class="summary-container">
+                        <div class="loader" style="display: none;"></div>
+                        <pre class="summary-output"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="publications">
+                <h2>Publications</h2>
+                <ul class="content-list">
+                    <li><a href="#">"The Evolving Landscape of Vicarious Liability"</a>, Employment Law Journal, 2023</li>
+                    <li><a href="#">"Restrictive Covenants: A Practical Guide"</a>, LexisNexis, 2022</li>
+                    <li><a href="#">"Case Note: Harpur Trust v Brazel"</a>, Counsel Magazine, 2022</li>
+                </ul>
+            </section>
+
+            <section id="seminars">
+                <h2>Seminars & Speaking</h2>
+                <ul class="content-list">
+                    <li>"Unfair Dismissal Update", Annual Employment Law Conference, London, 2024</li>
+                    <li>"Discrimination Law Masterclass", Webinar Series, 2023</li>
+                    <li>"Managing Redundancy Processes", In-house training for FTSE 100 Company, 2023</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Gemini API Integration Script -->
+    <script>
+        async function generateSummary(button) {
+            const developmentItem = button.closest('.development-item');
+            const legalTextElement = developmentItem.querySelector('.legal-text');
+            const summaryOutputElement = developmentItem.querySelector('.summary-output');
+            const loaderElement = developmentItem.querySelector('.loader');
+            const legalText = legalTextElement.innerText;
+
+            loaderElement.style.display = 'block';
+            summaryOutputElement.innerText = '';
+            button.disabled = true;
+            button.style.cursor = 'wait';
+
+            const prompt = `You are an expert legal analyst who excels at making complex topics understandable. Summarize the following legal text in clear, simple, plain English, as if explaining it to a non-lawyer. Focus on the main takeaway or what has changed. Keep it concise (2-3 sentences). Do not offer advice. Legal Text: "${legalText}"`;
+
+            try {
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+                const apiKey = ""; // Handled by environment
+                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\${apiKey}\`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(\`API request failed: \${response.status}\`);
+                
+                const result = await response.json();
+
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    summaryOutputElement.innerText = result.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("Unexpected API response structure.");
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                summaryOutputElement.innerText = "An error occurred while generating the summary. Please try again later.";
+            } finally {
+                loaderElement.style.display = 'none';
+                button.disabled = false;
+                button.style.cursor = 'pointer';
+            }
+        }
+    </script>
+
+</body>
+</html>
