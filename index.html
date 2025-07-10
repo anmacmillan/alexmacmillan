@@ -15,6 +15,7 @@
 <body>
 
     <div class="site-wrapper">
+        <!-- The sidebar now acts as the main navigation hub -->
         <aside class="sidebar">
             <div class="sidebar-content">
                 <header>
@@ -28,29 +29,40 @@
                     <p class="subtitle">Employment Law Barrister</p>
                 </header>
 
-                <nav class="sidebar-nav">
-                    <a href="https://st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Chambers Profile</a>
-                    <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                <!-- Main site navigation -->
+                <nav class="main-nav">
+                    <a href="#" onclick="showSection('about'); return false;" class="nav-link">Profile</a>
+                    <a href="#" onclick="showSection('notable-cases'); return false;" class="nav-link">Notable Cases</a>
+                    <a href="#" onclick="showSection('news-articles'); return false;" class="nav-link">Articles</a>
+                    <a href="#" onclick="showSection('education'); return false;" class="nav-link">Education & Memberships</a>
                 </nav>
 
-                <div class="contact-box">
-                    <h3>Contact</h3>
-                    <p class="chambers-details">
-                        <strong>St Philips Chambers</strong><br>
-                        55 Temple Row<br>
-                        Birmingham, B2 5LS<br>
-                        Email: <a href="mailto:amacmillan@st-philips.com">amacmillan@st-philips.com</a>
-                    </p>
+                <!-- External links and contact details -->
+                <div class="sidebar-footer">
+                    <div class="external-links">
+                        <a href="https://st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Chambers Profile</a>
+                        <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-box">
+                        <h3>Contact</h3>
+                        <p class="chambers-details">
+                            <strong>St Philips Chambers</strong><br>
+                            55 Temple Row<br>
+                            Birmingham, B2 5LS<br>
+                            Email: <a href="mailto:amacmillan@st-philips.com">amacmillan@st-philips.com</a>
+                        </p>
+                    </div>
+                    <footer>
+                        <p>&copy; 2024 Alex MacMillan</p>
+                    </footer>
                 </div>
-                
-                <footer>
-                    <p>&copy; 2024 Alex MacMillan</p>
-                </footer>
             </div>
         </aside>
 
+        <!-- The main, scrollable content area -->
         <main class="main-content">
-            <section id="about">
+            <!-- Each section is now a distinct, switchable view -->
+            <section id="about" class="content-section">
                 <h2>Profile</h2>
                 <p>
                     An employment specialist with complementary expertise at the complex interface of employment and commercial contractual dispute resolution, Alexander MacMillan is one of the most active employment barristers on the circuit. Clients come to Alex, in part, because of his all-round capability in the employment arena, as well as the measured, thorough and reassuring way in which he works. Alex also maintains a particularly lively advisory practice and is, quite increasingly, sought out on some of the most esoteric and complicated points of employment law.
@@ -59,14 +71,26 @@
                     Comfortable in the appellate courts, and with several recent appearances before the EAT, High Court, and Court of Appeal, Alex’s robust and precise style of advocacy leaves no stone unturned, whilst also leading to practical and pragmatic results. Alex shines in matters requiring a deep analytical assessment of the prevailing issues and laws, and has the rare ability to boil down the most complex of issues into plain and easy-to-digest points, as well as provide his clients with viable, feasible and pragmatic options in the context of a litigation or dispute.
                 </p>
                 <p>
-                    Aside from a thriving employment and wider commercial practice, Alex also has a personal interest in law practised across different jurisdictions, and the intersection of law and where different legal systems conflict. To that extent, he has a growing cross-border practice, which Alex’s global clients or UK-based clients with international operations particularly value.
-                </p>
-                <p>
                     Alex brings a wealth of wider understanding and experience from a distinguished background in international relations and also in humanitarian work. Prior to becoming a barrister, Alex worked for the Permanent Delegation of Japan to the OECD. A keen advocate against discrimination, Alex also worked as an advocacy advisor for the AIDS Law Unit of the Legal Assistance Centre in Windhoek, Namibia, visited a Syrian refugee camp in northern Greece, and liaised with a legal NGO in Bangalore (India) working on building understanding between the judiciary and sex workers vulnerable to exploitation.
                 </p>
+                <section id="testimonials">
+                    <h2>Testimonials</h2>
+                    <div class="testimonial-item">
+                        <p>"We always appreciate your carefully reasoned and well-written advice. You always hit the nail on the head."</p>
+                        <cite>Regular Solicitor Client</cite>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"I would like to say thanks again for the work you have done for me and mention my satisfaction... your valuation advice gave me a clearer perspective on the requirements I need to meet in order to be well prepared for tribunal."</p>
+                        <cite>Direct Access Client</cite>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"I was deeply impressed by your advice."</p>
+                        <cite>Regular Solicitor Client</cite>
+                    </div>
+                </section>
             </section>
 
-            <section id="notable-cases">
+            <section id="notable-cases" class="content-section">
                 <h2>Notable Cases</h2>
                 <ul class="content-list">
                     <li>Representing the Claimant in an important and widely-reported Court of Appeal decision dealing with the proper application of the TUPE 'sole or principal reason' test in <strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>.</li>
@@ -78,81 +102,8 @@
                 </ul>
             </section>
 
-            <section id="news-articles">
+            <section id="news-articles" class="content-section">
                 <h2>News & Articles</h2>
                 <div class="article-item">
                     <h3>The Prosecutor’s fallacy</h3>
-                    <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match. The suspect is arrested. An expert report is produced: it states that there is only a 1 in 10,000 chance that the DNA of the former convict and the hair sample will be a positive match. Naturally the Crown Court’s jury is persuaded: here is a scientific expert, stating that there is only a one-in-10,000 chance that the accused is not responsible for the DNA trace.</p>
-                    <p>But of course, after a moment’s reflection, we ought to realise that, if the DNA database were to contain tens of thousands of entries, that would be expected to lead not to one but perhaps to a number of other potential matches. Should we ignore those innocent matches?</p>
-
-                    <h4>Algebraic expression of the fallacy</h4>
-                    <p>The prosecutor’s fallacy is when the probability of innocence, given the evidence, is wrongly conflated with the very tiny probability that the evidence would occur if the defendant were innocent. In terms of probabilistic formula, it is wrongly assuming that the probability of <code>P(Innocence | Evidence)</code> is no different to <code>P(Evidence | Innocence)</code>. So: coming back to the example set out above, the probabilistic fallacy occurs if the jury confuse the (apparently) really tiny chance that there should be a DNA match if the accused were innocent, with the probability that the accused is in fact innocent in the light of the evidence.</p>
-                    <p>They are not the same thing at all, although unfortunately this distinction does not jump out at us when verbally formulated: regrettably the two grammatical structures sound more like rephrased versions of each other.</p>
-                    <blockquote>
-                        Source: Norman Fenton and Martin Neil: ‘Avoiding Probabilistic Reasoning Fallacies in Legal Practice Using Bayesian Networks, presentation at 7th International Conference on Forensic Inference and Statistics (ICFIS) Lausanne, 21 August 2008
-                    </blockquote>
-
-                    <h4>The Bayesian party trick</h4>
-                    <p>The shocking, literally unbelievable conclusion we are forced to assent to, applying Bayes’ Theorem, is that you have to incorporate the objective statistical information and integrate it with the knowledge of the accused testing positive in order to interpret that properly. The probability of the accused’s innocence, conditional on a positive DNA match, is not 1/10,000 but instead that there is a 10/11 (i.e. 90.1%) probability that the accused is innocent, based on the DNA match: in other words, out of the suspect population, around 10 would be expect to be DNA matches, so the accused, being a match, simply has a roughly 1/10 chance of guilt before we consider other evidence. Not guilty.</p>
-                    
-                    <h4>Bayes in the employment law context?</h4>
-                    <p>The use of Bayesian reasoning has been deprecated by the UK’s senior criminal courts for reasons Professor Fenton takes exception to. As an employment practitioner my concern is that our failure to apply rigorous probabilistic reasoning results in numerous errors of judgment, in circumstances where the nature of the judge’s decision-making process remains unexamined.</p>
-                </div>
-                <div class="article-item">
-                    <h3>The justice system’s debts</h3>
-                    <p>You don’t have to pore through the pages of the Ministry of Justice’s statistics publications to be struck by the stark imbalance between the tally of employment cases that are filed each year, and the tribunal service’s ability to hear them. But if you do take a moment to review the statisticians’ report, it tells of a growing backlog, snowballing as though it were a cumulative debt being run up against the justice system’s tab.</p>
-                    <h4>Litigation risk and ‘administrative risk’</h4>
-                    <p>That debt will need to be settled at some point, if the system is to retain its credibility. There comes a point at which, if a complainant knows that getting a hearing will take many years, it ceases to be desirable to pursue a claim at all...</p>
-                    <h4>Three solutions</h4>
-                    <p>We can now see why the current situation developed. What other solutions — beyond the current steps around the use of video technology and promoting or mandating judicial mediation and conciliation — can we identify? I have three suggestions which I may return to later:</p>
-                    <ol class="solutions-list">
-                        <li>The most obvious solution is political: reverse the MoJ funding cuts to eliminate the structural justice deficit.</li>
-                        <li>Tool-up Acas. Most tribunal claims settle, or are withdrawn, or get struck out. Many of the remaining 10% make it to a full hearing at which both parties would be better served by quality conciliation services.</li>
-                        <li>This one is more controversial: allow a shadow employment arbitration service to serve the growing need for speedy remedy, which would require Parliament to amend the ERA to introduce such a service.</li>
-                    </ol>
-                </div>
-                <div class="article-item-link">
-                    <a href="#">No "personal reasons" defence in TUPE automatically unfair dismissals</a>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>Education</h2>
-                <ul class="content-list">
-                    <li>PhD in Modern Languages (French and Italian) - University of Cambridge (Clare Hall)</li>
-                    <li>MPhil European Literature - University of Cambridge (Clare Hall)</li>
-                    <li>Undergraduate Degree in English Language & Literature - University College London</li>
-                    <li>Graduate Diploma in Law - University of Law (Bloomsbury)</li>
-                    <li>BPTC - City Law School (incorporating the Inns of Court Law School)</li>
-                </ul>
-            </section>
-
-            <section id="memberships">
-                <h2>Appointments & Memberships</h2>
-                <ul class="content-list">
-                    <li>Employment Lawyers Association</li>
-                    <li>The Honourable Society of Lincoln's Inn</li>
-                </ul>
-            </section>
-
-            <section id="testimonials">
-                <h2>Testimonials</h2>
-                <div class="testimonial-item">
-                    <p>"We always appreciate your carefully reasoned and well-written advice. You always hit the nail on the head."</p>
-                    <cite>Regular Solicitor Client</cite>
-                </div>
-                <div class="testimonial-item">
-                    <p>"I would like to say thanks again for the work you have done for me and mention my satisfaction... your valuation advice gave me a clearer perspective on the requirements I need to meet in order to be well prepared for tribunal."</p>
-                    <cite>Direct Access Client</cite>
-                </div>
-                <div class="testimonial-item">
-                    <p>"I was deeply impressed by your advice."</p>
-                    <cite>Regular Solicitor Client</cite>
-                </div>
-            </section>
-
-        </main>
-    </div>
-
-</body>
-</html>
+                    <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match. The suspect is arrested. An expert report is produced: it states that there is only a 1 in 10,000 chance that the DNA of the former convict and the hair sample will be a positive match. Naturally the Crown Court’s jury is persua
