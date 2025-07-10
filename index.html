@@ -6,18 +6,15 @@
     <title>Alex MacMillan | Employment Law Barrister</title>
     <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="site-wrapper">
-        <!-- The fixed sidebar for identity and navigation -->
         <aside class="sidebar">
             <div class="sidebar-content">
                 <header>
@@ -52,7 +49,6 @@
             </div>
         </aside>
 
-        <!-- The main, scrollable content area -->
         <main class="main-content">
             <section id="about">
                 <h2>Profile</h2>
@@ -85,19 +81,34 @@
             <section id="news-articles">
                 <h2>News & Articles</h2>
                 <div class="article-item">
+                    <h3>The Prosecutor’s fallacy</h3>
+                    <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match. The suspect is arrested. An expert report is produced: it states that there is only a 1 in 10,000 chance that the DNA of the former convict and the hair sample will be a positive match. Naturally the Crown Court’s jury is persuaded: here is a scientific expert, stating that there is only a one-in-10,000 chance that the accused is not responsible for the DNA trace.</p>
+                    <p>But of course, after a moment’s reflection, we ought to realise that, if the DNA database were to contain tens of thousands of entries, that would be expected to lead not to one but perhaps to a number of other potential matches. Should we ignore those innocent matches?</p>
+
+                    <h4>Algebraic expression of the fallacy</h4>
+                    <p>The prosecutor’s fallacy is when the probability of innocence, given the evidence, is wrongly conflated with the very tiny probability that the evidence would occur if the defendant were innocent. In terms of probabilistic formula, it is wrongly assuming that the probability of <code>P(Innocence | Evidence)</code> is no different to <code>P(Evidence | Innocence)</code>. So: coming back to the example set out above, the probabilistic fallacy occurs if the jury confuse the (apparently) really tiny chance that there should be a DNA match if the accused were innocent, with the probability that the accused is in fact innocent in the light of the evidence.</p>
+                    <p>They are not the same thing at all, although unfortunately this distinction does not jump out at us when verbally formulated: regrettably the two grammatical structures sound more like rephrased versions of each other.</p>
+                    <blockquote>
+                        Source: Norman Fenton and Martin Neil: ‘Avoiding Probabilistic Reasoning Fallacies in Legal Practice Using Bayesian Networks, presentation at 7th International Conference on Forensic Inference and Statistics (ICFIS) Lausanne, 21 August 2008
+                    </blockquote>
+
+                    <h4>The Bayesian party trick</h4>
+                    <p>The shocking, literally unbelievable conclusion we are forced to assent to, applying Bayes’ Theorem, is that you have to incorporate the objective statistical information and integrate it with the knowledge of the accused testing positive in order to interpret that properly. The probability of the accused’s innocence, conditional on a positive DNA match, is not 1/10,000 but instead that there is a 10/11 (i.e. 90.1%) probability that the accused is innocent, based on the DNA match: in other words, out of the suspect population, around 10 would be expect to be DNA matches, so the accused, being a match, simply has a roughly 1/10 chance of guilt before we consider other evidence. Not guilty.</p>
+                    
+                    <h4>Bayes in the employment law context?</h4>
+                    <p>The use of Bayesian reasoning has been deprecated by the UK’s senior criminal courts for reasons Professor Fenton takes exception to. As an employment practitioner my concern is that our failure to apply rigorous probabilistic reasoning results in numerous errors of judgment, in circumstances where the nature of the judge’s decision-making process remains unexamined.</p>
+                </div>
+                <div class="article-item">
                     <h3>The justice system’s debts</h3>
                     <p>You don’t have to pore through the pages of the Ministry of Justice’s statistics publications to be struck by the stark imbalance between the tally of employment cases that are filed each year, and the tribunal service’s ability to hear them. But if you do take a moment to review the statisticians’ report, it tells of a growing backlog, snowballing as though it were a cumulative debt being run up against the justice system’s tab.</p>
-                    
                     <h4>Litigation risk and ‘administrative risk’</h4>
-                    <p>That debt will need to be settled at some point, if the system is to retain its credibility. There comes a point at which, if a complainant knows that getting a hearing will take many years, it ceases to be desirable to pursue a claim at all. Parties always have to deal with the vicissitudes of trial — ‘litigation risk’. But the risk we are talking about is of a different character — essentially there is now ‘administrative risk’, being the risk of not being heard within a satisfactory timeframe due to underfunding of the tribunal system. At that point of despair, while the laws on employment rights continue to exist on paper, they cease being relevant because unenforced.</p>
-                    <p>Instead of looking at the figures about the annual shortfall in serving justice, you could also simply talk with a sample of litigants about their experiences, as I commonly need to do in my role. Litigants commonly have the unfortunate experience of having to wait a year — or more commonly several years — to have their cases heard, and tribunal correspondence often suffers from the same lag-time caused by the imbalance between case load and resourcing. Tribunal cases that have taken a year of more to come to trial can be put off at the last minute, sometimes for a whole year or more, due to a lack of judicial resources. Anecdotally, I have experienced this situation more than once in recent months.</p>
-
+                    <p>That debt will need to be settled at some point, if the system is to retain its credibility. There comes a point at which, if a complainant knows that getting a hearing will take many years, it ceases to be desirable to pursue a claim at all...</p>
                     <h4>Three solutions</h4>
                     <p>We can now see why the current situation developed. What other solutions — beyond the current steps around the use of video technology and promoting or mandating judicial mediation and conciliation — can we identify? I have three suggestions which I may return to later:</p>
                     <ol class="solutions-list">
-                        <li>The most obvious solution is political: reverse the MoJ funding cuts to eliminate the structural justice deficit. But any such 25% MoJ funding surge would require UK voters considering justice a service worth spending money on.</li>
-                        <li>Tool-up Acas. I have previously written about Acas’s services being plainly under-funded. Most tribunal claims settle, or are withdrawn, or get struck out. Many of the remaining 10% make it to a full hearing at which both parties would be better served by quality conciliation services.</li>
-                        <li>This one is more controversial: Commercial B2B contracts often mandate arbitration to avoid the cost and delay of court proceedings. Put simply, per s203 ERA 1996, in the UK employment agreements cannot provide for the employee ‘contracting out’ of their rights to bring a claim to enforce their legal rights. But if the employment tribunal system will not be made ready perhaps a shadow employment arbitration service should be allowed to serve the growing need for speedy remedy.</li>
+                        <li>The most obvious solution is political: reverse the MoJ funding cuts to eliminate the structural justice deficit.</li>
+                        <li>Tool-up Acas. Most tribunal claims settle, or are withdrawn, or get struck out. Many of the remaining 10% make it to a full hearing at which both parties would be better served by quality conciliation services.</li>
+                        <li>This one is more controversial: allow a shadow employment arbitration service to serve the growing need for speedy remedy, which would require Parliament to amend the ERA to introduce such a service.</li>
                     </ol>
                 </div>
                 <div class="article-item-link">
