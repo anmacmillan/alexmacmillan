@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Original Styles --- */
+        /* --- Styles --- */
         :root {
             --bg-color: #ffffff;
             --sidebar-bg: #f5f5f5;
@@ -57,8 +57,6 @@
         .testimonial-item cite { font-style: normal; font-weight: 600; color: #555; }
         .article-item h3 { margin-bottom: 0.5rem; }
         .article-item hr { margin: 2rem 0; }
-
-        /* --- Calculator & Calendar Styles --- */
         .calculator-section { max-width: 900px; }
         .calculator-disclaimer { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; }
         .calculator-disclaimer p { margin: 0; }
@@ -74,7 +72,7 @@
         #add-respondent-btn:hover { background-color: #d0d0d0; }
         .calc-button:hover, #calculate-btn:hover { background-color: #002244; }
         .remove-btn:hover { background-color: #d32f2f; }
-        .calculator-results, .pay-calculator-results { margin-top: 2rem; }
+        #limitation-calculator-results, .pay-calculator-results { margin-top: 2rem; }
         .error-message { color: #d32f2f; font-weight: bold; margin-bottom: 1rem; }
         .result-summary { font-size: 1.2rem; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
         .result-summary-earliest { background-color: #e6f4ea; border: 1px solid #b2d8b5; color: #2d6a4f; }
@@ -96,10 +94,10 @@
         .cal { width: 100%; border-collapse: collapse; }
         .cal th, .cal td { width: 14.285%; height: 40px; text-align: center; border: 1px solid #e0e0e0; }
         .cal th { font-weight: 600; font-size: .85rem; background: #f0f0f0; }
-        .cal-day.ec { background: #a5d8ff; } /* Light blue for EC */
-        .cal-day.event { background: #ffdead; font-weight: bold; } /* Navajo white for event */
-        .cal-day.deadline { background: #f7786b; color: #fff; font-weight: 700; } /* Light red for deadline */
-        .cal-day.today { outline: 2px solid #00a8e8; outline-offset: -2px; } /* Cyan outline for today */
+        .cal-day.ec { background: #a5d8ff; }
+        .cal-day.event { background: #ffdead; font-weight: bold; }
+        .cal-day.deadline { background: #f7786b; color: #fff; font-weight: 700; }
+        .cal-day.today { outline: 2px solid #00a8e8; outline-offset: -2px; }
     </style>
 
 </head>
@@ -157,10 +155,120 @@
 
         <main class="main-content">
             <div id="profile-view" class="page-view">
-                </div>
+                <section id="about">
+                    <h2>Profile</h2>
+                    <p>An employment specialist with complementary expertise at the complex interface of employment and commercial contractual dispute resolution, Alexander MacMillan is one of the most active employment barristers on the circuit. Clients come to Alex, in part, because of his all-round capability in the employment arena, as well as the measured, thorough and reassuring way in which he works. Alex also maintains a particularly lively advisory practice and is, quite increasingly, sought out on some of the most esoteric and complicated points of employment law.</p>
+                    <p>Comfortable in the appellate courts, and with several recent appearances before the EAT, High Court, and Court of Appeal, Alex's robust and precise style of advocacy leaves no stone unturned, whilst also leading to practical and pragmatic results. Alex shines in matters requiring a deep analytical assessment of the prevailing issues and laws, and has the rare ability to boil down the most complex of issues into plain and easy-to-digest points, as well as provide his clients with viable, feasible and pragmatic options in the context of a litigation or dispute.</p>
+                    <p>Aside from a thriving employment and wider commercial practice, Alex also has a personal interest in law practised across different jurisdictions, and the intersection of law and where different legal systems conflict. To that extent, he has a growing cross-border practice, which Alex's global clients or UK-based clients with international operations particularly value. Alex brings a wealth of wider understanding and experience from a distinguished background in international relations and also in humanitarian work.</p>
+                </section>
+                <section id="notable-cases">
+                    <h2>Notable Cases</h2>
+                    <ul class="content-list">
+                        <li>Representing the Claimant in an important and widely-reported Court of Appeal decision (in the Claimant's favour) dealing with the proper application of the TUPE 'sole or principal reason' test in <strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>. The judgment has significant implications for employers handling transfers of employees. Alex had also represented the Claimant at first instance and in the EAT, winning at each stage.</li>
+                        <li>Representing the Appellant in a High Court reconsideration of a Head Teacher's fitness to practise following on from the Supreme Court decision in <strong>Reilly v Sandwell Metropolitan Borough Council [2018] UKSC 16</strong> (Caroline Reilly v Teaching Regulation Agency and Secretary of State for Education (2020) EWHC 1188 (Admin)).</li>
+                        <li>Representing the Claimant in a successful pregnancy discrimination and unfair dismissal case against Bhatia Best solicitors, which gained considerable media attention.</li>
+                        <li>Advising a London-based tech company on High Court injunction proceedings and restraint of trade where a former Belgian employer sought to enforce a restrictive covenant, involving consideration of both the applicable law and the proper forum for a foreign contract of employment.</li>
+                        <li>Advising the Claimant, a Partner in a London law firm, in a high-value victimisation and unfair dismissal claim.</li>
+                        <li>Representing a respondent bank in a successful defence against allegations of disability discrimination.</li>
+                        <li>Representing the Claimant in a high-profile successful discrimination claim against a major national health club that was comprehensively covered by the national media.</li>
+                    </ul>
+                </section>
+                <section id="education">
+                    <h2>Education</h2>
+                    <ul class="content-list">
+                        <li>PhD in Modern Languages (French and Italian) - University of Cambridge (Clare Hall)</li>
+                        <li>MPhil in European Literature - University of Cambridge (Clare Hall)</li>
+                        <li>Undergraduate Degree in English Language & Literature - University College London</li>
+                        <li>Graduate Diploma in Law - University of Law (Bloomsbury)</li>
+                        <li>BPTC - City Law School (incorporating the Inns of Court Law School)</li>
+                    </ul>
+                </section>
+                <section id="memberships">
+                    <h2>Appointments & Memberships</h2>
+                    <ul class="content-list">
+                        <li>Employment Lawyers Association</li>
+                        <li>The Honourable Society of Lincoln's Inn</li>
+                    </ul>
+                </section>
+                <section id="testimonials">
+                    <h2>Testimonials</h2>
+                    <div class="testimonial-item">
+                        <p>"We always appreciate your carefully reasoned and well-written advice. You always hit the nail on the head."</p>
+                        <cite>Regular Solicitor Client</cite>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"I would like to say thanks again for the work you have done for me and mention my satisfaction... your valuation advice gave me a clearer perspective on the requirements I need to meet in order to be well prepared for tribunal"</p>
+                        <cite>Direct Access Client</cite>
+                    </div>
+                     <div class="testimonial-item">
+                        <p>"I was deeply impressed by your advice"</p>
+                        <cite>Regular Solicitor Client</cite>
+                    </div>
+                </section>
+            </div>
 
             <div id="articles-view" class="page-view" style="display: none;">
-                </div>
+                <section id="article-tupe-defence" class="article-page" style="display: none;">
+                    <h2>News & Articles</h2>
+                    <div class="article-item">
+                        <h3>No "personal reasons" defence in TUPE automatically unfair dismissals</h3>
+                        <p>This article addresses the implications of the Court of Appeal's decision in <em>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</em>, a case in which I acted for the successful Claimant at first instance, in the EAT, and in the Court of Appeal. The judgment clarifies the application of the 'sole or principal reason' test under the Transfer of Undertakings (Protection of Employment) Regulations 2006 (TUPE).</p>
+                        <p>A key takeaway from the judgment is the rejection of the argument that a dismissal can be insulated from the automatic unfair dismissal provisions of TUPE simply because the dismissing manager was not personally motivated by the transfer itself. In <em>Hare Wines</em>, the dismissing manager claimed to have dismissed the employee for personal reasons, yet the dismissal occurred in the context of a TUPE transfer where her role was redundant post-transfer. The Court of Appeal upheld the Tribunal's finding that the transfer was the principal reason for the dismissal, rendering it automatically unfair.</p>
+                        <p>The case serves as a critical guide for employers. It underscores that tribunals will look beyond the stated, subjective reasons of an individual decision-maker to assess the objective context and causation. If a dismissal is connected to a transfer in anything more than a trivial way, and there is no separate, permissible 'economic, technical or organisational' (ETO) reason entailing changes in the workforce, it is likely to be found automatically unfair. Employers must therefore ensure that any dismissals proximate to a transfer are robustly and demonstrably for a reason unrelated to the transfer or fall squarely within the narrow ETO defence.</p>
+                    </div>
+                </section>
+                <section id="article-prosecutors-fallacy" class="article-page" style="display: none;">
+                    <h2>News & Articles</h2>
+                    <div class="article-item">
+                        <h3>The Prosecutor’s Fallacy</h3>
+                        <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match.</p>
+                        <p>The suspect is arrested. An expert report is produced: it states that there is only a 1 in 10,000 chance that the DNA of the former convict and the hair sample will be a positive match. Naturally the Crown Court’s jury is persuaded: here is a scientific expert, stating that there is only a one-in-10,000 chance that the accused is not responsible for the DNA trace.</p>
+                        <p>But of course, after a moment’s reflection, we ought to realise that, if the DNA database were to contain tens of thousands of entries, that would be expected to lead not to one but perhaps to a number of other potential matches. Should we ignore those innocent matches?</p>
+                        <h4>Algebraic expression of the fallacy</h4>
+                        <p>The prosecutor’s fallacy is when the probability of innocence, given the evidence, is wrongly conflated with the very tiny probability that the evidence would occur if the defendant were innocent. In terms of probabilistic formula, it is wrongly assuming that the probability of:</p>
+                        <p><code>P(Innocence | Evidence)</code> [the probability of the accused being innocent given he matches the DNA]</p>
+                        <p>is no different to</p>
+                        <p><code>P(Evidence | Innocence)</code> [the probability of an innocent person having a DNA match)</p>
+                        <p>So: coming back to the example set out above, the probabilistic fallacy occurs if the jury confuse the (apparently) really tiny chance that there should be a DNA match if the accused were innocent, with the probability that the accused is in fact innocent in the light of the evidence.</p>
+                        <blockquote>Source: Norman Fenton and Martin Neil: ‘Avoiding Probabilistic Reasoning Fallacies in Legal Practice Using Bayesian Networks, presentation at 7th International Conference on Forensic Inference and Statistics (ICFIS) Lausanne, 21 August 2008</blockquote>
+                        <h4>The Bayesian party trick</h4>
+                        <p>The shocking, literally unbelievable conclusion we are forced to assent to, applying Bayes’ Theorem, is that you have to incorporate the objective statistical information and integrate it with the knowledge of the accused testing positive in order to interpret that properly.</p>
+                        <h4>Bayes in the employment law context?</h4>
+                        <p>The use of Bayesian reasoning has been deprecated by the UK’s senior criminal courts for reasons Professor Fenton takes exception to. As an employment practitioner my concern is that our failure to apply rigorous probabilistic reasoning results in numerous errors of judgment, in circumstances where the nature of the judge’s decision-making process remains unexamined.</p>
+                    </div>
+                </section>
+                <section id="article-prospects-percentages" class="article-page" style="display: none;">
+                    <h2>News & Articles</h2>
+                    <div class="article-item">
+                        <h3>What do percentage figures mean when stating a legal case’s prospects?</h3>
+                        <p>More than once, having drafted legal advice and distilled my opinion on prospects of success into a percentage figure, the client has come back to me and questioned how I arrived at it.</p>
+                        <h4>Beyond reasonable prospects</h4>
+                        <p>In my own experience, the niceties of probabilistic thinking and statistical analysis did not get covered in Bar School. In the real world, a common legal convention is that the client (and always an insurer client making a funding decision) needs to know if a legal case enjoys ‘reasonable prospects’, which — in percentage terms — is interpreted as being 51% or above. In other words: is it a green light or a red light from Counsel? The latter ‘red light’ scenario provides a high-value off-ramp for the insurer.</p>
+                        <blockquote>"Analytic products should indicate and explain the basis for uncertainties associated with major analytic judgments […] analytic products should express judgments that would be useful to customers, and should not avoid difficult judgments in order to minimize the risk of being wrong […] Analytic judgments should express judgments as clearly and precisely as possible, reducing ambiguity by addressing the likelihood, timing, and nature of the outcome or development"</blockquote>
+                        <h4>Beyond point estimates</h4>
+                        <p>Expressing prospects as a single number has the advantage of simplicity, but it is also uninformative. A single ‘point estimate’ can be represented as a dot on a 0–100 number line. That scale tells us about strength of belief in the answer to a specific legal question. Unfortunately, the point estimate tells us nothing about the assessor’s confidence in that particular number.</p>
+                    </div>
+                </section>
+                <section id="article-forced-distribution" class="article-page" style="display: none;">
+                    <h2>News & Articles</h2>
+                    <div class="article-item">
+                        <h3>On Forced Distribution Performance Management</h3>
+                        <p>In 2019 the UK’s civil service changed its mind about its use of forced distributions, deciding instead to move to more flexible, non-mandatory objective setting. The change came about only recently, from April 2021, for the 2021–22 performance year. But it is a big change: the civil service has half a million employees.</p>
+                        <p>The civil service is by no means the only large employer using this system. Microsoft used it, and the forced distribution system was recently the subject of staff complaints at KPMG — KPMG Chairman Bill Michael told employees to <em>stop moaning</em> about the system. They did not stop; he had to step aside.</p>
+                        <hr>
+                        <p><small>Footnote 1: <a href="https://www.ft.com/content/0691002c-2200-4583-88c9-9c942d534228" target="_blank" rel="noopener noreferrer">https://www.ft.com/content/0691002c-2200-4583-88c9-9c942d534228</a></small></p>
+                    </div>
+                </section>
+                <section id="article-employment-casino" class="article-page" style="display: none;">
+                    <h2>News & Articles</h2>
+                    <div class="article-item">
+                        <h3>How to guess your award (without paying lawyers) — the employment law casino</h3>
+                        <p>Imagine that, for whatever reason, you do not wish to engage a lawyer. Perhaps they are too expensive; perhaps lawyers do not have your trust. But you are numerate, and approach the endeavour with the seriousness of a bookie.</p>
+                        <h4>Making inferences from statistics</h4>
+                        <p>One obvious way would be to look at the published statistics for levels of award for your type of claim. You would also want to look at the statistics over a number of years (to average out any outliers from unusual years). Then you would consider not only the average award, but above all the distribution of awards so that you could with some confidence estimate the likely range of values the award might take.</p>
+                    </div>
+                </section>
+            </div>
 
             <div id="limitation-view" class="page-view" style="display: none;">
                 <section class="calculator-section">
@@ -169,9 +277,35 @@
                         <p><strong>Disclaimer:</strong> This tool is for informational purposes only and provides an estimate based on the statutory rules for extending time for ACAS Early Conciliation. It is not legal advice. The calculation of limitation dates can be complex and subject to specific exceptions. You should always seek independent legal advice on your specific circumstances. No liability is accepted for any reliance placed on this tool.</p>
                     </div>
                     <div class="calculator-inputs" id="limitation-calculator-inputs">
-                         </div>
-                    <div class="calculator-results" id="limitation-calculator-results" style="display: none;">
+                        <h3>1. Primary Event</h3>
+                        <div class="calculator-grid">
+                            <div>
+                                <label for="event_date">Effective Date of Termination or Last Discriminatory Act</label>
+                                <input type="date" id="event_date">
+                            </div>
                         </div>
+                        <h3>2. Respondents & ACAS Early Conciliation</h3>
+                        <div id="respondents-container"></div>
+                        <button id="add-respondent-btn" type="button">Add Respondent</button>
+                    </div>
+                    <button id="calculate-btn" class="calc-button">Calculate Deadlines</button>
+                    <div id="error-message" class="error-message"></div>
+                    <div id="limitation-calculator-results" style="display: none;">
+                        <div id="result-summary-container"></div>
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Respondent</th>
+                                    <th>Final Deadline</th>
+                                    <th>Calculation Method</th>
+                                    <th>Statutory Provision</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-table-body"></tbody>
+                        </table>
+                        <div id="calendar-legend"></div>
+                        <div id="calendar-container"></div>
+                    </div>
                 </section>
             </div>
             
@@ -185,12 +319,12 @@
                     <div class="calculator-inputs">
                         <div class="calculator-grid">
                             <div>
-                                <label for="hp-total-pay">Total Gross Pay in Reference Period</label>
-                                <input type="number" id="hp-total-pay" placeholder="e.g., 15000">
+                                <label for="hp-total-pay">Total Gross Pay in 52-Week Period</label>
+                                <input type="number" id="hp-total-pay" placeholder="e.g., 22000">
                             </div>
                             <div>
-                                <label for="hp-weeks-worked">Number of Weeks Worked in Period</label>
-                                <input type="number" id="hp-weeks-worked" placeholder="e.g., 42">
+                                <label for="hp-weeks-worked">Number of Weeks Paid in Period</label>
+                                <input type="number" id="hp-weeks-worked" placeholder="e.g., 45">
                             </div>
                         </div>
                     </div>
@@ -258,36 +392,28 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Restore content of profile view, articles, and limitation calculator if needed
-            // For brevity, their content is omitted here but should be in the final file.
-            // initLimitationCalculator(); // Assuming this function exists for the limitation tool
+            initLimitationCalculator(); 
             initPayCalculators();
             showPage('profile-view');
         });
 
         // --- Pay Calculators Logic ---
         function initPayCalculators() {
-            // Holiday Pay Calculator
             const calculateHpBtn = document.getElementById('calculate-hp-btn');
-            if(calculateHpBtn) {
-                calculateHpBtn.addEventListener('click', calculateHolidayPay);
-            }
+            if(calculateHpBtn) calculateHpBtn.addEventListener('click', calculateHolidayPay);
 
-            // Redundancy Pay Calculator
             const calculateRpBtn = document.getElementById('calculate-rp-btn');
-            if(calculateRpBtn) {
-                calculateRpBtn.addEventListener('click', calculateRedundancyPay);
-            }
+            if(calculateRpBtn) calculateRpBtn.addEventListener('click', calculateRedundancyPay);
         }
 
         function calculateHolidayPay() {
             const totalPay = parseFloat(document.getElementById('hp-total-pay').value);
             const weeksWorked = parseFloat(document.getElementById('hp-weeks-worked').value);
             const resultsDiv = document.getElementById('hp-results');
+            resultsDiv.style.display = 'block';
             
             if (isNaN(totalPay) || isNaN(weeksWorked) || totalPay <= 0 || weeksWorked <= 0) {
-                resultsDiv.innerHTML = `<div class="error-message">Please enter valid, positive numbers for pay and weeks worked.</div>`;
-                resultsDiv.style.display = 'block';
+                resultsDiv.innerHTML = `<div class="error-message">Please enter valid, positive numbers for pay and weeks paid.</div>`;
                 return;
             }
 
@@ -306,9 +432,7 @@
                         - Statutory Entitlement: <strong>${statutoryEntitlementWeeks}</strong> weeks<br>
                         - Total Estimated Pay: £${averageWeeklyPay.toFixed(2)} &times; ${statutoryEntitlementWeeks} = <strong>£${totalHolidayPay.toFixed(2)}</strong>
                     </div>
-                </div>
-            `;
-            resultsDiv.style.display = 'block';
+                </div>`;
         }
 
         function calculateRedundancyPay() {
@@ -317,23 +441,26 @@
             const endDate = new Date(document.getElementById('rp-end-date').value);
             const weeklyPay = parseFloat(document.getElementById('rp-weekly-pay').value);
             const resultsDiv = document.getElementById('rp-results');
+            resultsDiv.style.display = 'block';
 
-            if (isNaN(dob) || isNaN(startDate) || isNaN(endDate) || isNaN(weeklyPay)) {
+            if (isNaN(dob.getTime()) || isNaN(startDate.getTime()) || isNaN(endDate.getTime()) || isNaN(weeklyPay)) {
                 resultsDiv.innerHTML = `<div class="error-message">Please fill in all date and pay fields correctly.</div>`;
-                resultsDiv.style.display = 'block';
+                return;
+            }
+            if (startDate > endDate) {
+                 resultsDiv.innerHTML = `<div class="error-message">Employment Start Date cannot be after the Redundancy Date.</div>`;
                 return;
             }
 
-            const serviceYears = Math.floor((endDate - startDate) / (365.25 * 24 * 60 * 60 * 1000));
+            const serviceYears = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
 
             if (serviceYears < 2) {
-                resultsDiv.innerHTML = `<div class="pay-result-box"><div class="result-breakdown">Statutory redundancy pay requires a minimum of 2 years of continuous service.</div></div>`;
-                resultsDiv.style.display = 'block';
+                resultsDiv.innerHTML = `<div class="pay-result-box"><div class="result-breakdown" style="text-align:center;">Statutory redundancy pay requires a minimum of 2 years of continuous service. Based on the dates provided, the service period is less than 2 years.</div></div>`;
                 return;
             }
 
             const cappedServiceYears = Math.min(serviceYears, 20);
-            const weeklyPayCap = 700; // As of April 2024, check for annual updates.
+            const weeklyPayCap = 700; // For 2024-2025. This needs annual review.
             const cappedWeeklyPay = Math.min(weeklyPay, weeklyPayCap);
 
             let totalWeeksPayable = 0;
@@ -342,18 +469,14 @@
             for (let i = 0; i < cappedServiceYears; i++) {
                 const anniversaryDate = new Date(endDate);
                 anniversaryDate.setFullYear(endDate.getFullYear() - i);
-                const ageAtAnniversary = Math.floor((anniversaryDate - dob) / (365.25 * 24 * 60 * 60 * 1000));
+                const ageAtAnniversary = Math.floor((anniversaryDate - dob) / (1000 * 60 * 60 * 24 * 365.25));
 
-                let multiplier = 0;
-                if (ageAtAnniversary >= 41) {
-                    multiplier = 1.5;
-                } else if (ageAtAnniversary >= 22) {
-                    multiplier = 1.0;
-                } else {
-                    multiplier = 0.5;
-                }
+                let multiplier = 0.5;
+                if (ageAtAnniversary >= 41) multiplier = 1.5;
+                else if (ageAtAnniversary >= 22) multiplier = 1.0;
+                
                 totalWeeksPayable += multiplier;
-                breakdown += `<li>Year ${serviceYears - i} (age ${ageAtAnniversary}): <strong>${multiplier}</strong> week's pay</li>`;
+                breakdown += `<li>Year ${serviceYears - i} (age ${ageAtAnniversary}): <strong>${multiplier.toFixed(1)}</strong> week's pay</li>`;
             }
             
             const totalRedundancyPay = totalWeeksPayable * cappedWeeklyPay;
@@ -368,15 +491,196 @@
                         - Full Years of Service: <strong>${serviceYears}</strong> (capped at <strong>${cappedServiceYears}</strong> for calculation)<br>
                         - Your Gross Weekly Pay: <strong>£${weeklyPay.toFixed(2)}</strong> (capped at <strong>£${cappedWeeklyPay.toFixed(2)}</strong> for calculation)<br>
                         - Total Weeks' Pay Entitlement: <strong>${totalWeeksPayable.toFixed(1)}</strong><br>
-                        - Calculation: ${totalWeeksPayable.toFixed(1)} weeks &times; £${cappedWeeklyPay.toFixed(2)} = <strong>£${totalRedundancyPay.toFixed(2)}</strong>
+                        - Total: ${totalWeeksPayable.toFixed(1)} weeks &times; £${cappedWeeklyPay.toFixed(2)} = <strong>£${totalRedundancyPay.toFixed(2)}</strong>
                     </div>
                      <div class="result-breakdown" style="margin-top: 1rem;">
-                        <strong>Entitlement per year of service:</strong><br>
+                        <strong>Entitlement per year of service (most recent first):</strong><br>
                         <ul>${breakdown}</ul>
                     </div>
-                </div>
-            `;
-            resultsDiv.style.display = 'block';
+                </div>`;
+        }
+        
+        // --- Limitation Calculator Logic ---
+        function initLimitationCalculator() {
+            const addRespondentBtn = document.getElementById('add-respondent-btn');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const respondentsContainer = document.getElementById('respondents-container');
+            let respondentIdCounter = 0;
+
+            const createRespondentRow = () => {
+                const respondentId = respondentIdCounter++;
+                const row = document.createElement('div');
+                row.className = 'respondent-row';
+                row.dataset.id = respondentId;
+                row.innerHTML = `
+                    <div>
+                        <label for="name_${respondentId}">Respondent Name</label>
+                        <input type="text" id="name_${respondentId}" placeholder="e.g., Company Ltd">
+                    </div>
+                    <div>
+                        <label for="day_a_${respondentId}">EC Day A (Start)</label>
+                        <input type="date" id="day_a_${respondentId}">
+                    </div>
+                    <div>
+                        <label for="day_b_${respondentId}">EC Day B (End)</label>
+                        <input type="date" id="day_b_${respondentId}">
+                    </div>
+                    <div class="remove-btn-wrapper">
+                         <button type="button" class="remove-btn" data-remove-id="${respondentId}">Remove</button>
+                    </div>`;
+                respondentsContainer.appendChild(row);
+                row.querySelector('.remove-btn').addEventListener('click', (e) => {
+                    e.target.closest('.respondent-row').remove();
+                });
+            };
+            
+            if(addRespondentBtn) addRespondentBtn.addEventListener('click', createRespondentRow);
+            if(calculateBtn) calculateBtn.addEventListener('click', runLimitationCalculation);
+            createRespondentRow(); // Add the first row by default
+        }
+
+        function runLimitationCalculation() {
+             const errorMessage = document.getElementById('error-message');
+             const resultsContainer = document.getElementById('limitation-calculator-results');
+             errorMessage.textContent = '';
+             resultsContainer.style.display = 'none';
+
+             const parseDateAsUTC = (dateString) => {
+                 if (!dateString) return null;
+                 const date = new Date(dateString);
+                 return new Date(date.getTime() + date.getTimezoneOffset() * 60000);
+             };
+             const addMonths = (date, months) => {
+                 const d = new Date(date);
+                 d.setUTCMonth(d.getUTCMonth() + months);
+                 return d;
+             };
+             const addDays = (date, days) => {
+                 const d = new Date(date);
+                 d.setUTCDate(d.getUTCDate() + days);
+                 return d;
+             };
+             const daysBetween = (date1, date2) => Math.round((date2 - date1) / (1000 * 60 * 60 * 24));
+             const formatDate = (date) => date ? date.toLocaleDateString('en-GB', { timeZone: 'UTC' }) : '';
+             
+             const eventDate = parseDateAsUTC(document.getElementById('event_date').value);
+             if (!eventDate) {
+                 errorMessage.textContent = 'Error: Please enter the primary event date.';
+                 return;
+             }
+
+             const respondentRows = document.querySelectorAll('.respondent-row');
+             if (respondentRows.length === 0) {
+                 errorMessage.textContent = 'Error: Please add at least one respondent.';
+                 return;
+             }
+
+             const respondentsData = [];
+             for (const row of respondentRows) {
+                 const id = row.dataset.id;
+                 const name = document.getElementById(`name_${id}`).value || `Respondent ${parseInt(id) + 1}`;
+                 const dayA = parseDateAsUTC(document.getElementById(`day_a_${id}`).value);
+                 const dayB = parseDateAsUTC(document.getElementById(`day_b_${id}`).value);
+                 if (!dayA || !dayB) {
+                     errorMessage.textContent = `Error for ${name}: Please enter both Day A and Day B.`;
+                     return;
+                 }
+                 if (dayB < dayA) {
+                     errorMessage.textContent = `Error for ${name}: Day B cannot be before Day A.`;
+                     return;
+                 }
+                 respondentsData.push({ name, dayA, dayB });
+             }
+
+             const computeDeadline = (event, a, b) => {
+                 const primary = addDays(addMonths(event, 3), -1);
+                 let final, method, provision;
+
+                 if (primary < a) { // Method 1: s.207B(3) "stop the clock"
+                     const pauseDays = daysBetween(a, b) + 1;
+                     final = addDays(primary, pauseDays);
+                     method = `Primary limit + ${pauseDays}-day stop-clock`;
+                     provision = "ERA 1996 s.207B(3)";
+                 } else { // Method 2: s.207B(4) substitution
+                     final = addMonths(b, 1);
+                     method = "One month from Day B";
+                     provision = "ERA 1996 s.207B(4)";
+                 }
+                 return { finalDeadline: final, method, provision };
+             };
+
+             const results = respondentsData.map(r => {
+                 const calc = computeDeadline(eventDate, r.dayA, r.dayB);
+                 return { ...r, ...calc };
+             });
+
+             const earliestDeadline = results.reduce((earliest, current) => current.finalDeadline < earliest ? current.finalDeadline : earliest, results[0].finalDeadline);
+             
+             resultsContainer.style.display = 'block';
+             const today = new Date();
+             today.setHours(0,0,0,0);
+             const daysLeft = daysBetween(today, earliestDeadline);
+
+             document.getElementById('result-summary-container').innerHTML = daysLeft < 0
+                 ? `<div class="result-summary result-summary-passed"><strong>Earliest Safe Deadline: ${formatDate(earliestDeadline)}</strong><br>This deadline passed ${-daysLeft} day(s) ago.</div>`
+                 : `<div class="result-summary result-summary-earliest"><strong>Earliest Safe Deadline: ${formatDate(earliestDeadline)}</strong><br>${daysLeft} day(s) remaining.</div>`;
+             
+             const tableBody = document.getElementById('results-table-body');
+             tableBody.innerHTML = '';
+             results.forEach(res => {
+                 const row = document.createElement('tr');
+                 if (res.finalDeadline.getTime() === earliestDeadline.getTime()) row.classList.add('highlight-row');
+                 row.innerHTML = `<td>${res.name}</td><td>${formatDate(res.finalDeadline)}</td><td>${res.method}</td><td>${res.provision}</td>`;
+                 tableBody.appendChild(row);
+             });
+
+             generateCalendar(eventDate, earliestDeadline, results);
+        }
+
+        function generateCalendar(eventDate, earliestDeadline, results) {
+            const container = document.getElementById('calendar-container');
+            const legend = document.getElementById('calendar-legend');
+            container.innerHTML = '';
+            legend.innerHTML = `
+                <span style="background:#ffdead; padding:2px 6px; border-radius:3px;">Event</span>
+                <span style="background:#a5d8ff; padding:2px 6px; border-radius:3px;">EC Period</span>
+                <span style="background:#f7786b; color:#fff; padding:2px 6px; border-radius:3px;">Deadline</span>
+                <span style="outline: 2px solid #00a8e8; padding:2px 6px; border-radius:3px;">Today</span>`;
+            
+            const today = new Date();
+            today.setUTCHours(0,0,0,0);
+            
+            const eventDateStr = eventDate.toISOString().split('T')[0];
+            const deadlineStrs = new Set(results.map(r => r.finalDeadline.toISOString().split('T')[0]));
+            const ecSpans = results.map(r => ({start: r.dayA, end: r.dayB}));
+
+            let startDate = new Date(Date.UTC(eventDate.getUTCFullYear(), eventDate.getUTCMonth(), 1));
+            const endDate = new Date(Date.UTC(earliestDeadline.getUTCFullYear(), earliestDeadline.getUTCMonth() + 1, 0)); // End of deadline month
+
+            while (startDate <= endDate) {
+                let monthHtml = `<div class="month"><h4>${startDate.toLocaleString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' })}</h4>`;
+                monthHtml += '<table class="cal"><thead><tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr></thead><tbody>';
+                let currentDate = new Date(startDate);
+                let firstDayOfMonth = (currentDate.getUTCDay() + 6) % 7; // Monday is 0
+                monthHtml += '<tr>' + '<td></td>'.repeat(firstDayOfMonth);
+
+                while (currentDate.getUTCMonth() === startDate.getUTCMonth()) {
+                    if (currentDate.getUTCDay() === 1 && currentDate.getUTCDate() > 1) monthHtml += '</tr><tr>';
+                    
+                    const dayStr = currentDate.toISOString().split('T')[0];
+                    let classes = ['cal-day'];
+                    if (dayStr === eventDateStr) classes.push('event');
+                    if (deadlineStrs.has(dayStr)) classes.push('deadline');
+                    if (ecSpans.some(span => currentDate >= span.start && currentDate <= span.end)) classes.push('ec');
+                    if (currentDate.getTime() === today.getTime()) classes.push('today');
+
+                    monthHtml += `<td class="${classes.join(' ')}">${currentDate.getUTCDate()}</td>`;
+                    currentDate.setUTCDate(currentDate.getUTCDate() + 1);
+                }
+                monthHtml += '<td></td>'.repeat((7 - ((currentDate.getUTCDay() + 6) % 7)) % 7) + '</tr></tbody></table></div>';
+                container.innerHTML += monthHtml;
+                startDate.setUTCMonth(startDate.getUTCMonth() + 1);
+            }
         }
     </script>
 </body>
