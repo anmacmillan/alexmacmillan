@@ -70,90 +70,62 @@
                 </p>
             </section>
 
-            <section id="developments">
-                <h2>Recent Developments</h2>
-                <div class="development-item">
-                    <h3>Fictional Case: Smith v. Acme Corp (2024)</h3>
-                    <p class="legal-text">
-                        The Employment Appeal Tribunal (EAT) has provided new guidance on the territorial scope of the Equality Act 2010 in the context of remote-working employees. The ruling clarifies that an employee working exclusively from a foreign jurisdiction, but for a UK-based employer and with their work having a 'strong connection' to Great Britain, may still fall under the Act's protection. The key determinant was the nature of the contractual obligations and the operational integration into the British business entity.
-                    </p>
-                    <button class="gemini-button" onclick="generateSummary(this)">
-                        ✨ Generate Plain-English Summary
-                    </button>
-                    <div class="summary-container">
-                        <div class="loader" style="display: none;"></div>
-                        <pre class="summary-output"></pre>
-                    </div>
+            <section id="notable-cases">
+                <h2>Notable Cases</h2>
+                <ul class="content-list">
+                    <li>Representing the Claimant in an important and widely-reported Court of Appeal decision dealing with the proper application of the TUPE 'sole or principal reason' test in <strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>.</li>
+                    <li>Representing the Appellant in a High Court reconsideration of a Head Teacher's fitness to practise following on from the Supreme Court decision in Reilly v Sandwell MBC [2018] UKSC 16. (<strong>Caroline Reilly v Teaching Regulation Agency and Secretary of State for Education (2020) EWHC 1188 (Admin)</strong>).</li>
+                    <li>Representing the Claimant in a successful pregnancy discrimination and unfair dismissal case against a well-known law firm, which gained considerable media attention.</li>
+                    <li>Advising a London-based tech company on High Court injunction proceedings and restraint of trade involving a former Belgian employer, requiring consideration of both applicable law and proper forum.</li>
+                    <li>Representing a Partner in a London law firm in a high-value victimization and unfair dismissal claim reported in the international legal media.</li>
+                    <li>Representing a major national health club in a successful defence against allegations of disability discrimination, covered comprehensively by the national media.</li>
+                </ul>
+            </section>
+
+            <section id="news-articles">
+                <h2>News & Articles</h2>
+                <ul class="content-list">
+                    <li><a href="#">No "personal reasons" defence in TUPE automatically unfair dismissals</a></li>
+                </ul>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <ul class="content-list">
+                    <li>PhD in Modern Languages (French and Italian) - University of Cambridge (Clare Hall)</li>
+                    <li>MPhil European Literature - University of Cambridge (Clare Hall)</li>
+                    <li>Undergraduate Degree in English Language & Literature - University College London</li>
+                    <li>Graduate Diploma in Law - University of Law (Bloomsbury)</li>
+                    <li>BPTC - City Law School (incorporating the Inns of Court Law School)</li>
+                </ul>
+            </section>
+
+            <section id="memberships">
+                <h2>Appointments & Memberships</h2>
+                <ul class="content-list">
+                    <li>Employment Lawyers Association</li>
+                    <li>The Honourable Society of Lincoln's Inn</li>
+                </ul>
+            </section>
+
+            <section id="testimonials">
+                <h2>Testimonials</h2>
+                <div class="testimonial-item">
+                    <p>"We always appreciate your carefully reasoned and well-written advice. You always hit the nail on the head."</p>
+                    <cite>Regular Solicitor Client</cite>
+                </div>
+                <div class="testimonial-item">
+                    <p>"I would like to say thanks again for the work you have done for me and mention my satisfaction... your valuation advice gave me a clearer perspective on the requirements I need to meet in order to be well prepared for tribunal."</p>
+                    <cite>Direct Access Client</cite>
+                </div>
+                <div class="testimonial-item">
+                    <p>"I was deeply impressed by your advice."</p>
+                    <cite>Regular Solicitor Client</cite>
                 </div>
             </section>
 
-            <section id="publications">
-                <h2>Publications</h2>
-                <ul class="content-list">
-                    <li><a href="#">"The Evolving Landscape of Vicarious Liability"</a>, Employment Law Journal, 2023</li>
-                    <li><a href="#">"Restrictive Covenants: A Practical Guide"</a>, LexisNexis, 2022</li>
-                    <li><a href="#">"Case Note: Harpur Trust v Brazel"</a>, Counsel Magazine, 2022</li>
-                </ul>
-            </section>
-
-            <section id="seminars">
-                <h2>Seminars & Speaking</h2>
-                <ul class="content-list">
-                    <li>"Unfair Dismissal Update", Annual Employment Law Conference, London, 2024</li>
-                    <li>"Discrimination Law Masterclass", Webinar Series, 2023</li>
-                    <li>"Managing Redundancy Processes", In-house training for FTSE 100 Company, 2023</li>
-                </ul>
-            </section>
         </main>
     </div>
-
-    <!-- Gemini API Integration Script -->
-    <script>
-        async function generateSummary(button) {
-            const developmentItem = button.closest('.development-item');
-            const legalTextElement = developmentItem.querySelector('.legal-text');
-            const summaryOutputElement = developmentItem.querySelector('.summary-output');
-            const loaderElement = developmentItem.querySelector('.loader');
-            const legalText = legalTextElement.innerText;
-
-            loaderElement.style.display = 'block';
-            summaryOutputElement.innerText = '';
-            button.disabled = true;
-            button.style.cursor = 'wait';
-
-            const prompt = `You are an expert legal analyst who excels at making complex topics understandable. Summarize the following legal text in clear, simple, plain English, as if explaining it to a non-lawyer. Focus on the main takeaway or what has changed. Keep it concise (2-3 sentences). Do not offer advice. Legal Text: "${legalText}"`;
-
-            try {
-                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
-                const apiKey = ""; // Handled by environment
-                const apiUrl = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\${apiKey}\`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) throw new Error(\`API request failed: \${response.status}\`);
-                
-                const result = await response.json();
-
-                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    summaryOutputElement.innerText = result.candidates[0].content.parts[0].text;
-                } else {
-                    throw new Error("Unexpected API response structure.");
-                }
-
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                summaryOutputElement.innerText = "An error occurred while generating the summary. Please try again later.";
-            } finally {
-                loaderElement.style.display = 'none';
-                button.disabled = false;
-                button.style.cursor = 'pointer';
-            }
-        }
-    </script>
 
 </body>
 </html>
