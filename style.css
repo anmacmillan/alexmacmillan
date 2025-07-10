@@ -1,0 +1,318 @@
+/* ---
+   style.css
+   An authoritative, two-column stylesheet for a barrister's website.
+--- */
+
+/* 1. Root Variables & Global Settings
+-------------------------------------------------- */
+:root {
+    --sidebar-bg: #003366; /* Deep, professional blue */
+    --sidebar-text: #ffffff;
+    --sidebar-accent: #e1b168; /* Gold/brass for hover effects */
+    --content-bg: #ffffff;
+    --content-text: #212121;
+    --content-heading: #003366;
+    --light-bg: #f4f5f7; /* For subtle backgrounds in content */
+    --border-color: #e0e0e0;
+
+    --font-heading: 'DM Serif Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--content-bg);
+}
+
+/* 2. Main Site Layout (Two-Column)
+-------------------------------------------------- */
+.site-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    padding: 3rem 2rem;
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    margin-left: 320px; /* Same as sidebar width */
+    width: calc(100% - 320px);
+    padding: 4rem;
+    background-color: var(--content-bg);
+    color: var(--content-text);
+}
+
+/* 3. Sidebar Styling
+-------------------------------------------------- */
+.sidebar header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.profile-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    border: 4px solid var(--sidebar-accent);
+}
+
+.sidebar h1 {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--sidebar-text);
+}
+
+.sidebar .subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.25rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.sidebar-nav a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--sidebar-accent);
+}
+
+.contact-box {
+    margin-top: auto; /* Pushes footer to the bottom */
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-box h3 {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--sidebar-accent);
+}
+
+.contact-box p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-box a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.contact-box a:hover {
+    color: var(--sidebar-accent);
+}
+
+.sidebar footer {
+    padding-top: 2rem;
+    font-size: 0.85rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 4. Main Content Styling
+-------------------------------------------------- */
+.main-content section {
+    margin-bottom: 4rem;
+}
+
+.main-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--content-heading);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--content-heading);
+    display: inline-block;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 45em; /* Readability improvement */
+    margin-bottom: 1rem;
+}
+
+.content-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content-list li {
+    font-size: 1.1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-list li a {
+    color: var(--content-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.content-list li a:hover {
+    color: var(--content-heading);
+}
+
+/* 5. Gemini Feature Styling
+-------------------------------------------------- */
+.development-item {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--content-heading);
+    border-radius: 0 8px 8px 0;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.development-item h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--content-text);
+    margin-bottom: 0.75rem;
+}
+
+.gemini-button {
+    background: var(--content-heading);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gemini-button:hover:not(:disabled) {
+    background-color: #004488;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+}
+
+.gemini-button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.summary-container {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--content-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    min-height: 70px;
+    position: relative;
+}
+
+.summary-output {
+    color: #333;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid var(--content-heading);
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 6. Responsive Design
+-------------------------------------------------- */
+@media (max-width: 1024px) {
+    .site-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 2rem;
+    }
+
+    .sidebar .contact-box {
+        margin-top: 2rem;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .main-content h2 {
+        font-size: 2rem;
+    }
+
+    .main-content p, .content-list li {
+        font-size: 1rem;
+    }
+}
