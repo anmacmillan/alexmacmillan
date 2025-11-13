@@ -84,7 +84,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .calc-button:hover, #calculate-btn:hover { background-color: #002244; }
         .remove-btn:hover { background-color: #d32f2f; }
         #limitation-calculator-results, .pay-calculator-results { margin-top: 2rem; }
-        .error-message { color: #d32f2f; font-weight: bold; margin-bottom: 1rem; }
+        .error-message { color: #d32f2f; font-weight: bold; margin-bottom: 1rem; display: none; } /* Hide error message by default */
         .result-summary { font-size: 1.2rem; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
         .result-summary-earliest { background-color: #e6f4ea; border: 1px solid #b2d8b5; color: #2d6a4f; }
         .result-summary-passed { background-color: #ffebee; border: 1px solid #ffcdd2; color: #c62828; }
@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .results-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.9rem; }
         .results-table th, .results-table td { border: 1px solid var(--border-color); padding: 0.8rem; text-align: left; }
         .results-table th { background-color: var(--sidebar-bg); }
-        .results-table .highlight-row { background-color: #e6f4ea; }
+        .results-table .highlight-row { background-color: #e6f4ea; font-weight: 600; }
         
         /* Checklist Styles */
         .checklist-section { padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
@@ -125,55 +125,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="site-wrapper">
         <aside class="sidebar">
-             <div class="sidebar-content">
-                <header>
-                    <img src="professional_headshot.jpg" alt="Professional headshot of Alexander MacMillan, Barrister" class="profile-photo" onerror="this.onerror=null;this.src='https://placehold.co/150x150/EFEFEF/333333?text=A.M.';">
-                    <h1>Alex MacMillan</h1>
-                    <p class="subtitle">Employment Law Barrister</p>
-                    <p class="call-date">Called to the Bar: 2015</p>
-                </header>
+              <div class="sidebar-content">
+                  <header>
+                      <img src="professional_headshot.jpg" alt="Professional headshot of Alexander MacMillan, Barrister" class="profile-photo" onerror="this.onerror=null;this.src='https://placehold.co/150x150/EFEFEF/333333?text=A.M.';">
+                      <h1>Alex MacMillan</h1>
+                      <p class="subtitle">Employment Law Barrister</p>
+                      <p class="call-date">Called to the Bar: 2015</p>
+                  </header>
 
-                <nav class="sidebar-nav">
-                    <h4>Main</h4>
-                    <a href="javascript:void(0);" onclick="showPage('profile-view');" class="nav-active">Main Profile</a>
-                    <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Official Chambers Profile</a>
-                    <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-                </nav>
+                  <nav class="sidebar-nav">
+                      <h4>Main</h4>
+                      <a href="javascript:void(0);" onclick="showPage('profile-view');" class="nav-active">Main Profile</a>
+                      <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Official Chambers Profile</a>
+                      <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+                  </nav>
 
-                <nav class="sidebar-nav">
-                    <h4>Calculators & Tools</h4>
-                    <a href="https://quantum-risk-tool.streamlit.app/" target="_blank" rel="noopener noreferrer">Quantum Risk Modeller 📊</a>
+                  <nav class="sidebar-nav">
+                      <h4>Calculators & Tools</h4>
+                      <a href="https://quantum-risk-tool.streamlit.app/" target="_blank" rel="noopener noreferrer">Quantum Risk Modeller 📊</a>
 
-                    <a href="javascript:void(0);" onclick="showPage('limitation-view');">Limitation Date Calculator</a>
-                    <a href="javascript:void(0);" onclick="showPage('holiday-pay-view');">Holiday Pay Calculator</a>
-                    <a href="javascript:void(0);" onclick="showPage('redundancy-pay-view');">Redundancy Pay Calculator</a>
-                    <a href="javascript:void(0);" onclick="showPage('disciplinary-view');">Disciplinary Process Checklist</a>
-                </nav>
+                      <a href="javascript:void(0);" onclick="showPage('limitation-view');">Limitation Date Calculator</a>
+                      <a href="javascript:void(0);" onclick="showPage('holiday-pay-view');">Holiday Pay Calculator</a>
+                      <a href="javascript:void(0);" onclick="showPage('redundancy-pay-view');">Redundancy Pay Calculator</a>
+                      <a href="javascript:void(0);" onclick="showPage('disciplinary-view');">Disciplinary Process Checklist</a>
+                  </nav>
 
-                <nav class="sidebar-nav articles-nav">
-                    <h4>Articles</h4>
-                    <ul>
-                        <li><a href="javascript:void(0);" onclick="showPage('article-tupe-defence');">No "personal reasons" defence...</a></li>
-                        <li><a href="javascript:void(0);" onclick="showPage('article-prosecutors-fallacy');">The Prosecutor’s Fallacy</a></li>
-                        <li><a href="javascript:void(0);" onclick="showPage('article-prospects-percentages');">On Percentage Prospects</a></li>
-                        <li><a href="javascript:void(0);" onclick="showPage('article-forced-distribution');">On Forced Distributions</a></li>
-                        <li><a href="javascript:void(0);" onclick="showPage('article-employment-casino');">The Employment Law Casino</a></li>
-                    </ul>
-                </nav>
+                  <nav class="sidebar-nav articles-nav">
+                      <h4>Articles</h4>
+                      <ul>
+                          <li><a href="javascript:void(0);" onclick="showPage('article-tupe-defence');">No "personal reasons" defence...</a></li>
+                          <li><a href="javascript:void(0);" onclick="showPage('article-prosecutors-fallacy');">The Prosecutor’s Fallacy</a></li>
+                          <li><a href="javascript:void(0);" onclick="showPage('article-prospects-percentages');">On Percentage Prospects</a></li>
+                          <li><a href="javascript:void(0);" onclick="showPage('article-forced-distribution');">On Forced Distributions</a></li>
+                          <li><a href="javascript:void(0);" onclick="showPage('article-employment- casino');">The Employment Law Casino</a></li>
+                      </ul>
+                  </nav>
 
-                <div class="contact-box">
-                    <h3>Contact</h3>
-                    <p class="chambers-details">
-                        <strong>St Philips Barristers</strong><br>
-                        Email: <a href="mailto:employment&pi@st-philips.com">employment&pi@st-philips.com</a><br>
-                        Telephone: +44 (0) 121 246 7015
-                    </p>
-                </div>
-                
-                <footer>
-                    <p>&copy; 2025 Alex MacMillan</p>
-                </footer>
-            </div>
+                  <div class="contact-box">
+                      <h3>Contact</h3>
+                      <p class="chambers-details">
+                          <strong>St Philips Barristers</strong><br>
+                          Email: <a href="mailto:employment&pi@st-philips.com">employment&pi@st-philips.com</a><br>
+                          Telephone: +44 (0) 121 246 7015
+                      </p>
+                  </div>
+                  
+                  <footer>
+                      <p>&copy; 2025 Alex MacMillan</p>
+                  </footer>
+              </div>
         </aside>
 
         <main class="main-content">
@@ -258,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                         <h3>2. Respondents & ACAS Early Conciliation</h3>
                         <div id="respondents-container"></div>
-                        <button id="add-respondent-btn" type="button">Add Respondent</button>
+                        <button id="add-respondent-btn" type="button" class>Add Respondent</button>
                     </div>
                     <button id="calculate-btn" class="calc-button">Calculate Deadlines</button>
                     <div id="error-message" class="error-message"></div>
@@ -442,7 +442,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             resultsDiv.style.display = 'block';
             
             if (isNaN(totalPay) || isNaN(weeksWorked) || totalPay <= 0 || weeksWorked <= 0) {
-                resultsDiv.innerHTML = `<div class="error-message">Please enter valid, positive numbers for pay and weeks paid.</div>`;
+                resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Please enter valid, positive numbers for pay and weeks paid.</div>`;
                 return;
             }
 
@@ -473,12 +473,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             resultsDiv.style.display = 'block';
 
             if (isNaN(dob.getTime()) || isNaN(startDate.getTime()) || isNaN(endDate.getTime()) || isNaN(weeklyPay)) {
-                resultsDiv.innerHTML = `<div class="error-message">Please fill in all date and pay fields correctly.</div>`;
+                resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Please fill in all date and pay fields correctly.</div>`;
                 return;
             }
             if (startDate > endDate) {
-                 resultsDiv.innerHTML = `<div class="error-message">Employment Start Date cannot be after the Redundancy Date.</div>`;
-                return;
+                 resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Employment Start Date cannot be after the Redundancy Date.</div>`;
+                 return;
             }
 
             const serviceYears = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
@@ -536,10 +536,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             
             if (!form.checkValidity()) {
                 let firstInvalid = form.querySelector(':invalid');
-                alert("Please answer all applicable questions before generating the report.");
-                firstInvalid.closest('.checklist-question').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Use the site's error-message div for a non-blocking alert
+                const errorDiv = document.getElementById('error-message');
+                if (errorDiv) {
+                    errorDiv.textContent = 'Please answer all applicable questions before generating the report.';
+                    errorDiv.style.display = 'block';
+                    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert("Please answer all applicable questions before generating the report.");
+                    firstInvalid.closest('.checklist-question').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
                 return;
             }
+            
+            // Clear any previous error messages
+            const errorDiv = document.getElementById('error-message');
+            if (errorDiv) errorDiv.style.display = 'none';
 
             const answers = {
                 investigation_conducted: form.elements.investigation_conducted.value,
@@ -603,9 +615,247 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             reportContainer.scrollIntoView({ behavior: 'smooth' });
         }
         
-        // --- Limitation Calculator Logic ---
+        // --- Limitation Calculator Logic (ADAPTED AND INTEGRATED) ---
         function initLimitationCalculator() {
-            // Assume this function exists and is populated as before
+            // --- Helper Functions ---
+            const MS_DAY = 24 * 60 * 60 * 1000;
+
+            function parseDate(val) {
+                return val ? new Date(val + 'T00:00:00Z') : null; // Use UTC to avoid timezone issues
+            }
+            
+            function addMonths(d, n) {
+                const r = new Date(d);
+                r.setUTCMonth(r.getUTCMonth() + n);
+                return r;
+            }
+            
+            function addDays(d, n) {
+                const r = new Date(d);
+                r.setUTCDate(r.getUTCDate() + n);
+                return r;
+            }
+
+            function diffDays(start, end) {
+                // Calculates inclusive day count
+                if (end < start) return 0;
+                const diff = Math.round((end.getTime() - start.getTime()) / MS_DAY);
+                return diff + 1;
+            }
+            
+            function formatDate(d) {
+                return d.toISOString().split('T')[0];
+            }
+            
+            function formatDateUK(d) {
+                return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+            }
+
+            // --- Adapted Alert Functions ---
+            const errorDiv = document.getElementById('error-message');
+            
+            function customAlert(message, title = 'Input Error') {
+                if (errorDiv) {
+                    errorDiv.textContent = `${title}: ${message}`;
+                    errorDiv.style.display = 'block';
+                    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert(`${title}: ${message}`); // Fallback
+                }
+            }
+
+            function clearAlert() {
+                if (errorDiv) {
+                    errorDiv.textContent = '';
+                    errorDiv.style.display = 'none';
+                }
+            }
+
+            // --- Get DOM Elements ---
+            const respondentsContainer = document.getElementById('respondents-container');
+            const addRespondentBtn = document.getElementById('add-respondent-btn');
+            const calculateBtn = document.getElementById('calculate-btn');
+            const resultsContainer = document.getElementById('limitation-calculator-results');
+            const resultsSummaryContainer = document.getElementById('result-summary-container');
+            const resultsTableBody = document.getElementById('results-table-body');
+            const eventDateInput = document.getElementById('event_date');
+
+            if (!addRespondentBtn || !calculateBtn || !respondentsContainer) {
+                console.error("Limitation calculator elements not found. Skipping init.");
+                return;
+            }
+
+            // --- Event Listeners ---
+            addRespondentBtn.addEventListener('click', addRespondentRow);
+            calculateBtn.addEventListener('click', compute);
+
+            // --- Core Functions ---
+            function addRespondentRow() {
+                const respondentNumber = respondentsContainer.children.length + 1;
+                const div = document.createElement('div');
+                div.className = 'respondent-row';
+                div.innerHTML = `
+                    <div>
+                        <label for="ec_start_${respondentNumber}">Respondent ${respondentNumber} - EC Start (Day A)</label>
+                        <input type="date" id="ec_start_${respondentNumber}" class="ec-start-date" required>
+                    </div>
+                    <div>
+                        <label for="ec_cert_${respondentNumber}">EC Certificate (Day B)</label>
+                        <input type="date" id="ec_cert_${respondentNumber}" class="ec-cert-date" required>
+                    </div>
+                    <div class="remove-btn-wrapper">
+                        <button type="button" class="remove-btn" onclick="this.closest('.respondent-row').remove()">✕ Remove</button>
+                    </div>
+                `;
+                respondentsContainer.appendChild(div);
+            }
+
+            function compute() {
+                clearAlert(); // Clear previous errors
+
+                const eventRaw = eventDateInput.value;
+                if (!eventRaw) {
+                    customAlert('Please enter the primary event date (EDT).');
+                    return;
+                }
+                
+                const eventDate = parseDate(eventRaw);
+                
+                // Primary Deadline (PD): 3 months - 1 day
+                const primaryDeadline = addMonths(eventDate, 3);
+                primaryDeadline.setUTCDate(primaryDeadline.getUTCDate() - 1);
+                
+                // Day clock starts running
+                const clockStart = addDays(eventDate, 1); 
+
+                const rows = Array.from(respondentsContainer.querySelectorAll('.respondent-row'));
+                if (!rows.length) {
+                    customAlert('Please add at least one respondent.');
+                    return;
+                }
+
+                resultsTableBody.innerHTML = ''; // Clear previous results
+                let earliestFinalDeadline = null;
+                let allValid = true;
+                const deadlineRows = []; // To sort and find earliest
+
+                rows.forEach((r, index) => {
+                    const name = `Respondent ${index + 1}`;
+                    const ecStartRaw = r.querySelector('.ec-start-date').value;
+                    const ecCertRaw = r.querySelector('.ec-cert-date').value;
+
+                    if (!ecStartRaw || !ecCertRaw) {
+                        allValid = false;
+                        return;
+                    }
+                    
+                    const ecStart = parseDate(ecStartRaw); // Day A
+                    const ecCert = parseDate(ecCertRaw);  // Day B
+                    
+                    if (ecCert < ecStart) {
+                        customAlert(`Error for ${name}: EC Certificate date (Day B) cannot be before EC start date (Day A).`);
+                        allValid = false;
+                        return;
+                    }
+
+                    // --- 1. Calculate s.207B(3) "Stop the Clock" Deadline ---
+                    let pauseDays = 0;
+                    let s207B_3_Deadline = new Date(primaryDeadline.getTime());
+                    
+                    if (ecStart <= primaryDeadline) {
+                        const pausePeriodStart = new Date(Math.max(addDays(ecStart, 1).getTime(), clockStart.getTime()));
+                        const pausePeriodEnd = new Date(Math.min(ecCert.getTime(), primaryDeadline.getTime()));
+                        pauseDays = diffDays(pausePeriodStart, pausePeriodEnd);
+                    }
+                    
+                    if (pauseDays > 0) {
+                        s207B_3_Deadline = addDays(primaryDeadline, pauseDays);
+                    }
+                    
+                    // --- 2. Calculate s.207B(4) "One Month" Deadline ---
+                    let s207B_4_Deadline = null;
+                    let oneMonthRuleTriggered = false;
+                    const oneMonthFromDayB_End = addDays(addMonths(ecCert, 1), -1); 
+                    const triggerA = (primaryDeadline >= ecStart && primaryDeadline <= ecCert);
+                    const triggerB = (primaryDeadline > ecCert && primaryDeadline <= oneMonthFromDayB_End);
+
+                    if (triggerA || triggerB) {
+                        oneMonthRuleTriggered = true;
+                        s207B_4_Deadline = oneMonthFromDayB_End;
+                    }
+
+                    // --- 3. Compare to find the Final Deadline ---
+                    let finalDeadline = s207B_3_Deadline;
+                    let method = `s.207B(3)`;
+                    let provision = `Primary + ${pauseDays} days`;
+
+                    if (oneMonthRuleTriggered && s207B_4_Deadline > s207B_3_Deadline) {
+                        finalDeadline = s207B_4_Deadline;
+                        method = 's.207B(4)';
+                        provision = '1m from Day B';
+                    }
+                    
+                    // Store for sorting
+                    deadlineRows.push({
+                        name: name,
+                        finalDeadline: finalDeadline,
+                        method: method,
+                        provision: provision
+                    });
+                    
+                    if (!earliestFinalDeadline || finalDeadline < earliestFinalDeadline) {
+                        earliestFinalDeadline = finalDeadline;
+                    }
+                });
+
+                if (!allValid) {
+                    if (rows.length > 0) customAlert('Please fill in all date fields for all respondents.');
+                    return;
+                }
+                
+                if (!earliestFinalDeadline) {
+                    customAlert('Could not compute deadlines. Check inputs.', 'Computation Error');
+                    return;
+                }
+
+                // Now render table, highlighting the earliest
+                deadlineRows.forEach(row => {
+                    const isEarliest = (row.finalDeadline.getTime() === earliestFinalDeadline.getTime());
+                    resultsTableBody.insertAdjacentHTML('beforeend', `
+                        <tr class="${isEarliest ? 'highlight-row' : ''}">
+                            <td>${row.name}</td>
+                            <td><strong>${formatDateUK(row.finalDeadline)}</strong></td>
+                            <td>${row.method}</td>
+                            <td>${row.provision}</td>
+                        </tr>`);
+                });
+
+                // Show summary
+                const today = parseDate(formatDate(new Date())); // Get today at 00:00 UTC
+                const remaining = Math.max(diffDays(today, earliestFinalDeadline) - 1, 0);
+                const hasPassed = today > earliestFinalDeadline;
+                
+                let summaryHTML = '';
+                if (hasPassed) {
+                    summaryHTML = `
+                        <div class="result-summary result-summary-passed">
+                            <strong>Earliest Deadline Passed: ${formatDateUK(earliestFinalDeadline)}</strong>
+                        </div>`;
+                } else {
+                    summaryHTML = `
+                        <div class="result-summary result-summary-earliest">
+                            <strong>Earliest Final Deadline: ${formatDateUK(earliestFinalDeadline)}</strong>
+                            <br>Days remaining (from today, excl. deadline day): ${remaining}
+                        </div>`;
+                }
+                resultsSummaryContainer.innerHTML = summaryHTML;
+
+                resultsContainer.style.display = 'block';
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+
+            // --- Initialisation ---
+            addRespondentRow(); // Add the first respondent row on load
         }
 
     </script>
