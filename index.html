@@ -6,6 +6,9 @@
     <title>Alex MacMillan | Employment Law Barrister</title>
     <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister, featuring articles and legal calculators.">
     
+    <!-- Dynamic Favicon (Scales of Justice) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
+
     <!-- Open Graph / LinkedIn / Facebook Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://alexmacmillan.co.uk/">
@@ -129,6 +132,25 @@
         .contact-box h3 { margin-top: 0; }
         .contact-box a { color: var(--accent-color); }
         
+        .testimonial-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-left: 3px solid var(--accent-color);
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #555;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .testimonial-author {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 600;
+            font-style: normal;
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
         footer { font-size: 0.8rem; color: #777; text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
         
         section { margin-bottom: 2.5rem; }
@@ -413,6 +435,11 @@
                       <p>French & Italian (Fluent)<br>
                       German & Dutch (Conversational)</p>
                       <p><strong>Technical:</strong> Python, SQL, JS</p>
+                  </div>
+
+                  <div class="testimonial-box">
+                      "The right advocate to bring it all together for the final hearing. A superb and effective trial counsel."
+                      <span class="testimonial-author">—Specialist Employment Law Firm</span>
                   </div>
                   
                   <footer>
