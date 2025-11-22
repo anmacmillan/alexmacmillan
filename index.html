@@ -889,6 +889,9 @@
             const article = articlesData.find(a => a.id === id);
             if (!article) return;
 
+            // Set dynamic title
+            document.title = article.title + " | Alex MacMillan";
+
             const contentDiv = document.getElementById('article-reader-content');
             contentDiv.innerHTML = article.content;
             
@@ -908,6 +911,21 @@
 
         // --- Updated Navigation Logic ---
         function showPage(pageId) {
+            // Update Browser Title dynamically
+            if (pageId === 'profile-view') {
+                document.title = "Alex MacMillan | Employment Law Barrister";
+            } else if (pageId === 'articles-hub-view') {
+                document.title = "News & Insights | Alex MacMillan";
+            } else if (pageId === 'limitation-view') {
+                document.title = "Limitation Calculator | Alex MacMillan";
+            } else if (pageId === 'holiday-pay-view') {
+                document.title = "Holiday Pay Calculator | Alex MacMillan";
+            } else if (pageId === 'redundancy-pay-view') {
+                document.title = "Redundancy Pay Calculator | Alex MacMillan";
+            } else if (pageId === 'disciplinary-view') {
+                document.title = "Disciplinary Checklist | Alex MacMillan";
+            }
+
             if(window.location.hash !== '#' + pageId) {
                 if(history.pushState) {
                     history.pushState(null, null, '#' + pageId);
