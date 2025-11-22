@@ -748,6 +748,16 @@
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer', gtmId);
         }
+        
+        // --- ANALYTICS HELPER ---
+        function trackEvent(eventName, params) {
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    'event': eventName,
+                    ...params
+                });
+            }
+        }
 
         // --- ARTICLES DATA ---
         // TO ADD A NEW ARTICLE: Copy one of the blocks below (from { to },) and paste it at the top of the list.
@@ -891,6 +901,9 @@
 
             // Set dynamic title
             document.title = article.title + " | Alex MacMillan";
+            
+            // Track Article View
+            trackEvent('view_article', { article_id: id, article_title: article.title });
 
             const contentDiv = document.getElementById('article-reader-content');
             contentDiv.innerHTML = article.content;
@@ -991,6 +1004,9 @@
                 resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Please enter valid, positive numbers for pay and weeks paid.</div>`;
                 return;
             }
+            
+            // Track success
+            trackEvent('calculator_used', { calculator_type: 'holiday_pay' });
 
             const averageWeeklyPay = totalPay / weeksWorked;
             const statutoryEntitlementWeeks = 5.6;
@@ -1033,6 +1049,9 @@
                 resultsDiv.innerHTML = `<div class="pay-result-box"><div class="result-breakdown" style="text-align:center;">Statutory redundancy pay requires a minimum of 2 years of continuous service.</div></div>`;
                 return;
             }
+            
+            // Track success
+            trackEvent('calculator_used', { calculator_type: 'redundancy_pay' });
 
             const cappedServiceYears = Math.min(serviceYears, 20);
             const weeklyPayCap = CONFIG.REDUNDANCY_CAP; 
@@ -1096,6 +1115,9 @@
             
             const errorDiv = document.getElementById('error-message');
             if (errorDiv) errorDiv.style.display = 'none';
+            
+            // Track success
+            trackEvent('calculator_used', { calculator_type: 'disciplinary_checklist' });
 
             const answers = {
                 investigation_conducted: form.elements.investigation_conducted.value,
@@ -1294,6 +1316,9 @@
 
                 if (!allValid) { if (rows.length > 0) customAlert('Please fill in all date fields for all respondents.'); return; }
                 if (!earliestFinalDeadline) { customAlert('Could not compute deadlines.', 'Computation Error'); return; }
+                
+                // Track success
+                trackEvent('calculator_used', { calculator_type: 'limitation_calculator' });
 
                 deadlineRows.forEach(row => {
                     const isEarliest = (row.finalDeadline.getTime() === earliestFinalDeadline.getTime());
