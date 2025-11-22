@@ -237,6 +237,25 @@
         .article-content .meta { color: #777; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
         .article-body { font-size: 1.1rem; line-height: 1.8; max-width: 800px; }
         
+        /* --- VIDEO EMBED STYLES --- */
+        .video-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+            height: 0;
+            margin: 2rem 0;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
         /* Calculator Styles */
         .calculator-section { max-width: 900px; }
         .calculator-disclaimer { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; }
@@ -742,6 +761,9 @@
                     <h1>The Payroll Paradox: Holiday Pay During Sick Leave</h1>
                     <div class="meta">Published: November 2025 | Category: Employment Law</div>
                     <div class="article-body">
+                        <div class="video-responsive">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
                         <p>In employment law, few areas cause as much administrative friction as the overlap between long-term sickness absence and statutory annual leave. A scenario crossing my desk with surprising frequency involves a long-term sick employee - perhaps on half-pay or nil pay with Statutory Sick Pay (SSP) - who requests to take a week of annual leave.</p>
                         <p>The immediate reaction from HR or payroll may be a reflex refusal: “You cannot be on holiday if you are signed off sick. We need a fit note, not a holiday request.” While intuitively logical to the non-lawyer, this administrative rigidity is fraught with legal risk.</p>
                         
