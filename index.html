@@ -380,6 +380,13 @@
                       </p>
                   </div>
                   
+                  <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #666;">
+                      <h4>Languages & Skills</h4>
+                      <p>French & Italian (Fluent)<br>
+                      German & Dutch (Conversational)</p>
+                      <p><strong>Technical:</strong> Python, SQL, JS</p>
+                  </div>
+                  
                   <footer>
                       <p>&copy; 2025 Alex MacMillan</p>
                   </footer>
@@ -390,26 +397,29 @@
             <div id="profile-view" class="page-view">
                 <section id="about">
                     <h2>Profile</h2>
-                    <p>An employment specialist with complementary expertise at the complex interface of employment and commercial contractual dispute resolution, Alexander MacMillan is one of the most active employment barristers on the circuit. Clients come to Alex, in part, because of his all-round capability in the employment arena, as well as the measured, thorough and reassuring way in which he works. Alex also maintains a particularly lively advisory practice and is, quite increasingly, sought out on some of the most esoteric and complicated points of employment law.</p>
-                    <p>Comfortable in the appellate courts, and with several recent appearances before the EAT, High Court, and Court of Appeal, Alex's robust and precise style of advocacy leaves no stone unturned, whilst also leading to practical and pragmatic results. Alex shines in matters requiring a deep analytical assessment of the prevailing issues and laws, and has the rare ability to boil down the most complex of issues into plain and easy-to-digest points, as well as provide his clients with viable, feasible and pragmatic options in the context of a litigation or dispute.</p>
+                    <p>An employment specialist with extensive experience in complex employment and related commercial disputes, Alexander's practice encompasses the full spectrum of employment law, with a particular focus on <strong>discrimination, whistleblowing, TUPE, and cross-border issues</strong>.</p>
+                    <p>He is regularly instructed in high-value and sensitive matters for both Claimants and Respondents, including major financial institutions, retailers, manufacturers, and local authorities. This balanced practice provides a distinct tactical advantage in negotiation and litigation. Alexander is comfortable in the appellate courts, with significant recent experience in the EAT, High Court, and Court of Appeal.</p>
                 </section>
                 <section id="notable-cases">
-                    <h2>Notable Cases</h2>
+                    <h2>Recent & Notable Cases</h2>
                     <ul class="content-list">
-                        <li>Representing the Claimant in an important and widely-reported Court of Appeal decision in <strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>. The judgment has significant implications for employers handling transfers of employees.</li>
-                        <li>Representing the Appellant in a High Court reconsideration of a Head Teacher's fitness to practise following on from the Supreme Court decision in <strong>Reilly v Sandwell Metropolitan Borough Council [2018] UKSC 16</strong>.</li>
-                        <li>Representing the Claimant in a successful pregnancy discrimination and unfair dismissal case against a solicitors' firm, which gained considerable media attention.</li>
-                        <li>Advising a London-based tech company on High Court injunction proceedings and restraint of trade.</li>
+                        <li><strong>John Lowe v Keble Heath Construction Limited (2025 hearing)</strong>: Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.</li>
+                        <li><strong>F. Manshausen v IMI Precision Engineering Ltd (2024 hearing)</strong>: Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.</li>
+                        <li><strong>Z v HRS Family Law Solicitors Ltd (2024)</strong>: Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.</li>
+                        <li><strong>Boggs v Warrington & Halton Hospitals Foundation (2023)</strong>: Achieved a successful outcome for a Public Direct Access client in a complex 11-day disability discrimination claim against an NHS Foundation Trust.</li>
+                        <li><strong>Adjei-Dawkins v Halfords (2023)</strong>: Defended the national retailer in a 7-day race harassment claim.</li>
+                        <li><strong>McPherson & Wayt v Boots (2022)</strong>: Successfully represented both Claimants against the national retailer in an 8-day constructive unfair redundancy dismissal claim involving a large-scale management reorganisation.</li>
+                        <li><strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>: Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.</li>
                     </ul>
                 </section>
                 <section id="education">
                     <h2>Education</h2>
                     <ul class="content-list">
                         <li>PhD in Modern Languages (French and Italian) - University of Cambridge (Clare Hall)</li>
-                        <li>MPhil in European Literature - University of Cambridge (Clare Hall)</li>
-                        <li>Undergraduate Degree in English Language & Literature - University College London</li>
-                        <li>Graduate Diploma in Law - University of Law (Bloomsbury)</li>
-                        <li>BPTC - City Law School (incorporating the Inns of Court Law School)</li>
+                        <li>MPhil in European Literature - University of Cambridge (Clare Hall) - <em>Starred Distinction in Thesis</em></li>
+                        <li>Undergraduate Degree in English Language & Literature - University College London - <em>First Class Honours</em></li>
+                        <li>Graduate Diploma in Law - University of Law (Bloomsbury) - <em>Commendation</em></li>
+                        <li>BPTC - City Law School - <em>Very Competent</em></li>
                     </ul>
                 </section>
             </div>
@@ -534,13 +544,62 @@
                                 <label><input type="radio" name="investigation_conducted" value="no"> No</label>
                             </div>
                         </div>
-                        <!-- Removed full list for brevity in this file block, functionality remains the same as previous -->
+                        
                         <div class="checklist-section">
                             <h5>Stage 2: Notifying the Employee</h5>
                             <div class="checklist-question" id="q_notification_written">
                                 <p>2. Was the employee informed of the allegations against them in writing?</p>
                                 <label><input type="radio" name="notification_written" value="yes" required> Yes</label>
                                 <label><input type="radio" name="notification_written" value="no"> No</label>
+                            </div>
+                            <div class="checklist-question" id="q_evidence_provided">
+                                <p>3. Was the employee provided with copies of evidence with the notification letter?</p>
+                                <label><input type="radio" name="evidence_provided" value="yes" required> Yes</label>
+                                <label><input type="radio" name="evidence_provided" value="no"> No</label>
+                            </div>
+                            <div class="checklist-question" id="q_right_to_be_accompanied">
+                                <p>4. Was the employee informed in writing of their statutory right to be accompanied?</p>
+                                <label><input type="radio" name="right_to_be_accompanied" value="yes" required> Yes</label>
+                                <label><input type="radio" name="right_to_be_accompanied" value="no"> No</label>
+                            </div>
+                        </div>
+                        
+                        <div class="checklist-section">
+                            <h5>Stage 3: The Disciplinary Hearing</h5>
+                             <div class="checklist-question" id="q_hearing_impartial">
+                                <p>5. Was the hearing conducted by a manager not previously involved in the investigation, where possible?</p>
+                                <label><input type="radio" name="hearing_impartial" value="yes" required> Yes</label>
+                                <label><input type="radio" name="hearing_impartial" value="no"> No</label>
+                            </div>
+                            <div class="checklist-question" id="q_hearing_case_stated">
+                                <p>6. Was the employee given a full opportunity to present their case and respond to the evidence?</p>
+                                <label><input type="radio" name="hearing_case_stated" value="yes" required> Yes</label>
+                                <label><input type="radio" name="hearing_case_stated" value="no"> No</label>
+                            </div>
+                            <div class="checklist-question" id="q_decision_deferred">
+                                <p>7. Was the decision on an outcome deferred until after the hearing had concluded?</p>
+                                <label><input type="radio" name="decision_deferred" value="yes" required> Yes</label>
+                                <label><input type="radio" name="decision_deferred" value="no"> No</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist-section">
+                            <h5>Stage 4: The Decision & Appeal</h5>
+                            <div class="checklist-question" id="q_decision_in_writing">
+                                <p>8. Was the final decision communicated to the employee in writing?</p>
+                                <label><input type="radio" name="decision_in_writing" value="yes" required> Yes</label>
+                                <label><input type="radio" name="decision_in_writing" value="no"> No</label>
+                            </div>
+                            <div class="checklist-question" id="q_appeal_right_offered">
+                                <p>9. Was the employee explicitly notified of their right to appeal?</p>
+                                <label><input type="radio" name="appeal_right_offered" value="yes" required> Yes</label>
+                                <label><input type="radio" name="appeal_right_offered" value="no"> No</label>
+                            </div>
+                             <div class="checklist-question" id="q_appeal_impartial">
+                                <p>10. If an appeal was held, was it heard impartially by a manager not previously involved (and ideally more senior)?</p>
+                                <label><input type="radio" name="appeal_impartial" value="yes" required> Yes</label>
+                                <label><input type="radio" name="appeal_impartial" value="no"> No</label>
+                                <label><input type="radio" name="appeal_impartial" value="na"> N/A</label>
                             </div>
                         </div>
                         
@@ -663,9 +722,6 @@
             const contentDiv = document.getElementById('article-reader-content');
             contentDiv.innerHTML = article.content;
             
-            // Custom showPage logic for reader
-            // We don't use the standard showPage here because we want to pass data
-            // But we reuse the history logic
             if(history.pushState) {
                 history.pushState(null, null, '#article-' + id);
             }
@@ -673,7 +729,6 @@
             document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
             document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('nav-active'));
             
-            // Highlight the Articles link in sidebar
             const articlesLink = document.querySelector('a[onclick*="articles-hub-view"]');
             if (articlesLink) articlesLink.classList.add('nav-active');
 
@@ -703,7 +758,6 @@
             window.scrollTo(0,0);
         }
         
-        // Router Logic
         function handleHashChange() {
             const hash = window.location.hash.substring(1);
             if (!hash) {
@@ -712,11 +766,9 @@
             }
 
             if (hash.startsWith('article-')) {
-                // It's a specific article
                 const articleId = hash.replace('article-', '');
                 openArticle(articleId);
             } else {
-                // It's a standard page
                 showPage(hash);
             }
         }
@@ -724,20 +776,14 @@
         window.addEventListener('popstate', handleHashChange);
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Init Articles Grid
             renderArticlesHub();
-
-            // Init Calculators
             initLimitationCalculator();
             initPayCalculators();
             initDisciplinaryChecklist();
-            
-            // Handle Initial URL
             handleHashChange();
         });
 
-        // --- Rest of Calculator Logic (Limitation, Pay, Checklist) stays same ---
-        // (Pasted for completeness)
+        // --- Calculators Logic ---
         function initPayCalculators() {
             const calculateHpBtn = document.getElementById('calculate-hp-btn');
             if(calculateHpBtn) calculateHpBtn.addEventListener('click', calculateHolidayPay);
@@ -865,6 +911,14 @@
             const answers = {
                 investigation_conducted: form.elements.investigation_conducted.value,
                 notification_written: form.elements.notification_written.value,
+                evidence_provided: form.elements.evidence_provided.value,
+                right_to_be_accompanied: form.elements.right_to_be_accompanied.value,
+                hearing_impartial: form.elements.hearing_impartial.value,
+                hearing_case_stated: form.elements.hearing_case_stated.value,
+                decision_deferred: form.elements.decision_deferred.value,
+                decision_in_writing: form.elements.decision_in_writing.value,
+                appeal_right_offered: form.elements.appeal_right_offered.value,
+                appeal_impartial: form.elements.appeal_impartial.value,
             };
 
             const risks = [];
@@ -873,6 +927,14 @@
             const checks = [
                 { key: 'investigation_conducted', good: 'Conducted a preliminary investigation.', risk: 'Failure to investigate before proceeding.', quote: 'ACAS Code, para 5: "It is important to carry out necessary investigations... to establish the facts of the case."' },
                 { key: 'notification_written', good: 'Employee notified of allegations in writing.', risk: 'Failure to notify the employee in writing.', quote: 'ACAS Code, para 9: "The employee should be notified of this in writing..."' },
+                { key: 'evidence_provided', good: 'Evidence provided to employee before hearing.', risk: 'Failure to provide evidence to the employee.', quote: 'ACAS Code, para 11: "...the employee should be given a copy of any written evidence, which may include any witness statements."' },
+                { key: 'right_to_be_accompanied', good: 'Employee informed of right to be accompanied.', risk: 'Failure to inform employee of the statutory right to be accompanied.', quote: 'ACAS Code, para 15: "Workers have a statutory right to be accompanied... at any... disciplinary hearing."' },
+                { key: 'hearing_impartial', good: 'Hearing conducted by an impartial manager.', risk: 'Potential bias in hearing.', quote: 'ACAS Code principles of fairness require the hearing manager to be impartial.' },
+                { key: 'hearing_case_stated', good: 'Employee was given the opportunity to state their case.', risk: 'Employee not given a full opportunity to state their case.', quote: 'ACAS Code, para 13: "Allow the employee to set out their case and answer any allegations..."' },
+                { key: 'decision_deferred', good: 'Decision was deferred until after the hearing.', risk: 'Decision made during the hearing, suggesting pre-determination.', quote: 'ACAS Code, para 17: "Following the hearing the employer should decide whether or not disciplinary... action is justified."' },
+                { key: 'decision_in_writing', good: 'Decision was communicated in writing.', risk: 'Failure to provide the decision in writing.', quote: 'ACAS Code, para 18: "The employee should be informed of the decision... in writing."' },
+                { key: 'appeal_right_offered', good: 'Right of appeal was offered.', risk: 'Failure to offer a right of appeal.', quote: 'ACAS Code, para 25: "Employees should be told they can appeal against any disciplinary action."' },
+                { key: 'appeal_impartial', good: 'Appeal was heard by an impartial manager.', risk: 'Potential bias in the appeal hearing.', quote: 'ACAS Code, para 26: "The appeal should be dealt with impartially and wherever possible by a manager who has not previously been involved in the case."' }
             ];
 
             checks.forEach(check => {
@@ -893,6 +955,11 @@
                 reportHTML += `</div>`;
             } else {
                  reportHTML += `<div class="report-section report-green"><h4>No Major Risk Areas Identified</h4><div class="green-flag">Based on your answers, the procedure appears to align well with the core principles of the ACAS Code.</div></div>`;
+            }
+             if (goodPractices.length > 0) {
+                 reportHTML += `<div class="report-section report-green"><h4>Areas of Good Practice (${goodPractices.length})</h4>`;
+                 goodPractices.forEach(practice => { reportHTML += `<div class="green-flag">✓ ${practice}</div>`; });
+                 reportHTML += `</div>`;
             }
 
             reportHTML += `<div class="calculator-disclaimer"><p><strong>Next Steps:</strong> This report highlights potential deviations from the ACAS Code of Practice. For specialist advice on managing the risks identified or for representation in defending a claim, please get in touch to arrange a consultation.</p></div><button onclick="showPage('profile-view')" class="calc-button">Contact Alex MacMillan</button>`;
@@ -956,7 +1023,7 @@
             const resultsTableBody = document.getElementById('results-table-body');
             const eventDateInput = document.getElementById('event_date');
 
-            if (!addRespondentBtn) return; // Safety check
+            if (!addRespondentBtn) return; 
 
             addRespondentBtn.addEventListener('click', addRespondentRow);
             calculateBtn.addEventListener('click', compute);
