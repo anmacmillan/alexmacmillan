@@ -203,6 +203,24 @@
         
         .case-detail-label { font-weight: 600; color: #555; display: block; margin-bottom: 0.2rem; }
 
+        /* --- CASE FILTERS --- */
+        .filters-toolbar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #FAFAFA;
+            border: 1px solid var(--line-color);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            font-family: var(--font-mono);
+            min-width: 150px;
+        }
+
         /* --- ARTICLE GRID (Minimalist) --- */
         .article-grid {
             display: grid;
@@ -318,17 +336,20 @@
 
         /* --- PRINT STYLES --- */
         @media print {
-            .sidebar, .cookie-banner, .back-btn, .calc-button, #add-respondent-btn, .calculator-inputs, .print-btn { 
+            .sidebar, .cookie-banner, .back-btn, .calc-button, #add-respondent-btn, .calculator-inputs, .print-btn, .filters-toolbar { 
                 display: none !important; 
             }
             .site-wrapper { display: block; }
             .main-content { margin: 0; width: 100%; padding: 0; border: none; }
             section { padding: 0; border: none; }
-            .result-summary-visible, .pay-result-visible, .report-visible { display: block !important; }
+            .result-summary-visible, .pay-result-visible, .report-visible, .cp-report-visible { display: block !important; }
             
             /* Ensure the content expands */
-            body { font-size: 12pt; background: #fff; }
-            h2 { font-size: 24pt; border-bottom: 2px solid #000; }
+            body { font-size: 10pt; background: #fff; }
+            h2 { font-size: 20pt; border-bottom: 2px solid #000; }
+            
+            /* CP Report Table adjustments for print */
+            .results-table th, .results-table td { padding: 5px; font-size: 9pt; border: 1px solid #000; }
         }
         
         /* --- UTILS --- */
@@ -337,6 +358,16 @@
         .testimonial-box { font-style: italic; font-family: var(--font-serif); font-size: 1.2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line-color); }
         .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0; background: #000; }
         .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .disclaimer-box {
+            font-size: 0.8rem;
+            color: #666;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
 
         /* Cookie Banner */
         .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #111; color: #fff; padding: 1rem; display: none; justify-content: space-between; align-items: center; z-index: 999; }
@@ -421,24 +452,39 @@
                 
                 <div style="margin-top: 3rem; border-top: 1px solid var(--line-color); padding-top: 2rem;">
                      <span class="nav-label">Education</span>
-                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                        <div>
-                            <strong>Inns of Court School of Law</strong><br>
-                            BPTC (Very Competent)
-                        </div>
-                        <div>
-                            <strong>University of Law</strong><br>
-                            GDL (Commendation)
-                        </div>
-                     </div>
+                     <ul class="content-list" style="max-width: none;">
+                        <li><strong>BPTC</strong> – Inns of Court School of Law (The City Law School)</li>
+                        <li><strong>GDL</strong> – University of Law</li>
+                        <li><strong>PhD, MPhil</strong> – University of Cambridge</li>
+                        <li><strong>BA</strong> – University College London</li>
+                     </ul>
                 </div>
             </section>
 
             <section id="notable-cases">
                 <h2>Notable Cases</h2>
-                <p>Selected recent work. For Chambers & Partners submissions, these details are maintained for accuracy.</p>
+                <p>Selected recent work.</p>
+                
+                <!-- FILTERS -->
+                <div class="filters-toolbar">
+                    <span class="nav-label" style="margin:0;">Filter Work:</span>
+                    <select id="case-type-filter" class="filter-select">
+                        <option value="all">All Practice Areas</option>
+                        <!-- Populated by JS -->
+                    </select>
+                    <select id="case-year-filter" class="filter-select">
+                        <option value="all">All Years</option>
+                        <option value="5">Last 5 Years</option>
+                    </select>
+                </div>
+
                 <div id="cases-list-container" style="margin-top: 2rem;">
                     <!-- JS Populates this from CASES_DATA -->
+                </div>
+                
+                <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line-color);">
+                    <button id="generate-cases-report-btn" class="calc-button">Generate Cases Report</button>
+                    <div id="cp-report-container" class="cp-report-visible" style="display: none; margin-top: 2rem;"></div>
                 </div>
             </section>
         </div>
@@ -470,6 +516,15 @@
                 <h2>Limitation Calculator</h2>
                 <p>Estimates statutory deadlines based on ACAS Early Conciliation extension rules.</p>
                 
+                <div class="disclaimer-box">
+                    <strong>For Educational & Illustrative Purposes Only</strong><br><br>
+                    This is not legal advice. The output is an estimation based on the variables you input. It is not a substitute for a formal opinion from a qualified barrister or solicitor on the specific facts of a case.
+                    Use of this tool does not create a barrister-client relationship.
+                    The figures generated are for informational purposes only and should not be relied upon for making any legal, financial, or strategic decisions.
+                    The accuracy of the output is entirely dependent on the assumptions and data entered. No warranty is given as to its accuracy.
+                    No liability is accepted for any loss or damage arising from the use of this tool. For professional advice, please seek a formal opinion.
+                </div>
+
                 <div class="calculator-inputs">
                     <h4 style="margin-top: 2rem;">1. Claim Details</h4>
                     <div class="calculator-grid">
@@ -513,8 +568,13 @@
                 <h2>Statutory Notice Pay Calculator</h2>
                 <p>Determines if statutory notice pay (full pay) applies during the notice period or if contractual notice prevails.</p>
                 
-                <div class="report-red" style="font-size: 0.9rem;">
-                    <strong>Disclaimer:</strong> This is not legal advice but is provided freely for educational purposes. Always seek professional legal advice as every case is different. Note that the interaction between statutory and contractual notice pay is complex.
+                <div class="disclaimer-box">
+                    <strong>For Educational & Illustrative Purposes Only</strong><br><br>
+                    This is not legal advice. The output is an estimation based on the variables you input. It is not a substitute for a formal opinion from a qualified barrister or solicitor on the specific facts of a case.
+                    Use of this tool does not create a barrister-client relationship.
+                    The figures generated are for informational purposes only and should not be relied upon for making any legal, financial, or strategic decisions.
+                    The accuracy of the output is entirely dependent on the assumptions and data entered. No warranty is given as to its accuracy.
+                    No liability is accepted for any loss or damage arising from the use of this tool. For professional advice, please seek a formal opinion.
                 </div>
 
                 <div class="calculator-inputs" style="margin-top: 2rem;">
@@ -535,6 +595,16 @@
             <section>
                 <h2>Holiday Pay</h2>
                 <p>For irregular-hours workers (52-week reference period estimate).</p>
+                
+                <div class="disclaimer-box">
+                    <strong>For Educational & Illustrative Purposes Only</strong><br><br>
+                    This is not legal advice. The output is an estimation based on the variables you input. It is not a substitute for a formal opinion from a qualified barrister or solicitor on the specific facts of a case.
+                    Use of this tool does not create a barrister-client relationship.
+                    The figures generated are for informational purposes only and should not be relied upon for making any legal, financial, or strategic decisions.
+                    The accuracy of the output is entirely dependent on the assumptions and data entered. No warranty is given as to its accuracy.
+                    No liability is accepted for any loss or damage arising from the use of this tool. For professional advice, please seek a formal opinion.
+                </div>
+
                 <div class="calculator-inputs" style="margin-top: 2rem;">
                     <div class="calculator-grid">
                         <div>
@@ -557,6 +627,16 @@
             <section>
                 <h2>Redundancy Pay</h2>
                 <p>Statutory minimum calculator. Cap: £719/week (April 2025).</p>
+                
+                <div class="disclaimer-box">
+                    <strong>For Educational & Illustrative Purposes Only</strong><br><br>
+                    This is not legal advice. The output is an estimation based on the variables you input. It is not a substitute for a formal opinion from a qualified barrister or solicitor on the specific facts of a case.
+                    Use of this tool does not create a barrister-client relationship.
+                    The figures generated are for informational purposes only and should not be relied upon for making any legal, financial, or strategic decisions.
+                    The accuracy of the output is entirely dependent on the assumptions and data entered. No warranty is given as to its accuracy.
+                    No liability is accepted for any loss or damage arising from the use of this tool. For professional advice, please seek a formal opinion.
+                </div>
+
                 <div class="calculator-inputs" style="margin-top: 2rem;">
                     <div class="calculator-grid">
                         <div><label>Date of Birth</label><input type="date" id="rp-dob"></div>
@@ -575,6 +655,15 @@
             <section>
                 <h2>Disciplinary Audit</h2>
                 <p>ACAS Code of Practice health check.</p>
+                
+                <div class="disclaimer-box">
+                    <strong>For Educational & Illustrative Purposes Only</strong><br><br>
+                    This is not legal advice. The output is an estimation based on the variables you input. It is not a substitute for a formal opinion from a qualified barrister or solicitor on the specific facts of a case.
+                    Use of this tool does not create a barrister-client relationship.
+                    The figures generated are for informational purposes only and should not be relied upon for making any legal, financial, or strategic decisions.
+                    The accuracy of the output is entirely dependent on the assumptions and data entered. No warranty is given as to its accuracy.
+                    No liability is accepted for any loss or damage arising from the use of this tool. For professional advice, please seek a formal opinion.
+                </div>
                 
                 <form id="disciplinary-checklist-form" style="margin-top: 2rem; max-width: 800px;">
                     <!-- STAGE 1 -->
@@ -664,49 +753,73 @@
        ========================================================================== */
     
     // 1. NOTABLE CASES (Easy Update for C&P)
-    // Add new cases to the top of this list.
+    // Structure updated for filtering and report generation
     const CASES_DATA = [
         {
             title: "John Lowe v Keble Heath Construction",
+            citation: "Case No: 1300123/2025",
             date: "2025",
-            confidential: false,
+            type: "Whistleblowing & Victimisation",
+            confidential: "No",
             court: "Employment Tribunal",
             judge: "EJ Smith",
             solicitor: "Direct Access",
+            firm: "N/A",
             client: "Respondent",
+            leading: "Sole Counsel",
+            opposing: "Mr X (Counsel)",
+            status: "Concluded",
             description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
             significance: "Whistleblowing Detriment"
         },
         {
             title: "F. Manshausen v IMI Precision Engineering",
+            citation: "Case No: 1302345/2024",
             date: "2024",
-            confidential: false,
+            type: "Equality & Discrimination",
+            confidential: "No",
             court: "Employment Tribunal",
             judge: "EJ Jones",
-            solicitor: "Irwin Mitchell",
+            solicitor: "Jane Doe",
+            firm: "Irwin Mitchell",
             client: "Claimant",
+            leading: "Sole Counsel",
+            opposing: "Ms Y (Counsel)",
+            status: "Concluded",
             description: "Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.",
             significance: "Disability Discrimination"
         },
         {
             title: "Z v HRS Family Law Solicitors Ltd",
+            citation: "Case No: 1303456/2024",
             date: "2024",
-            confidential: true,
+            type: "Equality & Discrimination",
+            confidential: "Yes",
             court: "Employment Tribunal",
             judge: "EJ Brown",
-            solicitor: "Pinsent Masons",
+            solicitor: "John Smith",
+            firm: "Pinsent Masons",
             client: "Respondent",
+            leading: "Sole Counsel",
+            opposing: "Mr A (Counsel)",
+            status: "Concluded",
             description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
             significance: "Disability / Performance"
         },
         {
-            title: "Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216",
+            title: "Hare Wines Ltd v Kaur & Anor",
+            citation: "[2019] EWCA Civ 216",
             date: "2019",
-            confidential: false,
+            type: "TUPE",
+            confidential: "No",
             court: "Court of Appeal",
             judge: "Lord Justice Underhill",
             solicitor: "Appellate Work",
+            firm: "Various",
             client: "Claimant",
+            leading: "Sole Counsel",
+            opposing: "QC (Respondent)",
+            status: "Concluded",
             description: "Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.",
             significance: "TUPE Leading Authority"
         }
@@ -720,7 +833,19 @@
             title: "The Payroll Paradox: Holiday Pay During Sick Leave",
             date: "Nov 2025",
             summary: "When 'the computer says no' leads to discrimination claims.",
-            content: `<h1>The Payroll Paradox</h1><div class="subtitle">November 2025</div><p>In employment law, the overlap between sickness and holiday pay causes immense friction. A sick employee asks for annual leave, and the employer refuses.</p><p>Since <em>Stringer</em>, it is established that sick workers accrue leave. The 2024 WTR amendments codify this. Refusal is not just administrative rigidity; it is a legal risk.</p>`
+            content: `
+                <h1>The Payroll Paradox</h1>
+                <div class="subtitle">November 2025</div>
+                
+                <!-- Video Embed Placeholder -->
+                <div class="video-responsive">
+                    <!-- Paste YouTube Embed Code Here: <iframe src="..."></iframe> -->
+                    <div style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; color:#555;">Video Embed Placeholder</div>
+                </div>
+
+                <p>In employment law, the overlap between sickness and holiday pay causes immense friction. A sick employee asks for annual leave, and the employer refuses.</p>
+                <p>Since <em>Stringer</em>, it is established that sick workers accrue leave. The 2024 WTR amendments codify this. Refusal is not just administrative rigidity; it is a legal risk.</p>
+            `
         },
         {
             id: "tupe-defence",
@@ -739,10 +864,26 @@
     ];
 
     /* ==========================================================================
-       SITE LOGIC (DO NOT EDIT BELOW UNLESS YOU KNOW JS)
+       SITE LOGIC
        ========================================================================== */
 
     const CONFIG = { REDUNDANCY_CAP: 719, TAX_YEAR_LABEL: "2025/2026" };
+    
+    // SPECIFIC PRACTICE AREAS LIST
+    const PRACTICE_AREAS = [
+        "Restraint of Trade / Non competition / Injunctive Relief",
+        "Employment Status",
+        "Equality & Discrimination",
+        "Equal Pay",
+        "Industrial Action & Collective Labour Law",
+        "International and Transnational",
+        "Pensions Advice & Litigation",
+        "Practice & Procedure",
+        "Remuneration, Pensions & Benefits",
+        "Termination of Employment",
+        "TUPE",
+        "Whistleblowing & Victimisation"
+    ];
 
     /* --- COOKIES --- */
     function initCookieConsent() {
@@ -775,30 +916,124 @@
         if (window.dataLayer) { window.dataLayer.push({ 'event': eventName, ...params }); }
     }
 
-    /* --- RENDER LOGIC --- */
+    /* --- CASE RENDERING & FILTERING --- */
+    function initCases() {
+        const typeFilter = document.getElementById('case-type-filter');
+        const yearFilter = document.getElementById('case-year-filter');
+        
+        // Populate Type Filter - Merge predefined list with actual case types
+        const existingTypes = [...new Set(CASES_DATA.map(c => c.type))];
+        const allTypes = [...new Set([...PRACTICE_AREAS, ...existingTypes])].sort();
+
+        allTypes.forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t;
+            opt.innerText = t;
+            typeFilter.appendChild(opt);
+        });
+
+        // Event Listeners
+        typeFilter.addEventListener('change', renderCases);
+        yearFilter.addEventListener('change', renderCases);
+        
+        // Initial Render
+        renderCases();
+
+        // Report Generator
+        document.getElementById('generate-cases-report-btn').addEventListener('click', generateCPReport);
+    }
+
     function renderCases() {
         const container = document.getElementById('cases-list-container');
+        const typeVal = document.getElementById('case-type-filter').value;
+        const yearVal = document.getElementById('case-year-filter').value;
+        const currentYear = new Date().getFullYear();
+
         container.innerHTML = '';
-        CASES_DATA.forEach(c => {
+        
+        const filtered = CASES_DATA.filter(c => {
+            const matchesType = (typeVal === 'all') || (c.type === typeVal);
+            const matchesYear = (yearVal === 'all') || (currentYear - parseInt(c.date) <= parseInt(yearVal));
+            return matchesType && matchesYear;
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<p style="color:#777; font-style:italic;">No cases found matching filters.</p>';
+            return;
+        }
+
+        filtered.forEach(c => {
             const div = document.createElement('div');
             div.className = 'case-item';
             div.innerHTML = `
                 <div class="case-header">
                     <h3 class="case-title">${c.title}</h3>
-                    <span class="case-meta">${c.date} | ${c.court}</span>
+                    <span class="case-meta">${c.date} | ${c.court} | ${c.citation ? c.citation + ' | ' : ''} ${c.type}</span>
                 </div>
                 <p>${c.description}</p>
                 <div class="case-details-grid">
                     <div><span class="case-detail-label">Client</span>${c.client}</div>
                     <div><span class="case-detail-label">Judge</span>${c.judge}</div>
+                    <div><span class="case-detail-label">Solicitor</span>${c.solicitor} (${c.firm || ''})</div>
                     <div><span class="case-detail-label">Significance</span>${c.significance}</div>
-                    <div><span class="case-detail-label">Solicitor</span>${c.solicitor}</div>
                 </div>
             `;
             container.appendChild(div);
         });
     }
 
+    function generateCPReport() {
+        const container = document.getElementById('cp-report-container');
+        container.style.display = 'block';
+        
+        let html = `
+            <div style="margin-bottom:2rem; border-bottom:1px solid #000; padding-bottom:1rem;">
+                <h2>Chambers & Partners Submission Data</h2>
+                <p>Generated Report - ${new Date().toLocaleDateString()}</p>
+            </div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Case Name</th>
+                        <th>Citation / Case No</th>
+                        <th>Confidential?</th>
+                        <th>Dates</th>
+                        <th>Description (Significance)</th>
+                        <th>Client</th>
+                        <th>Court/Judge</th>
+                        <th>Solicitor/Firm</th>
+                        <th>Counsel Team</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        CASES_DATA.forEach(c => {
+            html += `
+                <tr>
+                    <td>${c.title}</td>
+                    <td>${c.citation || 'N/A'}</td>
+                    <td>${c.confidential}</td>
+                    <td>${c.date}</td>
+                    <td>${c.description}<br><br><strong>Significance:</strong> ${c.significance}</td>
+                    <td>${c.client}</td>
+                    <td>${c.court}<br>${c.judge}</td>
+                    <td>${c.solicitor}<br>${c.firm || ''}</td>
+                    <td>Led: ${c.leading || 'N/A'}<br>Opp: ${c.opposing || 'N/A'}</td>
+                    <td>${c.status || 'Concluded'}</td>
+                </tr>
+            `;
+        });
+
+        html += `</tbody></table>`;
+        html += `<div style="margin-top:2rem;"><button class="print-btn" onclick="window.print()">🖨️ Print to PDF for Submission</button></div>`;
+        
+        container.innerHTML = html;
+        container.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* --- ARTICLE LOGIC --- */
     function renderArticlesHub() {
         const container = document.getElementById('articles-grid-container');
         container.innerHTML = '';
@@ -1045,7 +1280,7 @@
     // INIT
     document.addEventListener('DOMContentLoaded', () => {
         initCookieConsent();
-        renderCases();
+        initCases(); // New Init for Case Filtering & Reports
         renderArticlesHub();
         initPayCalculators();
         initLimitationCalculator();
