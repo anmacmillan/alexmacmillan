@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex MacMillan | Employment Law Barrister</title>
-    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
+    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister. Specialist in discrimination, whistleblowing, and TUPE.">
     
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alex MacMillan | Employment Law Barrister">
+    <meta property="og:description" content="Specialist employment advocacy. Limitation, Redundancy, and Notice Pay calculators available online.">
+    <meta property="og:image" content="https://placehold.co/1200x630/EEE/333?text=Alex+MacMillan+Barrister">
+    <meta property="og:url" content="https://alexmacmillan.co.uk/">
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 
@@ -21,7 +28,16 @@
       "@type": "Attorney",
       "name": "Alex MacMillan",
       "url": "https://alexmacmillan.co.uk/",
-      "jobTitle": "Barrister"
+      "jobTitle": "Barrister",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Birmingham",
+        "addressCountry": "UK"
+      },
+      "affiliation": {
+        "@type": "Organization",
+        "name": "St Philips Barristers"
+      }
     }
     </script>
 
@@ -76,6 +92,7 @@
             z-index: 100; 
             padding: 2.5rem;
             justify-content: space-between;
+            transition: transform 0.3s ease; /* For mobile slide-in */
         }
         
         .main-content { 
@@ -83,6 +100,15 @@
             width: calc(100% - var(--sidebar-width)); 
             background-color: var(--panel-bg);
             min-height: 100vh;
+        }
+
+        /* Fade Animation for content switching */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- TYPOGRAPHY --- */
@@ -127,6 +153,7 @@
             padding: 0.5rem 0; 
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .sidebar-nav a:hover { color: var(--text-main); padding-left: 5px; }
@@ -330,26 +357,59 @@
         /* --- FOOTER --- */
         .sidebar-footer { font-size: 0.7rem; color: #999; margin-top: auto; }
 
-        /* --- MOBILE --- */
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .mobile-menu-toggle { display: none; }
+        .sidebar-close-btn { display: none; }
+
+        /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 900px) {
             .site-wrapper { flex-direction: column; }
-            .sidebar { 
-                position: relative; 
-                width: 100%; 
-                height: auto; 
-                padding: 1.5rem; 
-                border-right: none; 
+            
+            /* Mobile Header Bar */
+            .mobile-menu-toggle { 
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center;
+                padding: 1rem;
+                background: var(--bg-color);
                 border-bottom: 1px solid var(--line-color);
+                position: sticky;
+                top: 0;
+                z-index: 200;
             }
-            .main-content { margin-left: 0; width: 100%; min-height: auto; }
+            .mobile-title { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; margin: 0; }
+            .menu-btn { background: none; border: 1px solid var(--text-main); padding: 0.4rem 0.8rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; }
+
+            .sidebar { 
+                position: fixed; 
+                width: 100%; 
+                height: 100vh; 
+                padding: 2rem; 
+                border-right: none; 
+                transform: translateX(-100%); /* Hide by default on mobile */
+                z-index: 300;
+                top: 0;
+                /* Re-assert flex display */
+                display: flex; 
+            }
+            .sidebar.mobile-open { transform: translateX(0); } /* Slide in */
+            
+            .main-content { margin-left: 0; width: 100%; min-height: auto; margin-top: 0; }
             section { padding: 2rem; }
             h2 { font-size: 2rem; }
             .article-grid { grid-template-columns: 1fr; }
+            
+            /* Close button for sidebar on mobile */
+            .sidebar-close-btn { 
+                display: block; position: absolute; top: 1rem; right: 1rem; 
+                background: none; border: none; font-size: 1.5rem; cursor: pointer;
+                color: var(--text-main);
+            }
         }
 
         /* --- PRINT STYLES --- */
         @media print {
-            .sidebar, .cookie-banner, .back-btn, .calc-button, #add-respondent-btn, .calculator-inputs, .print-btn, .filters-toolbar { 
+            .sidebar, .cookie-banner, .back-btn, .calc-button, #add-respondent-btn, .calculator-inputs, .print-btn, .filters-toolbar, .mobile-menu-toggle { 
                 display: none !important; 
             }
             .site-wrapper { display: block; }
@@ -390,14 +450,22 @@
 <body>
 
 <div class="site-wrapper">
+
+    <!-- MOBILE MENU HEADER (Visible only on mobile) -->
+    <div class="mobile-menu-toggle">
+        <h1 class="mobile-title">Alex MacMillan</h1>
+        <button class="menu-btn" onclick="toggleMobileMenu()">Menu</button>
+    </div>
+
     <!-- ELEGANT SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="main-sidebar">
+        <button class="sidebar-close-btn" onclick="toggleMobileMenu()">×</button>
         <div>
             <header>
                 <img src="professional_headshot.jpg" 
                      alt="AM" 
                      class="profile-photo" 
-                     onclick="showPage('profile-view');"
+                     onclick="window.location.hash = '#profile-view'"
                      onerror="this.onerror=null;this.src='https://placehold.co/100x100/EEE/333?text=AM';">
                 <h1>Alex MacMillan</h1>
                 <span class="subtitle">Employment Law Barrister</span>
@@ -409,8 +477,8 @@
                 <div class="nav-section">
                     <span class="nav-label">Menu</span>
                     <nav class="sidebar-nav">
-                        <a href="javascript:void(0);" onclick="showPage('profile-view');" class="nav-active">Profile & Cases</a>
-                        <a href="javascript:void(0);" onclick="showPage('articles-hub-view');">News & Insights</a>
+                        <a data-hash="#profile-view" class="nav-active">Profile & Cases</a>
+                        <a data-hash="#articles-hub-view">News & Insights</a>
                         <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank">Chambers Profile ↗</a>
                     </nav>
                 </div>
@@ -418,11 +486,11 @@
                 <div class="nav-section">
                     <span class="nav-label">Tools</span>
                     <nav class="sidebar-nav">
-                        <a href="javascript:void(0);" onclick="showPage('limitation-view');">Limitation Calc</a>
-                        <a href="javascript:void(0);" onclick="showPage('notice-pay-view');">Notice Pay Calc</a>
-                        <a href="javascript:void(0);" onclick="showPage('holiday-pay-view');">Holiday Pay</a>
-                        <a href="javascript:void(0);" onclick="showPage('redundancy-pay-view');">Redundancy</a>
-                        <a href="javascript:void(0);" onclick="showPage('disciplinary-view');">Disciplinary Check</a>
+                        <a data-hash="#limitation-view">Limitation Calc</a>
+                        <a data-hash="#notice-pay-view">Notice Pay Calc</a>
+                        <a data-hash="#holiday-pay-view">Holiday Pay</a>
+                        <a data-hash="#redundancy-pay-view">Redundancy</a>
+                        <a data-hash="#disciplinary-view">Disciplinary Check</a>
                         <a href="https://quantum-risk-tool.streamlit.app/" target="_blank">Quantum Risk ↗</a>
                     </nav>
                 </div>
@@ -453,7 +521,7 @@
     <main class="main-content">
         
         <!-- PROFILE VIEW -->
-        <div id="profile-view" class="page-view">
+        <div id="profile-view" class="page-view fade-in">
             <section id="about">
                 <h2>Profile</h2>
                 <p style="font-size: 1.4rem; font-family: var(--font-serif); line-height: 1.4;">
@@ -506,7 +574,7 @@
         </div>
 
         <!-- ARTICLES GRID -->
-        <div id="articles-hub-view" class="page-view" style="display: none;">
+        <div id="articles-hub-view" class="page-view fade-in" style="display: none;">
             <section style="padding-bottom: 0;">
                 <h2>News & Insights</h2>
                 <p>Commentary on case law and practice.</p>
@@ -517,9 +585,9 @@
         </div>
 
         <!-- ARTICLE READER -->
-        <div id="article-reader-view" class="page-view" style="display: none;">
+        <div id="article-reader-view" class="page-view fade-in" style="display: none;">
             <section>
-                <a href="javascript:void(0);" onclick="showPage('articles-hub-view')" class="back-btn">← Index</a>
+                <a href="javascript:void(0);" onclick="window.location.hash = '#articles-hub-view'" class="back-btn">← Index</a>
                 <div id="article-reader-content">
                     <!-- Content loads here -->
                 </div>
@@ -527,7 +595,7 @@
         </div>
 
         <!-- LIMITATION CALCULATOR -->
-        <div id="limitation-view" class="page-view" style="display: none;">
+        <div id="limitation-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Limitation Calculator</h2>
                 <p>Estimates statutory deadlines based on ACAS Early Conciliation extension rules.</p>
@@ -579,7 +647,7 @@
         </div>
 
         <!-- NOTICE PAY CALCULATOR -->
-        <div id="notice-pay-view" class="page-view" style="display: none;">
+        <div id="notice-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Statutory Notice Pay Calculator</h2>
                 <p>Determines if statutory notice pay (full pay) applies during the notice period or if contractual notice prevails.</p>
@@ -607,7 +675,7 @@
         </div>
 
         <!-- HOLIDAY PAY CALCULATOR -->
-        <div id="holiday-pay-view" class="page-view" style="display: none;">
+        <div id="holiday-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Holiday Pay</h2>
                 <p>For irregular-hours workers (52-week reference period estimate).</p>
@@ -639,7 +707,7 @@
         </div>
 
         <!-- REDUNDANCY CALCULATOR -->
-        <div id="redundancy-pay-view" class="page-view" style="display: none;">
+        <div id="redundancy-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Redundancy Pay</h2>
                 <p>Statutory minimum calculator. Cap: £719/week (April 2025).</p>
@@ -667,7 +735,7 @@
         </div>
 
         <!-- DISCIPLINARY CHECKLIST -->
-        <div id="disciplinary-view" class="page-view" style="display: none;">
+        <div id="disciplinary-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Disciplinary Audit</h2>
                 <p>ACAS Code of Practice health check.</p>
@@ -965,6 +1033,70 @@
         "Whistleblowing & Victimisation"
     ];
 
+    /* ==========================================================================
+       ROUTING ENGINE (NEW FEATURE)
+       ========================================================================== */
+    
+    // This handles the URL hash (e.g., #profile-view) to allow back-button and direct linking
+    function handleRoute() {
+        const hash = window.location.hash || '#profile-view'; // Default to profile
+        
+        // 1. Check if hash matches an article ID (special case)
+        const articleMatch = ARTICLES_DATA.find(a => '#' + a.id === hash);
+        if (articleMatch) {
+            openArticle(articleMatch.id);
+            closeMobileMenu();
+            return;
+        }
+
+        // 2. Hide all pages
+        document.querySelectorAll('.page-view').forEach(view => {
+            view.style.display = 'none';
+        });
+
+        // 3. Remove active state from nav
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.classList.remove('nav-active');
+        });
+
+        // 4. Show requested page
+        let targetId = hash.replace('#', '');
+        // Safety check if ID exists, else default
+        const targetView = document.getElementById(targetId) || document.getElementById('profile-view');
+        
+        targetView.style.display = 'block';
+        window.scrollTo(0, 0);
+
+        // 5. Highlight Nav
+        const activeLink = document.querySelector(`.sidebar-nav a[data-hash="#${targetId}"]`);
+        if (activeLink) activeLink.classList.add('nav-active');
+        
+        closeMobileMenu();
+    }
+
+    // Attach listener for HASH links
+    document.querySelectorAll('.sidebar-nav a[data-hash]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = link.getAttribute('data-hash');
+        });
+    });
+
+    // Listen for browser back/forward buttons
+    window.addEventListener('hashchange', handleRoute);
+
+    /* ==========================================================================
+       MOBILE MENU LOGIC
+       ========================================================================== */
+    function toggleMobileMenu() {
+        const sidebar = document.getElementById('main-sidebar');
+        sidebar.classList.toggle('mobile-open');
+    }
+    
+    function closeMobileMenu() {
+        document.getElementById('main-sidebar').classList.remove('mobile-open');
+    }
+
     /* --- COOKIES --- */
     function initCookieConsent() {
         const banner = document.getElementById('cookie-banner');
@@ -1123,7 +1255,7 @@
         ARTICLES_DATA.forEach(article => {
             const card = document.createElement('div');
             card.className = 'article-card';
-            card.onclick = () => openArticle(article.id);
+            card.onclick = () => window.location.hash = '#' + article.id; // Hash linking
             card.innerHTML = `<div><h3>${article.title}</h3><div class="article-date">${article.date}</div><div style="font-size:0.9rem; color:#555;">${article.summary}</div></div><div class="read-more-link">Read Entry →</div>`;
             container.appendChild(card);
         });
@@ -1132,7 +1264,7 @@
         if (ARTICLES_DATA.length > 0 && homeInsightContainer) {
             const latest = ARTICLES_DATA[0];
             homeInsightContainer.innerHTML = `
-                <div class="latest-insight-box" onclick="openArticle('${latest.id}')">
+                <div class="latest-insight-box" onclick="window.location.hash = '#${latest.id}'">
                     <span class="latest-insight-label">Latest Insight</span>
                     <h3 class="latest-insight-title">${latest.title}</h3>
                     <p style="margin-bottom:0; font-size:0.95rem; color:#444;">${latest.summary}</p>
@@ -1149,7 +1281,6 @@
         trackEvent('view_article', { article_id: id });
         
         // Dynamic Content Construction
-        // We auto-generate the header (Title/Date) and conditionally add the Video.
         let htmlContent = `<h1>${article.title}</h1>`;
         htmlContent += `<div class="subtitle">${article.date}</div>`;
         
@@ -1169,25 +1300,8 @@
     }
 
     function showPage(pageId) {
-        const titles = {
-            'profile-view': 'Alex MacMillan',
-            'articles-hub-view': 'News & Insights',
-            'limitation-view': 'Limitation Calculator',
-            'notice-pay-view': 'Statutory Notice Pay',
-            'holiday-pay-view': 'Holiday Pay',
-            'redundancy-pay-view': 'Redundancy Pay'
-        };
-        if(titles[pageId]) document.title = titles[pageId];
-
-        document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
-        document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('nav-active'));
-        
-        const viewToShow = document.getElementById(pageId);
-        const activeLink = document.querySelector(`.sidebar-nav a[onclick*="${pageId}"]`);
-        
-        if(viewToShow) viewToShow.style.display = 'block';
-        if (activeLink) activeLink.classList.add('nav-active');
-        window.scrollTo(0,0);
+        // Fallback for direct calls not using hash
+        window.location.hash = '#' + pageId;
     }
 
     /* --- CALCULATORS --- */
@@ -1342,12 +1456,21 @@
              let deadline = new Date(primary);
              let method = "Primary Deadline";
 
-             // Logic simplified for display purposes (Full logic should be copied from your original file if needed precise)
-             // This replicates standard Pause Logic
+             // Standard ACAS Pause Logic (simplified implementation)
+             // 1. Stop the clock during conciliation
              if (start <= primary) {
                  const pause = Math.round((end - start) / (1000*60*60*24));
                  deadline.setDate(deadline.getDate() + pause);
                  method = `s.207B(3) (+${pause} days)`;
+             }
+             
+             // 2. "Month rule" check: if deadline < 1 month after Day B, extend to 1 month after Day B
+             const monthAfterDayB = new Date(end);
+             monthAfterDayB.setMonth(monthAfterDayB.getMonth() + 1);
+             
+             if (deadline < monthAfterDayB) {
+                 deadline = monthAfterDayB;
+                 method = "s.207B(4) (1 month after Day B)";
              }
              
              tbody.innerHTML += `<tr><td>Respondent ${idx+1}</td><td><strong>${deadline.toLocaleDateString('en-GB')}</strong></td><td>${method}</td></tr>`;
@@ -1389,15 +1512,19 @@
     // INIT
     document.addEventListener('DOMContentLoaded', () => {
         initCookieConsent();
-        initCases(); // New Init for Case Filtering & Reports
+        initCases(); 
         renderArticlesHub();
         initPayCalculators();
-        initLimitationCalculator();
-        initDisciplinaryChecklist();
-        showPage('profile-view');
+        initLimitationCalculator(); // Re-added specific init for limitation
+        initDisciplinaryChecklist(); // Re-added specific init for disciplinary
         
-        // Trigger default respondent row
-        document.getElementById('add-respondent-btn').click();
+        // Initial Routing Check
+        handleRoute();
+        
+        // Trigger default respondent row for Limitation Calc
+        if(document.getElementById('add-respondent-btn')) {
+             document.getElementById('add-respondent-btn').click();
+        }
     });
 </script>
 
