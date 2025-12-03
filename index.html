@@ -847,18 +847,10 @@
         {
             id: "payroll-paradox",
             title: "The Payroll Paradox: When \"the Computer Says No\" - Holiday Pay During Sick Leave",
-            date: "Nov 2025",
+            date: "November 2025",
             summary: "Blocking a sick employee from accessing holiday pay is not merely a breach of the Working Time Regulations: it can be the catalyst for successful discrimination claims.",
+            // videoEmbed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', 
             content: `
-                <h1>The Payroll Paradox: Holiday Pay During Sick Leave</h1>
-                <div class="subtitle">November 2025</div>
-                
-                <!-- Video Embed Placeholder -->
-                <div class="video-responsive">
-                    <!-- Paste YouTube Embed Code Here: <iframe src="..."></iframe> -->
-                    <div style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#eee; color:#555;">Video Embed Placeholder</div>
-                </div>
-
                 <div class="article-body">
                     <p>In employment law, few areas cause as much administrative friction as the overlap between long-term sickness absence and statutory annual leave. A scenario crossing my desk with surprising frequency involves a long-term sick employee - perhaps on half-pay or nil pay with Statutory Sick Pay (SSP) - who requests to take a week of annual leave.</p>
                     <p>The immediate reaction from HR or payroll may be a reflex refusal: “You cannot be on holiday if you are signed off sick. We need a fit note, not a holiday request.” While intuitively logical to the non-lawyer, this administrative rigidity is fraught with legal risk.</p>
@@ -889,11 +881,9 @@
         {
             id: "tupe-defence",
             title: "No 'personal reasons' defence in TUPE automatically unfair dismissals",
-            date: "Nov 2024",
+            date: "November 2024",
             summary: "Analyzing the Court of Appeal's decision in Hare Wines Ltd v Kaur & Anor. The judgment clarifies the application of the 'sole or principal reason' test.",
             content: `
-                <h1>No "personal reasons" defence in TUPE</h1>
-                <div class="subtitle">November 2024</div>
                 <div class="article-body">
                     <p>This article addresses the implications of the Court of Appeal's decision in <em>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</em>, a case in which I acted for the successful Claimant at first instance, in the EAT, and in the Court of Appeal.</p>
                     <p>The judgment clarifies the application of the 'sole or principal reason' test under the Transfer of Undertakings (Protection of Employment) Regulations 2006 (TUPE). It firmly establishes that employers cannot rely on a vague defence of 'personal reasons' to avoid liability for automatically unfair dismissal.</p>
@@ -908,11 +898,9 @@
         {
             id: "prospects-percentages",
             title: "What do percentage figures mean when stating a legal case’s prospects?",
-            date: "Sep 2024",
+            date: "September 2024",
             summary: "Clients often ask how I arrive at a '60%' or '70%' chance of success. This article breaks down the methodology behind legal probability.",
             content: `
-                <h1>On Percentage Prospects</h1>
-                <div class="subtitle">September 2024</div>
                 <div class="article-body">
                     <p>More than once, having drafted legal advice and distilled my opinion on prospects of success into a percentage figure, the client has come back to me and questioned how I arrived at it.</p>
                     <p>Is it a mathematical calculation? A gut feeling? This article explores the accepted definitions of legal risk (e.g., 'Reasonable Prospects' vs 'Good Prospects') and how they map to percentages.</p>
@@ -925,8 +913,6 @@
             date: "July 2024",
             summary: "How statistical errors and cognitive biases can derail disciplinary investigations. A lesson from criminal law applied to employment disputes.",
             content: `
-                <h1>The Prosecutor’s Fallacy</h1>
-                <div class="subtitle">July 2024</div>
                 <div class="article-body">
                     <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match.</p>
                     <p>In employment investigations, a similar fallacy occurs when an investigator assumes that because an event <em>could</em> have happened a certain way, it <em>must</em> have happened that way, ignoring other probabilities.</p>
@@ -939,8 +925,6 @@
             date: "May 2024",
             summary: "In 2019 the UK’s civil service moved away from forced distributions. Why this management style is legally risky.",
             content: `
-                <h1>On Forced Distributions</h1>
-                <div class="subtitle">May 2024</div>
                 <div class="article-body">
                     <p>In 2019 the UK’s civil service changed its mind about its use of forced distributions, deciding instead to move to more flexible, non-mandatory objective setting. This article explores the discrimination risks inherent in 'bell curve' performance ranking systems.</p>
                 </div>
@@ -949,11 +933,9 @@
         {
             id: "employment-casino",
             title: "The Employment Law Casino",
-            date: "Jan 2024",
+            date: "January 2024",
             summary: "How to guess your award (without paying lawyers). A look at the Vento bands and Schedule of Loss calculations.",
             content: `
-                <h1>The Employment Law Casino</h1>
-                <div class="subtitle">January 2024</div>
                 <div class="article-body">
                     <p>Imagine that, for whatever reason, you do not wish to engage a lawyer. Perhaps they are too expensive; perhaps lawyers do not have your trust. This article explains how Tribunals calculate awards, removing the mystery from the 'casino' of litigation.</p>
                 </div>
@@ -1165,7 +1147,20 @@
         if (!article) return;
         document.title = article.title;
         trackEvent('view_article', { article_id: id });
-        document.getElementById('article-reader-content').innerHTML = article.content;
+        
+        // Dynamic Content Construction
+        // We auto-generate the header (Title/Date) and conditionally add the Video.
+        let htmlContent = `<h1>${article.title}</h1>`;
+        htmlContent += `<div class="subtitle">${article.date}</div>`;
+        
+        // --- VIDEO CONDITIONAL RENDER ---
+        if (article.videoEmbed) {
+            htmlContent += `<div class="video-responsive">${article.videoEmbed}</div>`;
+        }
+
+        htmlContent += article.content;
+
+        document.getElementById('article-reader-content').innerHTML = htmlContent;
         
         // Navigation Logic
         document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
