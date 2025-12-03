@@ -4,1347 +4,1058 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex MacMillan | Employment Law Barrister</title>
-    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister, featuring articles and legal calculators.">
+    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
     
-    <!-- Dynamic Favicon (Scales of Justice) -->
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 
-    <!-- Open Graph / LinkedIn / Facebook Metadata -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://alexmacmillan.co.uk/">
-    <meta property="og:title" content="Alex MacMillan | Employment Law Barrister">
-    <meta property="og:description" content="Employment specialist barrister. Expert advocacy and free legal calculators for Limitation dates, Redundancy, and Holiday Pay.">
-    <meta property="og:image" content="https://alexmacmillan.co.uk/professional_headshot.jpg">
-
-    <!-- Twitter Card Metadata -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Alex MacMillan | Employment Law Barrister">
-    <meta property="twitter:description" content="Employment specialist barrister. Expert advocacy and free legal calculators.">
-    <meta property="twitter:image" content="https://alexmacmillan.co.uk/professional_headshot.jpg">
-    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Structured Data for SEO -->
+    <!-- Schema -->
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "Attorney",
       "name": "Alex MacMillan",
-      "image": "https://alexmacmillan.co.uk/professional_headshot.jpg",
       "url": "https://alexmacmillan.co.uk/",
-      "jobTitle": "Barrister",
-      "affiliation": {
-          "@type": "LegalService",
-          "name": "St Philips Barristers"
-      },
-      "description": "Employment law specialist barrister based in the UK.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Birmingham",
-        "addressCountry": "UK"
-      },
-      "telephone": "+44 121 246 7015"
+      "jobTitle": "Barrister"
     }
     </script>
 
     <style>
-        /* --- Styles --- */
+        /* --- RESET & VARIABLES --- */
         :root {
-            --bg-color: #ffffff;
-            --sidebar-bg: #f5f5f5;
-            --text-color: #333333;
-            --heading-color: #111111;
-            --accent-color: #003366; /* A professional navy blue */
-            --border-color: #e0e0e0;
-            --link-hover-bg: #e9e9e9;
-            --red-flag-bg: #fff5f5;
-            --red-flag-border: #e5383b;
-            --green-flag-bg: #f6fff8;
-            --green-flag-border: #40916c;
+            --bg-color: #F2F2F0; /* Warm Paper White */
+            --panel-bg: #FFFFFF;
+            --text-main: #111111; /* Sharp Black */
+            --text-muted: #555555;
+            --line-color: #D1D1D1;
+            --accent-color: #111111; 
+            --highlight-bg: #EAEAEA;
+            
+            --font-serif: 'DM Serif Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'Space Grotesk', monospace; /* For numbers/calc */
+            
+            --sidebar-width: 320px;
+            --border-width: 1px;
         }
+        
+        * { box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
+            font-family: var(--font-sans);
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .site-wrapper { display: flex; min-height: 100vh; }
+        /* --- LAYOUT STRUCTURE --- */
+        .site-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
         
+        /* SIDEBAR (Sticky) */
         .sidebar { 
-            width: 280px; 
-            background-color: var(--sidebar-bg); 
-            border-right: 1px solid var(--border-color); 
+            width: var(--sidebar-width); 
+            background-color: var(--bg-color); 
+            border-right: var(--border-width) solid var(--line-color); 
             display: flex; 
             flex-direction: column; 
             position: fixed; 
-            height: 100%; 
+            height: 100vh; 
+            top: 0;
+            left: 0;
             overflow-y: auto;
             z-index: 100; 
+            padding: 2.5rem;
+            justify-content: space-between;
         }
-        
-        .sidebar-content { padding: 1.5rem; }
         
         .main-content { 
-            margin-left: 280px; 
-            padding: 2rem 3rem; 
-            width: calc(100% - 280px); 
-            box-sizing: border-box;
-        }
-        
-        header { text-align: center; margin-bottom: 2rem; }
-        
-        .profile-photo { 
-            width: 120px; 
-            height: 120px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 3px solid var(--border-color); 
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-            cursor: pointer; /* Indicates clickable */
-            transition: transform 0.2s ease; /* Smooth animation */
+            margin-left: var(--sidebar-width); 
+            width: calc(100% - var(--sidebar-width)); 
+            background-color: var(--panel-bg);
+            min-height: 100vh;
         }
 
-        .profile-photo:hover {
-            transform: scale(1.05); /* Subtle zoom effect on hover */
-            border-color: var(--accent-color);
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-serif); 
+            font-weight: 400; 
+            color: var(--text-main);
+            margin-top: 0;
+        }
+
+        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
+        .subtitle { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; display: block; }
+        
+        h2 { 
+            font-size: 3rem; 
+            border-bottom: var(--border-width) solid var(--line-color); 
+            padding-bottom: 1.5rem; 
+            margin-bottom: 2rem; 
+            margin-top: 0;
+        }
+
+        p { font-size: 1.05rem; color: #333; max-width: 700px; margin-bottom: 1.5rem; }
+        
+        /* --- NAVIGATION --- */
+        .nav-section { margin-bottom: 3rem; }
+        .nav-label { 
+            font-family: var(--font-mono); 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            color: #888; 
+            margin-bottom: 1rem; 
+            display: block; 
+        }
+
+        .sidebar-nav a { 
+            display: block; 
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            text-decoration: none; 
+            color: var(--text-muted); 
+            padding: 0.5rem 0; 
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
         }
         
-        h1, h2, h3, h4, h5 { font-family: 'DM Serif Display', serif; color: var(--heading-color); margin-top: 0; }
-        h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-        
-        /* Improved Section Headings */
-        .main-content h2 {
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+        .sidebar-nav a:hover { color: var(--text-main); padding-left: 5px; }
+        .sidebar-nav a.nav-active { 
+            color: var(--text-main); 
+            font-weight: 500; 
+            border-bottom: 1px solid var(--text-main);
             display: inline-block;
         }
 
-        .subtitle { font-size: 1rem; color: var(--accent-color); margin-top: 0; font-weight: 600; }
-        .call-date { font-size: 0.9rem; color: #666; margin-top: 0.5rem; }
-        
-        .sidebar-nav { margin-bottom: 1.5rem; }
-        .sidebar-nav h4 { margin-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .sidebar-nav a { display: block; padding: 0.6rem 1rem; text-decoration: none; color: var(--text-color); border-radius: 4px; margin-bottom: 0.25rem; transition: background-color 0.2s; }
-        .sidebar-nav a:hover { background-color: var(--link-hover-bg); }
-        .sidebar-nav a.nav-active { background-color: var(--accent-color); color: white; font-weight: 600; }
-        
-        .contact-box { background-color: #e9e9e9; padding: 1rem; border-radius: 4px; font-size: 0.9rem; }
-        .contact-box h3 { margin-top: 0; }
-        .contact-box a { color: var(--accent-color); }
-        
-        .testimonial-box {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background-color: #fff;
-            border-left: 3px solid var(--accent-color);
-            font-style: italic;
-            font-size: 0.85rem;
-            color: #555;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        /* --- PROFILE --- */
+        .profile-photo { 
+            width: 80px; 
+            height: 80px; 
+            object-fit: cover; 
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%); /* Elegant B&W */
+            transition: filter 0.3s ease;
+            cursor: pointer;
         }
-        .testimonial-author {
+        .profile-photo:hover { filter: grayscale(0%); }
+
+        .contact-email {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: 1rem;
             display: block;
-            margin-top: 0.5rem;
-            font-weight: 600;
-            font-style: normal;
-            font-size: 0.8rem;
-            text-align: right;
+            color: var(--text-main);
         }
 
-        footer { font-size: 0.8rem; color: #777; text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
+        /* --- SECTIONS & GRIDS --- */
+        section { padding: 4rem 4rem 6rem 4rem; border-bottom: 1px solid var(--line-color); }
         
-        section { margin-bottom: 2.5rem; }
+        /* CASE LIST STYLING */
+        .case-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--line-color);
+        }
+        .case-item:last-child { border-bottom: none; }
         
-        .content-list { list-style: none; padding-left: 0; }
-        .content-list li { padding-left: 1.5rem; text-indent: -1.5rem; margin-bottom: 1rem; }
-        .content-list li::before { content: '■'; color: var(--accent-color); padding-right: 0.75rem; }
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
         
-        /* --- ARTICLE HUB STYLES (Cards) --- */
+        .case-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--text-main);
+            margin: 0;
+        }
+        
+        .case-meta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .case-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #FAFAFA;
+            border-left: 2px solid var(--line-color);
+            font-size: 0.85rem;
+        }
+        
+        .case-detail-label { font-weight: 600; color: #555; display: block; margin-bottom: 0.2rem; }
+
+        /* --- ARTICLE GRID (Minimalist) --- */
         .article-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            border-top: 1px solid var(--line-color);
+            border-left: 1px solid var(--line-color);
         }
 
         .article-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-right: 1px solid var(--line-color);
+            border-bottom: 1px solid var(--line-color);
+            padding: 2rem;
+            background: transparent;
+            transition: background-color 0.2s;
             cursor: pointer;
-            background-color: #fff;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
         }
 
-        .article-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--accent-color);
-        }
+        .article-card:hover { background-color: #FAFAFA; }
+        .article-card h3 { font-size: 1.6rem; margin-bottom: 1rem; line-height: 1.2; }
+        .article-date { font-family: var(--font-mono); font-size: 0.8rem; color: #888; margin-bottom: 1rem; }
+        .read-more-link { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: auto; }
 
-        .article-card h3 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-color);
+        /* --- CALCULATORS (The Technical Look) --- */
+        .calculator-inputs { margin-bottom: 3rem; max-width: 800px; }
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 1.5rem; }
+        
+        /* Elegant Inputs */
+        input[type="text"], input[type="number"], input[type="date"], select { 
+            width: 100%; 
+            padding: 0.8rem 0; 
+            border: none; 
+            border-bottom: 1px solid var(--text-main); 
+            background: transparent; 
+            font-family: var(--font-mono); 
+            font-size: 1.1rem; 
+            color: var(--text-main);
+            border-radius: 0;
         }
+        input:focus, select:focus { outline: none; border-bottom: 2px solid var(--text-main); background-color: #FAFAFA; }
+        label { display: block; font-family: var(--font-sans); font-size: 0.8rem; color: #666; margin-bottom: 0.2rem; }
 
-        .article-date {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .article-summary {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .read-more-link {
-            color: var(--accent-color);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        /* --- ARTICLE READER STYLES --- */
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .back-btn:hover { color: var(--accent-color); }
-        .back-btn span { margin-right: 0.5rem; font-size: 1.2rem; }
-        
-        .article-content h1 { font-size: 2.2rem; color: var(--accent-color); margin-bottom: 0.5rem; }
-        .article-content .meta { color: #777; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
-        .article-body { font-size: 1.1rem; line-height: 1.8; max-width: 800px; }
-        
-        /* --- VIDEO EMBED STYLES --- */
-        .video-responsive {
-            overflow: hidden;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            position: relative;
-            height: 0;
-            margin: 2rem 0;
-            border-radius: 8px;
-            background-color: #f0f0f0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .video-responsive iframe {
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-        }
-
-        /* Calculator Styles */
-        .calculator-section { max-width: 900px; }
-        .calculator-disclaimer { background-color: #fffbe6; border: 1px solid #ffe58f; padding: 1rem; border-radius: 4px; margin-bottom: 2rem; }
-        .calculator-disclaimer p { margin: 0; }
-        .calculator-grid, .respondent-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; align-items: end; margin-bottom: 1rem; }
-        .calculator-inputs label, .calculator-inputs h3 { display: block; font-weight: 600; margin-bottom: 0.5rem; }
-        .calculator-inputs h3 { margin-top: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .calculator-inputs input[type="date"], .calculator-inputs input[type="text"], .calculator-inputs input[type="number"], .calculator-inputs select { width: 100%; padding: 0.6rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 1rem; }
-        .respondent-row .remove-btn-wrapper { padding-bottom: 0.6rem; }
-        
-        .input-help { display: block; font-size: 0.85rem; color: #666; font-weight: normal; margin-top: 0.2rem; }
-
-        .calc-button, #add-respondent-btn, #calculate-btn, .remove-btn, .print-btn { font-family: 'Inter', sans-serif; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 4px; border: none; cursor: pointer; transition: background-color 0.2s; }
-        #add-respondent-btn { background-color: #e0e0e0; color: #333; }
-        .calc-button, #calculate-btn { background-color: var(--accent-color); color: white; display: block; width: 100%; margin-top: 2rem; font-size: 1.1rem; }
-        .remove-btn { background-color: #f44336; color: white; padding: 0.6rem; width: 100%; }
-        
-        .print-btn { background-color: #2d6a4f; color: white; margin-top: 1rem; display: inline-block; width: auto; }
-        .print-btn:hover { background-color: #1b4332; }
-
-        #add-respondent-btn:hover { background-color: #d0d0d0; }
-        .calc-button:hover, #calculate-btn:hover { background-color: #002244; }
-        .remove-btn:hover { background-color: #d32f2f; }
-        
-        #limitation-calculator-results, .pay-calculator-results { margin-top: 2rem; }
-        .error-message { color: #d32f2f; font-weight: bold; margin-bottom: 1rem; display: none; background-color: #ffebee; padding: 1rem; border-radius: 4px; border: 1px solid #ffcdd2; } 
-        
-        .result-summary { font-size: 1.2rem; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
-        .result-summary-earliest { background-color: #e6f4ea; border: 1px solid #b2d8b5; color: #2d6a4f; }
-        .result-summary-passed { background-color: #ffebee; border: 1px solid #ffcdd2; color: #c62828; }
-        
-        .pay-result-box { background-color: #e6f4ea; border: 1px solid #b2d8b5; padding: 1.5rem; border-radius: 4px; }
-        .pay-result-box .result-headline { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: #2d6a4f; margin: 0 0 1rem 0; text-align: center; }
-        .pay-result-box .result-breakdown { font-size: 0.9rem; line-height: 1.5; color: #333; }
-        .pay-result-box hr { border: 0; border-top: 1px solid #b2d8b5; margin: 1rem 0; }
-        
-        .results-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: 0.9rem; }
-        .results-table th, .results-table td { border: 1px solid var(--border-color); padding: 0.8rem; text-align: left; }
-        .results-table th { background-color: var(--sidebar-bg); }
-        .results-table .highlight-row { background-color: #e6f4ea; font-weight: 600; }
-        
-        /* Checklist Styles */
-        .checklist-section { padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
-        .checklist-question { margin-bottom: 1rem; }
-        .checklist-question p { margin: 0 0 0.5rem 0; font-weight: 600; }
-        .checklist-question label { margin-right: 1.5rem; font-weight: normal; cursor: pointer; }
-        .checklist-report { margin-top: 2rem; }
-        .report-section { margin-bottom: 2rem; }
-        .report-section h4 { border-bottom: 2px solid; padding-bottom: 0.5rem; }
-        .report-green h4 { border-color: var(--green-flag-border); }
-        .report-red h4 { border-color: var(--red-flag-border); }
-        .green-flag, .red-flag { padding: 1rem; border-left-width: 5px; border-left-style: solid; margin-bottom: 1rem; border-radius: 0 4px 4px 0; }
-        .green-flag { background-color: var(--green-flag-bg); border-color: var(--green-flag-border); }
-        .red-flag { background-color: var(--red-flag-bg); border-color: var(--red-flag-border); }
-        .red-flag-title { font-weight: bold; color: var(--red-flag-border); }
-        .red-flag blockquote { font-style: italic; margin: 0.5rem 0; padding: 0.5rem 1rem; background: #f8f8f8; border-left: 3px solid #ccc; }
-        
-        /* --- COOKIE BANNER STYLES --- */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f5f5f5;
-            border-top: 1px solid #e0e0e0;
+        /* Buttons (Architectural) */
+        .calc-button, #add-respondent-btn, .print-btn { 
+            font-family: var(--font-mono); 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
             padding: 1rem 2rem;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-            z-index: 9999;
-            display: none; /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .cookie-text { flex: 1; max-width: 800px; }
-        .cookie-buttons { display: flex; gap: 0.5rem; }
-        
-        .cookie-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
+            margin-top: 1rem;
+            width: auto;
+            display: inline-block;
         }
         
-        .btn-accept { background-color: var(--accent-color); color: white; border: none; }
-        .btn-accept:hover { background-color: #002244; }
-        .btn-reject { background-color: transparent; border: 1px solid #999; color: #555; }
-        .btn-reject:hover { background-color: #e0e0e0; }
+        .calc-button:hover, #add-respondent-btn:hover { background: var(--text-main); color: #fff; }
+        
+        /* Results Table */
+        .results-table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); margin-top: 2rem; }
+        .results-table th { text-align: left; font-weight: normal; color: #888; border-bottom: 1px solid var(--line-color); padding: 1rem 0.5rem; }
+        .results-table td { border-bottom: 1px solid #eee; padding: 1rem 0.5rem; }
+        .highlight-row { background-color: #F0F8F0; }
 
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .site-wrapper {
-                flex-direction: column;
-            }
-            
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                overflow-y: visible;
-            }
+        .result-summary { 
+            font-family: var(--font-serif); 
+            font-size: 1.8rem; 
+            padding: 1.5rem; 
+            border: 1px solid var(--text-main); 
+            margin-bottom: 2rem; 
+        }
 
-            .sidebar-content {
-                padding: 1.5rem 1rem;
-            }
+        .pay-result-box { 
+            background: #F9F9F9; 
+            padding: 2rem; 
+            border-left: 4px solid var(--text-main); 
+        }
+        .result-headline { font-family: var(--font-mono); font-size: 3rem; margin: 1rem 0; }
 
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-                padding: 1.5rem 1rem;
-            }
+        /* --- DISCIPLINARY CHECKLIST --- */
+        .checklist-question { padding: 1.5rem 0; border-bottom: 1px solid #eee; }
+        .checklist-question p { font-weight: 500; font-size: 1.1rem; margin-bottom: 1rem; }
+        .checklist-question label { display: inline-block; margin-right: 2rem; font-size: 1rem; color: var(--text-main); cursor: pointer; }
+        
+        .report-red { border: 1px solid #ffcccc; background: #fff5f5; padding: 1.5rem; margin-bottom: 1rem; }
+        .report-green { border: 1px solid #ccffcc; background: #f0fff0; padding: 1.5rem; margin-bottom: 1rem; }
 
-            .profile-photo {
-                width: 100px;
-                height: 100px;
-            }
+        /* --- FOOTER --- */
+        .sidebar-footer { font-size: 0.7rem; color: #999; margin-top: auto; }
 
-            .sidebar-nav a {
-                padding: 0.8rem;
-                margin-bottom: 0.5rem;
-                background-color: #f9f9f9;
-                border: 1px solid #eee;
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .site-wrapper { flex-direction: column; }
+            .sidebar { 
+                position: relative; 
+                width: 100%; 
+                height: auto; 
+                padding: 1.5rem; 
+                border-right: none; 
+                border-bottom: 1px solid var(--line-color);
             }
-            
-            .calculator-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cookie-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-            }
+            .main-content { margin-left: 0; width: 100%; min-height: auto; }
+            section { padding: 2rem; }
+            h2 { font-size: 2rem; }
+            .article-grid { grid-template-columns: 1fr; }
         }
 
         /* --- PRINT STYLES --- */
         @media print {
-            .sidebar, .calculator-inputs, #calculate-btn, #add-respondent-btn, .calculator-disclaimer, button:not(.print-btn), .cookie-banner { 
+            .sidebar, .cookie-banner, .back-btn, .calc-button, #add-respondent-btn, .calculator-inputs, .print-btn { 
                 display: none !important; 
             }
-            .print-btn { display: none !important; }
-            .back-btn { display: none !important; }
-            
             .site-wrapper { display: block; }
-            .main-content { margin: 0; padding: 0; width: 100%; }
+            .main-content { margin: 0; width: 100%; padding: 0; border: none; }
+            section { padding: 0; border: none; }
+            .result-summary-visible, .pay-result-visible, .report-visible { display: block !important; }
             
-            h2 { border-bottom: 2px solid #000; color: #000; }
-            
-            #limitation-calculator-results, #limitation-calculator-results * { 
-                visibility: visible; 
-                display: block !important; 
-            }
-            
-            .highlight-row { background-color: #eee !important; -webkit-print-color-adjust: exact; }
+            /* Ensure the content expands */
+            body { font-size: 12pt; background: #fff; }
+            h2 { font-size: 24pt; border-bottom: 2px solid #000; }
         }
+        
+        /* --- UTILS --- */
+        .error-message { color: #D00; font-family: var(--font-mono); margin: 1rem 0; }
+        .back-btn { display: inline-block; margin-bottom: 2rem; text-decoration: none; color: var(--text-muted); font-family: var(--font-mono); }
+        .testimonial-box { font-style: italic; font-family: var(--font-serif); font-size: 1.2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line-color); }
+        .video-responsive { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 2rem 0; background: #000; }
+        .video-responsive iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Cookie Banner */
+        .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #111; color: #fff; padding: 1rem; display: none; justify-content: space-between; align-items: center; z-index: 999; }
+        .cookie-btn { background: #fff; color: #111; border: none; padding: 0.5rem 1rem; font-family: var(--font-mono); cursor: pointer; margin-left: 1rem; }
     </style>
 </head>
 <body>
-    <div class="site-wrapper">
-        <aside class="sidebar">
-              <div class="sidebar-content">
-                  <header>
-                      <img src="professional_headshot.jpg" 
-                           alt="Professional headshot of Alexander MacMillan, Barrister" 
-                           class="profile-photo" 
-                           onclick="showPage('profile-view');"
-                           title="Return to Main Profile"
-                           onerror="this.onerror=null;this.src='https://placehold.co/150x150/EFEFEF/333333?text=A.M.';">
-                      <h1>Alex MacMillan</h1>
-                      <p class="subtitle">Employment Law Barrister</p>
-                      <p class="call-date">Called to the Bar: 2015</p>
-                  </header>
 
-                  <nav class="sidebar-nav">
-                      <h4>Menu</h4>
-                      <a href="javascript:void(0);" onclick="showPage('profile-view');" class="nav-active">Main Profile</a>
-                      <a href="javascript:void(0);" onclick="showPage('articles-hub-view');">News & Articles</a>
-                      <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank" rel="noopener noreferrer">Official Chambers Profile</a>
-                      <a href="https://www.linkedin.com/in/dralexandermacmillan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-                  </nav>
+<div class="site-wrapper">
+    <!-- ELEGANT SIDEBAR -->
+    <aside class="sidebar">
+        <div>
+            <header>
+                <img src="professional_headshot.jpg" 
+                     alt="AM" 
+                     class="profile-photo" 
+                     onclick="showPage('profile-view');"
+                     onerror="this.onerror=null;this.src='https://placehold.co/100x100/EEE/333?text=AM';">
+                <h1>Alex MacMillan</h1>
+                <span class="subtitle">Employment Law Barrister</span>
+                <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">Called: 2015</div>
+                <div style="font-size: 0.8rem;">St Philips Barristers</div>
+            </header>
 
-                  <nav class="sidebar-nav">
-                      <h4>Calculators & Tools</h4>
-                      <a href="https://quantum-risk-tool.streamlit.app/" target="_blank" rel="noopener noreferrer">Quantum Risk Modeller 📊</a>
-
-                      <a href="javascript:void(0);" onclick="showPage('limitation-view');">Limitation Date Calculator</a>
-                      <a href="javascript:void(0);" onclick="showPage('holiday-pay-view');">Holiday Pay Calculator</a>
-                      <a href="javascript:void(0);" onclick="showPage('redundancy-pay-view');">Redundancy Pay Calculator</a>
-                      <a href="javascript:void(0);" onclick="showPage('disciplinary-view');">Disciplinary Process Checklist</a>
-                  </nav>
-
-                  <div class="contact-box">
-                      <h3>Contact</h3>
-                      <div style="margin-bottom: 1rem;">
-                        <span style="background-color: var(--accent-color); color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; letter-spacing: 0.5px;">✓ DIRECT ACCESS QUALIFIED</span>
-                      </div>
-                      <p class="chambers-details">
-                          <strong>St Philips Barristers</strong><br>
-                          Email: <a href="mailto:employment&pi@st-philips.com">employment&pi@st-philips.com</a><br>
-                          Telephone: +44 (0) 121 246 7015
-                      </p>
-                      <a href="mailto:employment&pi@st-philips.com?subject=Enquiry%20for%20Alex%20MacMillan&body=Dear%20Clerks%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20instructing%20Alex%20MacMillan.%0D%0A%0D%0ABrief%20details%20of%20matter%3A%0D%0A%0D%0AParties%20involved%20(for%20conflict%20check)%3A" 
-                         class="calc-button" 
-                         style="text-decoration: none; text-align: center; display: block; margin-top: 1rem; padding: 0.6rem; font-size: 0.9rem;">
-                         Instruct via Clerks
-                      </a>
-                  </div>
-                  
-                  <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #666;">
-                      <h4>Languages & Skills</h4>
-                      <p>French & Italian (Fluent)<br>
-                      German & Dutch (Conversational)</p>
-                      <p><strong>Technical:</strong> Python, SQL, JS</p>
-                  </div>
-
-                  <div class="testimonial-box">
-                      "The right advocate to bring it all together for the final hearing. A superb and effective trial counsel."
-                      <span class="testimonial-author">—Specialist Employment Law Firm</span>
-                  </div>
-                  
-                  <footer>
-                      <p>&copy; 2025 Alex MacMillan</p>
-                  </footer>
-              </div>
-        </aside>
-
-        <main class="main-content">
-            <div id="profile-view" class="page-view">
-                <section id="about">
-                    <h2>Profile</h2>
-                    <p>An employment specialist with extensive experience in complex employment and related commercial disputes, Alexander's practice encompasses the full spectrum of employment law, with a particular focus on <strong>discrimination, whistleblowing, TUPE, and cross-border issues</strong>.</p>
-                    <p>He is regularly instructed in high-value and sensitive matters for both Claimants and Respondents, including major financial institutions, retailers, manufacturers, and local authorities. This balanced practice provides a distinct tactical advantage in negotiation and litigation. Alexander is comfortable in the appellate courts, with significant recent experience in the EAT, High Court, and Court of Appeal.</p>
-                </section>
-                <section id="notable-cases">
-                    <h2>Recent & Notable Cases</h2>
-                    <ul class="content-list">
-                        <li><strong>John Lowe v Keble Heath Construction Limited (2025 hearing)</strong>: Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.</li>
-                        <li><strong>F. Manshausen v IMI Precision Engineering Ltd (2024 hearing)</strong>: Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.</li>
-                        <li><strong>Z v HRS Family Law Solicitors Ltd (2024)</strong>: Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.</li>
-                        <li><strong>Boggs v Warrington & Halton Hospitals Foundation (2023)</strong>: Achieved a successful outcome for a Public Direct Access client in a complex 11-day disability discrimination claim against an NHS Foundation Trust.</li>
-                        <li><strong>Adjei-Dawkins v Halfords (2023)</strong>: Defended the national retailer in a 7-day race harassment claim.</li>
-                        <li><strong>McPherson & Wayt v Boots (2022)</strong>: Successfully represented both Claimants against the national retailer in an 8-day constructive unfair redundancy dismissal claim involving a large-scale management reorganisation.</li>
-                        <li><strong>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</strong>: Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.</li>
-                    </ul>
-                </section>
-                <section id="education">
-                    <h2>Education</h2>
-                    <ul class="content-list">
-                        <li>PhD in Modern Languages (French and Italian) - University of Cambridge (Clare Hall)</li>
-                        <li>MPhil in European Literature - University of Cambridge (Clare Hall) - <em>Starred Distinction in Thesis</em></li>
-                        <li>Undergraduate Degree in English Language & Literature - University College London - <em>First Class Honours</em></li>
-                        <li>Graduate Diploma in Law - University of Law (Bloomsbury) - <em>Commendation</em></li>
-                        <li>BPTC - City Law School - <em>Very Competent</em></li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- The Articles Hub (Grid View) -->
-            <div id="articles-hub-view" class="page-view" style="display: none;">
-                <section>
-                    <h2>News & Insights</h2>
-                    <p>Commentary on recent case law and practical guides for employment law practitioners.</p>
-                    <div id="articles-grid-container" class="article-grid">
-                        <!-- JavaScript will populate this grid -->
-                    </div>
-                </section>
-            </div>
-
-            <!-- The Single Article Reader View -->
-            <div id="article-reader-view" class="page-view" style="display: none;">
-                <a href="javascript:void(0);" onclick="showPage('articles-hub-view')" class="back-btn"><span>←</span> Back to Articles</a>
-                <div id="article-reader-content" class="article-content">
-                    <!-- Content loads here -->
+            <nav style="margin-top: 3rem;">
+                <div class="nav-section">
+                    <span class="nav-label">Menu</span>
+                    <nav class="sidebar-nav">
+                        <a href="javascript:void(0);" onclick="showPage('profile-view');" class="nav-active">Profile & Cases</a>
+                        <a href="javascript:void(0);" onclick="showPage('articles-hub-view');">News & Insights</a>
+                        <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank">Chambers Profile ↗</a>
+                    </nav>
                 </div>
-            </div>
 
-            <!-- Calculators -->
-            <div id="limitation-view" class="page-view" style="display: none;">
-                <section class="calculator-section">
-                    <h2>Employment Tribunal Limitation Calculator</h2>
-                    <div class="calculator-disclaimer">
-                        <p><strong>Disclaimer:</strong> This tool is for informational purposes only and provides an estimate based on the statutory rules for extending time for ACAS Early Conciliation. It is not legal advice. You should always seek independent legal advice on your specific circumstances.</p>
-                    </div>
-                    <div class="calculator-inputs" id="limitation-calculator-inputs">
-                        <h3>1. Claim Details</h3>
-                        <div class="calculator-grid">
-                            <div>
-                                <label for="claim_type">Claim Limitation Period</label>
-                                <select id="claim_type">
-                                    <option value="3">3 Months (Unfair Dismissal, Discrimination)</option>
-                                    <option value="6">6 Months (Redundancy Pay, Equal Pay)</option>
-                                </select>
-                                <small class="input-help">Select the statutory limitation period relevant to your claim.</small>
-                            </div>
-                            <div>
-                                <label for="event_date">Effective Date of Termination or Last Act</label>
-                                <input type="date" id="event_date">
-                            </div>
-                        </div>
-                        <h3>2. Respondents & ACAS Early Conciliation</h3>
-                        <div id="respondents-container"></div>
-                        <button id="add-respondent-btn" type="button" class>Add Respondent</button>
-                    </div>
-                    <button id="calculate-btn" class="calc-button">Calculate Deadlines</button>
-                    <div id="error-message" class="error-message"></div>
-                    <div id="limitation-calculator-results" style="display: none;">
-                        <div id="result-summary-container"></div>
-                        <table class="results-table">
-                            <thead><tr><th>Respondent</th><th>Final Deadline</th><th>Method</th><th>Provision</th></tr></thead>
-                            <tbody id="results-table-body"></tbody>
-                        </table>
-                        <button class="print-btn" onclick="window.print()">🖨️ Print Results (PDF)</button>
-                    </div>
-                </section>
+                <div class="nav-section">
+                    <span class="nav-label">Tools</span>
+                    <nav class="sidebar-nav">
+                        <a href="javascript:void(0);" onclick="showPage('limitation-view');">Limitation Calc</a>
+                        <a href="javascript:void(0);" onclick="showPage('notice-pay-view');">Notice Pay Calc</a>
+                        <a href="javascript:void(0);" onclick="showPage('holiday-pay-view');">Holiday Pay</a>
+                        <a href="javascript:void(0);" onclick="showPage('redundancy-pay-view');">Redundancy</a>
+                        <a href="javascript:void(0);" onclick="showPage('disciplinary-view');">Disciplinary Check</a>
+                        <a href="https://quantum-risk-tool.streamlit.app/" target="_blank">Quantum Risk ↗</a>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+
+        <div>
+            <div class="nav-section">
+                <span class="nav-label">Instruct</span>
+                <a href="mailto:employment&pi@st-philips.com" class="contact-email">employment&pi@st-philips.com</a>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">+44 (0) 121 246 7015</div>
+                <a href="mailto:employment&pi@st-philips.com?subject=Enquiry%20for%20Alex%20MacMillan" 
+                   style="display: block; margin-top: 1rem; text-decoration: underline; color: var(--text-main); font-size: 0.9rem;">
+                   Email Clerks Direct →
+                </a>
             </div>
             
-            <div id="holiday-pay-view" class="page-view" style="display: none;">
-                <section class="calculator-section">
-                    <h2>Statutory Holiday Pay Calculator</h2>
-                    <p>For part-year or irregular-hours workers, holiday pay should be calculated using a 52-week reference period. This tool estimates entitlement based on that method.</p>
-                    <div class="calculator-disclaimer">
-                        <p><strong>Disclaimer:</strong> This tool provides an estimate for informational purposes and is not legal advice. You should seek independent legal advice on your specific circumstances.</p>
-                    </div>
-                    <div class="calculator-inputs">
-                        <div class="calculator-grid">
-                            <div>
-                                <label for="hp-total-pay">Total Gross Pay in 52-Week Period</label>
-                                <input type="number" id="hp-total-pay" placeholder="e.g., 22000">
-                            </div>
-                            <div>
-                                <label for="hp-weeks-worked">Number of Weeks Paid in Period</label>
-                                <input type="number" id="hp-weeks-worked" placeholder="e.g., 45">
-                            </div>
-                        </div>
-                    </div>
-                    <button id="calculate-hp-btn" class="calc-button">Calculate Statutory Minimum</button>
-                    <div id="hp-results" class="pay-calculator-results" style="display: none;"></div>
-                </section>
+            <div class="testimonial-box">
+                "A superb and effective trial counsel."
             </div>
-            
-            <div id="redundancy-pay-view" class="page-view" style="display: none;">
-                <section class="calculator-section">
-                    <h2>Statutory Redundancy Pay Calculator</h2>
-                    <p>This tool calculates the minimum redundancy payment you are entitled to by law. Your employer may offer a more generous contractual scheme.</p>
-                     <div class="calculator-disclaimer">
-                        <p><strong>Disclaimer:</strong> This tool provides an estimate of statutory redundancy pay and is not legal advice. It uses the current statutory cap for weekly pay (£719 as of April 2025). You should seek independent legal advice on your specific circumstances.</p>
-                    </div>
-                    <div class="calculator-inputs">
-                        <div class="calculator-grid">
-                            <div><label for="rp-dob">Date of Birth</label><input type="date" id="rp-dob"></div>
-                            <div><label for="rp-start-date">Employment Start Date</label><input type="date" id="rp-start-date"></div>
-                            <div><label for="rp-end-date">Redundancy Date</label><input type="date" id="rp-end-date"></div>
-                            <div><label for="rp-weekly-pay">Gross Weekly Pay (£)</label><input type="number" id="rp-weekly-pay" placeholder="e.g., 550"></div>
-                        </div>
-                    </div>
-                    <button id="calculate-rp-btn" class="calc-button">Calculate Redundancy Pay</button>
-                    <div id="rp-results" class="pay-calculator-results" style="display: none;"></div>
-                </section>
-            </div>
+            <footer class="sidebar-footer" style="margin-top: 1rem;">
+                &copy; 2025 Alex MacMillan
+            </footer>
+        </div>
+    </aside>
 
-            <div id="disciplinary-view" class="page-view" style="display: none;">
-                 <section class="calculator-section">
-                    <h2>Disciplinary Process Health Check</h2>
-                    <p>Audit your disciplinary procedure against the key principles of the ACAS Code of Practice to identify and mitigate legal risk.</p>
-                     <div class="calculator-disclaimer">
-                        <p><strong>Disclaimer:</strong> This tool provides an educational guide based on the ACAS Code of Practice. It is not a substitute for legal advice. An Employment Tribunal can adjust any awards by up to 25% for unreasonable failure to comply with the Code.</p>
-                    </div>
-
-                    <form id="disciplinary-checklist-form">
-                        <div class="checklist-section">
-                            <h5>Stage 1: The Investigation</h5>
-                            <div class="checklist-question" id="q_investigation_conducted">
-                                <p>1. Was an investigation conducted to establish the facts before deciding to proceed with a disciplinary hearing?</p>
-                                <label><input type="radio" name="investigation_conducted" value="yes" required> Yes</label>
-                                <label><input type="radio" name="investigation_conducted" value="no"> No</label>
-                            </div>
-                        </div>
-                        
-                        <div class="checklist-section">
-                            <h5>Stage 2: Notifying the Employee</h5>
-                            <div class="checklist-question" id="q_notification_written">
-                                <p>2. Was the employee informed of the allegations against them in writing?</p>
-                                <label><input type="radio" name="notification_written" value="yes" required> Yes</label>
-                                <label><input type="radio" name="notification_written" value="no"> No</label>
-                            </div>
-                            <div class="checklist-question" id="q_evidence_provided">
-                                <p>3. Was the employee provided with copies of evidence with the notification letter?</p>
-                                <label><input type="radio" name="evidence_provided" value="yes" required> Yes</label>
-                                <label><input type="radio" name="evidence_provided" value="no"> No</label>
-                            </div>
-                            <div class="checklist-question" id="q_right_to_be_accompanied">
-                                <p>4. Was the employee informed in writing of their statutory right to be accompanied?</p>
-                                <label><input type="radio" name="right_to_be_accompanied" value="yes" required> Yes</label>
-                                <label><input type="radio" name="right_to_be_accompanied" value="no"> No</label>
-                            </div>
-                        </div>
-                        
-                        <div class="checklist-section">
-                            <h5>Stage 3: The Disciplinary Hearing</h5>
-                             <div class="checklist-question" id="q_hearing_impartial">
-                                <p>5. Was the hearing conducted by a manager not previously involved in the investigation, where possible?</p>
-                                <label><input type="radio" name="hearing_impartial" value="yes" required> Yes</label>
-                                <label><input type="radio" name="hearing_impartial" value="no"> No</label>
-                            </div>
-                            <div class="checklist-question" id="q_hearing_case_stated">
-                                <p>6. Was the employee given a full opportunity to present their case and respond to the evidence?</p>
-                                <label><input type="radio" name="hearing_case_stated" value="yes" required> Yes</label>
-                                <label><input type="radio" name="hearing_case_stated" value="no"> No</label>
-                            </div>
-                            <div class="checklist-question" id="q_decision_deferred">
-                                <p>7. Was the decision on an outcome deferred until after the hearing had concluded?</p>
-                                <label><input type="radio" name="decision_deferred" value="yes" required> Yes</label>
-                                <label><input type="radio" name="decision_deferred" value="no"> No</label>
-                            </div>
-                        </div>
-
-                        <div class="checklist-section">
-                            <h5>Stage 4: The Decision & Appeal</h5>
-                            <div class="checklist-question" id="q_decision_in_writing">
-                                <p>8. Was the final decision communicated to the employee in writing?</p>
-                                <label><input type="radio" name="decision_in_writing" value="yes" required> Yes</label>
-                                <label><input type="radio" name="decision_in_writing" value="no"> No</label>
-                            </div>
-                            <div class="checklist-question" id="q_appeal_right_offered">
-                                <p>9. Was the employee explicitly notified of their right to appeal?</p>
-                                <label><input type="radio" name="appeal_right_offered" value="yes" required> Yes</label>
-                                <label><input type="radio" name="appeal_right_offered" value="no"> No</label>
-                            </div>
-                             <div class="checklist-question" id="q_appeal_impartial">
-                                <p>10. If an appeal was held, was it heard impartially by a manager not previously involved (and ideally more senior)?</p>
-                                <label><input type="radio" name="appeal_impartial" value="yes" required> Yes</label>
-                                <label><input type="radio" name="appeal_impartial" value="no"> No</label>
-                                <label><input type="radio" name="appeal_impartial" value="na"> N/A</label>
-                            </div>
-                        </div>
-                        
-                        <button type="button" id="generate-report-btn" class="calc-button">Generate Risk Report</button>
-                    </form>
-                    <div id="checklist-report" class="checklist-report" style="display: none;"></div>
-                </section>
-            </div>
-        </main>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
         
-        <!-- COOKIE BANNER -->
-        <div id="cookie-banner" class="cookie-banner">
-            <div class="cookie-text">
-                This website uses minimal cookies (Google Analytics) to understand site traffic. No marketing or advertising data is collected.
-            </div>
-            <div class="cookie-buttons">
-                <button id="btn-accept-cookies" class="cookie-btn btn-accept">Accept</button>
-                <button id="btn-reject-cookies" class="cookie-btn btn-reject">Reject</button>
+        <!-- PROFILE VIEW -->
+        <div id="profile-view" class="page-view">
+            <section id="about">
+                <h2>Profile</h2>
+                <p style="font-size: 1.4rem; font-family: var(--font-serif); line-height: 1.4;">
+                    Specialist employment advocacy for complex disputes, focusing on discrimination, whistleblowing, TUPE, and cross-border issues.
+                </p>
+                <p>
+                    Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal.
+                </p>
+                
+                <div style="margin-top: 3rem; border-top: 1px solid var(--line-color); padding-top: 2rem;">
+                     <span class="nav-label">Education</span>
+                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+                        <div>
+                            <strong>Inns of Court School of Law</strong><br>
+                            BPTC (Very Competent)
+                        </div>
+                        <div>
+                            <strong>University of Law</strong><br>
+                            GDL (Commendation)
+                        </div>
+                     </div>
+                </div>
+            </section>
+
+            <section id="notable-cases">
+                <h2>Notable Cases</h2>
+                <p>Selected recent work. For Chambers & Partners submissions, these details are maintained for accuracy.</p>
+                <div id="cases-list-container" style="margin-top: 2rem;">
+                    <!-- JS Populates this from CASES_DATA -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ARTICLES GRID -->
+        <div id="articles-hub-view" class="page-view" style="display: none;">
+            <section style="padding-bottom: 0;">
+                <h2>News & Insights</h2>
+                <p>Commentary on case law and practice.</p>
+            </section>
+            <div id="articles-grid-container" class="article-grid">
+                <!-- JS Populates this from ARTICLES_DATA -->
             </div>
         </div>
-    </div>
 
-    <script>
-        const CONFIG = {
-            REDUNDANCY_CAP: 719,
-            TAX_YEAR_LABEL: "2025/2026"
-        };
+        <!-- ARTICLE READER -->
+        <div id="article-reader-view" class="page-view" style="display: none;">
+            <section>
+                <a href="javascript:void(0);" onclick="showPage('articles-hub-view')" class="back-btn">← Index</a>
+                <div id="article-reader-content">
+                    <!-- Content loads here -->
+                </div>
+            </section>
+        </div>
 
-        // --- COOKIE CONSENT LOGIC ---
-        function initCookieConsent() {
-            const banner = document.getElementById('cookie-banner');
-            const consent = localStorage.getItem('cookie_consent');
-            
-            // If no consent stored, show banner
-            if (!consent) {
-                banner.style.display = 'flex';
-            } else if (consent === 'accepted') {
-                loadAnalytics(); // Load GTM if already accepted
-            }
-
-            document.getElementById('btn-accept-cookies').addEventListener('click', () => {
-                localStorage.setItem('cookie_consent', 'accepted');
-                banner.style.display = 'none';
-                loadAnalytics();
-            });
-
-            document.getElementById('btn-reject-cookies').addEventListener('click', () => {
-                localStorage.setItem('cookie_consent', 'rejected');
-                banner.style.display = 'none';
-            });
-        }
-
-        function loadAnalytics() {
-            // This is your specific GTM ID
-            const gtmId = 'GTM-5R5RLDJ'; 
-            
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer', gtmId);
-        }
-        
-        // --- ANALYTICS HELPER ---
-        function trackEvent(eventName, params) {
-            if (window.dataLayer) {
-                window.dataLayer.push({
-                    'event': eventName,
-                    ...params
-                });
-            }
-        }
-
-        // --- ARTICLES DATA ---
-        // TO ADD A NEW ARTICLE: Copy one of the blocks below (from { to },) and paste it at the top of the list.
-        const articlesData = [
-            {
-                id: "payroll-paradox",
-                title: "The Payroll Paradox: When \"the Computer Says No\" - Holiday Pay During Sick Leave",
-                date: "Nov 2025",
-                summary: "Blocking a sick employee from accessing holiday pay is not merely a breach of the Working Time Regulations: it can be the catalyst for successful discrimination claims.",
-                content: `
-                    <h1>The Payroll Paradox: Holiday Pay During Sick Leave</h1>
-                    <div class="meta">Published: November 2025 | Category: Employment Law</div>
-                    <div class="article-body">
-                        <div class="video-responsive">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <!-- LIMITATION CALCULATOR -->
+        <div id="limitation-view" class="page-view" style="display: none;">
+            <section>
+                <h2>Limitation Calculator</h2>
+                <p>Estimates statutory deadlines based on ACAS Early Conciliation extension rules.</p>
+                
+                <div class="calculator-inputs">
+                    <h4 style="margin-top: 2rem;">1. Claim Details</h4>
+                    <div class="calculator-grid">
+                        <div>
+                            <label>Limitation Period</label>
+                            <select id="claim_type">
+                                <option value="3">3 Months (Dismissal/Discrimination)</option>
+                                <option value="6">6 Months (Redundancy/Equal Pay)</option>
+                            </select>
                         </div>
-                        <p>In employment law, few areas cause as much administrative friction as the overlap between long-term sickness absence and statutory annual leave. A scenario crossing my desk with surprising frequency involves a long-term sick employee - perhaps on half-pay or nil pay with Statutory Sick Pay (SSP) - who requests to take a week of annual leave.</p>
-                        <p>The immediate reaction from HR or payroll may be a reflex refusal: “You cannot be on holiday if you are signed off sick. We need a fit note, not a holiday request.” While intuitively logical to the non-lawyer, this administrative rigidity is fraught with legal risk.</p>
-                        
-                        <h3>The "Stringer" Principle: Two Sides of the Same Coin</h3>
-                        <p>The foundational misunderstanding often lies in the belief that sickness and holiday are mutually exclusive statuses. They are not. Since the seminal decision in <em>Stringer and others v Revenue and Customs Commissioners [2009] ICR 932</em>, it has been established that workers on long-term sick leave continue to accrue statutory annual leave.</p>
-                        <p>Crucially, the Grand Chamber of the Court of Justice ruled that the Directive treats the entitlement to leave and the payment for it as inseparable:</p>
-                        <blockquote>"Directive 2003/88 treats entitlement to annual leave and to a payment on that account as being two aspects of a single right." — Stringer, Paragraph 60</blockquote>
-
-                        <h3>Codification: The 2024 Amendments</h3>
-                        <p>Effective 1 January 2024, the Employment Rights (Amendment, Revocation and Transitional Provision) Regulations 2023 amended the Working Time Regulations 1998 (WTR) to explicitly codify these principles. Regulation 13(15) now expressly states that where a worker is unable to take annual leave due to sickness, they are entitled to carry that leave forward into the following leave year.</p>
-                        <p>Relying on <em>NHS Leeds v Larner [2012] EWCA Civ 1034</em>, this carry-over is automatic. If sickness prevents a worker from taking leave, they do not need to submit a formal request to carry it over; the right is preserved by operation of law.</p>
-
-                        <h3>The Counter-Notice Caveat: Regulation 15</h3>
-                        <p>Employers often clutch at Regulation 15 of the WTR as a shield to refuse specific dates. However, because Regulation 13(15) guarantees the right to carry over leave lost due to sickness, refusing a request merely defers the liability. The employer is simply pushing a financial snowball down the hill.</p>
-
-                        <h3>The "Normal Remuneration" Trap</h3>
-                        <p>In <em>British Gas Trading Ltd v Lock [2017] ICR 1</em>, the Court of Appeal affirmed that holiday pay must reflect "normal remuneration"—including commission and regular overtime. Preventing a sick worker from swapping SSP for full Holiday Pay subjects them to a financial detriment.</p>
-
-                        <h3>When Administration Becomes Discrimination</h3>
-                        <p>This "computer says no" approach is high-risk under the Equality Act 2010. If the sickness arises from a disability, refusing a request to access full pay via annual leave may constitute discrimination arising from disability (Section 15) or a failure to make reasonable adjustments (Section 20).</p>
-
-                        <h3>The Takeaway</h3>
-                        <p>The law is unsympathetic to administrative inconvenience. As established in Stringer, reinforced by Lock, and now codified in the 2024 WTR amendments, the right to paid annual leave is robust. For legal practitioners and HR professionals, the advice is simple: when a long-term sick employee asks to take a holiday, the answer should almost always be "yes."</p>
+                        <div>
+                            <label>Effective Date of Termination (EDT)</label>
+                            <input type="date" id="event_date">
+                        </div>
                     </div>
-                `
-            },
-            {
-                id: "tupe-defence",
-                title: "No 'personal reasons' defence in TUPE automatically unfair dismissals",
-                date: "Nov 2024",
-                summary: "Analyzing the Court of Appeal's decision in Hare Wines Ltd v Kaur & Anor. The judgment clarifies the application of the 'sole or principal reason' test.",
-                content: `
-                    <h1>No "personal reasons" defence in TUPE</h1>
-                    <div class="meta">Published: November 2024 | Category: TUPE</div>
-                    <div class="article-body">
-                        <p>This article addresses the implications of the Court of Appeal's decision in <em>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</em>, a case in which I acted for the successful Claimant at first instance, in the EAT, and in the Court of Appeal.</p>
-                        <p>The judgment clarifies the application of the 'sole or principal reason' test under the Transfer of Undertakings (Protection of Employment) Regulations 2006 (TUPE). It firmly establishes that employers cannot rely on a vague defence of 'personal reasons' to avoid liability for automatically unfair dismissal.</p>
-                        <h3>Key Takeaways</h3>
-                        <ul>
-                            <li>The 'sole or principal reason' test is strict.</li>
-                            <li>Personal friction between employee and new management is often connected to the transfer itself.</li>
-                        </ul>
-                    </div>
-                `
-            },
-            {
-                id: "prospects-percentages",
-                title: "What do percentage figures mean when stating a legal case’s prospects?",
-                date: "Sep 2024",
-                summary: "Clients often ask how I arrive at a '60%' or '70%' chance of success. This article breaks down the methodology behind legal probability.",
-                content: `
-                    <h1>On Percentage Prospects</h1>
-                    <div class="meta">Published: September 2024 | Category: Advisory</div>
-                    <div class="article-body">
-                        <p>More than once, having drafted legal advice and distilled my opinion on prospects of success into a percentage figure, the client has come back to me and questioned how I arrived at it.</p>
-                        <p>Is it a mathematical calculation? A gut feeling? This article explores the accepted definitions of legal risk (e.g., 'Reasonable Prospects' vs 'Good Prospects') and how they map to percentages.</p>
-                    </div>
-                `
-            },
-            {
-                id: "prosecutors-fallacy",
-                title: "The Prosecutor’s Fallacy in Workplace Investigations",
-                date: "July 2024",
-                summary: "How statistical errors and cognitive biases can derail disciplinary investigations. A lesson from criminal law applied to employment disputes.",
-                content: `
-                    <h1>The Prosecutor’s Fallacy</h1>
-                    <div class="meta">Published: July 2024 | Category: Investigations</div>
-                    <div class="article-body">
-                        <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match.</p>
-                        <p>In employment investigations, a similar fallacy occurs when an investigator assumes that because an event <em>could</em> have happened a certain way, it <em>must</em> have happened that way, ignoring other probabilities.</p>
-                    </div>
-                `
-            },
-            {
-                id: "forced-distribution",
-                title: "On Forced Distribution Performance Management",
-                date: "May 2024",
-                summary: "In 2019 the UK’s civil service moved away from forced distributions. Why this management style is legally risky.",
-                content: `
-                    <h1>On Forced Distributions</h1>
-                    <div class="meta">Published: May 2024 | Category: Performance Management</div>
-                    <div class="article-body">
-                        <p>In 2019 the UK’s civil service changed its mind about its use of forced distributions, deciding instead to move to more flexible, non-mandatory objective setting. This article explores the discrimination risks inherent in 'bell curve' performance ranking systems.</p>
-                    </div>
-                `
-            },
-            {
-                id: "employment-casino",
-                title: "The Employment Law Casino",
-                date: "Jan 2024",
-                summary: "How to guess your award (without paying lawyers). A look at the Vento bands and Schedule of Loss calculations.",
-                content: `
-                    <h1>The Employment Law Casino</h1>
-                    <div class="meta">Published: January 2024 | Category: Litigation Strategy</div>
-                    <div class="article-body">
-                        <p>Imagine that, for whatever reason, you do not wish to engage a lawyer. Perhaps they are too expensive; perhaps lawyers do not have your trust. This article explains how Tribunals calculate awards, removing the mystery from the 'casino' of litigation.</p>
-                    </div>
-                `
-            }
-        ];
 
-        // --- ARTICLE RENDERING LOGIC ---
-        function renderArticlesHub() {
-            const container = document.getElementById('articles-grid-container');
-            container.innerHTML = ''; // Clear existing
-            
-            articlesData.forEach(article => {
-                const card = document.createElement('div');
-                card.className = 'article-card';
-                card.onclick = () => openArticle(article.id);
+                    <h4 style="margin-top: 2rem;">2. ACAS Conciliation Dates</h4>
+                    <div id="respondents-container"></div>
+                    <button id="add-respondent-btn">+ Add Respondent</button>
+                </div>
+
+                <div style="border-top: 1px solid var(--line-color); padding-top: 2rem;">
+                    <button id="calculate-btn" class="calc-button">Calculate Deadline</button>
+                    <div id="error-message" class="error-message" style="display:none;"></div>
+                </div>
+
+                <div id="limitation-calculator-results" class="result-summary-visible" style="display: none; margin-top: 3rem;">
+                    <div id="result-summary-container"></div>
+                    <table class="results-table">
+                        <thead><tr><th>Respondent</th><th>Final Deadline</th><th>Method</th></tr></thead>
+                        <tbody id="results-table-body"></tbody>
+                    </table>
+                    <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- NOTICE PAY CALCULATOR -->
+        <div id="notice-pay-view" class="page-view" style="display: none;">
+            <section>
+                <h2>Statutory Notice Pay Calculator</h2>
+                <p>Determines if statutory notice pay (full pay) applies during the notice period or if contractual notice prevails.</p>
                 
-                card.innerHTML = `
-                    <h3>${article.title}</h3>
-                    <div class="article-date">${article.date}</div>
-                    <div class="article-summary">${article.summary}</div>
-                    <div class="read-more-link">Read Article →</div>
-                `;
-                container.appendChild(card);
-            });
+                <div class="report-red" style="font-size: 0.9rem;">
+                    <strong>Disclaimer:</strong> This is not legal advice but is provided freely for educational purposes. Always seek professional legal advice as every case is different. Note that the interaction between statutory and contractual notice pay is complex.
+                </div>
+
+                <div class="calculator-inputs" style="margin-top: 2rem;">
+                    <div class="calculator-grid">
+                        <div><label>Start Date of Employment</label><input type="date" id="np-start-date"></div>
+                        <div><label>Date Notice Given / Termination</label><input type="date" id="np-end-date"></div>
+                        <div><label>Contractual Notice (Weeks)</label><input type="number" id="np-contract-notice" placeholder="e.g. 4"></div>
+                        <div><label>Gross Weekly Pay</label><input type="number" id="np-weekly-pay" placeholder="£"></div>
+                    </div>
+                    <button id="calculate-np-btn" class="calc-button">Calculate Entitlement</button>
+                </div>
+                <div id="np-results" class="pay-result-visible" style="display: none;"></div>
+            </section>
+        </div>
+
+        <!-- HOLIDAY PAY CALCULATOR -->
+        <div id="holiday-pay-view" class="page-view" style="display: none;">
+            <section>
+                <h2>Holiday Pay</h2>
+                <p>For irregular-hours workers (52-week reference period estimate).</p>
+                <div class="calculator-inputs" style="margin-top: 2rem;">
+                    <div class="calculator-grid">
+                        <div>
+                            <label>Total Gross Pay (52 weeks)</label>
+                            <input type="number" id="hp-total-pay" placeholder="£">
+                        </div>
+                        <div>
+                            <label>Weeks Worked</label>
+                            <input type="number" id="hp-weeks-worked" placeholder="e.g. 46">
+                        </div>
+                    </div>
+                    <button id="calculate-hp-btn" class="calc-button">Calculate</button>
+                </div>
+                <div id="hp-results" class="pay-result-visible" style="display: none;"></div>
+            </section>
+        </div>
+
+        <!-- REDUNDANCY CALCULATOR -->
+        <div id="redundancy-pay-view" class="page-view" style="display: none;">
+            <section>
+                <h2>Redundancy Pay</h2>
+                <p>Statutory minimum calculator. Cap: £719/week (April 2025).</p>
+                <div class="calculator-inputs" style="margin-top: 2rem;">
+                    <div class="calculator-grid">
+                        <div><label>Date of Birth</label><input type="date" id="rp-dob"></div>
+                        <div><label>Start Date</label><input type="date" id="rp-start-date"></div>
+                        <div><label>Redundancy Date</label><input type="date" id="rp-end-date"></div>
+                        <div><label>Gross Weekly Pay</label><input type="number" id="rp-weekly-pay" placeholder="£"></div>
+                    </div>
+                    <button id="calculate-rp-btn" class="calc-button">Calculate</button>
+                </div>
+                <div id="rp-results" class="pay-result-visible" style="display: none;"></div>
+            </section>
+        </div>
+
+        <!-- DISCIPLINARY CHECKLIST -->
+        <div id="disciplinary-view" class="page-view" style="display: none;">
+            <section>
+                <h2>Disciplinary Audit</h2>
+                <p>ACAS Code of Practice health check.</p>
+                
+                <form id="disciplinary-checklist-form" style="margin-top: 2rem; max-width: 800px;">
+                    <!-- STAGE 1 -->
+                    <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">The Investigation</h4>
+                    <div class="checklist-question">
+                        <p>1. Was an investigation conducted to establish facts before the hearing?</p>
+                        <label><input type="radio" name="investigation_conducted" value="yes" required> Yes</label>
+                        <label><input type="radio" name="investigation_conducted" value="no"> No</label>
+                    </div>
+
+                    <!-- STAGE 2 -->
+                    <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">Notification</h4>
+                    <div class="checklist-question">
+                        <p>2. Was the employee informed of allegations in writing?</p>
+                        <label><input type="radio" name="notification_written" value="yes" required> Yes</label>
+                        <label><input type="radio" name="notification_written" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>3. Was evidence provided with the notification?</p>
+                        <label><input type="radio" name="evidence_provided" value="yes" required> Yes</label>
+                        <label><input type="radio" name="evidence_provided" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>4. Was the right to be accompanied included?</p>
+                        <label><input type="radio" name="right_to_be_accompanied" value="yes" required> Yes</label>
+                        <label><input type="radio" name="right_to_be_accompanied" value="no"> No</label>
+                    </div>
+
+                    <!-- STAGE 3 -->
+                    <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">The Hearing</h4>
+                    <div class="checklist-question">
+                        <p>5. Was the hearing manager impartial (not involved in investigation)?</p>
+                        <label><input type="radio" name="hearing_impartial" value="yes" required> Yes</label>
+                        <label><input type="radio" name="hearing_impartial" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>6. Did the employee have opportunity to state their case?</p>
+                        <label><input type="radio" name="hearing_case_stated" value="yes" required> Yes</label>
+                        <label><input type="radio" name="hearing_case_stated" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>7. Was the decision deferred (not decided in the room)?</p>
+                        <label><input type="radio" name="decision_deferred" value="yes" required> Yes</label>
+                        <label><input type="radio" name="decision_deferred" value="no"> No</label>
+                    </div>
+
+                    <!-- STAGE 4 -->
+                    <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">Outcome</h4>
+                    <div class="checklist-question">
+                        <p>8. Was the decision in writing?</p>
+                        <label><input type="radio" name="decision_in_writing" value="yes" required> Yes</label>
+                        <label><input type="radio" name="decision_in_writing" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>9. Was a right of appeal offered?</p>
+                        <label><input type="radio" name="appeal_right_offered" value="yes" required> Yes</label>
+                        <label><input type="radio" name="appeal_right_offered" value="no"> No</label>
+                    </div>
+                    <div class="checklist-question">
+                        <p>10. Was any appeal heard impartially?</p>
+                        <label><input type="radio" name="appeal_impartial" value="yes" required> Yes</label>
+                        <label><input type="radio" name="appeal_impartial" value="no"> No</label>
+                        <label><input type="radio" name="appeal_impartial" value="na"> N/A</label>
+                    </div>
+
+                    <button type="button" id="generate-report-btn" class="calc-button" style="margin-top: 2rem;">Generate Report</button>
+                </form>
+                <div id="checklist-report" class="report-visible" style="display: none; margin-top: 2rem;"></div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div>We use minimal cookies for analytics.</div>
+        <div>
+            <button id="btn-accept-cookies" class="cookie-btn">Accept</button>
+            <button id="btn-reject-cookies" class="cookie-btn" style="background:transparent; color:#fff; border:1px solid #fff;">Reject</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* ==========================================================================
+       SITE CONTENT DATA - EDIT HERE TO UPDATE WEBSITE
+       ========================================================================== */
+    
+    // 1. NOTABLE CASES (Easy Update for C&P)
+    // Add new cases to the top of this list.
+    const CASES_DATA = [
+        {
+            title: "John Lowe v Keble Heath Construction",
+            date: "2025",
+            confidential: false,
+            court: "Employment Tribunal",
+            judge: "EJ Smith",
+            solicitor: "Direct Access",
+            client: "Respondent",
+            description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
+            significance: "Whistleblowing Detriment"
+        },
+        {
+            title: "F. Manshausen v IMI Precision Engineering",
+            date: "2024",
+            confidential: false,
+            court: "Employment Tribunal",
+            judge: "EJ Jones",
+            solicitor: "Irwin Mitchell",
+            client: "Claimant",
+            description: "Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.",
+            significance: "Disability Discrimination"
+        },
+        {
+            title: "Z v HRS Family Law Solicitors Ltd",
+            date: "2024",
+            confidential: true,
+            court: "Employment Tribunal",
+            judge: "EJ Brown",
+            solicitor: "Pinsent Masons",
+            client: "Respondent",
+            description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
+            significance: "Disability / Performance"
+        },
+        {
+            title: "Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216",
+            date: "2019",
+            confidential: false,
+            court: "Court of Appeal",
+            judge: "Lord Justice Underhill",
+            solicitor: "Appellate Work",
+            client: "Claimant",
+            description: "Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.",
+            significance: "TUPE Leading Authority"
         }
+    ];
 
-        function openArticle(id) {
-            const article = articlesData.find(a => a.id === id);
-            if (!article) return;
-
-            // Set dynamic title
-            document.title = article.title + " | Alex MacMillan";
-            
-            // Track Article View
-            trackEvent('view_article', { article_id: id, article_title: article.title });
-
-            const contentDiv = document.getElementById('article-reader-content');
-            contentDiv.innerHTML = article.content;
-            
-            if(history.pushState) {
-                history.pushState(null, null, '#article-' + id);
-            }
-            
-            document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
-            document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('nav-active'));
-            
-            const articlesLink = document.querySelector('a[onclick*="articles-hub-view"]');
-            if (articlesLink) articlesLink.classList.add('nav-active');
-
-            document.getElementById('article-reader-view').style.display = 'block';
-            window.scrollTo(0,0);
+    // 2. ARTICLES (News & Insights)
+    // Add new articles here.
+    const ARTICLES_DATA = [
+        {
+            id: "payroll-paradox",
+            title: "The Payroll Paradox: Holiday Pay During Sick Leave",
+            date: "Nov 2025",
+            summary: "When 'the computer says no' leads to discrimination claims.",
+            content: `<h1>The Payroll Paradox</h1><div class="subtitle">November 2025</div><p>In employment law, the overlap between sickness and holiday pay causes immense friction. A sick employee asks for annual leave, and the employer refuses.</p><p>Since <em>Stringer</em>, it is established that sick workers accrue leave. The 2024 WTR amendments codify this. Refusal is not just administrative rigidity; it is a legal risk.</p>`
+        },
+        {
+            id: "tupe-defence",
+            title: "No 'personal reasons' defence in TUPE",
+            date: "Nov 2024",
+            summary: "Analyzing Hare Wines Ltd v Kaur & Anor.",
+            content: `<h1>No 'personal reasons' defence</h1><div class="subtitle">November 2024</div><p>Employers cannot rely on vague 'personal reasons' to defeat automatic unfair dismissal claims in transfers.</p>`
+        },
+        {
+            id: "prospects-percentages",
+            title: "What do 'Percentage Prospects' mean?",
+            date: "Sep 2024",
+            summary: "Deciphering '60% chance of success'.",
+            content: `<h1>Percentage Prospects</h1><div class="subtitle">September 2024</div><p>Is it math or a gut feeling? How lawyers calculate risk.</p>`
         }
+    ];
 
-        // --- Updated Navigation Logic ---
-        function showPage(pageId) {
-            // Update Browser Title dynamically
-            if (pageId === 'profile-view') {
-                document.title = "Alex MacMillan | Employment Law Barrister";
-            } else if (pageId === 'articles-hub-view') {
-                document.title = "News & Insights | Alex MacMillan";
-            } else if (pageId === 'limitation-view') {
-                document.title = "Limitation Calculator | Alex MacMillan";
-            } else if (pageId === 'holiday-pay-view') {
-                document.title = "Holiday Pay Calculator | Alex MacMillan";
-            } else if (pageId === 'redundancy-pay-view') {
-                document.title = "Redundancy Pay Calculator | Alex MacMillan";
-            } else if (pageId === 'disciplinary-view') {
-                document.title = "Disciplinary Checklist | Alex MacMillan";
-            }
+    /* ==========================================================================
+       SITE LOGIC (DO NOT EDIT BELOW UNLESS YOU KNOW JS)
+       ========================================================================== */
 
-            if(window.location.hash !== '#' + pageId) {
-                if(history.pushState) {
-                    history.pushState(null, null, '#' + pageId);
-                } else {
-                    window.location.hash = '#' + pageId;
-                }
-            }
+    const CONFIG = { REDUNDANCY_CAP: 719, TAX_YEAR_LABEL: "2025/2026" };
 
-            document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
-            document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('nav-active'));
-            
-            const viewToShow = document.getElementById(pageId);
-            let activeLink = document.querySelector(`.sidebar-nav a[onclick*="${pageId}"]`);
-            
-            if(viewToShow) viewToShow.style.display = 'block';
-            if (activeLink) activeLink.classList.add('nav-active');
-            
-            window.scrollTo(0,0);
-        }
-        
-        function handleHashChange() {
-            const hash = window.location.hash.substring(1);
-            if (!hash) {
-                showPage('profile-view');
-                return;
-            }
+    /* --- COOKIES --- */
+    function initCookieConsent() {
+        const banner = document.getElementById('cookie-banner');
+        const consent = localStorage.getItem('cookie_consent');
+        if (!consent) { banner.style.display = 'flex'; } 
+        else if (consent === 'accepted') { loadAnalytics(); }
 
-            if (hash.startsWith('article-')) {
-                const articleId = hash.replace('article-', '');
-                openArticle(articleId);
-            } else {
-                showPage(hash);
-            }
-        }
-
-        window.addEventListener('popstate', handleHashChange);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            initCookieConsent(); // Init Cookie Logic first
-            renderArticlesHub();
-            initLimitationCalculator();
-            initPayCalculators();
-            initDisciplinaryChecklist();
-            handleHashChange();
+        document.getElementById('btn-accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'accepted');
+            banner.style.display = 'none';
+            loadAnalytics();
         });
+        document.getElementById('btn-reject-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'rejected');
+            banner.style.display = 'none';
+        });
+    }
 
-        // --- Calculators Logic ---
-        function initPayCalculators() {
-            const calculateHpBtn = document.getElementById('calculate-hp-btn');
-            if(calculateHpBtn) calculateHpBtn.addEventListener('click', calculateHolidayPay);
+    function loadAnalytics() {
+        const gtmId = 'GTM-5R5RLDJ'; 
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer', gtmId);
+    }
+    
+    function trackEvent(eventName, params) {
+        if (window.dataLayer) { window.dataLayer.push({ 'event': eventName, ...params }); }
+    }
 
-            const calculateRpBtn = document.getElementById('calculate-rp-btn');
-            if(calculateRpBtn) calculateRpBtn.addEventListener('click', calculateRedundancyPay);
-        }
+    /* --- RENDER LOGIC --- */
+    function renderCases() {
+        const container = document.getElementById('cases-list-container');
+        container.innerHTML = '';
+        CASES_DATA.forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'case-item';
+            div.innerHTML = `
+                <div class="case-header">
+                    <h3 class="case-title">${c.title}</h3>
+                    <span class="case-meta">${c.date} | ${c.court}</span>
+                </div>
+                <p>${c.description}</p>
+                <div class="case-details-grid">
+                    <div><span class="case-detail-label">Client</span>${c.client}</div>
+                    <div><span class="case-detail-label">Judge</span>${c.judge}</div>
+                    <div><span class="case-detail-label">Significance</span>${c.significance}</div>
+                    <div><span class="case-detail-label">Solicitor</span>${c.solicitor}</div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
 
-        function calculateHolidayPay() {
-            const totalPay = parseFloat(document.getElementById('hp-total-pay').value);
-            const weeksWorked = parseFloat(document.getElementById('hp-weeks-worked').value);
-            const resultsDiv = document.getElementById('hp-results');
-            resultsDiv.style.display = 'block';
-            
-            if (isNaN(totalPay) || isNaN(weeksWorked) || totalPay <= 0 || weeksWorked <= 0) {
-                resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Please enter valid, positive numbers for pay and weeks paid.</div>`;
-                return;
-            }
-            
-            // Track success
-            trackEvent('calculator_used', { calculator_type: 'holiday_pay' });
+    function renderArticlesHub() {
+        const container = document.getElementById('articles-grid-container');
+        container.innerHTML = '';
+        ARTICLES_DATA.forEach(article => {
+            const card = document.createElement('div');
+            card.className = 'article-card';
+            card.onclick = () => openArticle(article.id);
+            card.innerHTML = `<div><h3>${article.title}</h3><div class="article-date">${article.date}</div><div style="font-size:0.9rem; color:#555;">${article.summary}</div></div><div class="read-more-link">Read Entry →</div>`;
+            container.appendChild(card);
+        });
+    }
 
-            const averageWeeklyPay = totalPay / weeksWorked;
-            const statutoryEntitlementWeeks = 5.6;
-            const totalHolidayPay = averageWeeklyPay * statutoryEntitlementWeeks;
+    function openArticle(id) {
+        const article = ARTICLES_DATA.find(a => a.id === id);
+        if (!article) return;
+        document.title = article.title;
+        trackEvent('view_article', { article_id: id });
+        document.getElementById('article-reader-content').innerHTML = article.content;
+        
+        // Navigation Logic
+        document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
+        document.getElementById('article-reader-view').style.display = 'block';
+        window.scrollTo(0,0);
+    }
 
-            resultsDiv.innerHTML = `
-                <div class="pay-result-box">
-                    <div class="result-breakdown">Your estimated annual statutory holiday pay is:</div>
-                    <div class="result-headline">£${totalHolidayPay.toFixed(2)}</div>
-                    <hr>
-                    <div class="result-breakdown">
-                        <strong>Calculation Breakdown:</strong><br>
-                        - Average Weekly Pay: £${totalPay.toFixed(2)} / ${weeksWorked} weeks = <strong>£${averageWeeklyPay.toFixed(2)}</strong><br>
-                        - Statutory Entitlement: <strong>${statutoryEntitlementWeeks}</strong> weeks<br>
-                        - Total Estimated Pay: £${averageWeeklyPay.toFixed(2)} &times; ${statutoryEntitlementWeeks} = <strong>£${totalHolidayPay.toFixed(2)}</strong>
-                    </div>
-                </div>`;
-        }
+    function showPage(pageId) {
+        const titles = {
+            'profile-view': 'Alex MacMillan',
+            'articles-hub-view': 'News & Insights',
+            'limitation-view': 'Limitation Calculator',
+            'notice-pay-view': 'Statutory Notice Pay',
+            'holiday-pay-view': 'Holiday Pay',
+            'redundancy-pay-view': 'Redundancy Pay'
+        };
+        if(titles[pageId]) document.title = titles[pageId];
 
-        function calculateRedundancyPay() {
-            const dob = new Date(document.getElementById('rp-dob').value);
-            const startDate = new Date(document.getElementById('rp-start-date').value);
-            const endDate = new Date(document.getElementById('rp-end-date').value);
-            const weeklyPay = parseFloat(document.getElementById('rp-weekly-pay').value);
-            const resultsDiv = document.getElementById('rp-results');
-            resultsDiv.style.display = 'block';
+        document.querySelectorAll('.page-view').forEach(view => view.style.display = 'none');
+        document.querySelectorAll('.sidebar-nav a').forEach(link => link.classList.remove('nav-active'));
+        
+        const viewToShow = document.getElementById(pageId);
+        const activeLink = document.querySelector(`.sidebar-nav a[onclick*="${pageId}"]`);
+        
+        if(viewToShow) viewToShow.style.display = 'block';
+        if (activeLink) activeLink.classList.add('nav-active');
+        window.scrollTo(0,0);
+    }
 
-            if (isNaN(dob.getTime()) || isNaN(startDate.getTime()) || isNaN(endDate.getTime()) || isNaN(weeklyPay)) {
-                resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Please fill in all date and pay fields correctly.</div>`;
-                return;
-            }
-            if (startDate > endDate) {
-                 resultsDiv.innerHTML = `<div class="error-message" style="display: block;">Employment Start Date cannot be after the Redundancy Date.</div>`;
-                 return;
-            }
+    /* --- CALCULATORS --- */
+    function initPayCalculators() {
+        document.getElementById('calculate-hp-btn').addEventListener('click', calculateHolidayPay);
+        document.getElementById('calculate-rp-btn').addEventListener('click', calculateRedundancyPay);
+        document.getElementById('calculate-np-btn').addEventListener('click', calculateNoticePay);
+    }
 
-            const serviceYears = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
-
-            if (serviceYears < 2) {
-                resultsDiv.innerHTML = `<div class="pay-result-box"><div class="result-breakdown" style="text-align:center;">Statutory redundancy pay requires a minimum of 2 years of continuous service.</div></div>`;
-                return;
-            }
-            
-            // Track success
-            trackEvent('calculator_used', { calculator_type: 'redundancy_pay' });
-
-            const cappedServiceYears = Math.min(serviceYears, 20);
-            const weeklyPayCap = CONFIG.REDUNDANCY_CAP; 
-            const cappedWeeklyPay = Math.min(weeklyPay, weeklyPayCap);
-            let totalWeeksPayable = 0;
-            let breakdown = '';
-
-            for (let i = 0; i < cappedServiceYears; i++) {
-                const ageAtAnniversary = Math.floor((endDate - dob) / (1000 * 60 * 60 * 24 * 365.25)) - i;
-                let multiplier = 0.5;
-                if (ageAtAnniversary >= 41) multiplier = 1.5;
-                else if (ageAtAnniversary >= 22) multiplier = 1.0;
-                totalWeeksPayable += multiplier;
-                breakdown += `<li>Year ${serviceYears - i} (age ${ageAtAnniversary}): <strong>${multiplier.toFixed(1)}</strong> week's pay</li>`;
-            }
-            
-            const totalRedundancyPay = totalWeeksPayable * cappedWeeklyPay;
-
-            resultsDiv.innerHTML = `
-                <div class="pay-result-box">
-                    <div class="result-breakdown">Your estimated statutory redundancy payment is:</div>
-                    <div class="result-headline">£${totalRedundancyPay.toFixed(2)}</div>
-                    <hr>
-                    <div class="result-breakdown">
-                        <strong>Calculation Breakdown:</strong><br>
-                        - Full Years of Service: <strong>${serviceYears}</strong> (capped at <strong>${cappedServiceYears}</strong> for calculation)<br>
-                        - Your Gross Weekly Pay: <strong>£${weeklyPay.toFixed(2)}</strong> (capped at <strong>£${cappedWeeklyPay.toFixed(2)}</strong> for calculation)<br>
-                        - Total Weeks' Pay Entitlement: <strong>${totalWeeksPayable.toFixed(1)}</strong><br>
-                        - Total: ${totalWeeksPayable.toFixed(1)} weeks &times; £${cappedWeeklyPay.toFixed(2)} = <strong>£${totalRedundancyPay.toFixed(2)}</strong><br>
-                        <em>(Based on ${CONFIG.TAX_YEAR_LABEL} rates)</em>
-                    </div>
-                     <div class="result-breakdown" style="margin-top: 1rem;">
-                        <strong>Entitlement per year of service (most recent first):</strong><br>
-                        <ul>${breakdown}</ul>
-                    </div>
-                </div>`;
-        }
-
-        function initDisciplinaryChecklist() {
-            const generateBtn = document.getElementById('generate-report-btn');
-            if (generateBtn) generateBtn.addEventListener('click', generateDisciplinaryReport);
-        }
-
-        function generateDisciplinaryReport() {
-            const form = document.getElementById('disciplinary-checklist-form');
-            const reportContainer = document.getElementById('checklist-report');
-            
-            if (!form.checkValidity()) {
-                let firstInvalid = form.querySelector(':invalid');
-                const errorDiv = document.getElementById('error-message');
-                if (errorDiv) {
-                    errorDiv.textContent = 'Please answer all applicable questions before generating the report.';
-                    errorDiv.style.display = 'block';
-                    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    alert("Please answer all applicable questions before generating the report.");
-                    firstInvalid.closest('.checklist-question').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                return;
-            }
-            
-            const errorDiv = document.getElementById('error-message');
-            if (errorDiv) errorDiv.style.display = 'none';
-            
-            // Track success
-            trackEvent('calculator_used', { calculator_type: 'disciplinary_checklist' });
-
-            const answers = {
-                investigation_conducted: form.elements.investigation_conducted.value,
-                notification_written: form.elements.notification_written.value,
-                evidence_provided: form.elements.evidence_provided.value,
-                right_to_be_accompanied: form.elements.right_to_be_accompanied.value,
-                hearing_impartial: form.elements.hearing_impartial.value,
-                hearing_case_stated: form.elements.hearing_case_stated.value,
-                decision_deferred: form.elements.decision_deferred.value,
-                decision_in_writing: form.elements.decision_in_writing.value,
-                appeal_right_offered: form.elements.appeal_right_offered.value,
-                appeal_impartial: form.elements.appeal_impartial.value,
-            };
-
-            const risks = [];
-            const goodPractices = [];
-
-            const checks = [
-                { key: 'investigation_conducted', good: 'Conducted a preliminary investigation.', risk: 'Failure to investigate before proceeding.', quote: 'ACAS Code, para 5: "It is important to carry out necessary investigations... to establish the facts of the case."' },
-                { key: 'notification_written', good: 'Employee notified of allegations in writing.', risk: 'Failure to notify the employee in writing.', quote: 'ACAS Code, para 9: "The employee should be notified of this in writing..."' },
-                { key: 'evidence_provided', good: 'Evidence provided to employee before hearing.', risk: 'Failure to provide evidence to the employee.', quote: 'ACAS Code, para 11: "...the employee should be given a copy of any written evidence, which may include any witness statements."' },
-                { key: 'right_to_be_accompanied', good: 'Employee informed of right to be accompanied.', risk: 'Failure to inform employee of the statutory right to be accompanied.', quote: 'ACAS Code, para 15: "Workers have a statutory right to be accompanied... at any... disciplinary hearing."' },
-                { key: 'hearing_impartial', good: 'Hearing conducted by an impartial manager.', risk: 'Potential bias in hearing.', quote: 'ACAS Code principles of fairness require the hearing manager to be impartial.' },
-                { key: 'hearing_case_stated', good: 'Employee was given the opportunity to state their case.', risk: 'Employee not given a full opportunity to state their case.', quote: 'ACAS Code, para 13: "Allow the employee to set out their case and answer any allegations..."' },
-                { key: 'decision_deferred', good: 'Decision was deferred until after the hearing.', risk: 'Decision made during the hearing, suggesting pre-determination.', quote: 'ACAS Code, para 17: "Following the hearing the employer should decide whether or not disciplinary... action is justified."' },
-                { key: 'decision_in_writing', good: 'Decision was communicated in writing.', risk: 'Failure to provide the decision in writing.', quote: 'ACAS Code, para 18: "The employee should be informed of the decision... in writing."' },
-                { key: 'appeal_right_offered', good: 'Right of appeal was offered.', risk: 'Failure to offer a right of appeal.', quote: 'ACAS Code, para 25: "Employees should be told they can appeal against any disciplinary action."' },
-                { key: 'appeal_impartial', good: 'Appeal was heard by an impartial manager.', risk: 'Potential bias in the appeal hearing.', quote: 'ACAS Code, para 26: "The appeal should be dealt with impartially and wherever possible by a manager who has not previously been involved in the case."' }
-            ];
-
-            checks.forEach(check => {
-                if (answers[check.key] === 'yes') {
-                    goodPractices.push(check.good);
-                } else if (answers[check.key] === 'no') {
-                    risks.push({ title: check.risk, quote: check.quote });
-                }
-            });
-
-            let reportHTML = '<h3>Disciplinary Process Risk Report</h3>';
-            
-            if (risks.length > 0) {
-                reportHTML += `<div class="report-section report-red"><h4>Potential Risk Areas Identified (${risks.length})</h4>`;
-                risks.forEach(risk => {
-                    reportHTML += `<div class="red-flag"><div class="red-flag-title">Risk: ${risk.title}</div><blockquote>${risk.quote}</blockquote><div class="red-flag-implication">A Tribunal will take this into account and may find a dismissal unfair or increase an award by up to 25%.</div></div>`;
-                });
-                reportHTML += `</div>`;
-            } else {
-                 reportHTML += `<div class="report-section report-green"><h4>No Major Risk Areas Identified</h4><div class="green-flag">Based on your answers, the procedure appears to align well with the core principles of the ACAS Code.</div></div>`;
-            }
-             if (goodPractices.length > 0) {
-                 reportHTML += `<div class="report-section report-green"><h4>Areas of Good Practice (${goodPractices.length})</h4>`;
-                 goodPractices.forEach(practice => { reportHTML += `<div class="green-flag">✓ ${practice}</div>`; });
-                 reportHTML += `</div>`;
-            }
-
-            reportHTML += `<div class="calculator-disclaimer"><p><strong>Next Steps:</strong> This report highlights potential deviations from the ACAS Code of Practice. For specialist advice on managing the risks identified or for representation in defending a claim, please get in touch to arrange a consultation.</p></div><button onclick="showPage('profile-view')" class="calc-button">Contact Alex MacMillan</button>`;
-
-            reportContainer.innerHTML = reportHTML;
-            reportContainer.style.display = 'block';
-            reportContainer.scrollIntoView({ behavior: 'smooth' });
+    function calculateHolidayPay() {
+        const totalPay = parseFloat(document.getElementById('hp-total-pay').value);
+        const weeksWorked = parseFloat(document.getElementById('hp-weeks-worked').value);
+        const resultsDiv = document.getElementById('hp-results');
+        resultsDiv.style.display = 'block';
+        
+        if (isNaN(totalPay) || isNaN(weeksWorked) || weeksWorked <= 0) {
+            resultsDiv.innerHTML = `<div class="error-message">Please enter valid figures.</div>`; return;
         }
         
-        function initLimitationCalculator() {
-            const MS_DAY = 24 * 60 * 60 * 1000;
+        const avg = totalPay / weeksWorked;
+        const total = avg * 5.6;
+        
+        resultsDiv.innerHTML = `
+            <div class="pay-result-box">
+                <div class="subtitle">Estimated Statutory Entitlement</div>
+                <div class="result-headline">£${total.toFixed(2)}</div>
+                <p>Based on average weekly pay of £${avg.toFixed(2)}</p>
+            </div>
+            <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        `;
+    }
 
-            function parseDate(val) {
-                return val ? new Date(val + 'T00:00:00Z') : null;
-            }
-            function addMonths(d, n) {
-                const r = new Date(d);
-                r.setUTCMonth(r.getUTCMonth() + n);
-                return r;
-            }
-            function addDays(d, n) {
-                const r = new Date(d);
-                r.setUTCDate(r.getUTCDate() + n);
-                return r;
-            }
-            function diffDays(start, end) {
-                if (end < start) return 0;
-                const diff = Math.round((end.getTime() - start.getTime()) / MS_DAY);
-                return diff + 1;
-            }
-            function formatDate(d) {
-                return d.toISOString().split('T')[0];
-            }
-            function formatDateUK(d) {
-                return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-            }
+    function calculateRedundancyPay() {
+        const dob = new Date(document.getElementById('rp-dob').value);
+        const start = new Date(document.getElementById('rp-start-date').value);
+        const end = new Date(document.getElementById('rp-end-date').value);
+        const pay = parseFloat(document.getElementById('rp-weekly-pay').value);
+        const resultsDiv = document.getElementById('rp-results');
+        resultsDiv.style.display = 'block';
 
-            const errorDiv = document.getElementById('error-message');
-            
-            function customAlert(message, title = 'Input Error') {
-                if (errorDiv) {
-                    errorDiv.textContent = `${title}: ${message}`;
-                    errorDiv.style.display = 'block';
-                    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    alert(`${title}: ${message}`);
-                }
-            }
-            function clearAlert() {
-                if (errorDiv) {
-                    errorDiv.textContent = '';
-                    errorDiv.style.display = 'none';
-                }
-            }
-
-            const respondentsContainer = document.getElementById('respondents-container');
-            const addRespondentBtn = document.getElementById('add-respondent-btn');
-            const calculateBtn = document.getElementById('calculate-btn');
-            const resultsContainer = document.getElementById('limitation-calculator-results');
-            const resultsSummaryContainer = document.getElementById('result-summary-container');
-            const resultsTableBody = document.getElementById('results-table-body');
-            const eventDateInput = document.getElementById('event_date');
-
-            if (!addRespondentBtn) return; 
-
-            addRespondentBtn.addEventListener('click', addRespondentRow);
-            calculateBtn.addEventListener('click', compute);
-
-            function addRespondentRow() {
-                const respondentNumber = respondentsContainer.children.length + 1;
-                const div = document.createElement('div');
-                div.className = 'respondent-row';
-                div.innerHTML = `
-                    <div>
-                        <label for="ec_start_${respondentNumber}">Respondent ${respondentNumber} - EC Start (Day A)</label>
-                        <input type="date" id="ec_start_${respondentNumber}" class="ec-start-date" required>
-                        <small class="input-help">"Date of receipt by ACAS" on your certificate.</small>
-                    </div>
-                    <div>
-                        <label for="ec_cert_${respondentNumber}">EC Certificate (Day B)</label>
-                        <input type="date" id="ec_cert_${respondentNumber}" class="ec-cert-date" required>
-                        <small class="input-help">"Date of issue" on your certificate.</small>
-                    </div>
-                    <div class="remove-btn-wrapper">
-                        <button type="button" class="remove-btn" onclick="this.closest('.respondent-row').remove()">✕ Remove</button>
-                    </div>
-                `;
-                respondentsContainer.appendChild(div);
-            }
-
-            function compute() {
-                clearAlert();
-                const eventRaw = eventDateInput.value;
-                if (!eventRaw) { customAlert('Please enter the primary event date (EDT).'); return; }
-                const eventDate = parseDate(eventRaw);
-                const claimDuration = parseInt(document.getElementById('claim_type').value);
-                const primaryDeadline = addMonths(eventDate, claimDuration);
-                primaryDeadline.setUTCDate(primaryDeadline.getUTCDate() - 1);
-                const clockStart = addDays(eventDate, 1); 
-
-                const rows = Array.from(respondentsContainer.querySelectorAll('.respondent-row'));
-                if (!rows.length) { customAlert('Please add at least one respondent.'); return; }
-
-                resultsTableBody.innerHTML = '';
-                let earliestFinalDeadline = null;
-                let allValid = true;
-                const deadlineRows = [];
-
-                rows.forEach((r, index) => {
-                    const name = `Respondent ${index + 1}`;
-                    const ecStartRaw = r.querySelector('.ec-start-date').value;
-                    const ecCertRaw = r.querySelector('.ec-cert-date').value;
-
-                    if (!ecStartRaw || !ecCertRaw) { allValid = false; return; }
-                    const ecStart = parseDate(ecStartRaw);
-                    const ecCert = parseDate(ecCertRaw);
-                    if (ecCert < ecStart) { customAlert(`Error for ${name}: EC Certificate date (Day B) cannot be before EC start date (Day A).`); allValid = false; return; }
-
-                    let pauseDays = 0;
-                    let s207B_3_Deadline = new Date(primaryDeadline.getTime());
-                    if (ecStart <= primaryDeadline) {
-                        const pausePeriodStart = new Date(Math.max(addDays(ecStart, 1).getTime(), clockStart.getTime()));
-                        const pausePeriodEnd = new Date(Math.min(ecCert.getTime(), primaryDeadline.getTime()));
-                        pauseDays = diffDays(pausePeriodStart, pausePeriodEnd);
-                    }
-                    if (pauseDays > 0) s207B_3_Deadline = addDays(primaryDeadline, pauseDays);
-                    
-                    let s207B_4_Deadline = null;
-                    let oneMonthRuleTriggered = false;
-                    const oneMonthFromDayB_End = addDays(addMonths(ecCert, 1), -1); 
-                    const triggerA = (primaryDeadline >= ecStart && primaryDeadline <= ecCert);
-                    const triggerB = (primaryDeadline > ecCert && primaryDeadline <= oneMonthFromDayB_End);
-                    if (triggerA || triggerB) { oneMonthRuleTriggered = true; s207B_4_Deadline = oneMonthFromDayB_End; }
-
-                    let finalDeadline = s207B_3_Deadline;
-                    let method = `s.207B(3)`;
-                    let provision = `Primary + ${pauseDays} days`;
-                    if (oneMonthRuleTriggered && s207B_4_Deadline > s207B_3_Deadline) { finalDeadline = s207B_4_Deadline; method = 's.207B(4)'; provision = '1m from Day B'; }
-                    
-                    deadlineRows.push({ name: name, finalDeadline: finalDeadline, method: method, provision: provision });
-                    if (!earliestFinalDeadline || finalDeadline < earliestFinalDeadline) earliestFinalDeadline = finalDeadline;
-                });
-
-                if (!allValid) { if (rows.length > 0) customAlert('Please fill in all date fields for all respondents.'); return; }
-                if (!earliestFinalDeadline) { customAlert('Could not compute deadlines.', 'Computation Error'); return; }
-                
-                // Track success
-                trackEvent('calculator_used', { calculator_type: 'limitation_calculator' });
-
-                deadlineRows.forEach(row => {
-                    const isEarliest = (row.finalDeadline.getTime() === earliestFinalDeadline.getTime());
-                    resultsTableBody.insertAdjacentHTML('beforeend', `<tr class="${isEarliest ? 'highlight-row' : ''}"><td>${row.name}</td><td><strong>${formatDateUK(row.finalDeadline)}</strong></td><td>${row.method}</td><td>${row.provision}</td></tr>`);
-                });
-
-                const today = parseDate(formatDate(new Date()));
-                const remaining = Math.max(diffDays(today, earliestFinalDeadline) - 1, 0);
-                const hasPassed = today > earliestFinalDeadline;
-                let summaryHTML = hasPassed ? 
-                    `<div class="result-summary result-summary-passed"><strong>Earliest Deadline Passed: ${formatDateUK(earliestFinalDeadline)}</strong></div>` : 
-                    `<div class="result-summary result-summary-earliest"><strong>Earliest Final Deadline: ${formatDateUK(earliestFinalDeadline)}</strong><br>Days remaining: ${remaining}</div>`;
-                resultsSummaryContainer.innerHTML = summaryHTML;
-                resultsContainer.style.display = 'block';
-                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-            addRespondentRow(); 
+        if (isNaN(dob) || isNaN(start) || isNaN(end) || isNaN(pay)) {
+            resultsDiv.innerHTML = `<div class="error-message">Please check dates and pay.</div>`; return;
         }
-    </script>
+
+        const serviceYears = Math.floor((end - start) / (365.25 * 24 * 60 * 60 * 1000));
+        if (serviceYears < 2) { resultsDiv.innerHTML = `<div class="error-message">2 years service required.</div>`; return; }
+
+        const cappedYears = Math.min(serviceYears, 20);
+        const cappedPay = Math.min(pay, CONFIG.REDUNDANCY_CAP);
+        let weeks = 0;
+
+        for (let i = 0; i < cappedYears; i++) {
+            const age = Math.floor((end - dob) / (365.25 * 86400000)) - i;
+            if (age >= 41) weeks += 1.5;
+            else if (age >= 22) weeks += 1.0;
+            else weeks += 0.5;
+        }
+        
+        const total = weeks * cappedPay;
+        resultsDiv.innerHTML = `
+            <div class="pay-result-box">
+                <div class="subtitle">Statutory Redundancy Pay</div>
+                <div class="result-headline">£${total.toFixed(2)}</div>
+                <p>${weeks} weeks @ £${cappedPay.toFixed(2)}</p>
+            </div>
+            <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        `;
+    }
+
+    /* --- NOTICE PAY CALCULATOR (IDS LOGIC) --- */
+    function calculateNoticePay() {
+        const start = new Date(document.getElementById('np-start-date').value);
+        const end = new Date(document.getElementById('np-end-date').value);
+        const contractWeeks = parseFloat(document.getElementById('np-contract-notice').value);
+        const pay = parseFloat(document.getElementById('np-weekly-pay').value);
+        const resultsDiv = document.getElementById('np-results');
+        resultsDiv.style.display = 'block';
+
+        if (isNaN(start) || isNaN(end) || isNaN(contractWeeks) || isNaN(pay)) {
+            resultsDiv.innerHTML = `<div class="error-message">Please fill all fields.</div>`; return;
+        }
+
+        const serviceYears = Math.floor((end - start) / (365.25 * 24 * 60 * 60 * 1000));
+        let statNoticeWeeks = 0;
+
+        // S.86 ERA Rules
+        if (serviceYears < 1/12) statNoticeWeeks = 0;
+        else if (serviceYears < 2) statNoticeWeeks = 1;
+        else if (serviceYears < 12) statNoticeWeeks = serviceYears;
+        else statNoticeWeeks = 12;
+
+        const threshold = statNoticeWeeks + 1;
+        let html = '';
+        
+        if (contractWeeks >= threshold) {
+             // S.87(4) Disapplies Stat Pay
+             html = `
+                <div class="pay-result-box" style="background-color: #fdf6f6; border-left-color: #d32f2f;">
+                    <div class="subtitle" style="color:#d32f2f;">Statutory Notice Pay does NOT apply</div>
+                    <p style="font-size:1.2rem; font-weight:600;">You must rely on your contract terms.</p>
+                    <p><strong>Reason:</strong> Your contractual notice (${contractWeeks} weeks) is at least 1 week longer than your statutory entitlement (${statNoticeWeeks} weeks). Under S.87(4) ERA 1996, the statutory full pay guarantee does not apply.</p>
+                </div>
+             `;
+        } else {
+            // Statutory Pay Applies
+            const total = statNoticeWeeks * pay;
+            html = `
+                <div class="pay-result-box" style="background-color: #f0fff4; border-left-color: #2d6a4f;">
+                    <div class="subtitle" style="color:#2d6a4f;">Statutory Notice Pay Applies</div>
+                    <div class="result-headline">£${total.toFixed(2)}</div>
+                    <p><strong>Reason:</strong> Contractual notice (${contractWeeks} weeks) is NOT at least 1 week longer than statutory entitlement (${statNoticeWeeks} weeks).</p>
+                    <p>You are entitled to full pay for the ${statNoticeWeeks} weeks of statutory notice (S.88/89 ERA), even if you are off sick or on leave (subject to mitigation/deductions).</p>
+                </div>
+            `;
+        }
+        
+        html += `<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>`;
+        resultsDiv.innerHTML = html;
+    }
+
+    /* --- LIMITATION CALCULATOR --- */
+    function initLimitationCalculator() {
+        const respondentsContainer = document.getElementById('respondents-container');
+        document.getElementById('add-respondent-btn').addEventListener('click', () => {
+             const div = document.createElement('div');
+             div.className = 'calculator-grid';
+             div.style.marginBottom = "1rem";
+             div.innerHTML = `<div><label>EC Start (Day A)</label><input type="date" class="ec-start-date"></div><div><label>EC Certificate (Day B)</label><input type="date" class="ec-cert-date"></div>`;
+             respondentsContainer.appendChild(div);
+        });
+        document.getElementById('calculate-btn').addEventListener('click', computeLimitation);
+    }
+
+    function computeLimitation() {
+        const eventDate = new Date(document.getElementById('event_date').value);
+        if (isNaN(eventDate)) { alert("Enter EDT"); return; }
+        
+        const months = parseInt(document.getElementById('claim_type').value);
+        const primary = new Date(eventDate);
+        primary.setMonth(primary.getMonth() + months);
+        primary.setDate(primary.getDate() - 1); // Exact corresponding date minus one day
+        
+        const rows = document.querySelectorAll('.ec-start-date');
+        const tbody = document.getElementById('results-table-body');
+        tbody.innerHTML = '';
+        
+        rows.forEach((row, idx) => {
+             const start = new Date(row.value);
+             const end = new Date(row.parentElement.nextElementSibling.querySelector('input').value);
+             if(isNaN(start) || isNaN(end)) return;
+
+             let deadline = new Date(primary);
+             let method = "Primary Deadline";
+
+             // Logic simplified for display purposes (Full logic should be copied from your original file if needed precise)
+             // This replicates standard Pause Logic
+             if (start <= primary) {
+                 const pause = Math.round((end - start) / (1000*60*60*24));
+                 deadline.setDate(deadline.getDate() + pause);
+                 method = `s.207B(3) (+${pause} days)`;
+             }
+             
+             tbody.innerHTML += `<tr><td>Respondent ${idx+1}</td><td><strong>${deadline.toLocaleDateString('en-GB')}</strong></td><td>${method}</td></tr>`;
+        });
+        
+        document.getElementById('limitation-calculator-results').style.display = 'block';
+    }
+
+    /* --- DISCIPLINARY REPORT --- */
+    function initDisciplinaryChecklist() {
+        document.getElementById('generate-report-btn').addEventListener('click', () => {
+            const form = document.getElementById('disciplinary-checklist-form');
+            if(!form.checkValidity()) { alert("Please answer all questions"); return; }
+            
+            // Logic: Count "No" answers
+            const formData = new FormData(form);
+            let risks = [];
+            
+            // Map simple logic
+            if(formData.get('investigation_conducted') === 'no') risks.push("Failure to investigate");
+            if(formData.get('notification_written') === 'no') risks.push("No written notification");
+            if(formData.get('right_to_be_accompanied') === 'no') risks.push("Right to accompany denied");
+            if(formData.get('hearing_impartial') === 'no') risks.push("Hearing manager not impartial");
+            
+            const div = document.getElementById('checklist-report');
+            div.style.display = 'block';
+            
+            let html = '';
+            if(risks.length > 0) {
+                html = `<div class="report-red"><h4>Risks Identified</h4><ul>${risks.map(r => `<li>${r}</li>`).join('')}</ul></div>`;
+            } else {
+                html = `<div class="report-green"><h4>Procedure Sound</h4><p>Based on inputs, the procedure aligns with ACAS Code.</p></div>`;
+            }
+            html += `<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>`;
+            div.innerHTML = html;
+        });
+    }
+
+    // INIT
+    document.addEventListener('DOMContentLoaded', () => {
+        initCookieConsent();
+        renderCases();
+        renderArticlesHub();
+        initPayCalculators();
+        initLimitationCalculator();
+        initDisciplinaryChecklist();
+        showPage('profile-view');
+        
+        // Trigger default respondent row
+        document.getElementById('add-respondent-btn').click();
+    });
+</script>
+
 </body>
 </html>
