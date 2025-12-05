@@ -1250,7 +1250,7 @@
         const container = document.getElementById('articles-grid-container');
         const homeInsightContainer = document.getElementById('home-latest-insight-container');
         
-        // 1. Render Main Hub
+        // 1. Render Main Hub (All Articles)
         container.innerHTML = '';
         ARTICLES_DATA.forEach(article => {
             const card = document.createElement('div');
@@ -1260,17 +1260,34 @@
             container.appendChild(card);
         });
 
-        // 2. Render Latest Insight on Home
+        // 2. Render Latest Insights on Home (Show 3)
         if (ARTICLES_DATA.length > 0 && homeInsightContainer) {
-            const latest = ARTICLES_DATA[0];
-            homeInsightContainer.innerHTML = `
-                <div class="latest-insight-box" onclick="window.location.hash = '#${latest.id}'">
-                    <span class="latest-insight-label">Latest Insight</span>
-                    <h3 class="latest-insight-title">${latest.title}</h3>
-                    <p style="margin-bottom:0; font-size:0.95rem; color:#444;">${latest.summary}</p>
-                    <div class="read-more-link" style="margin-top:1rem;">Read Full Article →</div>
-                </div>
-            `;
+            // Get the first 3 articles
+            const recentArticles = ARTICLES_DATA.slice(0, 3);
+            
+            // Add a sub-header
+            let html = '<h3 style="margin-bottom: 1rem; border-bottom: none; color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">Recent Updates</h3>';
+            
+            // Open Grid Container (Reusing your existing 'article-grid' class for layout)
+            html += '<div class="article-grid" style="border-top: 1px solid var(--line-color); border-left: 1px solid var(--line-color);">';
+
+            // Loop through the 3 recent articles
+            recentArticles.forEach(article => {
+                html += `
+                    <div class="article-card" onclick="window.location.hash = '#${article.id}'">
+                        <div>
+                            <span class="latest-insight-label">${article.date}</span>
+                            <h3 style="font-size: 1.4rem; margin: 0.5rem 0; line-height: 1.2;">${article.title}</h3>
+                            <p style="font-size:0.95rem; color:#444;">${article.summary}</p>
+                        </div>
+                        <div class="read-more-link" style="margin-top:1rem;">Read Full Article →</div>
+                    </div>
+                `;
+            });
+
+            html += '</div>'; // Close Grid
+            
+            homeInsightContainer.innerHTML = html;
         }
     }
 
