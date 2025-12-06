@@ -6,22 +6,18 @@
     <title>Alex MacMillan | Employment Law Barrister</title>
     <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister. Specialist in discrimination, whistleblowing, and TUPE.">
     
-    <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Alex MacMillan | Employment Law Barrister">
     <meta property="og:description" content="Specialist employment advocacy. Limitation, Redundancy, and Notice Pay calculators available online.">
     <meta property="og:image" content="https://placehold.co/1200x630/EEE/333?text=Alex+MacMillan+Barrister">
     <meta property="og:url" content="https://alexmacmillan.co.uk/">
 
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Schema -->
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -187,48 +183,166 @@
         /* --- SECTIONS & GRIDS --- */
         section { padding: 4rem 4rem 6rem 4rem; border-bottom: 1px solid var(--line-color); }
         
-        /* CASE LIST STYLING */
+        /* --- UPDATED NOTABLE CASES: TIMELINE & CARDS --- */
+        .case-timeline {
+            position: relative;
+            margin-top: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        /* Vertical spine */
+        .case-timeline::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--line-color);
+        }
+
+        /* Individual case block */
         .case-item {
-            padding: 2rem 0;
+            position: relative;
+            margin-left: 1.5rem;
+            padding: 1.75rem 0 1.75rem 1.75rem;
             border-bottom: 1px solid var(--line-color);
         }
-        .case-item:last-child { border-bottom: none; }
-        
+
+        /* Featured highlight (Appellate/High Court) */
+        .case-item--featured {
+            background-color: #FAFAFA; /* Subtle highlight */
+            border-radius: 8px;
+            border: 1px solid #E0E0E0;
+            padding: 2rem 1.75rem 2rem 1.75rem;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline dot */
+        .case-node {
+            position: absolute;
+            left: -2.25rem;
+            top: 2.2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            background-color: #FFFFFF;
+            border: 2px solid var(--text-main);
+            z-index: 10;
+        }
+
+        .case-item--featured .case-node {
+            background-color: var(--text-main); /* Filled dot for featured */
+        }
+
+        .case-year-label {
+            position: absolute;
+            left: -4.5rem;
+            top: 1.85rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+
+        /* Header area: title + strapline + meta */
         .case-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
+            gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 0.5rem;
         }
-        
-        .case-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            color: var(--text-main);
-            margin: 0;
-        }
-        
-        .case-meta {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: #777;
-            text-transform: uppercase;
+
+        .case-header-main {
+            max-width: 70%;
+            min-width: 240px;
         }
 
-        .case-details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
+        .case-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin: 0 0 0.25rem 0;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        /* One-line summary under title */
+        .case-strapline {
+            font-size: 0.9rem;
+            color: #555555;
+            font-family: var(--font-sans);
+        }
+
+        /* Right-hand meta (Court/Citation/Pill) */
+        .case-meta-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.35rem;
+            min-width: 160px;
+        }
+
+        .case-meta-block .case-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #777777;
+            text-align: right;
+        }
+
+        /* Practice area pill */
+        .case-type-pill {
+            display: inline-block;
+            padding: 0.15rem 0.65rem;
+            border-radius: 999px;
+            border: 1px solid var(--line-color);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #555555;
             background-color: #FAFAFA;
-            border-left: 2px solid var(--line-color);
-            font-size: 0.85rem;
+        }
+
+        /* Case body text */
+        .case-item > p {
+            font-size: 0.95rem;
+            color: #333333;
+            margin: 0.75rem 0 0.75rem 0;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        /* Tags row under each case */
+        .case-badges-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .case-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            background-color: #EFEFEF;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #444;
         }
         
-        .case-detail-label { font-weight: 600; color: #555; display: block; margin-bottom: 0.2rem; }
+        .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
+
+        /* Ensure no double borders at end of list */
+        .case-item:last-child {
+            border-bottom: none;
+        }
 
         /* --- CASE FILTERS --- */
         .filters-toolbar {
@@ -399,6 +513,16 @@
             h2 { font-size: 2rem; }
             .article-grid { grid-template-columns: 1fr; }
             
+            /* Timeline Mobile Fixes */
+            .case-timeline { padding-left: 0.5rem; }
+            .case-timeline::before { left: 10px; }
+            .case-item, .case-item--featured { margin-left: 1.5rem; padding-left: 1.25rem; }
+            .case-node { left: -2rem; }
+            .case-year-label { left: -4.1rem; }
+            .case-header-main { max-width: 100%; }
+            .case-meta-block { align-items: flex-start; }
+            .case-meta-block .case-meta { text-align: left; }
+            
             /* Close button for sidebar on mobile */
             .sidebar-close-btn { 
                 display: block; position: absolute; top: 1rem; right: 1rem; 
@@ -423,6 +547,10 @@
             
             /* CP Report Table adjustments for print */
             .results-table th, .results-table td { padding: 5px; font-size: 9pt; border: 1px solid #000; }
+            
+            /* Timeline print fix */
+            .case-timeline::before, .case-node, .case-year-label { display: none; }
+            .case-item { margin-left: 0; border-bottom: 1px solid #000; padding: 1rem 0; page-break-inside: avoid; }
         }
         
         /* --- UTILS --- */
@@ -451,13 +579,11 @@
 
 <div class="site-wrapper">
 
-    <!-- MOBILE MENU HEADER (Visible only on mobile) -->
     <div class="mobile-menu-toggle">
         <h1 class="mobile-title">Alex MacMillan</h1>
         <button class="menu-btn" onclick="toggleMobileMenu()">Menu</button>
     </div>
 
-    <!-- ELEGANT SIDEBAR -->
     <aside class="sidebar" id="main-sidebar">
         <button class="sidebar-close-btn" onclick="toggleMobileMenu()">×</button>
         <div>
@@ -518,10 +644,8 @@
         </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
     <main class="main-content">
         
-        <!-- PROFILE VIEW -->
         <div id="profile-view" class="page-view fade-in">
             <section id="about">
                 <h2>Profile</h2>
@@ -532,7 +656,6 @@
                     Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal.
                 </p>
                 
-                <!-- LATEST INSIGHT (Dynamic) -->
                 <div id="home-latest-insight-container" style="margin-top: 3rem;"></div>
 
                 <div style="margin-top: 3rem; border-top: 1px solid var(--line-color); padding-top: 2rem;">
@@ -548,24 +671,21 @@
 
             <section id="notable-cases">
                 <h2>Notable Cases</h2>
-                <p>Selected recent work.</p>
+                <p>A chronological selection of instructions in the Employment Tribunal, EAT, and Court of Appeal.</p>
                 
-                <!-- FILTERS -->
                 <div class="filters-toolbar">
                     <span class="nav-label" style="margin:0;">Filter Work:</span>
                     <select id="case-type-filter" class="filter-select">
                         <option value="all">All Practice Areas</option>
-                        <!-- Populated by JS -->
-                    </select>
+                        </select>
                     <select id="case-year-filter" class="filter-select">
                         <option value="all">All Years</option>
                         <option value="5">Last 5 Years</option>
                     </select>
                 </div>
 
-                <div id="cases-list-container" style="margin-top: 2rem;">
-                    <!-- JS Populates this from CASES_DATA -->
-                </div>
+                <div id="cases-list-container">
+                    </div>
                 
                 <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line-color);">
                     <button id="generate-cases-report-btn" class="calc-button">Generate Cases Report</button>
@@ -574,28 +694,23 @@
             </section>
         </div>
 
-        <!-- ARTICLES GRID -->
         <div id="articles-hub-view" class="page-view fade-in" style="display: none;">
             <section style="padding-bottom: 0;">
                 <h2>News & Insights</h2>
                 <p>Commentary on case law and practice.</p>
             </section>
             <div id="articles-grid-container" class="article-grid">
-                <!-- JS Populates this from ARTICLES_DATA -->
-            </div>
+                </div>
         </div>
 
-        <!-- ARTICLE READER -->
         <div id="article-reader-view" class="page-view fade-in" style="display: none;">
             <section>
                 <a href="javascript:void(0);" onclick="window.location.hash = '#articles-hub-view'" class="back-btn">← Index</a>
                 <div id="article-reader-content">
-                    <!-- Content loads here -->
-                </div>
+                    </div>
             </section>
         </div>
 
-        <!-- LIMITATION CALCULATOR -->
         <div id="limitation-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Limitation Calculator</h2>
@@ -647,7 +762,6 @@
             </section>
         </div>
 
-        <!-- NOTICE PAY CALCULATOR -->
         <div id="notice-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Statutory Notice Pay Calculator</h2>
@@ -675,7 +789,6 @@
             </section>
         </div>
 
-        <!-- HOLIDAY PAY CALCULATOR -->
         <div id="holiday-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Holiday Pay</h2>
@@ -707,7 +820,6 @@
             </section>
         </div>
 
-        <!-- REDUNDANCY CALCULATOR -->
         <div id="redundancy-pay-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Redundancy Pay</h2>
@@ -735,7 +847,6 @@
             </section>
         </div>
 
-        <!-- PENSION LOSS CALC -->
         <div id="pension-loss-view" class="page-view fade-in" style="display: none;">
             <section style="padding: 0; height: 100vh; overflow: hidden; border-bottom: none;">
                 <iframe 
@@ -756,7 +867,6 @@
             </section>
         </div>
         
-        <!-- DISCIPLINARY CHECKLIST -->
         <div id="disciplinary-view" class="page-view fade-in" style="display: none;">
             <section>
                 <h2>Disciplinary Audit</h2>
@@ -772,7 +882,6 @@
                 </div>
                 
                 <form id="disciplinary-checklist-form" style="margin-top: 2rem; max-width: 800px;">
-                    <!-- STAGE 1 -->
                     <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">The Investigation</h4>
                     <div class="checklist-question">
                         <p>1. Was an investigation conducted to establish facts before the hearing?</p>
@@ -780,7 +889,6 @@
                         <label><input type="radio" name="investigation_conducted" value="no"> No</label>
                     </div>
 
-                    <!-- STAGE 2 -->
                     <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">Notification</h4>
                     <div class="checklist-question">
                         <p>2. Was the employee informed of allegations in writing?</p>
@@ -798,7 +906,6 @@
                         <label><input type="radio" name="right_to_be_accompanied" value="no"> No</label>
                     </div>
 
-                    <!-- STAGE 3 -->
                     <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">The Hearing</h4>
                     <div class="checklist-question">
                         <p>5. Was the hearing manager impartial (not involved in investigation)?</p>
@@ -816,7 +923,6 @@
                         <label><input type="radio" name="decision_deferred" value="no"> No</label>
                     </div>
 
-                    <!-- STAGE 4 -->
                     <h4 style="margin-top: 2rem; border-bottom: 2px solid #000; padding-bottom: 0.5rem;">Outcome</h4>
                     <div class="checklist-question">
                         <p>8. Was the decision in writing?</p>
@@ -843,7 +949,6 @@
 
     </main>
 
-    <!-- COOKIE BANNER -->
     <div id="cookie-banner" class="cookie-banner">
         <div>We use minimal cookies for analytics.</div>
         <div>
@@ -1183,11 +1288,13 @@
         const yearVal = document.getElementById('case-year-filter').value;
         const currentYear = new Date().getFullYear();
 
+        // Apply timeline class
+        container.className = 'case-timeline';
         container.innerHTML = '';
-        
+
         const filtered = CASES_DATA.filter(c => {
             const matchesType = (typeVal === 'all') || (c.type === typeVal);
-            const matchesYear = (yearVal === 'all') || (currentYear - parseInt(c.date) <= parseInt(yearVal));
+            const matchesYear = (yearVal === 'all') || (currentYear - parseInt(c.date, 10) <= parseInt(yearVal, 10));
             return matchesType && matchesYear;
         });
 
@@ -1198,20 +1305,50 @@
 
         filtered.forEach(c => {
             const div = document.createElement('div');
-            div.className = 'case-item';
+
+            // Simple test to highlight appellate / High Court work
+            const isFeatured = /Court of Appeal|High Court|EAT/i.test(c.court || '');
+            div.className = isFeatured ? 'case-item case-item--featured' : 'case-item';
+
+            const roleText = c.client ? `For ${c.client}` : '';
+            const metaLineParts = [];
+            if (c.court) metaLineParts.push(c.court);
+            if (c.citation) metaLineParts.push(c.citation);
+            const metaLine = metaLineParts.join(' · ');
+
+            const solicitorBlock = c.firm 
+                ? `${c.solicitor} (${c.firm})`
+                : (c.solicitor || '');
+
+            const opposingBlock = c.opposing ? c.opposing : 'Opposing counsel';
+
             div.innerHTML = `
+                <div class="case-node"></div>
+                <div class="case-year-label">${c.date}</div>
+
                 <div class="case-header">
-                    <h3 class="case-title">${c.title}</h3>
-                    <span class="case-meta">${c.date} | ${c.court} | ${c.citation ? c.citation + ' | ' : ''} ${c.type}</span>
+                    <div class="case-header-main">
+                        <h3 class="case-title">${c.title}</h3>
+                        <div class="case-strapline">
+                            ${c.significance || ''}${c.significance && roleText ? ' · ' : ''}${roleText}
+                        </div>
+                    </div>
+                    <div class="case-meta-block">
+                        <span class="case-type-pill">${c.type}</span>
+                        <span class="case-meta">${metaLine}</span>
+                    </div>
                 </div>
+
                 <p>${c.description}</p>
-                <div class="case-details-grid">
-                    <div><span class="case-detail-label">Client</span>${c.client}</div>
-                    <div><span class="case-detail-label">Judge</span>${c.judge}</div>
-                    <div><span class="case-detail-label">Solicitor</span>${c.solicitor} (${c.firm || ''})</div>
-                    <div><span class="case-detail-label">Significance</span>${c.significance}</div>
+
+                <div class="case-badges-row">
+                    ${c.judge ? `<span class="case-tag"><strong>Judge:</strong> ${c.judge}</span>` : ''}
+                    ${solicitorBlock ? `<span class="case-tag"><strong>Solicitor:</strong> ${solicitorBlock}</span>` : ''}
+                    ${opposingBlock ? `<span class="case-tag"><strong>Opp:</strong> ${opposingBlock}</span>` : ''}
+                    ${c.status ? `<span class="case-tag"><strong>Status:</strong> ${c.status}</span>` : ''}
                 </div>
             `;
+
             container.appendChild(div);
         });
     }
