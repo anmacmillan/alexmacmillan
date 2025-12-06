@@ -42,6 +42,24 @@ const CASES_DATA = [
         description: "Breach of Contract / Unlawful Deductions in relation to commission payments",
         significance: "Commission payments"
     }, 
+
+   {
+        title: "Mrs M Karch v Unipart Group Ltd",
+        citation: "Case No: 1304180/2024",
+        date: "2025",
+        type: "Disability discrimination",
+        confidential: "No",
+        court: "Employment Tribunal (Midlands West)",
+        judge: "EJ ",
+        solicitor: "Instructing Solicitor", 
+        firm: "HCB Solicitors Limited",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "John Horan (Cloisters)", 
+        status: "Settled",
+        description: "Multi-week disability discrimination claim",
+        significance: "Disability discrimination"
+    }, 
    
    {
         title: "John Lowe v Keble Heath Construction",
@@ -60,6 +78,8 @@ const CASES_DATA = [
         description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
         significance: "Whistleblowing Detriment"
     },
+
+   
     {
         title: "F. Manshausen v IMI Precision Engineering",
         citation: "Case No: 1302345/2024",
@@ -77,6 +97,7 @@ const CASES_DATA = [
         description: "Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.",
         significance: "Disability Discrimination"
     },
+   
     {
         title: "Z v HRS Family Law Solicitors Ltd",
         citation: "Case No: 1303456/2024",
