@@ -1,0 +1,41 @@
+COPYRIGHT NOTICE AND DISCLAIMER
+
+© ALEXANDER MACMILLAN, St Philips Chambers 2025. All Rights Reserved.
+
+1. Copyright Notice
+
+The content of this repository and the associated website (including but not limited to text, articles, scripts, design, graphics, logos, and source code) is the intellectual property of the author, unless otherwise stated.
+
+Unauthorised use, reproduction, or distribution of this material without express and written permission from the copyright holder is strictly prohibited. You may not:
+
+Republish material from this repository or website.
+
+Sell, rent, or sub-license material from this repository or website.
+
+Reproduce, duplicate, copy, or otherwise exploit material on this repository or website for a commercial purpose.
+
+Edit or otherwise modify any material on this repository or website.
+
+Short quotations for the purpose of critique or review are permitted, provided clear credit and a link back to the original source are given.
+
+2. Professional Disclaimer
+
+IMPORTANT: This website and the code/content within this repository are for general information and educational purposes only.
+
+Not Legal Advice: The information provided here does not constitute legal advice and should not be relied upon as such. Employment law is complex and fact-sensitive. The content on this site may not reflect the most current legal developments or apply to your specific circumstances.
+
+No Retainer: Accessing, reading, or interacting with this website or repository does not create a barrister-client relationship or any other professional retainer.
+
+Regulatory Information: The author is a barrister regulated by the Bar Standards Board (BSB) in England and Wales. Professional rules and the BSB Handbook apply.
+
+Accuracy: While reasonable efforts are made to ensure the accuracy of the information at the time of publication, no representation or warranty, express or implied, is made as to its accuracy, completeness, or suitability.
+
+If you require legal advice, you should consult a qualified legal professional regarding your specific situation.
+
+3. Limitation of Liability
+
+To the maximum extent permitted by law, the author excludes all liability for any loss or damage of any kind arising out of or in connection with the use of this website or reliance on any information contained herein.
+
+4. Jurisdiction
+
+This notice shall be governed by and construed in accordance with the laws of England and Wales. Any disputes relating to this notice shall be subject to the exclusive jurisdiction of the courts of England and Wales.
