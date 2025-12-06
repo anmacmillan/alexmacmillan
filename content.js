@@ -26,6 +26,24 @@ const CASES_DATA = [
         significance: "Gross Misconduct / Health & Safety"
     }, 
    {
+        title: "Mr Lee Robinson -v-  Stephen John Williams TA/ National Property Buyers",
+        citation: "Case No: 1303573/2025",
+        date: "2025",
+        type: "Unlawful Deduction from Wages",
+        confidential: "No",
+        court: "Employment Tribunal (Midlands West)",
+        judge: "EJ Wedderspoon",
+        solicitor: "Instructing Solicitor", 
+        firm: "HCB Solicitors Limited",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A", 
+        status: "Settled",
+        description: "Breach of Contract / Unlawful Deductions in relation to commission payments",
+        significance: "Commission payments"
+    }, 
+   
+   {
         title: "John Lowe v Keble Heath Construction",
         citation: "Case No: 1300123/2025",
         date: "2025",
