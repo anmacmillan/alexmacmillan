@@ -135,7 +135,36 @@ const CASES_DATA = [
 ];
 
 const ARTICLES_DATA = [
-    {
+   {
+        id: "equal-pay-perkins",
+        title: "The 'Reason Why' Fallacy and Proportionality in Equal Pay: An Analysis of Perkins v Marston (Holdings) Ltd [2025]",
+        date: "December 2025",
+        summary: "The Employment Appeal Tribunal clarifies the burden of proof for material factor defences and corrects a fundamental error in applying the Essop principle to indirect discrimination.",
+        content: `
+            <div class="article-body">
+                <p>In the complex arena of Equal Pay litigation, the battleground often shifts from "equal value" to the "material factor defence." The recent Employment Appeal Tribunal (EAT) judgment in <em>Perkins v Marston (Holdings) Ltd [2025] EAT 170</em> provides critical clarity on three pillars of this defence: the cogency of evidence required, the correct test for indirect discrimination, and the granularity required when assessing proportionality.</p>
+                <p>The case concerned a startling pay disparity: Ms Perkins, a Head of Enforcement, was paid approximately £51,500, while her male comparators—Divisional Enforcement Directors doing work of equal value—received nearly £92,000. The employer relied on market forces and the necessity of recruiting from a specific pool of "Enforcement Agents" (90% male) to justify the gap.</p>
+                
+                <h3>The Evidential Threshold: No "Higher Standard"</h3>
+                <p>A persistent question in Equal Pay disputes is the level of evidence required to prove a material factor. The Claimant argued that following <em>BMC Software Ltd v Shaikh</em>, employers face a heightened threshold of "cogency and particularisation."</p>
+                <p>The EAT rejected this interpretation. While an opaque pay system (as was present here) demands convincing evidence to rebut the presumption of discrimination, there is no special, elevated burden of proof for Equal Pay cases. The standard remains the civil balance of probabilities. As the EAT noted, if a Tribunal accepts oral evidence that a specific sum was necessary to retain an employee, that factual finding stands, even in the absence of a pristine paper trail.</p>
+
+                <h3>Indirect Discrimination: The "Reason Why" Trap</h3>
+                <p>Perhaps the most legally significant aspect of this judgment is the correction of the Employment Tribunal's approach to particular disadvantage. The Tribunal had initially rejected the claim of indirect discrimination, reasoning that Ms Perkins personally had not been deterred from entering the male-dominated "Enforcement Agent" pool.</p>
+                <p>The EAT held this to be a fundamental error of law. Citing the Supreme Court in <em>Essop v Home Office</em>, the EAT reiterated that a claimant does not need to prove <em>why</em> a provision puts women at a disadvantage; they only need to prove that it <em>does</em>.</p>
+                <p>The Tribunal had impermissibly engaged in a factual inquiry into the sociological reasons for the male dominance in the recruitment pool (e.g., risk of violence). The EAT clarified that such an inquiry is irrelevant. If the recruitment pool for the higher-paid roles is 90% male, and that requirement drives the pay disparity, the disadvantage is established <em>prima facie</em>. The "reason why" is distinct from the fact of the disadvantage itself.</p>
+
+                <h3>Proportionality: Beware the "All or Nothing" Approach</h3>
+                <p>On the cross-appeal regarding objective justification, the EAT provided a stern reminder regarding the detailed analysis required under <em>Hardy & Hansons plc v Lax</em>. The Tribunal had rejected the employer's justification defence essentially because the £40,000 pay gap was considered excessive, suggesting the employer could have recruited from a wider, cheaper pool.</p>
+                <p>The EAT found this analysis lacking. Proportionality is not a binary switch. The Tribunal erred by adopting an "all or nothing" approach—implying that because the <em>entire</em> gap wasn't necessary, the defence failed completely.</p>
+                <p>Instead, the EAT mandated a more critical evaluation: the Tribunal should have analyzed <em>what part</em> of the pay differential was proportionate to the legitimate aim of retention. Even if a £40,000 premium was disproportionate, a smaller premium might have been justified. By failing to weigh the specific business risks (loss of staff and certification) against the discriminatory impact, the Tribunal failed to perform the necessary balancing exercise.</p>
+
+                <h3>The Takeaway</h3>
+                <p><em>Perkins</em> serves as a vital course correction. For claimants, it reinforces that statistical disadvantage in a recruitment pool is sufficient to shift the burden of proof without needing to explain the sociological causes. For employers, it offers a lifeline on the "cogency" of evidence but demands a rigorous, granular justification for specific pay premiums. You cannot simply wave the flag of "market forces"; you must be prepared to justify the precise quantum of the gap.</p>
+            </div>
+        `
+    }, 
+   {
         id: "payroll-paradox",
         title: "The Payroll Paradox: When \"the Computer Says No\" - Holiday Pay During Sick Leave",
         date: "November 2025",
