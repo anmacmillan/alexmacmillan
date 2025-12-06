@@ -8,7 +8,24 @@
    ========================================================================== */
 
 const CASES_DATA = [
-    {
+   {
+        title: "Agbotey v Maier UK Ltd",
+        citation: "Case No: 6009509/2025",
+        date: "2025",
+        type: "Unfair Dismissal & Unlawful Deduction from Wages",
+        confidential: "No",
+        court: "Employment Tribunal (Midlands West)",
+        judge: "EJ Wedderspoon",
+        solicitor: "Instructing Solicitor", 
+        firm: "George Green Solicitors LLP",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A", 
+        status: "Concluded",
+        description: "Successfully defended claims valued at £44,000 arising from the summary dismissal of a senior operator for gross negligence. The Tribunal found the dismissal fair following a 'shock-loading' incident involving a 13-tonne crane tool and a failure to follow mandatory reporting procedures.",
+        significance: "Gross Misconduct / Health & Safety"
+    }, 
+   {
         title: "John Lowe v Keble Heath Construction",
         citation: "Case No: 1300123/2025",
         date: "2025",
