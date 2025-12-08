@@ -14,19 +14,23 @@ const CASES_DATA = [
         title: "Mr Thomas Allen -v- Oolong Ltd",
         citation: "Case No: 6027054/2025",
         date: "2025",
-        type: "Employment Tribunal Claim",
+        type: "Unlawful Deduction from Wages",
         confidential: "No",
         court: "London South Employment Tribunal",
-        judge: "",
-        solicitor: "Instructing Solicitor",
-        firm: "N/A",
-        client: "Respondent",
+        judge: "Employment Judge Walker",
+        solicitor: "Irwin Mitchell LLP",
+        firm: "St Philips Chambers",
+        client: "Claimant",
         leading: "Sole Counsel",
-        opposing: "N/A",
-        status: "Pending",
-        description: "Final Hearing (1 day).",
-        significance: "Final Hearing",
-        key_case_law: []
+        opposing: "Mr Mills",
+        status: "Concluded",
+        description: "Successful Final Hearing. The Tribunal found unlawful deductions of £29,166.66. While the Respondent alleged an oral agreement to reduce salary, the Tribunal applied **Kerr v The Sweater Shop** and **International Packaging v Balfour** to rule that, absent written notification of the variation terms *before* the deduction, the deductions violated s.13(2)(b) ERA 1996. The Tribunal further applied **Agnew** to establish a 'series of deductions' despite gaps in payment, preserving the full claim period.",
+        significance: "s.13 ERA 1996 / Written Notification",
+        key_case_law: [
+            "Chief Constable of PSNI v Agnew [2023] UKSC 33",
+            "Kerr v The Sweater Shop (Scotland) Ltd [1996] IRLR 424",
+            "International Packaging Corporation (UK) Ltd v Balfour [2003] IRLR 11"
+        ]
     },
     {
         title: "Agbotey v Maier UK Ltd",
