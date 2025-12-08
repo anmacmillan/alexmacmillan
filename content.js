@@ -40,7 +40,7 @@ const CASES_DATA = [
         confidential: "No",
         court: "Employment Tribunal (Midlands West)",
         judge: "EJ Wedderspoon",
-        solicitor: "Instructing Solicitor", 
+        solicitor: "Amy Brokenshire", 
         firm: "George Green Solicitors LLP",
         client: "Respondent",
         leading: "Sole Counsel",
