@@ -335,9 +335,25 @@
             font-size: 0.95rem;
             color: #333333;
             margin: 0.75rem 0 0.75rem 0;
-            max-width: 720px;
+            max-width: 650px; /* Constrained width for readability */
             line-height: 1.6;
-            text-align: justify; /* Optional: makes the legal blocks look neater */
+        }
+
+        /* Case Law Section */
+        .case-law-section {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #e0e0e0;
+        }
+        
+        .case-law-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
         /* Tags row under each case */
@@ -357,9 +373,31 @@
             font-family: var(--font-mono);
             font-size: 0.75rem;
             color: #444;
+            transition: all 0.2s ease;
+        }
+        
+        .case-tag.law-tag {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
         }
         
         .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
+        
+        /* New Clickable Tag Style */
+        .clickable-tag {
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .clickable-tag:hover {
+            background-color: #dcdcdc; /* Darker grey on hover */
+            border-bottom: 1px solid #999;
+        }
+        
+        .clickable-tag:active {
+            background-color: #ccc;
+        }
 
         /* Ensure no double borders at end of list */
         .case-item:last-child {
@@ -1314,6 +1352,15 @@
         return text.replace(regex, '<span class="search-highlight">$1</span>');
     }
 
+    // Function to handle the click from Judge tags
+    window.filterByTerm = function(term) {
+        const searchInput = document.getElementById('case-search-input');
+        searchInput.value = term;
+        // Trigger render
+        renderCases();
+        document.getElementById('notable-cases').scrollIntoView({ behavior: 'smooth' });
+    }
+
     function renderCases() {
         const container = document.getElementById('cases-list-container');
         const countDisplay = document.getElementById('filter-count-display');
@@ -1382,6 +1429,25 @@
                  solicitor = highlightText(solicitor, searchVal);
             }
 
+            // Case Law logic
+            let caseLawHtml = '';
+            if(c.key_case_law && c.key_case_law.length > 0) {
+                 caseLawHtml = `
+                    <div class="case-law-section">
+                        <span class="case-law-label">Key Authorities Cited</span>
+                        <div class="case-badges-row" style="margin-top:0;">
+                             ${c.key_case_law.map(law => `<span class="case-tag law-tag">${law}</span>`).join('')}
+                        </div>
+                    </div>
+                 `;
+            }
+
+            // Clean judge name for onclick to avoid quote issues
+            const safeJudge = (c.judge || '').replace(/'/g, "\\'");
+            const judgeTag = c.judge 
+                ? `<span class="case-tag clickable-tag" onclick="filterByTerm('${safeJudge}')" title="Filter by this Judge"><strong>Judge:</strong> ${judge}</span>` 
+                : '';
+
             div.innerHTML = `
                 <div class="case-node"></div>
                 <div class="case-year-label">${c.date}</div>
@@ -1400,9 +1466,11 @@
                 </div>
 
                 <p>${description}</p>
+                
+                ${caseLawHtml}
 
                 <div class="case-badges-row">
-                    ${judge ? `<span class="case-tag"><strong>Judge:</strong> ${judge}</span>` : ''}
+                    ${judgeTag}
                     ${solicitor ? `<span class="case-tag"><strong>Solicitor:</strong> ${solicitor}</span>` : ''}
                     ${opposingBlock && opposingBlock !== 'N/A' ? `<span class="case-tag"><strong>Opp:</strong> ${opposingBlock}</span>` : ''}
                     ${c.status ? `<span class="case-tag" style="${statusStyle}"><strong>Status:</strong> ${c.status}</span>` : ''}
