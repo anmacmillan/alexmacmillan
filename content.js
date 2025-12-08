@@ -75,7 +75,7 @@ const CASES_DATA = [
         type: "Open Preliminary Hearing",
         confidential: "No",
         court: "Wales Employment Tribunal",
-        judge: "",
+        judge: "EJ Lloyd-Lawrie",
         solicitor: "Rebekah Brown",
         firm: "Irwin Mitchell LLP",
         client: "Claimant",
