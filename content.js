@@ -80,7 +80,7 @@ const CASES_DATA = [
         firm: "Irwin Mitchell LLP",
         client: "Claimant",
         leading: "Sole Counsel",
-        opposing: "N/A",
+        opposing: "Mr Andrew Rhodes - No 5 Chambers",
         status: "Concluded",
         description: "Open Preliminary Hearing",
         significance: "Disability status",
