@@ -4,7 +4,8 @@
    INSTRUCTIONS:
    1. To add a CASE: Copy a block inside CASES_DATA and fill in details.
    2. To add an ARTICLE: Copy a block inside ARTICLES_DATA.
-   3. Be careful not to delete commas between items.
+   3. To add a TESTIMONIAL: Copy a block inside TESTIMONIALS_DATA.
+   4. Be careful not to delete commas between items.
    ========================================================================== */
 
 const CASES_DATA = [
@@ -1064,5 +1065,26 @@ const ARTICLES_DATA = [
                 <p>Imagine that, for whatever reason, you do not wish to engage a lawyer. Perhaps they are too expensive; perhaps lawyers do not have your trust. This article explains how Tribunals calculate awards, removing the mystery from the 'casino' of litigation.</p>
             </div>
         `
+    }
+];
+
+const TESTIMONIALS_DATA = [
+    {
+        text: "Please pass our thanks on to Alex – he really did an excellent job of representing us and sounded like he knew all about tool setting and overhead crane use!",
+        author: "Partner",
+        firm: "Leading Regional Employment Firm",
+        date: "December 2025"
+    },
+    {
+        text: "Alex provided clear, pragmatic advice that helped us navigate a very tricky TUPE situation. His strategic approach made all the difference.",
+        author: "HR Director",
+        firm: "National Logistics Company",
+        date: "August 2024"
+    },
+    {
+        text: "A superb advocate who was incredibly well-prepared. He put the client at ease and secured a fantastic result in the Tribunal.",
+        author: "Senior Associate",
+        firm: "Legal 500 Firm",
+        date: "March 2024"
     }
 ];
