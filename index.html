@@ -46,6 +46,7 @@
             --line-color: #D1D1D1;
             --accent-color: #111111; 
             --highlight-bg: #EAEAEA;
+            --highlight-yellow: #fff3cd; /* Search highlight color */
             
             --font-serif: 'DM Serif Display', serif;
             --font-sans: 'Inter', sans-serif;
@@ -64,6 +65,13 @@
             margin: 0;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* Highlight search term */
+        .search-highlight {
+            background-color: var(--highlight-yellow);
+            padding: 0 2px;
+            border-radius: 2px;
         }
 
         /* --- LAYOUT STRUCTURE --- */
@@ -136,6 +144,20 @@
             letter-spacing: 0.1em; 
             color: #888; 
             margin-bottom: 1rem; 
+            display: block; 
+            cursor: pointer; /* Pointer for collapsibles */
+        }
+        
+        /* Collapsible Arrow */
+        .nav-label::after {
+            content: '▼';
+            font-size: 0.6em;
+            margin-left: 5px;
+            display: none; /* Only show on mobile */
+        }
+
+        .sidebar-nav {
+            /* Default visible */
             display: block; 
         }
 
@@ -404,6 +426,62 @@
             padding: 0.2rem 0.6rem;
             border-radius: 99px;
         }
+        
+        /* --- TESTIMONIALS CAROUSEL --- */
+        .testimonials-container {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonials-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+        .testimonial-text {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-author {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .testimonial-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .control-btn {
+            background: none;
+            border: 1px solid var(--line-color);
+            color: var(--text-muted);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .control-btn:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
 
         /* --- ARTICLE GRID (Minimalist) --- */
         .article-grid {
@@ -551,6 +629,21 @@
             }
             .sidebar.mobile-open { transform: translateX(0); } /* Slide in */
             
+            /* Collapsible Mobile Navigation */
+            .nav-section .sidebar-nav {
+                display: none; /* Hidden by default on mobile */
+            }
+            .nav-label::after {
+                display: inline-block; /* Show arrow */
+            }
+            .nav-label.expanded + .sidebar-nav {
+                display: block; /* Show when expanded */
+            }
+            /* Keep Menu open by default though */
+            .nav-section:first-child .sidebar-nav {
+                display: block;
+            }
+            
             .main-content { margin-left: 0; width: 100%; min-height: auto; margin-top: 0; }
             section { padding: 2rem; }
             h2 { font-size: 2rem; }
@@ -646,7 +739,7 @@
 
             <nav style="margin-top: 3rem;">
                 <div class="nav-section">
-                    <span class="nav-label">Menu</span>
+                    <span class="nav-label expanded" onclick="toggleSection(this)">Menu</span>
                     <nav class="sidebar-nav">
                         <a data-hash="#profile-view" class="nav-active">Profile & Cases</a>
                         <a data-hash="#articles-hub-view">News & Insights</a>
@@ -655,7 +748,7 @@
                 </div>
 
                 <div class="nav-section">
-                    <span class="nav-label">Tools</span>
+                    <span class="nav-label" onclick="toggleSection(this)">Tools</span>
                     <nav class="sidebar-nav">
                         <a data-hash="#limitation-view">Limitation Calc</a>
                         <a data-hash="#notice-pay-view">Notice Pay Calc</a>
@@ -702,6 +795,16 @@
                 </p>
                 
                 <div id="home-latest-insight-container" style="margin-top: 3rem;"></div>
+                
+                <!-- NEW TESTIMONIALS SECTION -->
+                <div class="testimonials-container">
+                    <span class="nav-label" style="display:block; margin-bottom:1rem;">Client Feedback</span>
+                    <div id="testimonials-wrapper" class="testimonials-wrapper"></div>
+                    <div class="testimonial-controls">
+                        <button class="control-btn" id="prev-testimonial">←</button>
+                        <button class="control-btn" id="next-testimonial">→</button>
+                    </div>
+                </div>
 
                 <div style="margin-top: 3rem; border-top: 1px solid var(--line-color); padding-top: 2rem;">
                      <span class="nav-label">Education</span>
@@ -727,7 +830,7 @@
                 <div class="filters-toolbar">
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Keyword Search</span>
-                        <input type="text" id="case-search-input" class="search-input" placeholder="e.g. 'Whistleblowing' or 'Manchester'">
+                        <input type="text" id="case-search-input" class="search-input" placeholder="e.g. 'Whistleblowing', 'Judge Smith' or 'Manchester'">
                     </div>
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Practice Area</span>
@@ -1108,6 +1211,11 @@
         document.getElementById('main-sidebar').classList.remove('mobile-open');
     }
 
+    function toggleSection(element) {
+        // Toggle 'expanded' class to rotate arrow and show/hide menu on mobile
+        element.classList.toggle('expanded');
+    }
+
     /* --- COOKIES --- */
     function initCookieConsent() {
         const banner = document.getElementById('cookie-banner');
@@ -1198,6 +1306,13 @@
         }
     }
 
+    // Function to highlight search terms
+    function highlightText(text, searchTerm) {
+        if (!searchTerm) return text;
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        return text.replace(regex, '<span class="search-highlight">$1</span>');
+    }
+
     function renderCases() {
         const container = document.getElementById('cases-list-container');
         const countDisplay = document.getElementById('filter-count-display');
@@ -1214,8 +1329,9 @@
             const matchesType = (typeVal === 'all') || (c.type === typeVal);
             const matchesYear = (yearVal === 'all') || (currentYear - parseInt(c.date, 10) <= parseInt(yearVal, 10));
             
-            // Text search logic (checks title, description, court, type)
-            const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor}`.toLowerCase();
+            // Text search logic (checks title, description, court, type, and judge)
+            const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
+            const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor} ${judgeSearch}`.toLowerCase();
             const matchesSearch = !searchVal || searchText.includes(searchVal);
 
             return matchesType && matchesYear && matchesSearch;
@@ -1252,13 +1368,26 @@
             if(c.status === 'Concluded') statusStyle = 'background-color:#e0f2f1; color:#00695c; border:1px solid #b2dfdb;'; // Greenish
             if(c.status === 'Settled') statusStyle = 'background-color:#fff3e0; color:#e65100; border:1px solid #ffe0b2;'; // Orangeish
 
+            // --- Highlight content if search is active ---
+            let title = c.title;
+            let description = c.description;
+            let judge = c.judge || '';
+            let solicitor = solicitorBlock;
+            
+            if (searchVal) {
+                 title = highlightText(title, searchVal);
+                 description = highlightText(description, searchVal);
+                 judge = highlightText(judge, searchVal);
+                 solicitor = highlightText(solicitor, searchVal);
+            }
+
             div.innerHTML = `
                 <div class="case-node"></div>
                 <div class="case-year-label">${c.date}</div>
 
                 <div class="case-header">
                     <div class="case-header-main">
-                        <h3 class="case-title">${c.title}</h3>
+                        <h3 class="case-title">${title}</h3>
                         <div class="case-strapline">
                             ${c.significance || ''}${c.significance && roleText ? ' · ' : ''}${roleText}
                         </div>
@@ -1269,11 +1398,11 @@
                     </div>
                 </div>
 
-                <p>${c.description}</p>
+                <p>${description}</p>
 
                 <div class="case-badges-row">
-                    ${c.judge ? `<span class="case-tag"><strong>Judge:</strong> ${c.judge}</span>` : ''}
-                    ${solicitorBlock ? `<span class="case-tag"><strong>Solicitor:</strong> ${solicitorBlock}</span>` : ''}
+                    ${judge ? `<span class="case-tag"><strong>Judge:</strong> ${judge}</span>` : ''}
+                    ${solicitor ? `<span class="case-tag"><strong>Solicitor:</strong> ${solicitor}</span>` : ''}
                     ${opposingBlock && opposingBlock !== 'N/A' ? `<span class="case-tag"><strong>Opp:</strong> ${opposingBlock}</span>` : ''}
                     ${c.status ? `<span class="case-tag" style="${statusStyle}"><strong>Status:</strong> ${c.status}</span>` : ''}
                 </div>
@@ -1615,14 +1744,63 @@
         });
     }
 
+    /* --- TESTIMONIALS CAROUSEL --- */
+    function initTestimonialsCarousel() {
+        const wrapper = document.getElementById('testimonials-wrapper');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        
+        if (!wrapper || !prevBtn || !nextBtn || typeof TESTIMONIALS_DATA === 'undefined' || TESTIMONIALS_DATA.length === 0) {
+            return;
+        }
+
+        let currentIndex = 0;
+
+        function renderTestimonials() {
+            wrapper.innerHTML = '';
+            TESTIMONIALS_DATA.forEach(t => {
+                const slide = document.createElement('div');
+                slide.className = 'testimonial-slide';
+                slide.innerHTML = `
+                    <div class="testimonial-text">"${t.text}"</div>
+                    <div class="testimonial-author">— ${t.author}, ${t.firm}</div>
+                `;
+                wrapper.appendChild(slide);
+            });
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const width = wrapper.clientWidth;
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % TESTIMONIALS_DATA.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length;
+            updateCarousel();
+        });
+        
+        // Initial render
+        renderTestimonials();
+        
+        // Handle window resize for carousel width
+        window.addEventListener('resize', updateCarousel);
+    }
+
     // INIT
     document.addEventListener('DOMContentLoaded', () => {
         initCookieConsent();
         initCases(); 
         renderArticlesHub();
         initPayCalculators();
-        initLimitationCalculator(); // Re-added specific init for limitation
-        initDisciplinaryChecklist(); // Re-added specific init for disciplinary
+        initLimitationCalculator(); 
+        initDisciplinaryChecklist(); 
+        initTestimonialsCarousel(); // Initialize carousel
         
         // Initial Routing Check
         handleRoute();
