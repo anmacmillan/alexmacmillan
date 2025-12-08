@@ -23,7 +23,7 @@ const CASES_DATA = [
         client: "Respondent",
         leading: "Sole Counsel",
         opposing: "N/A",
-        status: "Concluded",
+        status: "Pending",
         description: "Final Hearing (1 day).",
         significance: "Final Hearing"
     },
