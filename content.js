@@ -356,7 +356,7 @@ const CASES_DATA = [
         type: "Equality & Discrimination",
         confidential: "Yes",
         court: "Employment Tribunal",
-        judge: "EJ Brown",
+        judge: "EJ Edmonds",
         solicitor: "John Smith",
         firm: "Pinsent Masons",
         client: "Respondent",
