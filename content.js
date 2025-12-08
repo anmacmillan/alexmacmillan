@@ -24,12 +24,12 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Mr Mills",
         status: "Concluded",
-        description: "Successful Final Hearing. The Tribunal found unlawful deductions of £29,166.66. While the Respondent alleged an oral agreement to reduce salary, the Tribunal applied **Kerr v The Sweater Shop** and **International Packaging v Balfour** to rule that, absent written notification of the variation terms *before* the deduction, the deductions violated s.13(2)(b) ERA 1996. The Tribunal further applied **Agnew** to establish a 'series of deductions' despite gaps in payment, preserving the full claim period.",
+        description: "Successful Final Hearing. The Tribunal found unlawful deductions of £29,166.66. While the Respondent alleged an oral agreement to reduce salary, the Tribunal applied <em>Kerr v The Sweater Shop</em> and <em>International Packaging v Balfour</em> to rule that, absent written notification of the variation terms <em>before</em> the deduction, the deductions violated s.13(2)(b) ERA 1996. The Tribunal further applied <em>Agnew</em> to establish a 'series of deductions' despite gaps in payment, preserving the full claim period.",
         significance: "s.13 ERA 1996 / Written Notification",
         key_case_law: [
-            "Chief Constable of PSNI v Agnew [2023] UKSC 33",
-            "Kerr v The Sweater Shop (Scotland) Ltd [1996] IRLR 424",
-            "International Packaging Corporation (UK) Ltd v Balfour [2003] IRLR 11"
+            "<em>Chief Constable of PSNI v Agnew</em> [2023] UKSC 33",
+            "<em>Kerr v The Sweater Shop (Scotland) Ltd</em> [1996] IRLR 424",
+            "<em>International Packaging Corporation (UK) Ltd v Balfour</em> [2003] IRLR 11"
         ]
     },
     {
