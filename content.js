@@ -229,6 +229,39 @@ const CASES_DATA = [
 
     // --- 2024 CASES ---
     {
+        title: "F. Manshausen v IMI Precision Engineering",
+        citation: "Case No: 1310744/2022",
+        date: "2024",
+        type: "Equality & Discrimination",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "Employment Judge Perry",
+        solicitor: "Jane Doe",
+        firm: "Irwin Mitchell",
+        client: "Claimant",
+        leading: "Sole Counsel",
+        opposing: "Ms C McCann",
+        status: "Concluded",
+        description: "Successfully represented the Claimant in a multi-day liability hearing. The Tribunal found the Claimant was unfairly dismissed and victimised following his grievance regarding the devaluation of his role upon returning from cancer-related absence. The redundancy process was found to be a sham.",
+        significance: "Disability Discrimination / Sham Redundancy",
+        key_case_law: [
+            "Barclays Bank Plc v Kapur [1991] I.C.R. 208",
+            "Hendricks v Commissioner of Police of the Metropolis [2003] IRLR 96",
+            "Royal Mail Group Ltd v Jhuti [2018] UKEAT/0020/16",
+            "Robertson v Bexley Community Centre [2003] IRLR 434",
+            "Efobi v Royal Mail Group Ltd [2021] ICR 1263",
+            "Hewage v Grampian Health Board [2012] UKSC 37",
+            "Pnaiser v NHS England [2016] IRLR 170",
+            "City of York Council v Grosset [2018] IRLR 746",
+            "Gallop v Newport City Council 2014 IRLR 211",
+            "Hardys & Hansons plc v Lax [2005] IRLR 726",
+            "Martin v Devonshires Solicitors [2011] ICR 352",
+            "Polkey v AE Dayton Services Ltd [1988] ICR 142",
+            "Iceland Frozen Foods Ltd v Jones [1982] IRLR 439",
+            "Safeway Stores plc v Burrell [1997] ICR 523"
+        ]
+    },
+    {
         title: "John Bradley -v- Technical Drive",
         citation: "Case No: 6019242/2024",
         date: "2024",
@@ -284,7 +317,6 @@ const CASES_DATA = [
             "Adams v GKN Sankey Ltd (1980) IRLR 416",
             "Dixon v Stenor Ltd (1993) IRLR 28",
             "Saunders v Southend-on-Sea Borough Council (1984) ILR 372",
-            "Service v. Dolby [2003] IRLR",
             "Service v. Dolby [2003] IRLR 694"
         ]
     },
@@ -305,34 +337,11 @@ const CASES_DATA = [
         description: "Mrs. Marta Grobarcikova Gonczyova brought claims against Barchester Healthcare Ltd alleging disability discrimination arising under section 15 of the Equality Act 2010 and failure to make reasonable adjustments under section 21. The Tribunal found that although the claimant was disabled, the alleged unfavourable treatment and failure to make reasonable adjustments claims were not made out and dismissed both claims. The decision focused on whether the respondent's conduct and policies constituted discrimination or unreasonable failure to adjust workplace practices to accommodate the claimant's disabilities. Disability discrimination arising from disability (Equality Act 2010 s15); Duty to make reasonable adjustments (Equality Act 2010 s21); Disability-related harassment (Equality Act 2010 s26)",
         significance: "Final Hearing",
         key_case_law: [
-            "Agency v Rowan [2008] ICR",
-            "Agency v Rowan [2008] ICR 218",
-            "Birtenshaw v Oldfield [2019] IRLR",
-            "Birtenshaw v Oldfield [2019] IRLR 946",
             "Environment Agency v Rowan [2008] ICR 218",
-            "Plc v Lax [2005] EWCA",
-            "Plc v Lax [2005] EWCA Civ",
-            "Scheme v Williams [2018] UKSC",
-            "Scheme v Williams [2018] UKSC 65"
+            "Birtenshaw v Oldfield [2019] IRLR 946",
+            "Archibald v Fife Council [2004] IRLR 651",
+            "Trustees of Swansea University Pension Scheme v Williams [2018] UKSC 65"
         ]
-    },
-    {
-        title: "F. Manshausen v IMI Precision Engineering",
-        citation: "Case No: 1302345/2024",
-        date: "2024",
-        type: "Equality & Discrimination",
-        confidential: "No",
-        court: "Employment Tribunal",
-        judge: "EJ Jones",
-        solicitor: "Jane Doe",
-        firm: "Irwin Mitchell",
-        client: "Claimant",
-        leading: "Sole Counsel",
-        opposing: "Ms Y (Counsel)",
-        status: "Concluded",
-        description: "Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.",
-        significance: "Disability Discrimination",
-        key_case_law: []
     },
     {
         title: "Z v HRS Family Law Solicitors Ltd",
@@ -423,21 +432,9 @@ const CASES_DATA = [
         description: "The claimant, John William Kennedy Boggs, brought claims against Warrington and Halton Teaching Hospitals NHS Foundation Trust for unfair dismissal, wrongful dismissal, and disability discrimination arising from autism, anxiety, and depression. The Tribunal found in favor of the respondent on unfair dismissal, wrongful dismissal, discrimination arising from disability, and harassment claims, but partially upheld the claim for failure to make reasonable adjustments. The claimant withdrew sex discrimination and direct/indirect disability discrimination claims during the hearing. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Wrongful dismissal (common law contract principles); Disability discrimination (Equality Act 2010 ss 15, 20 - discrimination arising from disability and reasonable adjustments); Time limits for discrimination claims (Equality Act 2010 s 123); ACAS Code of Practice on Disciplinary and Grievance Procedures",
         significance: "Final Hearing",
         key_case_law: [
-            "Birds v Croucher [1984] IRLR",
             "Birds v Croucher [1984] IRLR 425",
-            "Board v Morgan [2018] EWCA",
-            "Board v Morgan [2018] EWCA Civ",
-            "Corporation v Keeble [1997] IRLR",
-            "Corporation v Keeble [1997] IRLR 336",
-            "Council v Afolabi [2003] EWCA",
-            "Council v Afolabi [2003] EWCA Civ",
-            "Limited v Jones [1982] IRLR",
-            "Limited v Jones [1982] IRLR 439",
-            "Ltd v Hitt [2003] IRLR",
-            "Ltd v Hitt [2003] IRLR 23",
-            "Nagarajan v London Regional Transport [1999] IRLR 572",
+            "Abernethy v Mott Hay and Anderson [1974] ICR 323",
             "Polkey v AE Dayton [1987] IRLR 50",
-            "Taylor v OCS",
             "Taylor v OCS [2006] EWCA Civ"
         ]
     },
@@ -568,15 +565,10 @@ const CASES_DATA = [
         description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct. The unfair dismissal claim was withdrawn due to insufficient continuous service. Disability discrimination (Equality Act 2010 s15); Failure to make reasonable adjustments (Equality Act 2010 ss 20-21); Unfair dismissal (Employment Rights Act 1996 ss 94-98) - withdrawn due to lack of qualifying service",
         significance: "Remedies",
         key_case_law: [
-            "Agency v Rowan [2008] IRLR",
-            "Agency v Rowan [2008] IRLR 20",
             "Environment Agency v Rowan [2008] IRLR 20",
-            "Griffiths v Secretary of State [2016]
-IRLR 216",
-            "Institute v Latif [2007] IRLR",
-            "Institute v Latif [2007] IRLR 576",
-            "Ltd v Carranza [2015] ICR",
-            "Ltd v Carranza [2015] ICR 169"
+            "Griffiths v Secretary of State [2016] IRLR 216",
+            "Project Management Institute v Latif [2007] IRLR 576",
+            "General Dynamics Information Technology Ltd v Carranza [2015] ICR 169"
         ]
     },
     {
@@ -650,45 +642,14 @@ IRLR 216",
         description: "Mr Ismail Ismail claimed constructive unfair dismissal against Asda Stores Limited, alleging denial of promotion opportunities and bullying by a senior manager, Mr Preston, which breached the implied term of trust and confidence. The Employment Tribunal found that the claimant was not constructively dismissed and dismissed the claim. The Tribunal considered whether the employer’s conduct justified resignation and whether the dismissal was fair, ultimately concluding the claim failed. Constructive unfair dismissal (Employment Rights Act 1996 ss 95-98); Implied term of trust and confidence; Unfair dismissal (Employment Rights Act 1996 ss 94-98); Internal grievance procedures; Employment contract law",
         significance: "Final Hearing",
         key_case_law: [
-            "Forest v Omilaju [2005] IRLR",
-            "Forest v Omilaju [2005] IRLR 35",
-            "Ltd v Burchell [1978] IRLR",
-            "Ltd v Burchell [1978] IRLR 379",
-            "Ltd v Protopapa [1990] IRLR",
-            "Ltd v Protopapa [1990] IRLR 316",
-            "Ltd v Sharp [1978] ICR",
-            "Ltd v Sharp [1978] ICR 221",
-            "Mahmud v BCCI [1997] ICR",
-            "Malik and Mahmud v BCCI [1997] ICR 606",
-            "Palmanor v Cedron [1978] IRLR"
+            "London Borough of Waltham Forest v Omilaju [2005] IRLR 35",
+            "British Aircraft Corporation Ltd v Austin [1978] IRLR 332",
+            "Western Excavating (ECC) Ltd v Sharp [1978] ICR 221",
+            "Malik and Mahmud v BCCI [1997] ICR 606"
         ]
     },
 
     // --- 2022 CASES ---
-    {
-        title: "Mr Habila Tikon -v- (1) Mitie Limited (2) Her Majestys Revenue and Customs",
-        citation: "Ref: 2206737/2021",
-        date: "2022",
-        type: "Employment Tribunal Claim",
-        confidential: "No",
-        court: "London Central by CVP on 16 December 2022",
-        judge: "Employment Judge Hindmarch",
-        solicitor: "Instructing Solicitor",
-        firm: "N/A",
-        client: "Respondent",
-        leading: "Sole Counsel",
-        opposing: "Alexander MacMillan",
-        status: "Concluded",
-        description: "The claimant, Mr Habila Tikon, brought claims against HMRC and Mitie Limited including detriment under whistleblowing provisions, unlawful deduction of wages, breach of contract, and unfair dismissal. The tribunal struck out all claims against HMRC and the claimant's unfair dismissal and detriment claims as out of time, allowing only the unlawful deduction from wages and breach of contract claims to proceed against Mitie Limited. The decision involved preliminary issues including the timing of claims, TUPE transfer questions, and the claimant's failure to provide evidence regarding means for a deposit order. Whistleblowing detriment (Employment Rights Act 1996 s47B); Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Unlawful deduction from wages (Employment Rights Act 1996 s13); Breach of contract; Time limits for claims (Employment Rights Act 1996 s111); TUPE transfer issues (Transfer of Undertakings (Protection of Employment) Regulations 2006)",
-        significance: "Final Hearing",
-        key_case_law: [
-            "Adams v GKN Sankey Ltd (1980) IRLR 416",
-            "Dixon v Stenor Ltd (1993) IRLR 28",
-            "Saunders v Southend-on-Sea Borough Council (1984) ILR 372",
-            "Service v. Dolby [2003] IRLR",
-            "Service v. Dolby [2003] IRLR 694"
-        ]
-    },
     {
         title: "Mr C Vassallo -v- Sizedwell Clothing Ltd",
         citation: "Ref: 3204026/2022",
@@ -721,29 +682,9 @@ IRLR 216",
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Ms D Sundar brought multiple claims against Cardiff University including unfair dismissal, detriments for protected disclosures, race, disability and marriage discrimination, breach of contract, and victimisation. After several preliminary hearings and amendment applications, all claims were dismissed by the Employment Tribunal, which found no evidence to support unfair dismissal, discrimination, victimisation, or breach of contract. The claimant was also found not to be disabled under the Equality Act 2010, resulting in dismissal of the reasonable adjustments claim. Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Protected disclosures/detriment (Employment Rights Act 1996 s47B); Breach of contract; Direct race discrimination (Equality Act 2010 s13); Direct marriage discrimination (Equality Act 2010 s13); Disability discrimination and reasonable adjustments (Equality Act 2010 ss 6, 20, 21); Victimisation (Equality Act 2010 s27)",
+        description: "Final Hearing.",
         significance: "Final Hearing",
-        key_case_law: [
-            "Ellis v Bacon [2023] IRLR",
-            "Ellis v Bacon [2023] IRLR 262",
-            "Hewage v Grampian [2012] IRLR 870",
-            "LLP v Korshunova [2017] ICR",
-            "LLP v Korshunova [2017] ICR 561",
-            "Ltd v Gahir [2014] ICR",
-            "Ltd v Gahir [2014] ICR 747",
-            "Ltd v Wong [2005] IRLR",
-            "Ltd v Wong [2005] IRLR 258",
-            "Madarassy v Nomura [2012] IRLR 870",
-            "Nagarajan v London Regional Transport [1999] IRLR
-572",
-            "Panayiotou v Kernaghan [2014] IRLR",
-            "Panayiotou v Kernaghan [2014] IRLR 500",
-            "School v Evans [2006] IRLR",
-            "School v Evans [2006] IRLR 500",
-            "Shamoon v Chief Constable [2003]
-UKHL 11",
-            "Shamoon v Chief Constable [2003] IRLR 285"
-        ]
+        key_case_law: []
     },
     {
         title: "Gillian Oxborrow & Others -v- Partnerships In Care",
@@ -798,41 +739,9 @@ UKHL 11",
         description: "The key issue in Mr G Fuller's claim against Lancashire County Council was whether he was an employee or a casual worker during the period when alleged unauthorised deductions from his wages were made. The tribunal found that the claimant was not an employee but a casual worker and dismissed the claim for unauthorised deductions. The respondent had ceased offering shifts during an investigation period, which was not considered an unlawful deduction of wages. Employment status (Employment Rights Act 1996 s230); Unauthorised deductions from wages (Employment Rights Act 1996 ss13-27); Casual worker status; Jurisdictional issues in Employment Tribunal claims",
         significance: "Final Hearing",
         key_case_law: [
-            "Branch v Geys [2013] ICR",
-            "Branch v Geys [2013] ICR 117",
-            "Ltd v Church [2000] IRLR",
-            "Ltd v Church [2000] IRLR 27",
-            "Ltd v Cope [1978] ICR",
-            "Ltd v Cope [1978] ICR 1210",
-            "Ready Mixed Concrete"
-        ]
-    },
-    {
-        title: "David Bannister -v- DPD Group UK Ltd",
-        citation: "Ref: 3305117/2020",
-        date: "2022",
-        type: "Employment Tribunal Claim",
-        confidential: "No",
-        court: "Watford",
-        judge: "Employment Judge Bedeau",
-        solicitor: "Instructing Solicitor",
-        firm: "N/A",
-        client: "Respondent",
-        leading: "Sole Counsel",
-        opposing: "N/A",
-        status: "Concluded",
-        description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct. The unfair dismissal claim was withdrawn due to insufficient continuous service. Disability discrimination (Equality Act 2010 s15); Failure to make reasonable adjustments (Equality Act 2010 ss 20-21); Unfair dismissal (Employment Rights Act 1996 ss 94-98) - withdrawn due to lack of qualifying service",
-        significance: "Final Hearing",
-        key_case_law: [
-            "Agency v Rowan [2008] IRLR",
-            "Agency v Rowan [2008] IRLR 20",
-            "Environment Agency v Rowan [2008] IRLR 20",
-            "Griffiths v Secretary of State [2016]
-IRLR 216",
-            "Institute v Latif [2007] IRLR",
-            "Institute v Latif [2007] IRLR 576",
-            "Ltd v Carranza [2015] ICR",
-            "Ltd v Carranza [2015] ICR 169"
+            "Societe Generale, London Branch v Geys [2013] ICR 117",
+            "Cerberus Software Ltd v Rowley [2001] IRLR 160",
+            "Ready Mixed Concrete (South East) Ltd v Minister of Pensions and National Insurance [1968] 2 QB 497"
         ]
     },
     {
@@ -872,7 +781,7 @@ IRLR 216",
         key_case_law: []
     },
     {
-        title: "Mahiul Muqit -v- [Respondent]",
+        title: "Samantha Zenda Ovies -v- Mahiul Muqit",
         citation: "Ref: 2200311/2021",
         date: "2022",
         type: "Employment Tribunal Claim",
@@ -926,7 +835,7 @@ IRLR 216",
         key_case_law: []
     },
     {
-        title: "Ms Devi Sundar",
+        title: "Ms Devi Sundar -v- Cardiff University",
         citation: "Case No: 683848",
         date: "2022",
         type: "Employment Tribunal Claim",
@@ -939,9 +848,16 @@ IRLR 216",
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Final Hearing.",
+        description: "Ms D Sundar brought multiple claims against Cardiff University including unfair dismissal, detriments for protected disclosures, race, disability and marriage discrimination, breach of contract, and victimisation. After several preliminary hearings and amendment applications, all claims were dismissed by the Employment Tribunal, which found no evidence to support unfair dismissal, discrimination, victimisation, or breach of contract. The claimant was also found not to be disabled under the Equality Act 2010, resulting in dismissal of the reasonable adjustments claim. Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Protected disclosures/detriment (Employment Rights Act 1996 s47B); Breach of contract; Direct race discrimination (Equality Act 2010 s13); Direct marriage discrimination (Equality Act 2010 s13); Disability discrimination and reasonable adjustments (Equality Act 2010 ss 6, 20, 21); Victimisation (Equality Act 2010 s27)",
         significance: "Final Hearing",
-        key_case_law: []
+        key_case_law: [
+            "Ellis v Bacon [2023] IRLR 262",
+            "Hewage v Grampian Health Board [2012] IRLR 870",
+            "Pnaiser v NHS England [2016] IRLR 170",
+            "Madarassy v Nomura International [2007] IRLR 246",
+            "Nagarajan v London Regional Transport [1999] IRLR 572",
+            "Shamoon v Chief Constable of the Royal Ulster Constabulary [2003] IRLR 285"
+        ]
     },
 
     // --- 2021 CASES ---
