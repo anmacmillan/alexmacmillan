@@ -8,7 +8,24 @@
    ========================================================================== */
 
 const CASES_DATA = [
-   {
+    {
+        title: "Mr Thomas Allen -v- Oolong Ltd",
+        citation: "Case No: 6027054/2025",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "London South Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (1 day).",
+        significance: "Final Hearing"
+    },
+    {
         title: "Agbotey v Maier UK Ltd",
         citation: "Case No: 6009509/2025",
         date: "2025",
@@ -25,7 +42,7 @@ const CASES_DATA = [
         description: "Successfully defended claims valued at £44,000 arising from the summary dismissal of a senior operator for gross negligence. The Tribunal found the dismissal fair following a 'shock-loading' incident involving a 13-tonne crane tool and a failure to follow mandatory reporting procedures.",
         significance: "Gross Misconduct / Health & Safety"
     }, 
-   {
+    {
         title: "Mr Lee Robinson -v-  Stephen John Williams TA/ National Property Buyers",
         citation: "Case No: 1303573/2025",
         date: "2025",
@@ -42,8 +59,41 @@ const CASES_DATA = [
         description: "Breach of Contract / Unlawful Deductions in relation to commission payments",
         significance: "Commission payments"
     }, 
-
-   {
+    {
+        title: "Miss Jacqueline Keddie Kelsall -v- Betsi Cadwaladr University Health Board",
+        citation: "Case No: 1604319/2024",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Wales Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (4 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Mrs Asia Mahmood -v- Dawat e Islami UK",
+        citation: "Case No: 6025015/2025",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Leeds Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (3 days).",
+        significance: "Final Hearing"
+    },
+    {
         title: "Mrs M Karch v Unipart Group Ltd",
         citation: "Case No: 1304180/2024",
         date: "2025",
@@ -60,8 +110,24 @@ const CASES_DATA = [
         description: "Multi-week disability discrimination claim",
         significance: "Disability discrimination"
     }, 
-   
-   {
+    {
+        title: "Alisha Kausar v (1) Our Lady and All Saints Catholic Multi Academy Company (2) TeacherActive Limited",
+        citation: "Case No: 1304360/2024 & 13085996/2024",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (7 days).",
+        significance: "Final Hearing"
+    },
+    {
         title: "John Lowe v Keble Heath Construction",
         citation: "Case No: 1300123/2025",
         date: "2025",
@@ -78,8 +144,142 @@ const CASES_DATA = [
         description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
         significance: "Whistleblowing Detriment"
     },
-
-   
+    {
+        title: "Mark Roberts -v- Cast Iron Welding Services Limited",
+        citation: "Case No: 6018151/2024",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Leicester Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (4 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Professor Peter Lax -v- The United Lincolnshire Hospitals NHS Trust",
+        citation: "Ref: 568MC635",
+        date: "2025",
+        type: "County Court Claim",
+        confidential: "No",
+        court: "Lincoln County Court",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Claimant",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (1 day).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Mrs D Johnson V Prysmian Cables & Systems Ltd",
+        citation: "Case No: 1300070/2024",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "West Midlands Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (10 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Nina Ogilvie -v- Alexander Optometrists",
+        citation: "Case No: 6013922/2024",
+        date: "2025",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Newcastle Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (3 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "John Bradley -v- Technical Drive",
+        citation: "Case No: 6019242/2024",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (4 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Miss C Ettore -v- Pro Support Limited",
+        citation: "Case No: 2402575/2023",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Manchester Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (5 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Mr Habila Tikon -v- (1) Mitie Limited (2) Her Majestys Revenue and Customs",
+        citation: "Ref: EA-2023-000125-AT",
+        date: "2024",
+        type: "EAT Appeal",
+        confidential: "No",
+        court: "Employment Appeal Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Appellant",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Appeal Hearing (1 day).",
+        significance: "Appeal"
+    },
+    {
+        title: "Marta Grobarcikova Gonczyova -v- Barchester Healthcare Ltd",
+        citation: "Case No: 2205716/2023",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Bristol Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Claimant",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (4 days).",
+        significance: "Final Hearing"
+    },
     {
         title: "F. Manshausen v IMI Precision Engineering",
         citation: "Case No: 1302345/2024",
@@ -97,7 +297,6 @@ const CASES_DATA = [
         description: "Successfully represented the Claimant in a 7-day disability discrimination and victimisation claim concerning detrimental treatment during and after sickness absence for cancer treatment.",
         significance: "Disability Discrimination"
     },
-   
     {
         title: "Z v HRS Family Law Solicitors Ltd",
         citation: "Case No: 1303456/2024",
@@ -114,6 +313,91 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
         significance: "Disability / Performance"
+    },
+    {
+        title: "Hasnain Visram -v- Boots Management Services Ltd",
+        citation: "Case No: TBC",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "London Central Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (4 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "A Medina -v- PRODENT LONDON LTD",
+        citation: "Case No: 2209044/2022",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "London Central Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (3 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Mr Luke Salter -v- Muller UK & Ireland Group LLP",
+        citation: "Case No: 1304966/2023",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (3 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Alex John Boggs -v- Warrington & Halton Hospitals Foundation",
+        citation: "Case No: 2402734/2022",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "Liverpool Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Claimant",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (9 days).",
+        significance: "Final Hearing"
+    },
+    {
+        title: "Mr Akeem Adesola -v- (1) Mitie (2) Kingdom Services Group",
+        citation: "Case No: 2204229/2021",
+        date: "2024",
+        type: "Employment Tribunal Claim",
+        confidential: "No",
+        court: "London Central Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Claimant",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Final Hearing (1 day).",
+        significance: "Final Hearing"
     },
     {
         title: "Hare Wines Ltd v Kaur & Anor",
@@ -144,7 +428,7 @@ const ARTICLES_DATA = [
             <div class="article-body">
                 <p>In the complex arena of Equal Pay litigation, the battleground often shifts from "equal value" to the "material factor defence." The recent Employment Appeal Tribunal (EAT) judgment in <em>Perkins v Marston (Holdings) Ltd [2025] EAT 170</em> provides critical clarity on three pillars of this defence: the cogency of evidence required, the correct test for indirect discrimination, and the granularity required when assessing proportionality.</p>
                 <p>The case concerned a startling pay disparity: Ms Perkins, a Head of Enforcement, was paid approximately £51,500, while her male comparators—Divisional Enforcement Directors doing work of equal value—received nearly £92,000. The employer relied on market forces and the necessity of recruiting from a specific pool of "Enforcement Agents" (90% male) to justify the gap.</p>
-                
+                 
                 <h3>The Evidential Threshold: No "Higher Standard"</h3>
                 <p>A persistent question in Equal Pay disputes is the level of evidence required to prove a material factor. The Claimant argued that following <em>BMC Software Ltd v Shaikh</em>, employers face a heightened threshold of "cogency and particularisation."</p>
                 <p>The EAT rejected this interpretation. While an opaque pay system (as was present here) demands convincing evidence to rebut the presumption of discrimination, there is no special, elevated burden of proof for Equal Pay cases. The standard remains the civil balance of probabilities. As the EAT noted, if a Tribunal accepts oral evidence that a specific sum was necessary to retain an employee, that factual finding stands, even in the absence of a pristine paper trail.</p>
@@ -173,7 +457,7 @@ const ARTICLES_DATA = [
             <div class="article-body">
                 <p>In employment law, few areas cause as much administrative friction as the overlap between long-term sickness absence and statutory annual leave. A scenario crossing my desk with surprising frequency involves a long-term sick employee - perhaps on half-pay or nil pay with Statutory Sick Pay (SSP) - who requests to take a week of annual leave.</p>
                 <p>The immediate reaction from HR or payroll may be a reflex refusal: “You cannot be on holiday if you are signed off sick. We need a fit note, not a holiday request.” While intuitively logical to the non-lawyer, this administrative rigidity is fraught with legal risk.</p>
-                
+                 
                 <h3>The "Stringer" Principle: Two Sides of the Same Coin</h3>
                 <p>The foundational misunderstanding often lies in the belief that sickness and holiday are mutually exclusive statuses. They are not. Since the seminal decision in <em>Stringer and others v Revenue and Customs Commissioners [2009] ICR 932</em>, it has been established that workers on long-term sick leave continue to accrue statutory annual leave.</p>
                 <p>Crucially, the Grand Chamber of the Court of Justice ruled that the Directive treats the entitlement to leave and the payment for it as inseparable:</p>
