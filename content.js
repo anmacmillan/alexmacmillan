@@ -58,7 +58,7 @@ const CASES_DATA = [
         confidential: "No",
         court: "Employment Tribunal (Midlands West)",
         judge: "EJ Wedderspoon",
-        solicitor: "Rebekah Brown", 
+        solicitor: "Natassia Brown", 
         firm: "HCB Solicitors Limited",
         client: "Respondent",
         leading: "Sole Counsel",
