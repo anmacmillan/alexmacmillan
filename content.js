@@ -48,7 +48,9 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Successfully defended claims valued at £44,000 arising from the summary dismissal of a senior operator for gross negligence. The Tribunal found the dismissal fair following a 'shock-loading' incident involving a 13-tonne crane tool and a failure to follow mandatory reporting procedures.",
         significance: "Gross Misconduct / Health & Safety",
-        key_case_law: []
+        key_case_law: [
+           "<em>BHS v Burchell</em> [1978] IRLR 379"
+        ]
     }, 
     {
         title: "Mr Lee Robinson -v-  Stephen John Williams TA/ National Property Buyers",
