@@ -1397,7 +1397,7 @@
 
     function initCases() {
         const typeFilter = document.getElementById('case-type-filter');
-        const yearFilter = document.getElementById('case-year-filter');
+        // Removed yearFilter reference to fix error
         const courtFilter = document.getElementById('case-court-filter'); 
         const starredFilter = document.getElementById('case-starred-filter'); 
         
@@ -1451,7 +1451,7 @@
 
         // Event Listeners
         typeFilter.addEventListener('change', renderCases);
-        yearFilter.addEventListener('change', renderCases);
+        // Removed yearFilter listener
         courtFilter.addEventListener('change', renderCases); 
         starredFilter.addEventListener('change', renderCases); 
         
@@ -1476,7 +1476,7 @@
     // NEW: Function to clear all filters
     function clearFilters() {
         document.getElementById('case-type-filter').value = 'all';
-        document.getElementById('case-year-filter').value = '5'; // Default to 5 years
+        // Removed yearFilter reset
         document.getElementById('case-court-filter').value = 'all';
         document.getElementById('case-hearing-type-filter').value = 'all';
         document.getElementById('case-search-input').value = '';
@@ -1497,7 +1497,7 @@
      */
     function filterByBadge(filterType, value) {
         // 1. Reset other filters
-        document.getElementById('case-year-filter').value = 'all';
+        // Removed yearFilter reset
         document.getElementById('case-hearing-type-filter').value = 'all';
         document.getElementById('case-court-filter').value = 'all';
         
@@ -1591,7 +1591,7 @@
         
         // Gather Filter Inputs
         const typeVal = document.getElementById('case-type-filter').value;
-        const yearVal = document.getElementById('case-year-filter').value;
+        const yearVal = 'all'; // Hardcoded to 'all' since filter is removed
         const courtVal = document.getElementById('case-court-filter').value; 
         const starredVal = document.getElementById('case-starred-filter') ? document.getElementById('case-starred-filter').checked : false;
         
