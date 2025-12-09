@@ -394,21 +394,35 @@
         
         .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
         
-        /* New Clickable Tag Style */
+        /* CLICKABLE BADGES */
+        .clickable-badge {
+            cursor: pointer;
+            border-bottom: 1px solid transparent; 
+        }
+
+        .clickable-badge:hover {
+            filter: brightness(0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .clickable-badge:active {
+            transform: translateY(0);
+        }
+
+        .jurisdiction-tag:hover { background-color: #bbdefb !important; }
+        .law-tag:hover { background-color: #e3f2fd !important; border-color: #2196f3 !important; }
+        
+        /* New Clickable Tag Style (Legacy support) */
         .clickable-tag {
             cursor: pointer;
             border-bottom: 1px solid transparent;
         }
-        
         .clickable-tag:hover {
             background-color: #dcdcdc; /* Darker grey on hover */
             border-bottom: 1px solid #999;
         }
         
-        .clickable-tag:active {
-            background-color: #ccc;
-        }
-
         /* Ensure no double borders at end of list */
         .case-item:last-child {
             border-bottom: none;
@@ -433,20 +447,17 @@
             flex-grow: 1;
         }
 
-        .filter-select, .search-input {
+        .filter-select, .search-input, .autocomplete-input {
             padding: 0.6rem;
             border: 1px solid #ccc;
             font-family: var(--font-mono);
             font-size: 0.9rem;
             background-color: #fff;
             width: 100%;
-        }
-        
-        .search-input {
-            border-radius: 0;
+            border-radius: 0; /* Consistent look */
             appearance: none;
         }
-
+        
         .filter-count {
             font-family: var(--font-mono);
             font-size: 0.8rem;
@@ -903,12 +914,12 @@
 
                     <div class="filter-group">
                         <span class="nav-label help-tip" style="margin:0;" 
-                              title="Filter by specific Judge (dynamically populated from case list).">
-                            Judge
+                              title="Type to search for a specific Judge.">
+                            Judge (Autocomplete)
                         </span>
-                        <select id="case-judge-filter" class="filter-select">
-                            <option value="all">All Judges</option>
-                        </select>
+                        <input type="text" id="case-judge-input" list="judges-datalist" class="autocomplete-input" placeholder="Start typing Judge's name...">
+                        <datalist id="judges-datalist">
+                            </datalist>
                     </div>
 
                     <div class="filter-group">
@@ -924,7 +935,7 @@
                         </select>
                     </div>
 
-                    <div class="filter-group">
+                    <div class="filter-group" style="display:none;">
                         <span class="nav-label help-tip" style="margin:0;" 
                               title="Filter by the instructing solicitor's firm or Direct Access instruction.">
                             Instructing Firm
@@ -1264,7 +1275,6 @@
        ROUTING ENGINE
        ========================================================================== */
     
-    // This handles the URL hash (e.g., #profile-view) to allow back-button and direct linking
     function handleRoute() {
         const hash = window.location.hash || '#profile-view'; // Default to profile
         
@@ -1361,7 +1371,7 @@
     }
 
     /* ==========================================================================
-       CASE LOGIC: INIT, FILTERING, RENDERING & REPORTING
+       CASE LOGIC: INIT, FILTERING, RENDERING & REPORTING (UPDATED)
        ========================================================================== */
 
     function initCases() {
@@ -1369,18 +1379,19 @@
         const yearFilter = document.getElementById('case-year-filter');
         const courtFilter = document.getElementById('case-court-filter'); 
         const starredFilter = document.getElementById('case-starred-filter'); 
-        const judgeFilter = document.getElementById('case-judge-filter'); 
+        
+        // NEW: Autocomplete Elements
+        const judgeInput = document.getElementById('case-judge-input'); 
+        const judgeDatalist = document.getElementById('judges-datalist');
+
         const hearingFilter = document.getElementById('case-hearing-type-filter'); 
-        const firmFilter = document.getElementById('case-firm-filter'); 
         const textSearch = document.getElementById('case-search-input');
         
-        // 1. Populate Jurisdiction Filter (Flattening the Jurisdiction Arrays)
+        // 1. Populate Jurisdiction Filter
         const allJurisdictions = new Set();
-        // Add defaults if available
         if (typeof PRACTICE_AREAS !== 'undefined') {
             PRACTICE_AREAS.forEach(p => allJurisdictions.add(p));
         }
-        // Add from data
         CASES_DATA.forEach(c => {
             if (c.jurisdiction && Array.isArray(c.jurisdiction)) {
                 c.jurisdiction.forEach(j => allJurisdictions.add(j));
@@ -1396,27 +1407,33 @@
             typeFilter.appendChild(opt);
         });
 
-        // 2. Populate Judge Filter
-        const allJudges = [...new Set(CASES_DATA.map(c => c.judge))].filter(j => j).sort();
-        judgeFilter.innerHTML = '<option value="all">All Judges</option>';
-        allJudges.forEach(j => {
-            const opt = document.createElement('option');
-            opt.value = j;
-            opt.innerText = j;
-            judgeFilter.appendChild(opt);
+        // 2. Populate Judge Autocomplete (With Cleaning)
+        const allJudges = new Set();
+        CASES_DATA.forEach(c => {
+            if(!c.judge) return;
+            const cleanName = c.judge.trim();
+            // Filter out generic placeholders
+            if(cleanName.length < 3 || cleanName === 'EJ' || cleanName === 'Employment Judge' || cleanName === 'Employment Judge ') return;
+            allJudges.add(cleanName);
         });
 
-        // 3. Hide unused 'Firm' filter (Data does not contain instructing firm)
-        if(firmFilter && firmFilter.parentElement) {
-            firmFilter.parentElement.style.display = 'none';
-        }
+        const sortedJudges = Array.from(allJudges).sort();
+        judgeDatalist.innerHTML = ''; // Clear existing
+        sortedJudges.forEach(j => {
+            const opt = document.createElement('option');
+            opt.value = j;
+            judgeDatalist.appendChild(opt);
+        });
 
         // Event Listeners
         typeFilter.addEventListener('change', renderCases);
         yearFilter.addEventListener('change', renderCases);
         courtFilter.addEventListener('change', renderCases); 
         starredFilter.addEventListener('change', renderCases); 
-        judgeFilter.addEventListener('change', renderCases); 
+        
+        // UPDATED: Listen to input for autocomplete filtering
+        judgeInput.addEventListener('input', renderCases); 
+
         hearingFilter.addEventListener('change', renderCases);
         textSearch.addEventListener('keyup', renderCases);
         
@@ -1427,6 +1444,36 @@
         // Report Generator
         const reportBtn = document.getElementById('generate-cases-report-btn');
         if(reportBtn) reportBtn.addEventListener('click', generateWordReport);
+    }
+
+    /**
+     * Helper function to handle badge clicks
+     */
+    function filterByBadge(filterType, value) {
+        // 1. Reset other filters to default to ensure the user sees results
+        document.getElementById('case-year-filter').value = 'all';
+        document.getElementById('case-hearing-type-filter').value = 'all';
+        
+        // 2. Set the specific filter
+        if (filterType === 'judge') {
+            const input = document.getElementById('case-judge-input');
+            input.value = value;
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } 
+        else if (filterType === 'jurisdiction') {
+            const select = document.getElementById('case-type-filter');
+            select.value = value;
+            select.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        else if (filterType === 'caselaw' || filterType === 'venue') {
+            // For Venue and Case Law, we use the main keyword search box
+            const input = document.getElementById('case-search-input');
+            input.value = value;
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // 3. Trigger Render
+        renderCases();
     }
 
     function renderLocations() {
@@ -1483,7 +1530,10 @@
         const yearVal = document.getElementById('case-year-filter').value;
         const courtVal = document.getElementById('case-court-filter').value; 
         const starredVal = document.getElementById('case-starred-filter') ? document.getElementById('case-starred-filter').checked : false;
-        const judgeVal = document.getElementById('case-judge-filter').value; 
+        
+        // UPDATED: Get value from text input, not select
+        const judgeVal = document.getElementById('case-judge-input').value.toLowerCase(); 
+        
         const hearingVal = document.getElementById('case-hearing-type-filter').value;
         const searchVal = document.getElementById('case-search-input').value.toLowerCase();
         
@@ -1509,7 +1559,14 @@
             // 3. Text Search
             const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
             const jurisSearch = c.jurisdiction ? c.jurisdiction.join(' ').toLowerCase() : '';
-            const searchText = `${c.title} ${c.description} ${c.court} ${judgeSearch} ${jurisSearch} ${c.citation}`.toLowerCase();
+            const caseLawSearch = c.key_case_law ? c.key_case_law.join(' ').toLowerCase() : '';
+            
+            // Strip HTML tags from case law for clean search matching
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = caseLawSearch;
+            const cleanCaseLaw = tempDiv.textContent || tempDiv.innerText || "";
+
+            const searchText = `${c.title} ${c.description} ${c.court} ${judgeSearch} ${jurisSearch} ${c.citation} ${cleanCaseLaw}`.toLowerCase();
             const matchesSearch = !searchVal || searchText.includes(searchVal);
 
             // 4. Court Level Match
@@ -1522,9 +1579,12 @@
                 else if (courtVal === 'cc') matchesCourt = cText.includes('county court');
             }
 
-            // 5. Judge Match
+            // 5. Judge Match (Autocomplete Logic: includes/contains)
             let matchesJudge = true;
-            if (judgeVal !== 'all') matchesJudge = c.judge === judgeVal;
+            if (judgeVal) {
+                // Check if case judge exists and includes the typed string
+                matchesJudge = c.judge && c.judge.toLowerCase().includes(judgeVal);
+            }
 
             // 6. Hearing Type Match
             let matchesHearing = true;
@@ -1564,34 +1624,60 @@
                  description = highlightText(description, searchVal);
             }
 
-            // --- BUILD BADGES ---
+            // --- BUILD BADGES WITH ONCLICK EVENTS ---
             
             // 1. Jurisdiction Badges (Pills)
             let jurisBadges = '';
             if (c.jurisdiction && c.jurisdiction.length > 0) {
                 jurisBadges = c.jurisdiction.map(j => 
-                    `<span class="case-tag" style="background-color:#e3f2fd; color:#0d47a1; border:1px solid #bbdefb;">${j}</span>`
+                    `<span class="case-tag jurisdiction-tag clickable-badge" 
+                           onclick="filterByBadge('jurisdiction', '${j.replace(/'/g, "\\'")}')"
+                           style="background-color:#e3f2fd; color:#0d47a1; border:1px solid #bbdefb;"
+                           title="Filter by ${j}">${j}</span>`
                 ).join(' ');
             }
 
-            // 2. Judge Badge
-            const judgeBadge = c.judge 
-                ? `<span class="case-tag clickable-tag" onclick="filterByTerm('${(c.judge || '').replace(/'/g, "\\'")}')"><strong>Judge:</strong> ${c.judge}</span>` 
-                : '';
+            // 2. Judge Badge (Clean Logic)
+            let judgeBadge = '';
+            // Only show if judge name is substantial and not "EJ"
+            if (c.judge && c.judge.trim().length > 3 && c.judge !== 'EJ' && c.judge !== 'Employment Judge') {
+                 judgeBadge = `<span class="case-tag clickable-badge" 
+                                     onclick="filterByBadge('judge', '${c.judge.replace(/'/g, "\\'")}')"
+                                     title="Show all cases by ${c.judge}">
+                                     <strong>Judge:</strong> ${c.judge}
+                               </span>`;
+            }
             
             // 3. Venue/Court Badge
             const venueBadge = c.court
-                ? `<span class="case-tag"><strong>Venue:</strong> ${c.court}</span>`
+                ? `<span class="case-tag clickable-badge" 
+                         onclick="filterByBadge('venue', '${c.court.replace(/'/g, "\\'")}')"
+                         title="Show all cases at ${c.court}">
+                         <strong>Venue:</strong> ${c.court}
+                   </span>`
                 : '';
 
-            // 4. Case Law Logic
+            // 4. Case Law Logic (Hyperlinked)
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
+                 // Map badges and make them clickable
+                 const badges = c.key_case_law.map(law => {
+                     const temp = document.createElement("div");
+                     temp.innerHTML = law;
+                     const plainText = temp.textContent || temp.innerText || "";
+                     return `<span class="case-tag law-tag clickable-badge" 
+                                   style="font-style:italic;"
+                                   onclick="filterByBadge('caselaw', '${plainText.replace(/'/g, "\\'")}')"
+                                   title="Find cases citing ${plainText}">
+                                   ${law}
+                             </span>`;
+                 }).join('');
+
                  caseLawHtml = `
                     <div class="case-law-section">
-                        <span class="case-law-label">Key Authorities Cited</span>
+                        <span class="case-law-label">Key Authorities Cited (Click to search)</span>
                         <div class="case-badges-row" style="margin-top:0;">
-                             ${c.key_case_law.map(law => `<span class="case-tag law-tag" style="font-style:italic;">${law}</span>`).join('')}
+                             ${badges}
                         </div>
                     </div>
                  `;
