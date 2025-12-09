@@ -1,12 +1,5 @@
-```javascript
 /* ==========================================================================
    ALEX MACMILLAN - SITE CONTENT DATA
-   
-   INSTRUCTIONS:
-   1. To add a CASE: Copy a block inside CASES_DATA and fill in details.
-   2. To add an ARTICLE: Copy a block inside ARTICLES_DATA.
-   3. To add a TESTIMONIAL: Copy a block inside TESTIMONIALS_DATA.
-   4. Be careful not to delete commas between items.
    ========================================================================== */
 
 const CASES_DATA = [
@@ -658,7 +651,6 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        starred: true,
         description: "Final Hearing (1 day).",
         significance: "Final Hearing",
         starred: true,
@@ -2812,4 +2804,3 @@ const TESTIMONIALS_DATA = [
         date: "March 2024"
     }
 ];
-```
