@@ -1027,7 +1027,7 @@ const ARTICLES_DATA = [
                 
                 <h3>The Context: Sex means Biological Sex</h3>
                 <p>In that landmark judgment, the Court clarified a fundamental definition within the Equality Act 2010: "Sex" refers to biological sex. It held that a trans woman (even one holding a Gender Recognition Certificate) remains male for the purposes of the sex discrimination provisions in the Equality Act.</p>
-                <p>This distinction is crucial. It means that when an employer provides a "female-only" space, they are providing it for biological women. However, that doesn't automatically mean trans women must be excluded. It means that allowing access involves a conflict between two protected characteristics: the sex of female employees (and their privacy rights) and the gender reassignment rights of trans employees.</p>
+                <p>This distinction is important. It means that when an employer provides a "female-only" space, they are providing it for biological women. However, that doesn't automatically mean trans women must be excluded. It means that allowing access involves a conflict between two protected characteristics: the sex of female employees (and their privacy rights) and the gender reassignment rights of trans employees.</p>
 
                 <h3>The Case: Peggie v Fife Health Board</h3>
                 <p><strong>The Facts:</strong> Sandie Peggie, a nurse with 30 years of service, held "gender-critical" beliefs—specifically that sex is immutable and that biological males should not access female-only spaces. Dr. Upton, a junior doctor and trans woman, had been granted permission by the Health Board to use the female staff changing room.</p>
@@ -1035,7 +1035,7 @@ const ARTICLES_DATA = [
                 <p>The Health Board suspended Mrs. Peggie, launched a disciplinary investigation that dragged on for nearly a year, and eventually brought unsubstantiated allegations about patient safety against her.</p>
 
                 <p><strong>The Judgment:</strong> The Tribunal found in favour of Mrs. Peggie on several counts of harassment by the employer.</p>
-                <p>Crucially, the Tribunal applied a "balancing test" (derived from <em>Bank Mellat</em>) to the Health Board’s decision to allow Dr. Upton access to the female changing room. They broke the timeline down into three periods:</p>
+                <p>Of note, the Tribunal applied a "balancing test" (derived from <em>Bank Mellat</em>) to the Health Board’s decision to allow Dr. Upton access to the female changing room. They broke the timeline down into three periods:</p>
                 <ul>
                     <li><strong>Period 1 (Lawful):</strong> Initially, granting Dr. Upton access was lawful. No one had complained, and the Board was aiming to be inclusive.</li>
                     <li><strong>Period 2 (Unlawful Harassment):</strong> Once Mrs. Peggie raised a formal concern about her dignity and privacy, the landscape changed. The Board failed to pause or revoke the permission while they found a solution. By allowing the situation to continue knowing Mrs. Peggie felt violated, the Board harassed Mrs. Peggie. They failed to balance her rights with Dr. Upton's.</li>
