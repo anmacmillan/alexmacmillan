@@ -1,3 +1,7 @@
+/* ========================================================================
+   ALEX MACMILLAN - SITE CONTENT DATA
+   ========================================================================== */
+
 const CASES_DATA = [
     {
         title: "Mr Thomas Allen -v- Oolong Ltd",
@@ -2392,5 +2396,203 @@ const CASES_DATA = [
         significance: "",
         starred: false,
         key_case_law: []
+    }
+];
+
+const ARTICLES_DATA = [
+   {
+        id: "peggie-v-fife",
+        title: "Peggie v Fife in Context: the balancing test in trans rights cases",
+        date: "December 2025",
+        summary: "An analysis of Peggie v Fife Health Board Case No. 4104864/2024 and For Women Scotland Ltd v Scottish Ministers [2025] ICR 899, clarifying that 'sex' refers to biological sex under the Equality Act 2010 and outlining the 'balancing test' for conflicting rights in the workplace.",
+        content: `
+            <div class="article-body">
+                <p>As I write, the first instance decision in Peggie v Fife Health Board is in the British press, with both apparent vindication for the Claimant (found to have suffered harassment) and the Health Board also protesting it was largely vindicated. What legal insights arise from this nuanced outcome? To understand <em>Peggie</em>, we have to look first at the Supreme Court’s decision in <em>For Women Scotland Ltd v Scottish Ministers [2025]</em>.</p>
+                
+                <h3>The Context: Sex means Biological Sex</h3>
+                <p>In that landmark judgment, the Court clarified a fundamental definition within the Equality Act 2010: "Sex" refers to biological sex. It held that a trans woman (even one holding a Gender Recognition Certificate) remains male for the purposes of the sex discrimination provisions in the Equality Act.</p>
+                <p>This distinction is important. It means that when an employer provides a "female-only" space, they are providing it for biological women. However, that doesn't automatically mean trans women must be excluded. It means that allowing access involves a conflict between two protected characteristics: the sex of female employees (and their privacy rights) and the gender reassignment rights of trans employees.</p>
+
+                <h3>The Case: Peggie v Fife Health Board</h3>
+                <p><strong>The Facts:</strong> Sandie Peggie, a nurse with 30 years of service, held "gender-critical" beliefs—specifically that sex is immutable and that biological males should not access female-only spaces. Dr. Upton, a junior doctor and trans woman, had been granted permission by the Health Board to use the female staff changing room.</p>
+                <p>The conflict came to a head over several incidents, culminating on Christmas Eve 2023. Mrs. Peggie, feeling intimidated and embarrassed by the presence of a biological male while she was undressing, confronted Dr. Upton. The exchange was heated; Mrs. Peggie challenged Dr. Upton’s sex ("what are your chromosomes?") and made a comparison to a controversial case involving a trans prisoner.</p>
+                <p>The Health Board suspended Mrs. Peggie, launched a disciplinary investigation that dragged on for nearly a year, and eventually brought unsubstantiated allegations about patient safety against her.</p>
+
+                <p><strong>The Judgment:</strong> The Tribunal found in favour of Mrs. Peggie on several counts of harassment by the employer.</p>
+                <p>Of note, the Tribunal applied a "balancing test" (derived from <em>Bank Mellat</em>) to the Health Board’s decision to allow Dr. Upton access to the female changing room. They broke the timeline down into three periods:</p>
+                <ul>
+                    <li><strong>Period 1 (Lawful):</strong> Initially, granting Dr. Upton access was lawful. No one had complained, and the Board was aiming to be inclusive.</li>
+                    <li><strong>Period 2 (Unlawful Harassment):</strong> Once Mrs. Peggie raised a formal concern about her dignity and privacy, the landscape changed. The Board failed to pause or revoke the permission while they found a solution. By allowing the situation to continue knowing Mrs. Peggie felt violated, the Board harassed Mrs. Peggie. They failed to balance her rights with Dr. Upton's.</li>
+                    <li><strong>Period 3 (Lawful):</strong> Eventually, the Board adjusted the rotas so the two employees were never on shift together. This was deemed a lawful, proportionate solution.</li>
+                </ul>
+                <p>The Tribunal also slammed the Board for the "unreasonable length" of the investigation into Mrs. Peggie (which took nearly a year) and for issuing vague instructions effectively silencing her from discussing her case.</p>
+
+                <h3>What does this mean for employers?</h3>
+                <p>This judgment suggests that "inclusion" cannot be a passive, blanket policy. It requires active management of conflicting rights.</p>
+                <ul>
+                    <li><strong>No Automatic Right:</strong> Trans employees do not have an unqualified right to access the single-sex facilities of their acquired gender if it impacts the dignity and privacy of others.</li>
+                    <li><strong>No Automatic Ban:</strong> Conversely, there is no absolute ban. If no female staff object, access may be lawful.</li>
+                    <li><strong>The Duty to Manage:</strong> Once an objection is raised, the employer must act. Ignoring the complaint, or telling a female employee to "be kind," may amount to unlawful harassment. Solutions might include rotas, single-occupancy pods, or assigning different changing areas—but the status quo cannot persist if it violates dignity.</li>
+                </ul>
+
+                <h3>Relevant Case Law</h3>
+                <p>The <em>Peggie</em> judgment relies on a specific ecosystem of case law regarding discrimination, definition of sex, and the proportionality of interfering with rights. Key cases cited include:</p>
+                <ul>
+                    <li><em>For Women Scotland Ltd v Scottish Ministers</em> [2025] ICR 899 – Established that "sex" in the Equality Act 2010 refers to biological sex.</li>
+                    <li><em>Forstater v CDG Europe</em> [2022] ICR 1 – Established that gender-critical beliefs (that sex is real and immutable) are protected under the Equality Act.</li>
+                    <li><em>Higgs v Farmor’s School</em> [2025] IRLR 368 – Discusses the distinction between holding a belief and manifesting it in an objectionable way.</li>
+                    <li><em>Bank Mellat v HM Treasury (No 2)</em> [2014] AC 700 – The source of the proportionality test used by the Tribunal to balance conflicting rights.</li>
+                    <li><em>Croft v Royal Mail Group</em> [2003] ICR 1425 – An older but relevant Court of Appeal case regarding trans employees and toilet facilities.</li>
+                    <li><em>Chief Constable of West Yorkshire Police v A</em> [2005] 1 AC 51 – Regarding the treatment of trans people in searches.</li>
+                    <li><em>Elan-Cane v Secretary of State for the Home Department</em> [2021] UKSC 56 – Confirmed that "sex" and "gender" are distinct concepts in UK law.</li>
+                </ul>
+            </div>
+        `
+    },
+   {
+        id: "equal-pay-perkins",
+        title: "The 'Reason Why' Fallacy and Proportionality in Equal Pay: An Analysis of Perkins v Marston (Holdings) Ltd [2025] EAT 170",
+        date: "December 2025",
+        summary: "The Employment Appeal Tribunal clarifies the burden of proof for material factor defences and corrects a fundamental error in applying the Essop principle to indirect discrimination.",
+        content: `
+            <div class="article-body">
+                <p>In the complex arena of Equal Pay litigation, the battleground often shifts from "equal value" to the "material factor defence." The recent Employment Appeal Tribunal (EAT) judgment in <em>Perkins v Marston (Holdings) Ltd [2025] EAT 170</em> provides critical clarity on three pillars of this defence: the cogency of evidence required, the correct test for indirect discrimination, and the granularity required when assessing proportionality.</p>
+                <p>The case concerned a startling pay disparity: Ms Perkins, a Head of Enforcement, was paid approximately £51,500, while her male comparators—Divisional Enforcement Directors doing work of equal value—received nearly £92,000. The employer relied on market forces and the necessity of recruiting from a specific pool of "Enforcement Agents" (90% male) to justify the gap.</p>
+                 
+                <h3>The Evidential Threshold: No "Higher Standard"</h3>
+                <p>A persistent question in Equal Pay disputes is the level of evidence required to prove a material factor. The Claimant argued that following <em>BMC Software Ltd v Shaikh</em>, employers face a heightened threshold of "cogency and particularisation."</p>
+                <p>The EAT rejected this interpretation. While an opaque pay system (as was present here) demands convincing evidence to rebut the presumption of discrimination, there is no special, elevated burden of proof for Equal Pay cases. The standard remains the civil balance of probabilities. As the EAT noted, if a Tribunal accepts oral evidence that a specific sum was necessary to retain an employee, that factual finding stands, even in the absence of a pristine paper trail.</p>
+
+                <h3>Indirect Discrimination: The "Reason Why" Trap</h3>
+                <p>Perhaps the most legally significant aspect of this judgment is the correction of the Employment Tribunal's approach to particular disadvantage. The Tribunal had initially rejected the claim of indirect discrimination, reasoning that Ms Perkins personally had not been deterred from entering the male-dominated "Enforcement Agent" pool.</p>
+                <p>The EAT held this to be a fundamental error of law. Citing the Supreme Court in <em>Essop v Home Office</em>, the EAT reiterated that a claimant does not need to prove <em>why</em> a provision puts women at a disadvantage; they only need to prove that it <em>does</em>.</p>
+                <p>The Tribunal had impermissibly engaged in a factual inquiry into the sociological reasons for the male dominance in the recruitment pool (e.g., risk of violence). The EAT clarified that such an inquiry is irrelevant. If the recruitment pool for the higher-paid roles is 90% male, and that requirement drives the pay disparity, the disadvantage is established <em>prima facie</em>. The "reason why" is distinct from the fact of the disadvantage itself.</p>
+
+                <h3>Proportionality: Beware the "All or Nothing" Approach</h3>
+                <p>On the cross-appeal regarding objective justification, the EAT provided a stern reminder regarding the detailed analysis required under <em>Hardy & Hansons plc v Lax</em>. The Tribunal had rejected the employer's justification defence essentially because the £40,000 pay gap was considered excessive, suggesting the employer could have recruited from a wider, cheaper pool.</p>
+                <p>The EAT found this analysis lacking. Proportionality is not a binary switch. The Tribunal erred by adopting an "all or nothing" approach—implying that because the <em>entire</em> gap wasn't necessary, the defence failed completely.</p>
+                <p>Instead, the EAT mandated a more critical evaluation: the Tribunal should have analyzed <em>what part</em> of the pay differential was proportionate to the legitimate aim of retention. Even if a £40,000 premium was disproportionate, a smaller premium might have been justified. By failing to weigh the specific business risks (loss of staff and certification) against the discriminatory impact, the Tribunal failed to perform the necessary balancing exercise.</p>
+
+                <h3>The Takeaway</h3>
+                <p><em>Perkins</em> serves as a vital course correction. For claimants, it reinforces that statistical disadvantage in a recruitment pool is sufficient to shift the burden of proof without needing to explain the sociological causes. For employers, it offers a lifeline on the "cogency" of evidence but demands a rigorous, granular justification for specific pay premiums. You cannot simply wave the flag of "market forces"; you must be prepared to justify the precise quantum of the gap.</p>
+            </div>
+        `
+    }, 
+   {
+        id: "payroll-paradox",
+        title: "The Payroll Paradox: When \"the Computer Says No\" - Holiday Pay During Sick Leave",
+        date: "November 2025",
+        summary: "Blocking a sick employee from accessing holiday pay is not merely a breach of the Working Time Regulations: it can be the catalyst for successful discrimination claims.",
+        content: `
+            <div class="article-body">
+                <p>In employment law, few areas cause as much administrative friction as the overlap between long-term sickness absence and statutory annual leave. A scenario crossing my desk with surprising frequency involves a long-term sick employee - perhaps on half-pay or nil pay with Statutory Sick Pay (SSP) - who requests to take a week of annual leave.</p>
+                <p>The immediate reaction from HR or payroll may be a reflex refusal: “You cannot be on holiday if you are signed off sick. We need a fit note, not a holiday request.” While intuitively logical to the non-lawyer, this administrative rigidity is fraught with legal risk.</p>
+                 
+                <h3>The "Stringer" Principle: Two Sides of the Same Coin</h3>
+                <p>The foundational misunderstanding often lies in the belief that sickness and holiday are mutually exclusive statuses. They are not. Since the seminal decision in <em>Stringer and others v Revenue and Customs Commissioners [2009] ICR 932</em>, it has been established that workers on long-term sick leave continue to accrue statutory annual leave.</p>
+                <p>Crucially, the Grand Chamber of the Court of Justice ruled that the Directive treats the entitlement to leave and the payment for it as inseparable:</p>
+                <blockquote>"Directive 2003/88 treats entitlement to annual leave and to a payment on that account as being two aspects of a single right." — Stringer, Paragraph 60</blockquote>
+
+                <h3>Codification: The 2024 Amendments</h3>
+                <p>Effective 1 January 2024, the Employment Rights (Amendment, Revocation and Transitional Provision) Regulations 2023 amended the Working Time Regulations 1998 (WTR) to explicitly codify these principles. Regulation 13(15) now expressly states that where a worker is unable to take annual leave due to sickness, they are entitled to carry that leave forward into the following leave year.</p>
+                <p>Relying on <em>NHS Leeds v Larner [2012] EWCA Civ 1034</em>, this carry-over is automatic. If sickness prevents a worker from taking leave, they do not need to submit a formal request to carry it over; the right is preserved by operation of law.</p>
+
+                <h3>The Counter-Notice Caveat: Regulation 15</h3>
+                <p>Employers often clutch at Regulation 15 of the WTR as a shield to refuse specific dates. However, because Regulation 13(15) guarantees the right to carry over leave lost due to sickness, refusing a request merely defers the liability. The employer is simply pushing a financial snowball down the hill.</p>
+
+                <h3>The "Normal Remuneration" Trap</h3>
+                <p>In <em>British Gas Trading Ltd v Lock [2017] ICR 1</em>, the Court of Appeal affirmed that holiday pay must reflect "normal remuneration"—including commission and regular overtime. Preventing a sick worker from swapping SSP for full Holiday Pay subjects them to a financial detriment.</p>
+
+                <h3>When Administration Becomes Discrimination</h3>
+                <p>This "computer says no" approach is high-risk under the Equality Act 2010. If the sickness arises from a disability, refusing a request to access full pay via annual leave may constitute discrimination arising from disability (Section 15) or a failure to make reasonable adjustments (Section 20).</p>
+
+                <h3>The Takeaway</h3>
+                <p>The law is unsympathetic to administrative inconvenience. As established in Stringer, reinforced by Lock, and now codified in the 2024 WTR amendments, the right to paid annual leave is robust. For legal practitioners and HR professionals, the advice is simple: when a long-term sick employee asks to take a holiday, the answer should almost always be "yes."</p>
+            </div>
+        `
+    },
+    {
+        id: "tupe-defence",
+        title: "No 'personal reasons' defence in TUPE automatically unfair dismissals",
+        date: "November 2024",
+        summary: "Analyzing the Court of Appeal's decision in Hare Wines Ltd v Kaur & Anor. The judgment clarifies the application of the 'sole or principal reason' test.",
+        content: `
+            <div class="article-body">
+                <p>This article addresses the implications of the Court of Appeal's decision in <em>Hare Wines Ltd v Kaur & Anor [2019] EWCA Civ 216</em>, a case in which I acted for the successful Claimant at first instance, in the EAT, and in the Court of Appeal.</p>
+                <p>The judgment clarifies the application of the 'sole or principal reason' test under the Transfer of Undertakings (Protection of Employment) Regulations 2006 (TUPE). It firmly establishes that employers cannot rely on a vague defence of 'personal reasons' to avoid liability for automatically unfair dismissal.</p>
+                <h3>Key Takeaways</h3>
+                <ul>
+                    <li>The 'sole or principal reason' test is strict.</li>
+                    <li>Personal friction between employee and new management is often connected to the transfer itself.</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: "prospects-percentages",
+        title: "What do percentage figures mean when stating a legal case’s prospects?",
+        date: "September 2024",
+        summary: "Clients often ask how I arrive at a '60%' or '70%' chance of success. This article breaks down the methodology behind legal probability.",
+        content: `
+            <div class="article-body">
+                <p>More than once, having drafted legal advice and distilled my opinion on prospects of success into a percentage figure, the client has come back to me and questioned how I arrived at it.</p>
+                <p>Is it a mathematical calculation? A gut feeling? This article explores the accepted definitions of legal risk (e.g., 'Reasonable Prospects' vs 'Good Prospects') and how they map to percentages.</p>
+            </div>
+        `
+    },
+    {
+        id: "prosecutors-fallacy",
+        title: "The Prosecutor’s Fallacy in Workplace Investigations",
+        date: "July 2024",
+        summary: "How statistical errors and cognitive biases can derail disciplinary investigations. A lesson from criminal law applied to employment disputes.",
+        content: `
+            <div class="article-body">
+                <p>This is the classic illustration: a murder takes place. The forensics team identify hair from the crime scene. A DNA test is carried out, indicating that someone with a previous conviction who lives in the same town is a match.</p>
+                <p>In employment investigations, a similar fallacy occurs when an investigator assumes that because an event <em>could</em> have happened a certain way, it <em>must</em> have happened that way, ignoring other probabilities.</p>
+            </div>
+        `
+    },
+    {
+        id: "forced-distribution",
+        title: "On Forced Distribution Performance Management",
+        date: "May 2024",
+        summary: "In 2019 the UK’s civil service moved away from forced distributions. Why this management style is legally risky.",
+        content: `
+            <div class="article-body">
+                <p>In 2019 the UK’s civil service changed its mind about its use of forced distributions, deciding instead to move to more flexible, non-mandatory objective setting. This article explores the discrimination risks inherent in 'bell curve' performance ranking systems.</p>
+            </div>
+        `
+    },
+    {
+        id: "employment-casino",
+        title: "The Employment Law Casino",
+        date: "January 2024",
+        summary: "How to guess your award (without paying lawyers). A look at the Vento bands and Schedule of Loss calculations.",
+        content: `
+            <div class="article-body">
+                <p>Imagine that, for whatever reason, you do not wish to engage a lawyer. Perhaps they are too expensive; perhaps lawyers do not have your trust. This article explains how Tribunals calculate awards, removing the mystery from the 'casino' of litigation.</p>
+            </div>
+        `
+    }
+];
+
+const TESTIMONIALS_DATA = [
+    {
+        text: "Please pass our thanks on to Alex – he really did an excellent job of representing us and sounded like he knew all about tool setting and overhead crane use!",
+        author: "Partner",
+        firm: "Leading Regional Employment Firm",
+        date: "December 2025"
+    },
+    {
+        text: "Alex provided clear, pragmatic advice that helped us navigate a very tricky TUPE situation. His strategic approach made all the difference.",
+        author: "HR Director",
+        firm: "National Logistics Company",
+        date: "August 2024"
+    },
+    {
+        text: "A superb advocate who was incredibly well-prepared. He put the client at ease and secured a fantastic result in the Tribunal.",
+        author: "Senior Associate",
+        firm: "Legal 500 Firm",
+        date: "March 2024"
     }
 ];
