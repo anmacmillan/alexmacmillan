@@ -1020,7 +1020,7 @@ const ARTICLES_DATA = [
         id: "peggie-v-fife",
         title: "Peggie v Fife in Context: the balancing test in trans rights cases",
         date: "December 2025",
-        summary: "An analysis of Peggie v Fife Health Board and For Women Scotland Ltd v Scottish Ministers [2025], clarifying that 'sex' refers to biological sex under the Equality Act 2010 and outlining the 'balancing test' for conflicting rights in the workplace.",
+        summary: "An analysis of Peggie v Fife Health Board Case No. 4104864/2024 and For Women Scotland Ltd v Scottish Ministers [2025] ICR 899, clarifying that 'sex' refers to biological sex under the Equality Act 2010 and outlining the 'balancing test' for conflicting rights in the workplace.",
         content: `
             <div class="article-body">
                 <p>As I write, the first instance decision in Peggie v Fife Health Board is in the British press, with both apparent vindication for the Claimant (found to have suffered harassment) and the Health Board also protesting it was largely vindicated. What legal insights arise from this nuanced outcome? To understand <em>Peggie</em>, we have to look first at the Supreme Court’s decision in <em>For Women Scotland Ltd v Scottish Ministers [2025]</em>.</p>
