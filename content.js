@@ -26,6 +26,7 @@ const CASES_DATA = [
         status: "Successful",
         description: "Successful Final Hearing. The Tribunal found unlawful deductions of £29,166.66. While the Respondent alleged an oral agreement to reduce salary, the Tribunal applied <em>Kerr v The Sweater Shop</em> and <em>International Packaging v Balfour</em> to rule that, absent written notification of the variation terms <em>before</em> the deduction, the deductions violated s.13(2)(b) ERA 1996. The Tribunal further applied <em>Agnew</em> to establish a 'series of deductions' despite gaps in payment, preserving the full claim period.",
         significance: "s.13 ERA 1996 / Written Notification",
+        starred: true,
         key_case_law: [
             "<em>Chief Constable of PSNI v Agnew</em> [2023] UKSC 33",
             "<em>Kerr v The Sweater Shop (Scotland) Ltd</em> [1996] IRLR 424",
@@ -48,26 +49,47 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Successfully defended claims valued at £44,000 arising from the summary dismissal of a senior operator for gross negligence. The Tribunal found the dismissal fair following a 'shock-loading' incident involving a 13-tonne crane tool and a failure to follow mandatory reporting procedures.",
         significance: "Gross Misconduct / Health & Safety",
+        starred: false,
         key_case_law: [
            "<em>BHS v Burchell</em> [1978] IRLR 379"
         ]
     }, 
     {
-        title: "Mr Lee Robinson -v-  Stephen John Williams TA/ National Property Buyers",
+        title: "Sandra Harding & Others -v- Birmingham City Council",
+        citation: "Case No: 1304212/2024",
+        date: "2025",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Case Management Preliminary Hearing involving multiple claimants against the Local Authority and Local Enterprise Partnership.",
+        significance: "Case Management",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Mr Lee Robinson -v- Stephen John Williams TA/ National Property Buyers",
         citation: "Case No: 1303573/2025",
         date: "2025",
         type: "Unlawful Deduction from Wages",
         confidential: "No",
         court: "Employment Tribunal (Midlands West)",
-        judge: "Eemployment Judge Wedderspoon",
+        judge: "Employment Judge Wedderspoon",
         solicitor: "Natassia Brown", 
         firm: "HCB Solicitors Limited",
         client: "Respondent",
         leading: "Sole Counsel",
         opposing: "N/A", 
         status: "Settled",
-        description: "Breach of Contract / Unlawful Deductions in relation to commission payments",
+        description: "Breach of Contract / Unlawful Deductions in relation to commission payments.",
         significance: "Commission payments",
+        starred: false,
         key_case_law: []
     }, 
     {
@@ -84,8 +106,28 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Mr Andrew Rhodes - No 5 Chambers",
         status: "Concluded",
-        description: "Open Preliminary Hearing",
+        description: "Open Preliminary Hearing to determine disability status under the Equality Act 2010.",
         significance: "Disability status",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Nazia Bi -v- (1) Jane Tovery (2) University City Hospital of Birmingham",
+        citation: "Case No: 1303877/2023",
+        date: "2025",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing to identify issues in complex multi-respondent claim.",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -104,6 +146,26 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (3 days).",
         significance: "Final Hearing",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Dawn Dickson -v- ASDA",
+        citation: "Case No: 8001991/2024",
+        date: "2025",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Glasgow Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Case Management Preliminary Hearing via CVP.",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -120,8 +182,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "John Horan (Cloisters)", 
         status: "Settled",
-        description: "Multi-week disability discrimination claim",
+        description: "Multi-week disability discrimination claim.",
         significance: "Disability discrimination",
+        starred: true,
         key_case_law: []
     }, 
     {
@@ -138,8 +201,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Final Hearing (7 days).",
+        description: "Final Hearing (7 days) involving multiple respondents.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -158,6 +222,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
         significance: "Whistleblowing Detriment",
+        starred: true,
         key_case_law: []
     },
     {
@@ -176,6 +241,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (4 days).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -213,6 +279,26 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (10 days).",
         significance: "Final Hearing",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Paul Bryson -v- Schneider Electric UK Ltd",
+        citation: "Case No: 715878",
+        date: "2025",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Telephone Preliminary Hearing for Case Management.",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -231,6 +317,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (3 days).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
 
@@ -270,6 +357,25 @@ const CASES_DATA = [
         ]
     },
     {
+        title: "Ion Burca -v- MD Construction",
+        citation: "Case No: 6000185/2024",
+        date: "2024",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Leeds Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing (Video) for Case Management.",
+        significance: "Case Management",
+        starred: false,
+        key_case_law: []
+    },
+    {
         title: "John Bradley -v- Technical Drive",
         citation: "Case No: 6019242/2024",
         date: "2024",
@@ -285,6 +391,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (4 days).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -301,8 +408,28 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Miss C Ettore brought claims against Pro Support Limited including unfair dismissal, detriments, and unauthorized deductions from wages. The tribunal dismissed the unfair dismissal claims as they were presented out of time and it was reasonably practicable to present them earlier. The claims relating to detriments and unauthorized wage deductions were allowed to proceed to further case management. Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Protection from detriments (Employment Rights Act 1996 s47B); Unauthorized deductions from wages (Employment Rights Act 1996 s13)",
+        description: "Miss C Ettore brought claims against Pro Support Limited including unfair dismissal, detriments, and unauthorized deductions from wages. The tribunal dismissed the unfair dismissal claims as they were presented out of time and it was reasonably practicable to present them earlier. The claims relating to detriments and unauthorized wage deductions were allowed to proceed to further case management.",
         significance: "Final Hearing",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Melanie Chandler -v- The King's Fund",
+        citation: "Case No: 709512",
+        date: "2024",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "London Central Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing (Video).",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -320,14 +447,34 @@ const CASES_DATA = [
         opposing: "Alexander MacMillan",
         status: "Concluded",
         starred: true,
-        description: "The claimant, Mr Habila Tikon, brought claims against HMRC and Mitie Limited including detriment under whistleblowing provisions, unlawful deduction of wages, breach of contract, and unfair dismissal. The tribunal struck out all claims against HMRC and the claimant's unfair dismissal and detriment claims as out of time, allowing only the unlawful deduction from wages and breach of contract claims to proceed against Mitie Limited. The decision involved preliminary issues including the timing of claims, TUPE transfer questions, and the claimant's failure to provide evidence regarding means for a deposit order. Whistleblowing detriment (Employment Rights Act 1996 s47B); Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Unlawful deduction from wages (Employment Rights Act 1996 s13); Breach of contract; Time limits for claims (Employment Rights Act 1996 s111); TUPE transfer issues (Transfer of Undertakings (Protection of Employment) Regulations 2006)",
+        description: "The tribunal struck out all claims against HMRC and the claimant's unfair dismissal and detriment claims as out of time, allowing only the unlawful deduction from wages and breach of contract claims to proceed against Mitie Limited.",
         significance: "Appeal",
+        starred: true,
         key_case_law: [
             "Adams v GKN Sankey Ltd (1980) IRLR 416",
             "Dixon v Stenor Ltd (1993) IRLR 28",
             "Saunders v Southend-on-Sea Borough Council (1984) ILR 372",
             "Service v. Dolby [2003] IRLR 694"
         ]
+    },
+    {
+        title: "Rachel McDonald -v- Avanti Schools Trust",
+        citation: "Case No: 2601646/2023",
+        date: "2024",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Leicester Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing to determine case management orders.",
+        significance: "Case Management",
+        starred: false,
+        key_case_law: []
     },
     {
         title: "Marta Grobarcikova Gonczyova -v- Barchester Healthcare Ltd",
@@ -343,7 +490,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "Mrs. Marta Grobarcikova Gonczyova brought claims against Barchester Healthcare Ltd alleging disability discrimination arising under section 15 of the Equality Act 2010 and failure to make reasonable adjustments under section 21. The Tribunal found that although the claimant was disabled, the alleged unfavourable treatment and failure to make reasonable adjustments claims were not made out and dismissed both claims. The decision focused on whether the respondent's conduct and policies constituted discrimination or unreasonable failure to adjust workplace practices to accommodate the claimant's disabilities. Disability discrimination arising from disability (Equality Act 2010 s15); Duty to make reasonable adjustments (Equality Act 2010 s21); Disability-related harassment (Equality Act 2010 s26)",
+        description: "Mrs. Marta Grobarcikova Gonczyova brought claims against Barchester Healthcare Ltd alleging disability discrimination arising under section 15 of the Equality Act 2010 and failure to make reasonable adjustments under section 21. The Tribunal found that although the claimant was disabled, the alleged unfavourable treatment and failure to make reasonable adjustments claims were not made out and dismissed both claims.",
         significance: "Final Hearing",
         starred: true,
         key_case_law: [
@@ -370,6 +517,26 @@ const CASES_DATA = [
         starred: true,
         description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
         significance: "Disability / Performance",
+        starred: true,
+        key_case_law: []
+    },
+    {
+        title: "Raymond Gibbons -v- John Lewis Plc",
+        citation: "Case No: 2301957/2022",
+        date: "2024",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Ashford Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Video Preliminary Hearing.",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -388,6 +555,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (4 days).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -404,8 +572,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Dr A Medina brought a claim against Prodent London Ltd for unlawful deductions from wages under section 13 of the Employment Rights Act 1996. The tribunal found that the employer made unauthorised deductions from the claimant’s pay in May, June, and July 2022, which were not authorised by statute, contract, or the claimant’s prior written consent, and ordered the respondent to pay £29,384.40 in gross sums to the claimant. The key issues revolved around whether the deductions were lawful under the terms of the Associate Agreement and whether proper notice or consent had been given. Unauthorised deductions from wages (Employment Rights Act 1996 s13); Contract terms and variations; Worker status under ERA 1996; Burden of proof in wage deduction claims",
+        description: "Dr A Medina brought a claim against Prodent London Ltd for unlawful deductions from wages under section 13 of the Employment Rights Act 1996. The tribunal found that the employer made unauthorised deductions from the claimant’s pay in May, June, and July 2022, which were not authorised by statute, contract, or the claimant’s prior written consent, and ordered the respondent to pay £29,384.40 in gross sums to the claimant.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -422,8 +591,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The claimant, Mr Luke Salter, brought a claim for constructive unfair dismissal against his employer, Muller UK & Ireland Group LLP. The Employment Tribunal found that the claim was not well-founded and dismissed it, concluding that the claimant had not established constructive unfair dismissal. Constructive unfair dismissal (Employment Rights Act 1996 ss 95-98)",
+        description: "The claimant, Mr Luke Salter, brought a claim for constructive unfair dismissal against his employer, Muller UK & Ireland Group LLP. The Employment Tribunal found that the claim was not well-founded and dismissed it, concluding that the claimant had not established constructive unfair dismissal.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -440,7 +610,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "The claimant, John William Kennedy Boggs, brought claims against Warrington and Halton Teaching Hospitals NHS Foundation Trust for unfair dismissal, wrongful dismissal, and disability discrimination arising from autism, anxiety, and depression. The Tribunal found in favor of the respondent on unfair dismissal, wrongful dismissal, discrimination arising from disability, and harassment claims, but partially upheld the claim for failure to make reasonable adjustments. The claimant withdrew sex discrimination and direct/indirect disability discrimination claims during the hearing. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Wrongful dismissal (common law contract principles); Disability discrimination (Equality Act 2010 ss 15, 20 - discrimination arising from disability and reasonable adjustments); Time limits for discrimination claims (Equality Act 2010 s 123); ACAS Code of Practice on Disciplinary and Grievance Procedures",
+        description: "The claimant, John William Kennedy Boggs, brought claims against Warrington and Halton Teaching Hospitals NHS Foundation Trust for unfair dismissal, wrongful dismissal, and disability discrimination arising from autism, anxiety, and depression. The Tribunal found in favor of the respondent on unfair dismissal, wrongful dismissal, discrimination arising from disability, and harassment claims, but partially upheld the claim for failure to make reasonable adjustments.",
         significance: "Final Hearing",
         starred: true,
         key_case_law: [
@@ -466,6 +636,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (1 day).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
 
@@ -486,6 +657,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (1 day).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -502,8 +674,28 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The claimant, Ms Anahita Ansari, brought multiple complaints against Prodent London Limited which were heard over several days in a London Central Employment Tribunal. The tribunal found that none of the claimant’s complaints were well-founded and consequently dismissed the claim in full. No written reasons were provided unless requested, and the decision was issued promptly after the hearing. General Employment Claims (specific areas not detailed in the decision summary)",
+        description: "The claimant, Ms Anahita Ansari, brought multiple complaints against Prodent London Limited which were heard over several days in a London Central Employment Tribunal. The tribunal found that none of the claimant’s complaints were well-founded and consequently dismissed the claim in full.",
         significance: "Final Hearing",
+        starred: false,
+        key_case_law: []
+    },
+    {
+        title: "Heather Barclay -v- ASDA Stores",
+        citation: "Case No: 4105781/2022",
+        date: "2023",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Manchester Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Video Preliminary Hearing.",
+        significance: "Case Management",
+        starred: false,
         key_case_law: []
     },
     {
@@ -520,8 +712,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The claimant, Mr Mark Taylor, brought claims against Redcentric Solutions Limited for unpaid commission for February to April 2023 and wrongful dismissal regarding notice pay. The Tribunal found that the claimant was entitled to the commission payments, constituting unauthorised deductions from wages, but dismissed the wrongful dismissal claim as the respondent lawfully paid one week's notice in lieu during the claimant's probationary period. A separate remedy hearing was ordered to determine the exact amount of commission owed. Unauthorised deductions from wages (Employment Rights Act 1996 s13); Wrongful dismissal (common law contract principles and Employment Rights Act 1996 ss 94-98); Contractual terms and probationary period interpretation",
+        description: "The claimant, Mr Mark Taylor, brought claims against Redcentric Solutions Limited for unpaid commission for February to April 2023 and wrongful dismissal regarding notice pay. The Tribunal found that the claimant was entitled to the commission payments, constituting unauthorised deductions from wages, but dismissed the wrongful dismissal claim as the respondent lawfully paid one week's notice in lieu during the claimant's probationary period.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -539,9 +732,29 @@ const CASES_DATA = [
         opposing: "Alexander MacMillan",
         status: "Concluded",
         starred: true,
-        description: "The key issue in Mr G Price v Fleet Express & Logistics Ltd was whether the claimant was unfairly dismissed following incidents involving alleged aggressive behavior towards his supervisor, Mr Pugh. The Tribunal found the claimant was unfairly dismissed but reduced the compensation by 75% due to contributory conduct, awarding the claimant £2,743.19. The decision hinged on conflicting accounts of the incidents, credibility assessments, and procedural fairness in the disciplinary process. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Contributory fault in unfair dismissal (Employment Rights Act 1996 s 123); Procedural fairness in disciplinary processes",
+        description: "The key issue in Mr G Price v Fleet Express & Logistics Ltd was whether the claimant was unfairly dismissed following incidents involving alleged aggressive behavior towards his supervisor, Mr Pugh. The Tribunal found the claimant was unfairly dismissed but reduced the compensation by 75% due to contributory conduct, awarding the claimant £2,743.19.",
         significance: "Final Hearing",
+        starred: true,
         key_case_law: ["Polkey v AE Dayton"]
+    },
+    {
+        title: "Mr Paul Andrew Whittaker -v- (1) Dogwoof Ltd (2) Anthony Tabatznik",
+        citation: "Case No: 2205898/2022",
+        date: "2023",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "London Central Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing (Video) to manage complex whistleblowing detriments.",
+        significance: "Case Management",
+        starred: false,
+        key_case_law: []
     },
     {
         title: "Jan Godliman -v- London Borough of Waltham Forest",
@@ -558,8 +771,9 @@ const CASES_DATA = [
         opposing: "Alexander MacMillan",
         status: "Concluded",
         starred: true,
-        description: "Ms J Godliman brought claims against the London Borough of Waltham Forest alleging direct disability discrimination, discrimination arising from disability, harassment related to disability, and victimisation under the Equality Act 2010. The Tribunal dismissed the claims for direct disability discrimination and several complaints of discrimination and harassment following the Claimant's withdrawal, and found the remaining complaints and the victimisation claim to fail. Overall, all claims were dismissed. Disability discrimination (Equality Act 2010 ss 13, 15, 26, 27)",
+        description: "Ms J Godliman brought claims against the London Borough of Waltham Forest alleging direct disability discrimination, discrimination arising from disability, harassment related to disability, and victimisation under the Equality Act 2010. The Tribunal dismissed the claims for direct disability discrimination and several complaints of discrimination and harassment following the Claimant's withdrawal, and found the remaining complaints and the victimisation claim to fail. Overall, all claims were dismissed.",
         significance: "Final Hearing",
+        starred: true,
         key_case_law: []
     },
     {
@@ -577,14 +791,34 @@ const CASES_DATA = [
         opposing: "N/A",
         status: "Concluded",
         starred: true,
-        description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct. The unfair dismissal claim was withdrawn due to insufficient continuous service. Disability discrimination (Equality Act 2010 s15); Failure to make reasonable adjustments (Equality Act 2010 ss 20-21); Unfair dismissal (Employment Rights Act 1996 ss 94-98) - withdrawn due to lack of qualifying service",
+        description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct.",
         significance: "Remedies",
+        starred: true,
         key_case_law: [
             "Environment Agency v Rowan [2008] IRLR 20",
             "Griffiths v Secretary of State [2016] IRLR 216",
             "Project Management Institute v Latif [2007] IRLR 576",
             "General Dynamics Information Technology Ltd v Carranza [2015] ICR 169"
         ]
+    },
+    {
+        title: "Mrs Nichola Pilgrim -v- Herefordshire and Worcestershire Health and Care NHS Trust",
+        citation: "Case No: 1301189/2021",
+        date: "2023",
+        type: "Preliminary Hearing",
+        confidential: "No",
+        court: "Birmingham Employment Tribunal",
+        judge: "",
+        solicitor: "Instructing Solicitor",
+        firm: "N/A",
+        client: "Respondent",
+        leading: "Sole Counsel",
+        opposing: "N/A",
+        status: "Concluded",
+        description: "Preliminary Hearing (Video) involving NHS Trust.",
+        significance: "Case Management",
+        starred: false,
+        key_case_law: []
     },
     {
         title: "Mr D Austin -v- Kingspan Ltd",
@@ -601,8 +835,9 @@ const CASES_DATA = [
         opposing: "N/A",
         status: "Concluded",
         starred: true,
-        description: "Mr D Austin, a disabled employee, was found to have been unfairly dismissed by Kingspan Ltd in breach of the Employment Rights Act 1996. Although he withdrew some discrimination claims under the Equality Act 2010, the Tribunal found that he was subjected to unlawful disability discrimination under section 15 and awarded him compensation totaling £33,008.27 for unfair dismissal and injury to feelings. Unfair dismissal (Employment Rights Act 1996 s94); Disability discrimination (Equality Act 2010 ss6, 15); Withdrawal of discrimination claims under Equality Act 2010 ss13, 20, 21",
+        description: "Mr D Austin, a disabled employee, was found to have been unfairly dismissed by Kingspan Ltd in breach of the Employment Rights Act 1996. Although he withdrew some discrimination claims under the Equality Act 2010, the Tribunal found that he was subjected to unlawful disability discrimination under section 15 and awarded him compensation totaling £33,008.27 for unfair dismissal and injury to feelings.",
         significance: "Final Hearing",
+        starred: true,
         key_case_law: []
     },
     {
@@ -621,6 +856,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Hearing Fixture.",
         significance: "Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -637,8 +873,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "The claimant, Mr Michael Lambrianos, brought a claim against Nowy Styl UK Limited for unpaid commission on multiple sales. The Tribunal found the respondent owed the claimant £716.40 in commission but refused both parties' applications for costs, noting the claimant's claim largely failed and the respondent's defense was reasonable and pragmatic. Contractual entitlement to commission; Employment Tribunal procedure (Costs under Employment Tribunal Rules of Procedure 2013, Rule 76)",
+        description: "The claimant, Mr Michael Lambrianos, brought a claim against Nowy Styl UK Limited for unpaid commission on multiple sales. The Tribunal found the respondent owed the claimant £716.40 in commission but refused both parties' applications for costs, noting the claimant's claim largely failed and the respondent's defense was reasonable and pragmatic.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -655,8 +892,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "Mr Ismail Ismail claimed constructive unfair dismissal against Asda Stores Limited, alleging denial of promotion opportunities and bullying by a senior manager, Mr Preston, which breached the implied term of trust and confidence. The Employment Tribunal found that the claimant was not constructively dismissed and dismissed the claim. The Tribunal considered whether the employer’s conduct justified resignation and whether the dismissal was fair, ultimately concluding the claim failed. Constructive unfair dismissal (Employment Rights Act 1996 ss 95-98); Implied term of trust and confidence; Unfair dismissal (Employment Rights Act 1996 ss 94-98); Internal grievance procedures; Employment contract law",
+        description: "Mr Ismail Ismail claimed constructive unfair dismissal against Asda Stores Limited, alleging denial of promotion opportunities and bullying by a senior manager, Mr Preston, which breached the implied term of trust and confidence. The Employment Tribunal found that the claimant was not constructively dismissed and dismissed the claim.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: [
             "London Borough of Waltham Forest v Omilaju [2005] IRLR 35",
             "British Aircraft Corporation Ltd v Austin [1978] IRLR 332",
@@ -682,6 +920,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (1 day).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -700,6 +939,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -718,6 +958,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -736,6 +977,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing (4 days).",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -752,8 +994,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The key issue in Mr G Fuller's claim against Lancashire County Council was whether he was an employee or a casual worker during the period when alleged unauthorised deductions from his wages were made. The tribunal found that the claimant was not an employee but a casual worker and dismissed the claim for unauthorised deductions. The respondent had ceased offering shifts during an investigation period, which was not considered an unlawful deduction of wages. Employment status (Employment Rights Act 1996 s230); Unauthorised deductions from wages (Employment Rights Act 1996 ss13-27); Casual worker status; Jurisdictional issues in Employment Tribunal claims",
+        description: "The key issue in Mr G Fuller's claim against Lancashire County Council was whether he was an employee or a casual worker during the period when alleged unauthorised deductions from his wages were made. The tribunal found that the claimant was not an employee but a casual worker and dismissed the claim for unauthorised deductions. The respondent had ceased offering shifts during an investigation period, which was not considered an unlawful deduction of wages.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: [
             "Societe Generale, London Branch v Geys [2013] ICR 117",
             "Cerberus Software Ltd v Rowley [2001] IRLR 160",
@@ -774,8 +1017,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The key issue in this case was whether the claimant, Natasha Lomotey, was unfairly dismissed by Mitie Limited. The Employment Tribunal found in favor of the claimant, ruling that the dismissal was unfair and ordering a compensation payment of £12,000, with the proceedings adjourned to allow for settlement implementation. Unfair dismissal (Employment Rights Act 1996 ss 94-98)",
+        description: "The key issue in this case was whether the claimant, Natasha Lomotey, was unfairly dismissed by Mitie Limited. The Employment Tribunal found in favor of the claimant, ruling that the dismissal was unfair and ordering a compensation payment of £12,000, with the proceedings adjourned to allow for settlement implementation.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -794,6 +1038,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -810,8 +1055,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
-        description: "The case concerned Ms Samantha Zenda Ovies' claim of unfair dismissal by Mr Mahiul Muqit, her former employer. The Tribunal found that the dismissal was unfair, awarded the claimant one day's holiday pay, and ordered payment of an outstanding £2,000 gross bonus from June 2020. The Tribunal also allowed either party to apply for a remedy hearing to determine further compensation or remedies. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Holiday pay entitlement (Working Time Regulations 1998); Contractual bonus payments and remuneration terms",
+        description: "The case concerned Ms Samantha Zenda Ovies' claim of unfair dismissal by Mr Mahiul Muqit, her former employer. The Tribunal found that the dismissal was unfair, awarded the claimant one day's holiday pay, and ordered payment of an outstanding £2,000 gross bonus from June 2020. The Tribunal also allowed either party to apply for a remedy hearing to determine further compensation or remedies.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -830,6 +1076,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Final Hearing.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -846,8 +1093,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "The claimant, Mr Andrew Hemming, brought claims against Ellisa Motors Limited for unpaid holiday pay, unfair dismissal, and redundancy. The tribunal found in favour of the claimant on the holiday pay claim, ordering the respondent to pay £1,843.80 for untaken accrued holiday. However, the claims for unfair dismissal and redundancy were dismissed. Holiday pay (Working Time Regulations 1998); Unfair dismissal (Employment Rights Act 1996 ss 94-98); Redundancy (Employment Rights Act 1996 ss 135-139)",
+        description: "The claimant, Mr Andrew Hemming, brought claims against Ellisa Motors Limited for unpaid holiday pay, unfair dismissal, and redundancy. The tribunal found in favour of the claimant on the holiday pay claim, ordering the respondent to pay £1,843.80 for untaken accrued holiday. However, the claims for unfair dismissal and redundancy were dismissed.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -864,8 +1112,9 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
-        description: "Ms D Sundar brought multiple claims against Cardiff University including unfair dismissal, detriments for protected disclosures, race, disability and marriage discrimination, breach of contract, and victimisation. After several preliminary hearings and amendment applications, all claims were dismissed by the Employment Tribunal, which found no evidence to support unfair dismissal, discrimination, victimisation, or breach of contract. The claimant was also found not to be disabled under the Equality Act 2010, resulting in dismissal of the reasonable adjustments claim. Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Protected disclosures/detriment (Employment Rights Act 1996 s47B); Breach of contract; Direct race discrimination (Equality Act 2010 s13); Direct marriage discrimination (Equality Act 2010 s13); Disability discrimination and reasonable adjustments (Equality Act 2010 ss 6, 20, 21); Victimisation (Equality Act 2010 s27)",
+        description: "Ms D Sundar brought multiple claims against Cardiff University including unfair dismissal, detriments for protected disclosures, race, disability and marriage discrimination, breach of contract, and victimisation. After several preliminary hearings and amendment applications, all claims were dismissed by the Employment Tribunal, which found no evidence to support unfair dismissal, discrimination, victimisation, or breach of contract. The claimant was also found not to be disabled under the Equality Act 2010, resulting in dismissal of the reasonable adjustments claim.",
         significance: "Final Hearing",
+        starred: false,
         key_case_law: [
             "Ellis v Bacon [2023] IRLR 262",
             "Hewage v Grampian Health Board [2012] IRLR 870",
@@ -893,6 +1142,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Pre-Hearing Conference.",
         significance: "Preliminary Hearing",
+        starred: false,
         key_case_law: []
     },
     {
@@ -911,6 +1161,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "EAT Appeal / Remission Hearing regarding high-profile whistleblowing claim.",
         significance: "Whistleblowing / Appeal",
+        starred: true,
         key_case_law: []
     },
     {
@@ -929,6 +1180,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Employment Tribunal proceedings.",
         significance: "Employment Tribunal",
+        starred: false,
         key_case_law: []
     },
     {
@@ -947,6 +1199,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Employment Tribunal proceedings.",
         significance: "Employment Tribunal",
+        starred: false,
         key_case_law: []
     },
     {
@@ -965,6 +1218,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Employment Tribunal proceedings.",
         significance: "Employment Tribunal",
+        starred: false,
         key_case_law: []
     },
     {
@@ -983,6 +1237,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Appeal Hearing.",
         significance: "Appeal",
+        starred: false,
         key_case_law: []
     },
     {
@@ -1001,6 +1256,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Pre-Trial proceedings.",
         significance: "Employment Tribunal",
+        starred: false,
         key_case_law: []
     },
 
@@ -1022,6 +1278,7 @@ const CASES_DATA = [
         starred: true,
         description: "Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.",
         significance: "TUPE Leading Authority",
+        starred: true,
         key_case_law: []
     }
 ];
