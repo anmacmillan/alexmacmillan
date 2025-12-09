@@ -2011,3 +2011,91 @@ const TESTIMONIALS_DATA = [
         date: "March 2024"
     }
 ];
+
+// --- KNOWLEDGE BASE (Summaries for Knowledge Cards) ---
+const KNOWLEDGE_BASE = {
+    "Age Discrimination": {
+        title: "Age Discrimination",
+        content: "Protected under the Equality Act 2010. Unlike other characteristics, direct age discrimination can be lawful if it is 'objectively justified' as a proportionate means of achieving a legitimate aim. Common issues include retirement policies and recruitment bias."
+    },
+    "Breach of Contract": {
+        title: "Breach of Contract",
+        content: "Claims arising from the employment contract, such as unpaid notice or bonus disputes. In the Tribunal, these are capped at £25,000 and must arise on termination; higher value or complex claims (e.g., restrictive covenants) are heard in the Civil Courts."
+    },
+    "Disability Discrimination": {
+        title: "Disability Discrimination",
+        content: "Covers direct discrimination, 'discrimination arising from disability' (s.15), and the duty to make reasonable adjustments (s.20). Litigation often focuses on the definition of disability and whether an employer knew (or should have known) about the condition."
+    },
+    "Employment Status": {
+        title: "Employment Status",
+        content: "The legal distinction between 'Employees', 'Workers', and 'Self-Employed' contractors. This status determines entitlement to key rights like unfair dismissal protection, holiday pay, and the national minimum wage."
+    },
+    "Equal Pay": {
+        title: "Equal Pay",
+        content: "The right to equal pay for equal work between men and women. These complex claims often involve comparing 'work of equal value' and analysing the employer's 'material factor defence' to explain the pay disparity."
+    },
+    "Harassment": {
+        title: "Harassment",
+        content: "Unwanted conduct related to a protected characteristic that violates dignity or creates a hostile environment. The legal test is part subjective (the victim's feeling) and part objective (was it reasonable to feel that way?)."
+    },
+    "Health & Safety": {
+        title: "Health & Safety Detriment",
+        content: "Protections for employees who refuse to work in imminent danger or take steps to protect themselves. Dismissals for these reasons are often 'automatically unfair,' requiring no qualifying period of service."
+    },
+    "Jurisdictional Points": {
+        title: "Jurisdictional & Territorial Issues",
+        content: "Preliminary disputes determining if the Tribunal has the power to hear a claim. Common issues include strict statutory time limits (typically 3 months) and whether UK employment laws apply to employees working abroad."
+    },
+    "Practice and Procedure Issues": {
+        title: "Tribunal Practice & Procedure",
+        content: "Technical disputes governed by the ET Rules of Procedure. This covers strike-out applications, deposit orders, amendments to claims, and disclosure battles—procedural steps that often determine the outcome before a final hearing."
+    },
+    "Public Interest Disclosure": {
+        title: "Whistleblowing (Public Interest Disclosure)",
+        content: "Protection for workers reporting wrongdoing under the Employment Rights Act 1996. Claimants must prove a 'qualifying disclosure' was made in the public interest and that it caused the detriment or dismissal."
+    },
+    "Race Discrimination": {
+        title: "Race Discrimination",
+        content: "Protection against less favourable treatment based on race, colour, nationality, or ethnic origin. Evidence is rarely overt; Tribunals often have to draw inferences from the primary facts to establish if race was the reason for treatment."
+    },
+    "Redundancy": {
+        title: "Redundancy",
+        content: "A fair reason for dismissal caused by a business closure or reduced requirement for work. Fairness depends on meaningful consultation, fair selection criteria, and the search for alternative employment within the organisation."
+    },
+    "Restraint of Trade / Non competition / Injunctive Relief": {
+        title: "Restraint of Trade & Injunctions",
+        content: "High-stakes litigation regarding post-termination restrictions (covenants). Employers may seek injunctions to prevent former staff from soliciting clients or joining competitors if necessary to protect legitimate business interests."
+    },
+    "Sexual Orientation Discrimination": {
+        title: "Sexual Orientation Discrimination",
+        content: "Protection against discrimination based on sexual orientation (actual or perceived). This includes direct discrimination, harassment, and victimisation."
+    },
+    "Statutory Discipline and Grievance Procedures": {
+        title: "Discipline & Grievance (ACAS Code)",
+        content: "Compliance with the ACAS Code of Practice is crucial. Unreasonable failure to follow these procedures can lead to a 25% uplift in compensation awards in successful Tribunal claims."
+    },
+    "Termination of Employment": {
+        title: "Termination of Employment",
+        content: "The broad area covering unfair dismissal, constructive dismissal (resigning in response to a breach), and wrongful dismissal (notice pay). The core test is usually whether the employer acted within the 'range of reasonable responses'."
+    },
+    "TUPE": {
+        title: "Transfer of Undertakings (TUPE)",
+        content: "Regulations preserving employment terms when a business transfers ownership. Employment transfers automatically; dismissals connected to the transfer are automatically unfair unless for an 'Economic, Technical, or Organisational' (ETO) reason."
+    },
+    "Unlawful Deduction from Wages": {
+        title: "Unlawful Deduction from Wages",
+        content: "Claims under s.13 ERA 1996 for unauthorized non-payment. Key issues include 'series of deductions' (Agnew) arguments regarding holiday pay and whether contract terms explicitly authorized the stoppage."
+    },
+    "Victimisation Discrimination": {
+        title: "Victimisation",
+        content: "Retaliation against an employee for doing a 'protected act' (e.g., raising a grievance about discrimination). The claimant need not prove the original discrimination occurred, only that they were punished for complaining about it."
+    },
+    "Whistleblowing & Victimisation": {
+        title: "Whistleblowing & Victimisation",
+        content: "Complex litigation involving the overlap between statutory whistleblowing protections and the Equality Act. Often involves senior executives and high reputational risk."
+    },
+    "Working Time Regulations": {
+        title: "Working Time & Holiday Pay",
+        content: "Rights derived from the WTR 1998, including maximum working weeks, rest breaks, and holiday pay calculations. Recent case law has significantly expanded what must be included in 'normal remuneration' for holiday pay."
+    }
+};
