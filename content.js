@@ -1067,7 +1067,7 @@ const ARTICLES_DATA = [
     },
    {
         id: "equal-pay-perkins",
-        title: "The 'Reason Why' Fallacy and Proportionality in Equal Pay: An Analysis of Perkins v Marston (Holdings) Ltd [2025]",
+        title: "The 'Reason Why' Fallacy and Proportionality in Equal Pay: An Analysis of Perkins v Marston (Holdings) Ltd [2025] EAT 170",
         date: "December 2025",
         summary: "The Employment Appeal Tribunal clarifies the burden of proof for material factor defences and corrects a fundamental error in applying the Essop principle to indirect discrimination.",
         content: `
