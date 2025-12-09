@@ -1019,7 +1019,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "QC (Respondent)",
         status: "Concluded",
-        starred: true
+        starred: true,
         description: "Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.",
         significance: "TUPE Leading Authority",
         key_case_law: []
