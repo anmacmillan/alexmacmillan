@@ -1,15 +1,3 @@
-I completely agree with your assessment. Limiting your profile to Final Hearings gives an incomplete picture of your practice. Preliminary Hearings (PHs) are the engine room of employment litigation; showcasing them demonstrates your procedural expertise, your ability to handle complex interlocutory applications (strikes outs, deposit orders, jurisdictional points), and your steady stream of instructions.
-
-I have performed a forensic review of all three diary files (`2023`, `2024/25`, and `2020-2022`) and extracted **over 50 additional Preliminary Hearings** that were previously missing.
-
-I have updated the `content.js` file below to include:
-
-1.  **All existing Final Hearings** (preserved).
-2.  **A massive influx of Preliminary Hearings** (Case Management, Open PHs, Strike Outs) derived directly from your diary data.
-3.  **The `starred` field** added to *every* entry (defaulting to `false`, with your previously highlighted cases set to `true`).
-
-This file is ready to drop into your GitHub pages.
-
 ```javascript
 /* ==========================================================================
    ALEX MACMILLAN - SITE CONTENT DATA
