@@ -17,6 +17,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     
+    <!-- Word Document Generation Libraries -->
+    <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -72,6 +76,13 @@
             background-color: var(--highlight-yellow);
             padding: 0 2px;
             border-radius: 2px;
+        }
+
+        /* Tooltip Visual Cue */
+        .help-tip {
+            cursor: help;
+            text-decoration: underline dotted #aaa;
+            text-underline-offset: 3px;
         }
 
         /* --- LAYOUT STRUCTURE --- */
@@ -867,23 +878,86 @@
                 </div>
 
                 <div class="filters-toolbar">
+                    <!-- Keyword Search -->
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Keyword Search</span>
-                        <input type="text" id="case-search-input" class="search-input" placeholder="e.g. 'Whistleblowing', 'Judge Smith' or 'Manchester'">
+                        <input type="text" id="case-search-input" class="search-input" placeholder="e.g. 'Whistleblowing', 'Manchester'">
                     </div>
+                    
+                    <!-- Practice Area -->
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Practice Area</span>
                         <select id="case-type-filter" class="filter-select">
                             <option value="all">All Practice Areas</option>
                         </select>
                     </div>
+
+                    <!-- Court Level -->
+                    <div class="filter-group">
+                        <span class="nav-label help-tip" style="margin:0;" 
+                              title="Filter cases by the seniority of the court (e.g., Employment Tribunal vs. Court of Appeal).">
+                            Court Level
+                        </span>
+                        <select id="case-court-filter" class="filter-select">
+                            <option value="all">All Courts</option>
+                            <option value="et">Employment Tribunal</option>
+                            <option value="eat">EAT (Appellate)</option>
+                            <option value="ca">Court of Appeal / High Court</option>
+                            <option value="cc">County Court</option>
+                        </select>
+                    </div>
+
+                    <!-- Judge (NEW) -->
+                    <div class="filter-group">
+                        <span class="nav-label help-tip" style="margin:0;" 
+                              title="Filter by specific Judge (dynamically populated from case list).">
+                            Judge
+                        </span>
+                        <select id="case-judge-filter" class="filter-select">
+                            <option value="all">All Judges</option>
+                        </select>
+                    </div>
+
+                    <!-- Hearing Type (NEW) -->
+                    <div class="filter-group">
+                        <span class="nav-label help-tip" style="margin:0;" 
+                              title="Filter by the type of hearing (Preliminary vs Final).">
+                            Hearing Type
+                        </span>
+                        <select id="case-hearing-type-filter" class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="final">Final Hearing</option>
+                            <option value="prelim">Preliminary Hearing (CM)</option>
+                            <option value="open_prelim">Open Preliminary Hearing</option>
+                        </select>
+                    </div>
+
+                    <!-- Timeframe (UPDATED) -->
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Timeframe</span>
                         <select id="case-year-filter" class="filter-select">
-                            <option value="all">All Years</option>
-                            <option value="5">Last 5 Years</option>
+                            <option value="5">Past 5 Years (Default)</option>
+                            <option value="1">Past Year</option>
+                            <option value="2">Past 2 Years</option>
+                            <option value="3">Past 3 Years</option>
+                            <option value="4">Past 4 Years</option>
+                            <option value="all">All Time</option>
                         </select>
                     </div>
+                    
+                    <!-- Recent & Notable Checkbox with Updated Label -->
+                    <div class="filter-group" style="flex-direction: row; align-items: center; gap: 0.5rem; min-width: 200px;">
+                        <input type="checkbox" id="case-starred-filter" style="width: auto; margin: 0; cursor: pointer;">
+                        
+                        <label for="case-starred-filter" 
+                               style="margin: 0; cursor: pointer; font-weight: 500; color: var(--text-main);"
+                               title="When checked, this restricts the list to cases marked as 'Significant' or 'Starred' within the last 3 calendar years.">
+                            
+                            <span class="help-tip">Recent & Notable Cases</span><br>
+                            <span style="font-size: 0.7rem; color: #777; font-weight: normal;">(Starred • Last 3 Years)</span>
+                        </label>
+                    </div>
+
                     <div id="filter-count-display" class="filter-count"></div>
                 </div>
 
@@ -891,7 +965,7 @@
                     </div>
                 
                 <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line-color);">
-                    <button id="generate-cases-report-btn" class="calc-button">Generate Cases Report</button>
+                    <button id="generate-cases-report-btn" class="calc-button">Download Word Report (.docx)</button>
                     <div id="cp-report-container" class="cp-report-visible" style="display: none; margin-top: 2rem;"></div>
                 </div>
             </section>
@@ -1290,9 +1364,13 @@
     function initCases() {
         const typeFilter = document.getElementById('case-type-filter');
         const yearFilter = document.getElementById('case-year-filter');
+        const courtFilter = document.getElementById('case-court-filter'); 
+        const starredFilter = document.getElementById('case-starred-filter'); 
+        const judgeFilter = document.getElementById('case-judge-filter'); // NEW
+        const hearingFilter = document.getElementById('case-hearing-type-filter'); // NEW
         const textSearch = document.getElementById('case-search-input');
         
-        // Populate Type Filter - Merge predefined list with actual case types
+        // 1. Populate Type Filter
         const existingTypes = [...new Set(CASES_DATA.map(c => c.type))];
         const allTypes = [...new Set([...PRACTICE_AREAS, ...existingTypes])].sort();
 
@@ -1303,9 +1381,24 @@
             typeFilter.appendChild(opt);
         });
 
+        // 2. Populate Judge Filter (Dynamic)
+        // Extract unique judge names, filter out empties, and sort alphabetically
+        const allJudges = [...new Set(CASES_DATA.map(c => c.judge))].filter(j => j).sort();
+        
+        allJudges.forEach(j => {
+            const opt = document.createElement('option');
+            opt.value = j;
+            opt.innerText = j;
+            judgeFilter.appendChild(opt);
+        });
+
         // Event Listeners
         typeFilter.addEventListener('change', renderCases);
         yearFilter.addEventListener('change', renderCases);
+        courtFilter.addEventListener('change', renderCases); 
+        starredFilter.addEventListener('change', renderCases); 
+        judgeFilter.addEventListener('change', renderCases); // NEW
+        hearingFilter.addEventListener('change', renderCases); // NEW
         textSearch.addEventListener('keyup', renderCases);
         
         // Initial Render
@@ -1313,7 +1406,7 @@
         renderLocations();
 
         // Report Generator
-        document.getElementById('generate-cases-report-btn').addEventListener('click', generateCPReport);
+        document.getElementById('generate-cases-report-btn').addEventListener('click', generateWordReport);
     }
 
     function renderLocations() {
@@ -1364,8 +1457,15 @@
     function renderCases() {
         const container = document.getElementById('cases-list-container');
         const countDisplay = document.getElementById('filter-count-display');
+        
+        // Gather Filter Inputs
         const typeVal = document.getElementById('case-type-filter').value;
         const yearVal = document.getElementById('case-year-filter').value;
+        const courtVal = document.getElementById('case-court-filter').value; 
+        const starredVal = document.getElementById('case-starred-filter').checked;
+        const judgeVal = document.getElementById('case-judge-filter').value; // NEW
+        const hearingVal = document.getElementById('case-hearing-type-filter').value; // NEW
+        
         const searchVal = document.getElementById('case-search-input').value.toLowerCase();
         const currentYear = new Date().getFullYear();
 
@@ -1374,15 +1474,69 @@
         container.innerHTML = '';
 
         const filtered = CASES_DATA.filter(c => {
+            // 1. Basic Type Match
             const matchesType = (typeVal === 'all') || (c.type === typeVal);
-            const matchesYear = (yearVal === 'all') || (currentYear - parseInt(c.date, 10) <= parseInt(yearVal, 10));
             
-            // Text search logic (checks title, description, court, type, and judge)
+            // 2. Year Match (Updated Logic for multiple years)
+            let matchesYear = true;
+            if (yearVal !== 'all') {
+                const caseAge = currentYear - parseInt(c.date, 10);
+                matchesYear = caseAge <= parseInt(yearVal, 10);
+            }
+            
+            // 3. Text Search (checks title, description, court, type, and judge)
             const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
             const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor} ${judgeSearch}`.toLowerCase();
             const matchesSearch = !searchVal || searchText.includes(searchVal);
 
-            return matchesType && matchesYear && matchesSearch;
+            // 4. Court Level Match
+            let matchesCourt = true;
+            if (courtVal !== 'all') {
+                const cText = ((c.court || '') + ' ' + (c.type || '')).toLowerCase();
+                
+                if (courtVal === 'et') {
+                    // Matches "Tribunal" but excludes "Appeal"
+                    matchesCourt = (cText.includes('employment tribunal') || cText.includes('et ')) && !cText.includes('appeal');
+                } else if (courtVal === 'eat') {
+                    matchesCourt = cText.includes('eat') || cText.includes('appeal tribunal') || cText.includes('employment appeal');
+                } else if (courtVal === 'ca') {
+                    matchesCourt = cText.includes('court of appeal') || cText.includes('high court') || cText.includes('ewca') || cText.includes('ewhc');
+                } else if (courtVal === 'cc') {
+                    matchesCourt = cText.includes('county court');
+                }
+            }
+
+            // 5. Starred/Notable Match (Updated Label Logic)
+            let matchesStarred = true;
+            if (starredVal) {
+                const caseAge = currentYear - parseInt(c.date, 10);
+                matchesStarred = (c.starred === true) && (caseAge <= 3);
+            }
+
+            // 6. Judge Match (NEW)
+            let matchesJudge = true;
+            if (judgeVal !== 'all') {
+                matchesJudge = c.judge === judgeVal;
+            }
+
+            // 7. Hearing Type Match (NEW)
+            let matchesHearing = true;
+            if (hearingVal !== 'all') {
+                const hearingText = ((c.type || '') + ' ' + (c.description || '') + ' ' + (c.significance || '')).toLowerCase();
+                if (hearingVal === 'final') {
+                    matchesHearing = hearingText.includes('final hearing');
+                } else if (hearingVal === 'open_prelim') {
+                    matchesHearing = hearingText.includes('open preliminary hearing');
+                } else if (hearingVal === 'prelim') {
+                    // Include generic preliminary hearings, but try to exclude "Open" if specifically selected? 
+                    // Actually, usually "Preliminary Hearing" refers to Case Management. 
+                    // Let's match general "preliminary hearing" but exclude "open" if possible to differentiate, 
+                    // or just include all. Given the user asked for distinct categories, let's keep them distinct.
+                    matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
+                }
+            }
+
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing;
         });
 
         countDisplay.innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
@@ -1481,55 +1635,130 @@
         });
     }
 
-    function generateCPReport() {
-        const container = document.getElementById('cp-report-container');
-        container.style.display = 'block';
-        
-        let html = `
-            <div style="margin-bottom:2rem; border-bottom:1px solid #000; padding-bottom:1rem;">
-                <h2>Chambers & Partners Submission Data</h2>
-                <p>Generated Report - ${new Date().toLocaleDateString()}</p>
-            </div>
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Case Name</th>
-                        <th>Citation / Case No</th>
-                        <th>Confidential?</th>
-                        <th>Dates</th>
-                        <th>Description (Significance)</th>
-                        <th>Client</th>
-                        <th>Court/Judge</th>
-                        <th>Solicitor/Firm</th>
-                        <th>Counsel Team</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
+    /* --- WORD DOCUMENT GENERATION (Client-Side) --- */
+    function generateWordReport() {
+        const { Document, Packer, Paragraph, Table, TableCell, TableRow, WidthType, HeadingLevel, TextRun } = docx;
 
-        CASES_DATA.forEach(c => {
-            html += `
-                <tr>
-                    <td>${c.title}</td>
-                    <td>${c.citation || 'N/A'}</td>
-                    <td>${c.confidential}</td>
-                    <td>${c.date}</td>
-                    <td>${c.description}<br><br><strong>Significance:</strong> ${c.significance}</td>
-                    <td>${c.client}</td>
-                    <td>${c.court}<br>${c.judge}</td>
-                    <td>${c.solicitor}<br>${c.firm || ''}</td>
-                    <td>Led: ${c.leading || 'N/A'}<br>Opp: ${c.opposing || 'N/A'}</td>
-                    <td>${c.status || 'Concluded'}</td>
-                </tr>
-            `;
+        // 1. RE-RUN FILTER LOGIC TO GET DATA (Must match renderCases logic exactly)
+        const typeVal = document.getElementById('case-type-filter').value;
+        const yearVal = document.getElementById('case-year-filter').value;
+        const courtVal = document.getElementById('case-court-filter').value; 
+        const starredVal = document.getElementById('case-starred-filter').checked;
+        const judgeVal = document.getElementById('case-judge-filter').value;
+        const hearingVal = document.getElementById('case-hearing-type-filter').value;
+        const searchVal = document.getElementById('case-search-input').value.toLowerCase();
+        const currentYear = new Date().getFullYear();
+
+        const filteredCases = CASES_DATA.filter(c => {
+            const matchesType = (typeVal === 'all') || (c.type === typeVal);
+            
+            let matchesYear = true;
+            if (yearVal !== 'all') {
+                const caseAge = currentYear - parseInt(c.date, 10);
+                matchesYear = caseAge <= parseInt(yearVal, 10);
+            }
+            
+            const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
+            const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor} ${judgeSearch}`.toLowerCase();
+            const matchesSearch = !searchVal || searchText.includes(searchVal);
+
+            let matchesCourt = true;
+            if (courtVal !== 'all') {
+                const cText = ((c.court || '') + ' ' + (c.type || '')).toLowerCase();
+                if (courtVal === 'et') matchesCourt = (cText.includes('employment tribunal') || cText.includes('et ')) && !cText.includes('appeal');
+                else if (courtVal === 'eat') matchesCourt = cText.includes('eat') || cText.includes('appeal tribunal') || cText.includes('employment appeal');
+                else if (courtVal === 'ca') matchesCourt = cText.includes('court of appeal') || cText.includes('high court') || cText.includes('ewca') || cText.includes('ewhc');
+                else if (courtVal === 'cc') matchesCourt = cText.includes('county court');
+            }
+
+            let matchesStarred = true;
+            if (starredVal) {
+                const caseAge = currentYear - parseInt(c.date, 10);
+                matchesStarred = (c.starred === true) && (caseAge <= 3);
+            }
+
+            let matchesJudge = true;
+            if (judgeVal !== 'all') {
+                matchesJudge = c.judge === judgeVal;
+            }
+
+            let matchesHearing = true;
+            if (hearingVal !== 'all') {
+                const hearingText = ((c.type || '') + ' ' + (c.description || '') + ' ' + (c.significance || '')).toLowerCase();
+                if (hearingVal === 'final') matchesHearing = hearingText.includes('final hearing');
+                else if (hearingVal === 'open_prelim') matchesHearing = hearingText.includes('open preliminary hearing');
+                else if (hearingVal === 'prelim') matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
+            }
+
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing;
         });
 
-        html += `</tbody></table>`;
-        html += `<div style="margin-top:2rem;"><button class="print-btn" onclick="window.print()">🖨️ Print to PDF</button></div>`;
-        
-        container.innerHTML = html;
-        container.scrollIntoView({ behavior: 'smooth' });
+        if (filteredCases.length === 0) {
+            alert("No cases match your current filters.");
+            return;
+        }
+
+        // 2. BUILD WORD DOCUMENT ROWS
+        const tableRows = [
+            new TableRow({
+                children: [
+                    new TableCell({ children: [new Paragraph({ text: "Year", bold: true })], width: { size: 10, type: WidthType.PERCENTAGE } }),
+                    new TableCell({ children: [new Paragraph({ text: "Case / Citation", bold: true })], width: { size: 25, type: WidthType.PERCENTAGE } }),
+                    new TableCell({ children: [new Paragraph({ text: "Details", bold: true })], width: { size: 45, type: WidthType.PERCENTAGE } }),
+                    new TableCell({ children: [new Paragraph({ text: "Outcome/Status", bold: true })], width: { size: 20, type: WidthType.PERCENTAGE } }),
+                ],
+            }),
+        ];
+
+        filteredCases.forEach(c => {
+            tableRows.push(
+                new TableRow({
+                    children: [
+                        new TableCell({ children: [new Paragraph(c.date)] }),
+                        new TableCell({ 
+                            children: [
+                                new Paragraph({ text: c.title, bold: true }),
+                                new Paragraph(c.citation || ""),
+                                new Paragraph({ text: c.court || "", italics: true })
+                            ] 
+                        }),
+                        new TableCell({ 
+                            children: [
+                                new Paragraph(c.description),
+                                new Paragraph({ text: `\nSolicitor: ${c.solicitor || "N/A"}`, size: 16, color: "555555" }) // size in half-points
+                            ] 
+                        }),
+                        new TableCell({ children: [new Paragraph(c.status || "Concluded")] }),
+                    ],
+                })
+            );
+        });
+
+        // 3. CREATE DOCUMENT
+        const doc = new Document({
+            sections: [{
+                properties: {},
+                children: [
+                    new Paragraph({
+                        text: "Alex MacMillan - Case Report",
+                        heading: HeadingLevel.HEADING_1,
+                    }),
+                    new Paragraph({
+                        text: `Generated on ${new Date().toLocaleDateString()} | Filter Applied: ${typeVal}`,
+                        spacing: { after: 400 },
+                    }),
+                    new Table({
+                        rows: tableRows,
+                        width: { size: 100, type: WidthType.PERCENTAGE },
+                    }),
+                ],
+            }],
+        });
+
+        // 4. GENERATE AND SAVE
+        Packer.toBlob(doc).then(blob => {
+            saveAs(blob, "Alex_MacMillan_Case_Report.docx");
+        });
     }
 
     /* --- ARTICLE LOGIC --- */
