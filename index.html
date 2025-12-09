@@ -1360,7 +1360,10 @@
         if (window.dataLayer) { window.dataLayer.push({ 'event': eventName, ...params }); }
     }
 
-    /* --- CASE RENDERING & FILTERING --- */
+    /* ==========================================================================
+       CASE LOGIC: INIT, FILTERING, RENDERING & REPORTING
+       ========================================================================== */
+
     function initCases() {
         const typeFilter = document.getElementById('case-type-filter');
         const yearFilter = document.getElementById('case-year-filter');
@@ -1368,23 +1371,34 @@
         const starredFilter = document.getElementById('case-starred-filter'); 
         const judgeFilter = document.getElementById('case-judge-filter'); 
         const hearingFilter = document.getElementById('case-hearing-type-filter'); 
-        const firmFilter = document.getElementById('case-firm-filter'); // NEW
+        const firmFilter = document.getElementById('case-firm-filter'); 
         const textSearch = document.getElementById('case-search-input');
         
-        // 1. Populate Type Filter
-        const existingTypes = [...new Set(CASES_DATA.map(c => c.type))];
-        const allTypes = [...new Set([...PRACTICE_AREAS, ...existingTypes])].sort();
-
-        allTypes.forEach(t => {
+        // 1. Populate Jurisdiction Filter (Flattening the Jurisdiction Arrays)
+        const allJurisdictions = new Set();
+        // Add defaults if available
+        if (typeof PRACTICE_AREAS !== 'undefined') {
+            PRACTICE_AREAS.forEach(p => allJurisdictions.add(p));
+        }
+        // Add from data
+        CASES_DATA.forEach(c => {
+            if (c.jurisdiction && Array.isArray(c.jurisdiction)) {
+                c.jurisdiction.forEach(j => allJurisdictions.add(j));
+            }
+        });
+        
+        const sortedJurisdictions = Array.from(allJurisdictions).sort();
+        typeFilter.innerHTML = '<option value="all">All Practice Areas</option>';
+        sortedJurisdictions.forEach(t => {
             const opt = document.createElement('option');
             opt.value = t;
             opt.innerText = t;
             typeFilter.appendChild(opt);
         });
 
-        // 2. Populate Judge Filter (Dynamic)
+        // 2. Populate Judge Filter
         const allJudges = [...new Set(CASES_DATA.map(c => c.judge))].filter(j => j).sort();
-        
+        judgeFilter.innerHTML = '<option value="all">All Judges</option>';
         allJudges.forEach(j => {
             const opt = document.createElement('option');
             opt.value = j;
@@ -1392,23 +1406,10 @@
             judgeFilter.appendChild(opt);
         });
 
-        // 3. Populate Firm Filter (Dynamic & Smart)
-        const firms = new Set();
-        CASES_DATA.forEach(c => {
-            if (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) {
-                firms.add("Direct Access");
-            } else if (c.firm && c.firm !== 'N/A') {
-                firms.add(c.firm);
-            }
-        });
-        const sortedFirms = Array.from(firms).sort();
-        
-        sortedFirms.forEach(f => {
-            const opt = document.createElement('option');
-            opt.value = f;
-            opt.innerText = f;
-            firmFilter.appendChild(opt);
-        });
+        // 3. Hide unused 'Firm' filter (Data does not contain instructing firm)
+        if(firmFilter && firmFilter.parentElement) {
+            firmFilter.parentElement.style.display = 'none';
+        }
 
         // Event Listeners
         typeFilter.addEventListener('change', renderCases);
@@ -1417,7 +1418,6 @@
         starredFilter.addEventListener('change', renderCases); 
         judgeFilter.addEventListener('change', renderCases); 
         hearingFilter.addEventListener('change', renderCases);
-        firmFilter.addEventListener('change', renderCases); // NEW
         textSearch.addEventListener('keyup', renderCases);
         
         // Initial Render
@@ -1425,11 +1425,11 @@
         renderLocations();
 
         // Report Generator
-        document.getElementById('generate-cases-report-btn').addEventListener('click', generateWordReport);
+        const reportBtn = document.getElementById('generate-cases-report-btn');
+        if(reportBtn) reportBtn.addEventListener('click', generateWordReport);
     }
 
     function renderLocations() {
-        // Extract cities/locations from Court names to simulate a map without the complexity
         const locations = new Set();
         CASES_DATA.forEach(c => {
             if(!c.court) return;
@@ -1447,30 +1447,31 @@
             if(ct.includes('nottingham')) locations.add('Nottingham');
         });
 
-        if(locations.size > 0) {
-            const container = document.getElementById('location-pills');
+        const container = document.getElementById('location-pills');
+        if(locations.size > 0 && container) {
             container.innerHTML = '';
             Array.from(locations).sort().forEach(loc => {
                 container.innerHTML += `<span class="loc-pill">${loc}</span>`;
             });
-            document.getElementById('location-summary-container').style.display = 'block';
+            const wrapper = document.getElementById('location-summary-container');
+            if(wrapper) wrapper.style.display = 'block';
         }
     }
 
-    // Function to highlight search terms
     function highlightText(text, searchTerm) {
-        if (!searchTerm) return text;
+        if (!searchTerm || !text) return text;
         const regex = new RegExp(`(${searchTerm})`, 'gi');
         return text.replace(regex, '<span class="search-highlight">$1</span>');
     }
 
-    // Function to handle the click from Judge tags
     window.filterByTerm = function(term) {
         const searchInput = document.getElementById('case-search-input');
-        searchInput.value = term;
-        // Trigger render
-        renderCases();
-        document.getElementById('notable-cases').scrollIntoView({ behavior: 'smooth' });
+        if(searchInput) {
+            searchInput.value = term;
+            renderCases();
+            const section = document.getElementById('notable-cases');
+            if(section) section.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     function renderCases() {
@@ -1481,177 +1482,132 @@
         const typeVal = document.getElementById('case-type-filter').value;
         const yearVal = document.getElementById('case-year-filter').value;
         const courtVal = document.getElementById('case-court-filter').value; 
-        const starredVal = document.getElementById('case-starred-filter').checked;
+        const starredVal = document.getElementById('case-starred-filter') ? document.getElementById('case-starred-filter').checked : false;
         const judgeVal = document.getElementById('case-judge-filter').value; 
         const hearingVal = document.getElementById('case-hearing-type-filter').value;
-        const firmVal = document.getElementById('case-firm-filter').value; // NEW
-        
         const searchVal = document.getElementById('case-search-input').value.toLowerCase();
+        
         const currentYear = new Date().getFullYear();
 
-        // Apply timeline class
+        // Reset Container
         container.className = 'case-timeline';
         container.innerHTML = '';
 
         const filtered = CASES_DATA.filter(c => {
-            // 1. Basic Type Match
-            const matchesType = (typeVal === 'all') || (c.type === typeVal);
+            // 1. Jurisdiction Match
+            const matchesType = (typeVal === 'all') || (c.jurisdiction && c.jurisdiction.includes(typeVal));
             
-            // 2. Year Match (Safe Logic)
+            // 2. Year Match
             let matchesYear = true;
             if (yearVal !== 'all') {
-                // Parse the year, defaulting to the current year if missing/invalid
-                const cYear = c.date ? parseInt(c.date, 10) : currentYear;
-                
-                // If the date is totally invalid (NaN), treat it as a match (show it) or mismatch
-                // Here we treat it as current year so it shows up at the top
+                const cYear = c.year ? parseInt(c.year, 10) : currentYear;
                 const safeYear = isNaN(cYear) ? currentYear : cYear;
-                
                 const caseAge = currentYear - safeYear;
                 matchesYear = caseAge <= parseInt(yearVal, 10);
             }
             
-            // 3. Text Search (checks title, description, court, type, and judge)
+            // 3. Text Search
             const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
-            const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor} ${judgeSearch}`.toLowerCase();
+            const jurisSearch = c.jurisdiction ? c.jurisdiction.join(' ').toLowerCase() : '';
+            const searchText = `${c.title} ${c.description} ${c.court} ${judgeSearch} ${jurisSearch} ${c.citation}`.toLowerCase();
             const matchesSearch = !searchVal || searchText.includes(searchVal);
 
             // 4. Court Level Match
             let matchesCourt = true;
             if (courtVal !== 'all') {
-                const cText = ((c.court || '') + ' ' + (c.type || '')).toLowerCase();
-                
-                if (courtVal === 'et') {
-                    // Matches "Tribunal" but excludes "Appeal"
-                    matchesCourt = (cText.includes('employment tribunal') || cText.includes('et ')) && !cText.includes('appeal');
-                } else if (courtVal === 'eat') {
-                    matchesCourt = cText.includes('eat') || cText.includes('appeal tribunal') || cText.includes('employment appeal');
-                } else if (courtVal === 'ca') {
-                    matchesCourt = cText.includes('court of appeal') || cText.includes('high court') || cText.includes('ewca') || cText.includes('ewhc');
-                } else if (courtVal === 'cc') {
-                    matchesCourt = cText.includes('county court');
-                }
+                const cText = (c.court || '').toLowerCase();
+                if (courtVal === 'et') matchesCourt = (cText.includes('employment tribunal') || cText.includes('et ')) && !cText.includes('appeal');
+                else if (courtVal === 'eat') matchesCourt = cText.includes('eat') || cText.includes('appeal tribunal');
+                else if (courtVal === 'ca') matchesCourt = cText.includes('court of appeal') || cText.includes('high court') || cText.includes('ewca') || cText.includes('ewhc');
+                else if (courtVal === 'cc') matchesCourt = cText.includes('county court');
             }
 
-            // 5. Starred/Notable Match (Safe Logic)
-            let matchesStarred = true;
-            if (starredVal) {
-                const cYear = c.date ? parseInt(c.date, 10) : currentYear;
-                const safeYear = isNaN(cYear) ? currentYear : cYear;
-                const caseAge = currentYear - safeYear;
-                
-                matchesStarred = (c.starred === true) && (caseAge <= 3);
-            }
-
-            // 6. Judge Match
+            // 5. Judge Match
             let matchesJudge = true;
-            if (judgeVal !== 'all') {
-                matchesJudge = c.judge === judgeVal;
-            }
+            if (judgeVal !== 'all') matchesJudge = c.judge === judgeVal;
 
-            // 7. Hearing Type Match
+            // 6. Hearing Type Match
             let matchesHearing = true;
             if (hearingVal !== 'all') {
-                const hearingText = ((c.type || '') + ' ' + (c.description || '') + ' ' + (c.significance || '')).toLowerCase();
-                if (hearingVal === 'final') {
-                    matchesHearing = hearingText.includes('final hearing');
-                } else if (hearingVal === 'open_prelim') {
-                    matchesHearing = hearingText.includes('open preliminary hearing');
-                } else if (hearingVal === 'prelim') {
-                    matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
-                }
+                const hearingText = (c.description || '').toLowerCase();
+                if (hearingVal === 'final') matchesHearing = hearingText.includes('final hearing');
+                else if (hearingVal === 'open_prelim') matchesHearing = hearingText.includes('open preliminary hearing');
+                else if (hearingVal === 'prelim') matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
             }
 
-            // 8. Firm Match (NEW)
-            let matchesFirm = true;
-            if (firmVal !== 'all') {
-                if (firmVal === 'Direct Access') {
-                    matchesFirm = (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) || (c.firm === 'Direct Access');
-                } else {
-                    matchesFirm = c.firm === firmVal;
-                }
-            }
-
-            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing && matchesFirm;
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesJudge && matchesHearing;
         });
 
-        countDisplay.innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
+        if(countDisplay) countDisplay.innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
 
         if (filtered.length === 0) {
-            container.innerHTML = '<p style="color:#777; font-style:italic;">No cases found matching filters.</p>';
+            container.innerHTML = '<p style="color:#777; font-style:italic; padding:1rem;">No cases found matching filters.</p>';
             return;
         }
 
         filtered.forEach(c => {
             const div = document.createElement('div');
 
-            // Simple test to highlight appellate / High Court work
+            // Highlight appellate work
             const isFeatured = /Court of Appeal|High Court|EAT/i.test(c.court || '');
             div.className = isFeatured ? 'case-item case-item--featured' : 'case-item';
 
-            const roleText = c.client ? `For ${c.client}` : '';
-            const metaLineParts = [];
-            if (c.court) metaLineParts.push(c.court);
-            if (c.citation) metaLineParts.push(c.citation);
-            const metaLine = metaLineParts.join(' · ');
+            // Meta Line: Case No
+            const citation = c.citation ? c.citation : '';
+            const opposingBlock = c.opposing && c.opposing !== 'N/A' ? c.opposing : null;
 
-            const solicitorBlock = c.firm 
-                ? `${c.solicitor} (${c.firm})`
-                : (c.solicitor || '');
-
-            const opposingBlock = c.opposing ? c.opposing : 'Opposing counsel';
-
-            // Determine status style
-            let statusStyle = '';
-            if(c.status === 'Concluded') statusStyle = 'background-color:#e0f2f1; color:#00695c; border:1px solid #b2dfdb;'; // Greenish
-            if(c.status === 'Settled') statusStyle = 'background-color:#fff3e0; color:#e65100; border:1px solid #ffe0b2;'; // Orangeish
-
-            // --- Highlight content if search is active ---
+            // Highlight Search Terms
             let title = c.title;
             let description = c.description;
-            let judge = c.judge || '';
-            let solicitor = solicitorBlock;
-            
             if (searchVal) {
                  title = highlightText(title, searchVal);
                  description = highlightText(description, searchVal);
-                 judge = highlightText(judge, searchVal);
-                 solicitor = highlightText(solicitor, searchVal);
             }
 
-            // Case Law logic
+            // --- BUILD BADGES ---
+            
+            // 1. Jurisdiction Badges (Pills)
+            let jurisBadges = '';
+            if (c.jurisdiction && c.jurisdiction.length > 0) {
+                jurisBadges = c.jurisdiction.map(j => 
+                    `<span class="case-tag" style="background-color:#e3f2fd; color:#0d47a1; border:1px solid #bbdefb;">${j}</span>`
+                ).join(' ');
+            }
+
+            // 2. Judge Badge
+            const judgeBadge = c.judge 
+                ? `<span class="case-tag clickable-tag" onclick="filterByTerm('${(c.judge || '').replace(/'/g, "\\'")}')"><strong>Judge:</strong> ${c.judge}</span>` 
+                : '';
+            
+            // 3. Venue/Court Badge
+            const venueBadge = c.court
+                ? `<span class="case-tag"><strong>Venue:</strong> ${c.court}</span>`
+                : '';
+
+            // 4. Case Law Logic
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
                  caseLawHtml = `
                     <div class="case-law-section">
                         <span class="case-law-label">Key Authorities Cited</span>
                         <div class="case-badges-row" style="margin-top:0;">
-                             ${c.key_case_law.map(law => `<span class="case-tag law-tag">${law}</span>`).join('')}
+                             ${c.key_case_law.map(law => `<span class="case-tag law-tag" style="font-style:italic;">${law}</span>`).join('')}
                         </div>
                     </div>
                  `;
             }
 
-            // Clean judge name for onclick to avoid quote issues
-            const safeJudge = (c.judge || '').replace(/'/g, "\\'");
-            const judgeTag = c.judge 
-                ? `<span class="case-tag clickable-tag" onclick="filterByTerm('${safeJudge}')" title="Filter by this Judge"><strong>Judge:</strong> ${judge}</span>` 
-                : '';
-
+            // HTML Structure
             div.innerHTML = `
                 <div class="case-node"></div>
-                <div class="case-year-label">${c.date}</div>
+                <div class="case-year-label">${c.year}</div>
 
                 <div class="case-header">
                     <div class="case-header-main">
                         <h3 class="case-title">${title}</h3>
-                        <div class="case-strapline">
-                            ${c.significance || ''}${c.significance && roleText ? ' · ' : ''}${roleText}
+                        <div class="case-strapline" style="color:#666; font-size:0.9rem; font-family:var(--font-mono);">
+                            ${citation}
                         </div>
-                    </div>
-                    <div class="case-meta-block">
-                        <span class="case-type-pill">${c.type}</span>
-                        <span class="case-meta">${metaLine}</span>
                     </div>
                 </div>
 
@@ -1659,11 +1615,11 @@
                 
                 ${caseLawHtml}
 
-                <div class="case-badges-row">
-                    ${judgeTag}
-                    ${solicitor ? `<span class="case-tag"><strong>Solicitor:</strong> ${solicitor}</span>` : ''}
-                    ${opposingBlock && opposingBlock !== 'N/A' ? `<span class="case-tag"><strong>Opp:</strong> ${opposingBlock}</span>` : ''}
-                    ${c.status ? `<span class="case-tag" style="${statusStyle}"><strong>Status:</strong> ${c.status}</span>` : ''}
+                <div class="case-badges-row" style="margin-top: 1.25rem;">
+                    ${venueBadge}
+                    ${judgeBadge}
+                    ${jurisBadges}
+                    ${opposingBlock ? `<span class="case-tag"><strong>Opposing:</strong> ${opposingBlock}</span>` : ''}
                 </div>
             `;
 
@@ -1671,143 +1627,61 @@
         });
     }
 
-    /* --- WORD DOCUMENT GENERATION (Client-Side) --- */
     function generateWordReport() {
-        const { Document, Packer, Paragraph, Table, TableCell, TableRow, WidthType, HeadingLevel, TextRun } = docx;
+        if (typeof docx === 'undefined') { alert("Report generator loading..."); return; }
+        const { Document, Packer, Paragraph, Table, TableCell, TableRow, WidthType, HeadingLevel } = docx;
 
-        // 1. RE-RUN FILTER LOGIC TO GET DATA (Must match renderCases logic exactly)
-        const typeVal = document.getElementById('case-type-filter').value;
-        const yearVal = document.getElementById('case-year-filter').value;
-        const courtVal = document.getElementById('case-court-filter').value; 
-        const starredVal = document.getElementById('case-starred-filter').checked;
-        const judgeVal = document.getElementById('case-judge-filter').value;
-        const hearingVal = document.getElementById('case-hearing-type-filter').value;
-        const firmVal = document.getElementById('case-firm-filter').value; // NEW
-        const searchVal = document.getElementById('case-search-input').value.toLowerCase();
-        const currentYear = new Date().getFullYear();
-
-        const filteredCases = CASES_DATA.filter(c => {
-            const matchesType = (typeVal === 'all') || (c.type === typeVal);
-            
-            // Safe Year Logic for Report
-            let matchesYear = true;
-            if (yearVal !== 'all') {
-                const cYear = c.date ? parseInt(c.date, 10) : currentYear;
-                const safeYear = isNaN(cYear) ? currentYear : cYear;
-                const caseAge = currentYear - safeYear;
-                matchesYear = caseAge <= parseInt(yearVal, 10);
-            }
-            
-            const judgeSearch = c.judge ? c.judge.toLowerCase() : '';
-            const searchText = `${c.title} ${c.description} ${c.court} ${c.type} ${c.solicitor} ${judgeSearch}`.toLowerCase();
-            const matchesSearch = !searchVal || searchText.includes(searchVal);
-
-            let matchesCourt = true;
-            if (courtVal !== 'all') {
-                const cText = ((c.court || '') + ' ' + (c.type || '')).toLowerCase();
-                if (courtVal === 'et') matchesCourt = (cText.includes('employment tribunal') || cText.includes('et ')) && !cText.includes('appeal');
-                else if (courtVal === 'eat') matchesCourt = cText.includes('eat') || cText.includes('appeal tribunal') || cText.includes('employment appeal');
-                else if (courtVal === 'ca') matchesCourt = cText.includes('court of appeal') || cText.includes('high court') || cText.includes('ewca') || cText.includes('ewhc');
-                else if (courtVal === 'cc') matchesCourt = cText.includes('county court');
-            }
-
-            // Safe Starred Logic for Report
-            let matchesStarred = true;
-            if (starredVal) {
-                const cYear = c.date ? parseInt(c.date, 10) : currentYear;
-                const safeYear = isNaN(cYear) ? currentYear : cYear;
-                const caseAge = currentYear - safeYear;
-                matchesStarred = (c.starred === true) && (caseAge <= 3);
-            }
-
-            let matchesJudge = true;
-            if (judgeVal !== 'all') {
-                matchesJudge = c.judge === judgeVal;
-            }
-
-            let matchesHearing = true;
-            if (hearingVal !== 'all') {
-                const hearingText = ((c.type || '') + ' ' + (c.description || '') + ' ' + (c.significance || '')).toLowerCase();
-                if (hearingVal === 'final') matchesHearing = hearingText.includes('final hearing');
-                else if (hearingVal === 'open_prelim') matchesHearing = hearingText.includes('open preliminary hearing');
-                else if (hearingVal === 'prelim') matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
-            }
-
-            let matchesFirm = true;
-            if (firmVal !== 'all') {
-                if (firmVal === 'Direct Access') {
-                    matchesFirm = (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) || (c.firm === 'Direct Access');
-                } else {
-                    matchesFirm = c.firm === firmVal;
-                }
-            }
-
-            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing && matchesFirm;
+        // Use the current filtered list logic (simplified for report)
+        const casesToPrint = CASES_DATA.filter(c => {
+             const typeVal = document.getElementById('case-type-filter').value;
+             return (typeVal === 'all') || (c.jurisdiction && c.jurisdiction.includes(typeVal));
         });
 
-        if (filteredCases.length === 0) {
-            alert("No cases match your current filters.");
-            return;
-        }
-
-        // 2. BUILD WORD DOCUMENT ROWS
         const tableRows = [
             new TableRow({
                 children: [
                     new TableCell({ children: [new Paragraph({ text: "Year", bold: true })], width: { size: 10, type: WidthType.PERCENTAGE } }),
-                    new TableCell({ children: [new Paragraph({ text: "Case / Citation", bold: true })], width: { size: 25, type: WidthType.PERCENTAGE } }),
-                    new TableCell({ children: [new Paragraph({ text: "Details", bold: true })], width: { size: 45, type: WidthType.PERCENTAGE } }),
-                    new TableCell({ children: [new Paragraph({ text: "Outcome/Status", bold: true })], width: { size: 20, type: WidthType.PERCENTAGE } }),
+                    new TableCell({ children: [new Paragraph({ text: "Case Details", bold: true })], width: { size: 30, type: WidthType.PERCENTAGE } }),
+                    new TableCell({ children: [new Paragraph({ text: "Description & Jurisdiction", bold: true })], width: { size: 60, type: WidthType.PERCENTAGE } }),
                 ],
             }),
         ];
 
-        filteredCases.forEach(c => {
+        casesToPrint.forEach(c => {
+            const juris = (c.jurisdiction || []).join(', ');
             tableRows.push(
                 new TableRow({
                     children: [
-                        new TableCell({ children: [new Paragraph(c.date)] }),
+                        new TableCell({ children: [new Paragraph(String(c.year))] }),
                         new TableCell({ 
                             children: [
                                 new Paragraph({ text: c.title, bold: true }),
                                 new Paragraph(c.citation || ""),
-                                new Paragraph({ text: c.court || "", italics: true })
+                                new Paragraph({ text: c.court || "", italics: true }),
+                                new Paragraph({ text: c.judge ? `Judge: ${c.judge}` : "" })
                             ] 
                         }),
                         new TableCell({ 
                             children: [
                                 new Paragraph(c.description),
-                                new Paragraph({ text: `\nSolicitor: ${c.solicitor || "N/A"}`, size: 16, color: "555555" }) // size in half-points
+                                new Paragraph({ text: `\nAreas: ${juris}`, size: 16, color: "555555" })
                             ] 
                         }),
-                        new TableCell({ children: [new Paragraph(c.status || "Concluded")] }),
                     ],
                 })
             );
         });
 
-        // 3. CREATE DOCUMENT
         const doc = new Document({
             sections: [{
-                properties: {},
                 children: [
-                    new Paragraph({
-                        text: "Alex MacMillan - Case Report",
-                        heading: HeadingLevel.HEADING_1,
-                    }),
-                    new Paragraph({
-                        text: `Generated on ${new Date().toLocaleDateString()} | Filter Applied: ${typeVal}`,
-                        spacing: { after: 400 },
-                    }),
-                    new Table({
-                        rows: tableRows,
-                        width: { size: 100, type: WidthType.PERCENTAGE },
-                    }),
+                    new Paragraph({ text: "Alex MacMillan - Case Report", heading: HeadingLevel.HEADING_1 }),
+                    new Paragraph({ text: `Generated on ${new Date().toLocaleDateString()}`, spacing: { after: 400 } }),
+                    new Table({ rows: tableRows, width: { size: 100, type: WidthType.PERCENTAGE } }),
                 ],
             }],
         });
 
-        // 4. GENERATE AND SAVE
         Packer.toBlob(doc).then(blob => {
             saveAs(blob, "Alex_MacMillan_Case_Report.docx");
         });
