@@ -192,6 +192,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
+        starred: true,
         description: "Final Hearing (1 day).",
         significance: "Final Hearing",
         key_case_law: []
@@ -250,6 +251,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Successfully represented the Claimant in a multi-day liability hearing. The Tribunal found the Claimant was unfairly dismissed and victimised following his grievance regarding the devaluation of his role upon returning from cancer-related absence. The redundancy process was found to be a sham.",
         significance: "Disability Discrimination / Sham Redundancy",
+        starred: true,
         key_case_law: [
             "Barclays Bank Plc v Kapur [1991] I.C.R. 208",
             "Hendricks v Commissioner of Police of the Metropolis [2003] IRLR 96",
@@ -317,6 +319,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
+        starred: true,
         description: "The claimant, Mr Habila Tikon, brought claims against HMRC and Mitie Limited including detriment under whistleblowing provisions, unlawful deduction of wages, breach of contract, and unfair dismissal. The tribunal struck out all claims against HMRC and the claimant's unfair dismissal and detriment claims as out of time, allowing only the unlawful deduction from wages and breach of contract claims to proceed against Mitie Limited. The decision involved preliminary issues including the timing of claims, TUPE transfer questions, and the claimant's failure to provide evidence regarding means for a deposit order. Whistleblowing detriment (Employment Rights Act 1996 s47B); Unfair dismissal (Employment Rights Act 1996 ss 94-98, s103A); Unlawful deduction from wages (Employment Rights Act 1996 s13); Breach of contract; Time limits for claims (Employment Rights Act 1996 s111); TUPE transfer issues (Transfer of Undertakings (Protection of Employment) Regulations 2006)",
         significance: "Appeal",
         key_case_law: [
@@ -342,6 +345,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "Mrs. Marta Grobarcikova Gonczyova brought claims against Barchester Healthcare Ltd alleging disability discrimination arising under section 15 of the Equality Act 2010 and failure to make reasonable adjustments under section 21. The Tribunal found that although the claimant was disabled, the alleged unfavourable treatment and failure to make reasonable adjustments claims were not made out and dismissed both claims. The decision focused on whether the respondent's conduct and policies constituted discrimination or unreasonable failure to adjust workplace practices to accommodate the claimant's disabilities. Disability discrimination arising from disability (Equality Act 2010 s15); Duty to make reasonable adjustments (Equality Act 2010 s21); Disability-related harassment (Equality Act 2010 s26)",
         significance: "Final Hearing",
+        starred: true,
         key_case_law: [
             "Environment Agency v Rowan [2008] ICR 218",
             "Birtenshaw v Oldfield [2019] IRLR 946",
@@ -363,6 +367,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Mr A (Counsel)",
         status: "Concluded",
+        starred: true,
         description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
         significance: "Disability / Performance",
         key_case_law: []
@@ -437,6 +442,7 @@ const CASES_DATA = [
         status: "Concluded",
         description: "The claimant, John William Kennedy Boggs, brought claims against Warrington and Halton Teaching Hospitals NHS Foundation Trust for unfair dismissal, wrongful dismissal, and disability discrimination arising from autism, anxiety, and depression. The Tribunal found in favor of the respondent on unfair dismissal, wrongful dismissal, discrimination arising from disability, and harassment claims, but partially upheld the claim for failure to make reasonable adjustments. The claimant withdrew sex discrimination and direct/indirect disability discrimination claims during the hearing. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Wrongful dismissal (common law contract principles); Disability discrimination (Equality Act 2010 ss 15, 20 - discrimination arising from disability and reasonable adjustments); Time limits for discrimination claims (Equality Act 2010 s 123); ACAS Code of Practice on Disciplinary and Grievance Procedures",
         significance: "Final Hearing",
+        starred: true,
         key_case_law: [
             "Birds v Croucher [1984] IRLR 425",
             "Abernethy v Mott Hay and Anderson [1974] ICR 323",
@@ -532,6 +538,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
+        starred: true,
         description: "The key issue in Mr G Price v Fleet Express & Logistics Ltd was whether the claimant was unfairly dismissed following incidents involving alleged aggressive behavior towards his supervisor, Mr Pugh. The Tribunal found the claimant was unfairly dismissed but reduced the compensation by 75% due to contributory conduct, awarding the claimant £2,743.19. The decision hinged on conflicting accounts of the incidents, credibility assessments, and procedural fairness in the disciplinary process. Unfair dismissal (Employment Rights Act 1996 ss 94-98); Contributory fault in unfair dismissal (Employment Rights Act 1996 s 123); Procedural fairness in disciplinary processes",
         significance: "Final Hearing",
         key_case_law: ["Polkey v AE Dayton"]
@@ -550,6 +557,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "Alexander MacMillan",
         status: "Concluded",
+        starred: true,
         description: "Ms J Godliman brought claims against the London Borough of Waltham Forest alleging direct disability discrimination, discrimination arising from disability, harassment related to disability, and victimisation under the Equality Act 2010. The Tribunal dismissed the claims for direct disability discrimination and several complaints of discrimination and harassment following the Claimant's withdrawal, and found the remaining complaints and the victimisation claim to fail. Overall, all claims were dismissed. Disability discrimination (Equality Act 2010 ss 13, 15, 26, 27)",
         significance: "Final Hearing",
         key_case_law: []
@@ -568,6 +576,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
+        starred: true,
         description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct. The unfair dismissal claim was withdrawn due to insufficient continuous service. Disability discrimination (Equality Act 2010 s15); Failure to make reasonable adjustments (Equality Act 2010 ss 20-21); Unfair dismissal (Employment Rights Act 1996 ss 94-98) - withdrawn due to lack of qualifying service",
         significance: "Remedies",
         key_case_law: [
@@ -591,6 +600,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "N/A",
         status: "Concluded",
+        starred: true,
         description: "Mr D Austin, a disabled employee, was found to have been unfairly dismissed by Kingspan Ltd in breach of the Employment Rights Act 1996. Although he withdrew some discrimination claims under the Equality Act 2010, the Tribunal found that he was subjected to unlawful disability discrimination under section 15 and awarded him compensation totaling £33,008.27 for unfair dismissal and injury to feelings. Unfair dismissal (Employment Rights Act 1996 s94); Disability discrimination (Equality Act 2010 ss6, 15); Withdrawal of discrimination claims under Equality Act 2010 ss13, 20, 21",
         significance: "Final Hearing",
         key_case_law: []
@@ -1009,6 +1019,7 @@ const CASES_DATA = [
         leading: "Sole Counsel",
         opposing: "QC (Respondent)",
         status: "Concluded",
+        starred: true
         description: "Represented the successful Claimant in the Court of Appeal in a key case concerning the proper application of the TUPE ‘sole or principal reason’ test.",
         significance: "TUPE Leading Authority",
         key_case_law: []
