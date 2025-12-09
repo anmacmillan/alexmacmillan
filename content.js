@@ -1017,6 +1017,55 @@ const CASES_DATA = [
 
 const ARTICLES_DATA = [
    {
+        id: "peggie-v-fife",
+        title: "The Context: Sex means Biological Sex",
+        date: "December 2025",
+        summary: "An analysis of Peggie v Fife Health Board and For Women Scotland Ltd v Scottish Ministers [2025], clarifying that 'sex' refers to biological sex under the Equality Act 2010 and outlining the 'balancing test' for conflicting rights in the workplace.",
+        content: `
+            <div class="article-body">
+                <p>To understand <em>Peggie</em>, we have to look first at the Supreme Court’s decision in <em>For Women Scotland Ltd v Scottish Ministers [2025]</em>.</p>
+                
+                <h3>The Context: Sex means Biological Sex</h3>
+                <p>In that landmark judgment, the Court clarified a fundamental definition within the Equality Act 2010: "Sex" refers to biological sex. It held that a trans woman (even one holding a Gender Recognition Certificate) remains male for the purposes of the sex discrimination provisions in the Equality Act.</p>
+                <p>This distinction is crucial. It means that when an employer provides a "female-only" space, they are providing it for biological women. However, that doesn't automatically mean trans women must be excluded. It means that allowing access involves a conflict between two protected characteristics: the sex of female employees (and their privacy rights) and the gender reassignment rights of trans employees.</p>
+
+                <h3>The Case: Peggie v Fife Health Board</h3>
+                <p><strong>The Facts:</strong> Sandie Peggie, a nurse with 30 years of service, held "gender-critical" beliefs—specifically that sex is immutable and that biological males should not access female-only spaces. Dr. Upton, a junior doctor and trans woman, had been granted permission by the Health Board to use the female staff changing room.</p>
+                <p>The conflict came to a head over several incidents, culminating on Christmas Eve 2023. Mrs. Peggie, feeling intimidated and embarrassed by the presence of a biological male while she was undressing, confronted Dr. Upton. The exchange was heated; Mrs. Peggie challenged Dr. Upton’s sex ("what are your chromosomes?") and made a comparison to a controversial case involving a trans prisoner.</p>
+                <p>The Health Board suspended Mrs. Peggie, launched a disciplinary investigation that dragged on for nearly a year, and eventually brought unsubstantiated allegations about patient safety against her.</p>
+
+                <p><strong>The Judgment:</strong> The Tribunal found in favour of Mrs. Peggie on several counts of harassment by the employer.</p>
+                <p>Crucially, the Tribunal applied a "balancing test" (derived from <em>Bank Mellat</em>) to the Health Board’s decision to allow Dr. Upton access to the female changing room. They broke the timeline down into three periods:</p>
+                <ul>
+                    <li><strong>Period 1 (Lawful):</strong> Initially, granting Dr. Upton access was lawful. No one had complained, and the Board was aiming to be inclusive.</li>
+                    <li><strong>Period 2 (Unlawful Harassment):</strong> Once Mrs. Peggie raised a formal concern about her dignity and privacy, the landscape changed. The Board failed to pause or revoke the permission while they found a solution. By allowing the situation to continue knowing Mrs. Peggie felt violated, the Board harassed Mrs. Peggie. They failed to balance her rights with Dr. Upton's.</li>
+                    <li><strong>Period 3 (Lawful):</strong> Eventually, the Board adjusted the rotas so the two employees were never on shift together. This was deemed a lawful, proportionate solution.</li>
+                </ul>
+                <p>The Tribunal also slammed the Board for the "unreasonable length" of the investigation into Mrs. Peggie (which took nearly a year) and for issuing vague instructions effectively silencing her from discussing her case.</p>
+
+                <h3>What does this mean for employers?</h3>
+                <p>This judgment suggests that "inclusion" cannot be a passive, blanket policy. It requires active management of conflicting rights.</p>
+                <ul>
+                    <li><strong>No Automatic Right:</strong> Trans employees do not have an unqualified right to access the single-sex facilities of their acquired gender if it impacts the dignity and privacy of others.</li>
+                    <li><strong>No Automatic Ban:</strong> Conversely, there is no absolute ban. If no female staff object, access may be lawful.</li>
+                    <li><strong>The Duty to Manage:</strong> Once an objection is raised, the employer must act. Ignoring the complaint, or telling a female employee to "be kind," may amount to unlawful harassment. Solutions might include rotas, single-occupancy pods, or assigning different changing areas—but the status quo cannot persist if it violates dignity.</li>
+                </ul>
+
+                <h3>Relevant Case Law</h3>
+                <p>The <em>Peggie</em> judgment relies on a specific ecosystem of case law regarding discrimination, definition of sex, and the proportionality of interfering with rights. Key cases cited include:</p>
+                <ul>
+                    <li><em>For Women Scotland Ltd v Scottish Ministers</em> [2025] ICR 899 – Established that "sex" in the Equality Act 2010 refers to biological sex.</li>
+                    <li><em>Forstater v CDG Europe</em> [2022] ICR 1 – Established that gender-critical beliefs (that sex is real and immutable) are protected under the Equality Act.</li>
+                    <li><em>Higgs v Farmor’s School</em> [2025] IRLR 368 – Discusses the distinction between holding a belief and manifesting it in an objectionable way.</li>
+                    <li><em>Bank Mellat v HM Treasury (No 2)</em> [2014] AC 700 – The source of the proportionality test used by the Tribunal to balance conflicting rights.</li>
+                    <li><em>Croft v Royal Mail Group</em> [2003] ICR 1425 – An older but relevant Court of Appeal case regarding trans employees and toilet facilities.</li>
+                    <li><em>Chief Constable of West Yorkshire Police v A</em> [2005] 1 AC 51 – Regarding the treatment of trans people in searches.</li>
+                    <li><em>Elan-Cane v Secretary of State for the Home Department</em> [2021] UKSC 56 – Confirmed that "sex" and "gender" are distinct concepts in UK law.</li>
+                </ul>
+            </div>
+        `
+    },
+   {
         id: "equal-pay-perkins",
         title: "The 'Reason Why' Fallacy and Proportionality in Equal Pay: An Analysis of Perkins v Marston (Holdings) Ltd [2025]",
         date: "December 2025",
