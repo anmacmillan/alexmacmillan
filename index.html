@@ -932,6 +932,17 @@
                         </select>
                     </div>
 
+                    <!-- Instructing Firm (NEW) -->
+                    <div class="filter-group">
+                        <span class="nav-label help-tip" style="margin:0;" 
+                              title="Filter by the instructing solicitor's firm or Direct Access instruction.">
+                            Instructing Firm
+                        </span>
+                        <select id="case-firm-filter" class="filter-select">
+                            <option value="all">All Firms</option>
+                        </select>
+                    </div>
+
                     <!-- Timeframe (UPDATED) -->
                     <div class="filter-group">
                         <span class="nav-label" style="margin:0;">Timeframe</span>
@@ -1366,8 +1377,9 @@
         const yearFilter = document.getElementById('case-year-filter');
         const courtFilter = document.getElementById('case-court-filter'); 
         const starredFilter = document.getElementById('case-starred-filter'); 
-        const judgeFilter = document.getElementById('case-judge-filter'); // NEW
-        const hearingFilter = document.getElementById('case-hearing-type-filter'); // NEW
+        const judgeFilter = document.getElementById('case-judge-filter'); 
+        const hearingFilter = document.getElementById('case-hearing-type-filter'); 
+        const firmFilter = document.getElementById('case-firm-filter'); // NEW
         const textSearch = document.getElementById('case-search-input');
         
         // 1. Populate Type Filter
@@ -1382,7 +1394,6 @@
         });
 
         // 2. Populate Judge Filter (Dynamic)
-        // Extract unique judge names, filter out empties, and sort alphabetically
         const allJudges = [...new Set(CASES_DATA.map(c => c.judge))].filter(j => j).sort();
         
         allJudges.forEach(j => {
@@ -1392,13 +1403,32 @@
             judgeFilter.appendChild(opt);
         });
 
+        // 3. Populate Firm Filter (Dynamic & Smart)
+        const firms = new Set();
+        CASES_DATA.forEach(c => {
+            if (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) {
+                firms.add("Direct Access");
+            } else if (c.firm && c.firm !== 'N/A') {
+                firms.add(c.firm);
+            }
+        });
+        const sortedFirms = Array.from(firms).sort();
+        
+        sortedFirms.forEach(f => {
+            const opt = document.createElement('option');
+            opt.value = f;
+            opt.innerText = f;
+            firmFilter.appendChild(opt);
+        });
+
         // Event Listeners
         typeFilter.addEventListener('change', renderCases);
         yearFilter.addEventListener('change', renderCases);
         courtFilter.addEventListener('change', renderCases); 
         starredFilter.addEventListener('change', renderCases); 
-        judgeFilter.addEventListener('change', renderCases); // NEW
-        hearingFilter.addEventListener('change', renderCases); // NEW
+        judgeFilter.addEventListener('change', renderCases); 
+        hearingFilter.addEventListener('change', renderCases);
+        firmFilter.addEventListener('change', renderCases); // NEW
         textSearch.addEventListener('keyup', renderCases);
         
         // Initial Render
@@ -1463,8 +1493,9 @@
         const yearVal = document.getElementById('case-year-filter').value;
         const courtVal = document.getElementById('case-court-filter').value; 
         const starredVal = document.getElementById('case-starred-filter').checked;
-        const judgeVal = document.getElementById('case-judge-filter').value; // NEW
-        const hearingVal = document.getElementById('case-hearing-type-filter').value; // NEW
+        const judgeVal = document.getElementById('case-judge-filter').value; 
+        const hearingVal = document.getElementById('case-hearing-type-filter').value;
+        const firmVal = document.getElementById('case-firm-filter').value; // NEW
         
         const searchVal = document.getElementById('case-search-input').value.toLowerCase();
         const currentYear = new Date().getFullYear();
@@ -1513,13 +1544,13 @@
                 matchesStarred = (c.starred === true) && (caseAge <= 3);
             }
 
-            // 6. Judge Match (NEW)
+            // 6. Judge Match
             let matchesJudge = true;
             if (judgeVal !== 'all') {
                 matchesJudge = c.judge === judgeVal;
             }
 
-            // 7. Hearing Type Match (NEW)
+            // 7. Hearing Type Match
             let matchesHearing = true;
             if (hearingVal !== 'all') {
                 const hearingText = ((c.type || '') + ' ' + (c.description || '') + ' ' + (c.significance || '')).toLowerCase();
@@ -1528,15 +1559,21 @@
                 } else if (hearingVal === 'open_prelim') {
                     matchesHearing = hearingText.includes('open preliminary hearing');
                 } else if (hearingVal === 'prelim') {
-                    // Include generic preliminary hearings, but try to exclude "Open" if specifically selected? 
-                    // Actually, usually "Preliminary Hearing" refers to Case Management. 
-                    // Let's match general "preliminary hearing" but exclude "open" if possible to differentiate, 
-                    // or just include all. Given the user asked for distinct categories, let's keep them distinct.
                     matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
                 }
             }
 
-            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing;
+            // 8. Firm Match (NEW)
+            let matchesFirm = true;
+            if (firmVal !== 'all') {
+                if (firmVal === 'Direct Access') {
+                    matchesFirm = (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) || (c.firm === 'Direct Access');
+                } else {
+                    matchesFirm = c.firm === firmVal;
+                }
+            }
+
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing && matchesFirm;
         });
 
         countDisplay.innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
@@ -1646,6 +1683,7 @@
         const starredVal = document.getElementById('case-starred-filter').checked;
         const judgeVal = document.getElementById('case-judge-filter').value;
         const hearingVal = document.getElementById('case-hearing-type-filter').value;
+        const firmVal = document.getElementById('case-firm-filter').value; // NEW
         const searchVal = document.getElementById('case-search-input').value.toLowerCase();
         const currentYear = new Date().getFullYear();
 
@@ -1690,7 +1728,16 @@
                 else if (hearingVal === 'prelim') matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
             }
 
-            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing;
+            let matchesFirm = true;
+            if (firmVal !== 'all') {
+                if (firmVal === 'Direct Access') {
+                    matchesFirm = (c.solicitor && c.solicitor.toLowerCase().includes('direct access')) || (c.firm === 'Direct Access');
+                } else {
+                    matchesFirm = c.firm === firmVal;
+                }
+            }
+
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesStarred && matchesJudge && matchesHearing && matchesFirm;
         });
 
         if (filteredCases.length === 0) {
