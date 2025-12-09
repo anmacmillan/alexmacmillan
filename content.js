@@ -1,5 +1,5 @@
 // Employment Tribunal Cases Database
-// Generated with comprehensive research and verification
+// Generated with comprehensive research, verification, and jurisdiction classification
 // Last updated: 2025-12-09
 
 const CASES_DATA = [
@@ -10,6 +10,10 @@ const CASES_DATA = [
     judge: "Employment Judge Walker",
     court: "London South Employment Tribunal",
     description: "Successful Final Hearing. The Tribunal found unlawful deductions of £29,166.66. While the Respondent alleged an oral agreement to reduce salary, the Tribunal applied <em>Kerr v The Sweater Shop</em> and <em>International Packaging v Balfour</em> to rule that, absent written notification of the variation terms <em>before</em> the deduction, the deductions violated s.13(2)(b) ERA 1996. The Tribunal further applied <em>Agnew</em> to establish a 'series of deductions' despite gaps in payment, preserving the full claim period.",
+    jurisdiction: [
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -25,6 +29,9 @@ const CASES_DATA = [
     judge: "Employment Judge Jones",
     court: "West Midlands Employment Tribunal",
     description: "Telephone Preliminary Hearing for case management.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -36,6 +43,7 @@ const CASES_DATA = [
     judge: "Employment Judge Chudleigh",
     court: "Bristol Employment Tribunal",
     description: "Preliminary Hearing fixture involving multiple respondents (Wincanton PLC, XPO Logistics).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -47,6 +55,7 @@ const CASES_DATA = [
     judge: "",
     court: "East London Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -58,6 +67,9 @@ const CASES_DATA = [
     judge: "Employment Judge Wedderspoon",
     court: "Employment Tribunal (Midlands West)",
     description: "Successfully defended claims valued at £44,000 arising from the summary dismissal of a senior operator for gross negligence. The Tribunal found the dismissal fair following a 'shock-loading' incident involving a 13-tonne crane tool and a failure to follow mandatory reporting procedures.",
+    jurisdiction: [
+      "Practice and Procedure Issues",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -71,6 +83,7 @@ const CASES_DATA = [
     judge: "Employment Judge P Davies",
     court: "Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Julie Richards",
     key_case_law: []
@@ -82,6 +95,10 @@ const CASES_DATA = [
     judge: "Employment Judge Smail",
     court: "Glasgow Employment Tribunal",
     description: "Video Preliminary Hearing regarding jurisdiction and case management.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Jurisdictional Points",
+    ],
     leading: "Alexander MacMillan",
     opposing: "Jaspel Kaur, Rajwinder Kaur Goraya",
     key_case_law: []
@@ -93,6 +110,7 @@ const CASES_DATA = [
     judge: "Employment Judge Robin Broughton",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing involving individual named respondents (Jo Doherty, Ian Moss).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -106,6 +124,9 @@ const CASES_DATA = [
     judge: "Employment Judge Robertson",
     court: "East London Employment Tribunal",
     description: "Video Preliminary Hearing involving partnership dispute.",
+    jurisdiction: [
+      "Sexual Orientation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -117,6 +138,9 @@ const CASES_DATA = [
     judge: "Employment Judge Frances Eccles",
     court: "Birmingham Employment Tribunal",
     description: "Case Management Preliminary Hearing involving multiple claimants against the Local Authority and Local Enterprise Partnership.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -128,6 +152,7 @@ const CASES_DATA = [
     judge: "Employment Judge B J Clarke",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing for consolidated claims.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Sarah Lewis, Chris Davis MP",
     key_case_law: []
@@ -139,6 +164,7 @@ const CASES_DATA = [
     judge: "Employment Judge Buckley",
     court: "Leeds Employment Tribunal",
     description: "Video Preliminary Hearing for multiple claimant action.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -150,6 +176,7 @@ const CASES_DATA = [
     judge: "",
     court: "East London Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Patrick Egan, William Yeung, Bob Benton, Richard Abrahams",
     key_case_law: [
@@ -172,6 +199,9 @@ const CASES_DATA = [
     judge: "Employment Judge Buckley",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [
+      "Sexual Orientation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -183,6 +213,7 @@ const CASES_DATA = [
     judge: "Employment Judge Dunlop",
     court: "Leicester Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -194,6 +225,7 @@ const CASES_DATA = [
     judge: "Employment Judge JM Wade",
     court: "Glasgow Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -205,6 +237,7 @@ const CASES_DATA = [
     judge: "Employment Judge Lucy Wiseman",
     court: "Bristol Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "George Sargent -v- G E Caledonian Limited, James McKinlay -v- G E Caledonian Limited, James Thompson -v- G E Caledonian Limited, Jason Stewart -v- G E Caledonian Limited, Angus Dinning -v- G E Caledonian Limited, James Toner Dorrans -v- G E Caledonian Limited, James Houston -v- G E Caledonian Limited, Adrian Gillespie -v- G E Caledonian Limited, Thomas Booker -v- G E Caledonian Limited, John Conway -v- G E Caledonian Limited, Scott Alexander Milne -v- G E Caledonian Limited, Christopher Watson -v- G E Caledonian Limited, Matthew Clifford Paton -v- G E Caledonian Limited, James Lennon Black -v- G E Caledonian Limited, Gordon William Caldow -v- G E Caledonian Limited, John Miller -v- G E Caledonian Limited, Edward Hannigan -v- G E Caledonian Limited, Stuart Muirhead -v- G E Caledonian Limited, Stephen Joseph Watters -v- G E Caledonian Limited, Robert Grant McNeish -v- G E Caledonian Limited, Raymond Carroll -v- G E Caledonian Limited, John David Evans -v- G E Caledonian Limited",
     key_case_law: []
@@ -216,6 +249,7 @@ const CASES_DATA = [
     judge: "Employment Judge Pirani",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -227,6 +261,10 @@ const CASES_DATA = [
     judge: "Employment Judge Wedderspoon",
     court: "Employment Tribunal (Midlands West)",
     description: "Breach of Contract / Unlawful Deductions in relation to commission payments.",
+    jurisdiction: [
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -238,6 +276,7 @@ const CASES_DATA = [
     judge: "Employment Judge Matthews",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Gemma Erasmus, Mark Rudge",
     key_case_law: [
@@ -252,6 +291,9 @@ const CASES_DATA = [
     judge: "Employment Judge Harper MBE",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing regarding jurisdictional issues.",
+    jurisdiction: [
+      "Jurisdictional Points",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -263,6 +305,9 @@ const CASES_DATA = [
     judge: "Employment Judge Pirani",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing to determine case management orders.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -274,6 +319,9 @@ const CASES_DATA = [
     judge: "EJ Lloyd-Lawrie",
     court: "Wales Employment Tribunal",
     description: "Open Preliminary Hearing to determine disability status under the Equality Act 2010.",
+    jurisdiction: [
+      "Disability Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -285,6 +333,7 @@ const CASES_DATA = [
     judge: "Employment Judge Harding",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing to identify issues in complex multi-respondent claim.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -296,6 +345,7 @@ const CASES_DATA = [
     judge: "Employment Judge Shepherd",
     court: "Nottingham Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -307,6 +357,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bright",
     court: "Newcastle Employment Tribunal",
     description: "Video Preliminary Hearing/Mediation.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -318,6 +369,7 @@ const CASES_DATA = [
     judge: "Employment Judge S Shore",
     court: "Leeds Employment Tribunal",
     description: "Final Hearing (3 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -329,6 +381,9 @@ const CASES_DATA = [
     judge: "Employment Judge Pirani",
     court: "Glasgow Employment Tribunal",
     description: "Case Management Preliminary Hearing via CVP.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -340,6 +395,9 @@ const CASES_DATA = [
     judge: "EJ ",
     court: "Employment Tribunal (Midlands West)",
     description: "Multi-week disability discrimination claim.",
+    jurisdiction: [
+      "Disability Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -351,6 +409,10 @@ const CASES_DATA = [
     judge: "EJ Smith",
     court: "Employment Tribunal",
     description: "Successfully defended claims of automatic unfair dismissal and whistleblowing detriment. Secured the withdrawal of all claims following the conclusion of the Claimant's evidence.",
+    jurisdiction: [
+      "Health & Safety",
+      "Public Interest Disclosure",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -362,6 +424,7 @@ const CASES_DATA = [
     judge: "Employment Judge Brace",
     court: "Leicester Employment Tribunal",
     description: "Final Hearing (4 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -373,6 +436,7 @@ const CASES_DATA = [
     judge: "",
     court: "Lincoln County Court",
     description: "Final Hearing (1 day).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -384,6 +448,7 @@ const CASES_DATA = [
     judge: "EJ Edmonds",
     court: "West Midlands Employment Tribunal",
     description: "Final Hearing (10 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -395,6 +460,9 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing for Case Management.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -406,6 +474,7 @@ const CASES_DATA = [
     judge: "Employment Judge Gould",
     court: "Newcastle Employment Tribunal",
     description: "Final Hearing (3 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Alexander Surtees. Mr, Samantha Surtees, Samantha Surtees.",
     key_case_law: [
@@ -430,6 +499,10 @@ const CASES_DATA = [
     judge: "Employment Judge Chudleigh",
     court: "Bristol Employment Tribunal",
     description: "Preliminary Hearing fixture regarding whistleblowing claims.",
+    jurisdiction: [
+      "Health & Safety",
+      "Public Interest Disclosure",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -441,6 +514,9 @@ const CASES_DATA = [
     judge: "Employment Judge Warren",
     court: "Leeds Employment Tribunal",
     description: "Video Preliminary Hearing on case management and potential strike out.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -452,6 +528,7 @@ const CASES_DATA = [
     judge: "Employment Judge Leach",
     court: "Manchester Employment Tribunal",
     description: "Telephone Conference/PH prior to Final Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -463,6 +540,7 @@ const CASES_DATA = [
     judge: "Employment Judge Robin Broughton",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing involving multiple named respondents (Jo Doherty, Ian Moss).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -476,6 +554,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Video Preliminary Hearing involving NHS Trust.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -487,6 +566,7 @@ const CASES_DATA = [
     judge: "Employment Judge B J Clarke",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing for multiple claimants.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Sarah Lewis, Chris Davis MP",
     key_case_law: []
@@ -498,6 +578,7 @@ const CASES_DATA = [
     judge: "Employment Judge Buckley",
     court: "Leeds Employment Tribunal",
     description: "Video Preliminary Hearing involving multiple claimants.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -509,6 +590,7 @@ const CASES_DATA = [
     judge: "",
     court: "East London Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Patrick Egan, William Yeung, Bob Benton, Richard Abrahams",
     key_case_law: [
@@ -531,6 +613,7 @@ const CASES_DATA = [
     judge: "Employment Judge Frances Eccles",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing involving the City Council.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -542,6 +625,9 @@ const CASES_DATA = [
     judge: "Employment Judge Buckley",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [
+      "Sexual Orientation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -553,6 +639,7 @@ const CASES_DATA = [
     judge: "Employment Judge Dunlop",
     court: "Leicester Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -564,6 +651,11 @@ const CASES_DATA = [
     judge: "Employment Judge Perry",
     court: "Birmingham Employment Tribunal",
     description: "Successfully represented the Claimant in a multi-day liability hearing. The Tribunal found the Claimant was unfairly dismissed and victimised following his grievance regarding the devaluation of his role upon returning from cancer-related absence. The redundancy process was found to be a sham.",
+    jurisdiction: [
+      "Redundancy",
+      "Statutory Discipline and Grievance Procedures",
+      "Victimisation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -590,6 +682,7 @@ const CASES_DATA = [
     judge: "Employment Judge Pirani",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -601,6 +694,9 @@ const CASES_DATA = [
     judge: "",
     court: "London South Employment Tribunal",
     description: "Video Preliminary Hearing (Case Management).",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -612,6 +708,9 @@ const CASES_DATA = [
     judge: "Employment Judge B Beyzade",
     court: "Leeds Employment Tribunal",
     description: "Preliminary Hearing (Video) for Case Management.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -623,6 +722,7 @@ const CASES_DATA = [
     judge: "Employment Judge Postle",
     court: "Watford Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -636,6 +736,7 @@ const CASES_DATA = [
     judge: "Employment Judge Grubb",
     court: "Birmingham Employment Tribunal",
     description: "Video Preliminary Hearing and Judicial Mediation.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -647,6 +748,7 @@ const CASES_DATA = [
     judge: "Employment Judge J Connolly",
     court: "Birmingham Employment Tribunal",
     description: "Video Preliminary Hearing regarding complex discrimination claims.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -658,6 +760,7 @@ const CASES_DATA = [
     judge: "",
     court: "Nottingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -669,6 +772,7 @@ const CASES_DATA = [
     judge: "Employment Judge",
     court: "London Central Employment Tribunal",
     description: "Preliminary Hearing (Video).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -680,6 +784,7 @@ const CASES_DATA = [
     judge: "Employment Judge M Kearns",
     court: "Nottingham Employment Tribunal",
     description: "Preliminary Hearing regarding farm employment dispute.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -691,6 +796,7 @@ const CASES_DATA = [
     judge: "Employment Judge E Fowell",
     court: "Birmingham Employment Tribunal",
     description: "Final Hearing (4 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "John Leigh, Michael Kadoorie is, Samantha Bradley, Michael Kadoorie, James Laddie, Ronald McAulay",
     key_case_law: [
@@ -714,6 +820,11 @@ const CASES_DATA = [
     judge: "Employment Judge Leach",
     court: "Manchester",
     description: "Miss C Ettore brought claims against Pro Support Limited including unfair dismissal, detriments, and unauthorized deductions from wages. The tribunal dismissed the unfair dismissal claims as they were presented out of time and it was reasonably practicable to present them earlier. The claims relating to detriments and unauthorized wage deductions were allowed to proceed to further case management.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -725,6 +836,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Video Preliminary Hearing involving NHS Trust.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -736,6 +848,9 @@ const CASES_DATA = [
     judge: "Employment Judge Adkinson sitting alone",
     court: "Watford Employment Tribunal",
     description: "Case Management Preliminary Hearing (Video).",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "Harjit Sandhu",
     key_case_law: [
@@ -756,6 +871,7 @@ const CASES_DATA = [
     judge: "Employment Judge Russell",
     court: "Bristol Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -773,6 +889,7 @@ const CASES_DATA = [
     judge: "",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -784,6 +901,9 @@ const CASES_DATA = [
     judge: "Employment Judge Woffenden",
     court: "London Central Employment Tribunal",
     description: "Video Preliminary Hearing regarding jurisdictional points.",
+    jurisdiction: [
+      "Jurisdictional Points",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -795,6 +915,7 @@ const CASES_DATA = [
     judge: "Employment Judge Harrington",
     court: "Birmingham Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Sarah Norman, Sarah Norman as a respondent to the claim of public, Sarah Norman as a Respondent to his",
     key_case_law: []
@@ -806,6 +927,7 @@ const CASES_DATA = [
     judge: "Employment Judge Phil Allen",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -821,6 +943,7 @@ const CASES_DATA = [
     judge: "Employment Judge JM Wade",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -832,6 +955,9 @@ const CASES_DATA = [
     judge: "",
     court: "Leicester Employment Tribunal",
     description: "Preliminary Hearing to determine case management orders.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -855,6 +981,11 @@ const CASES_DATA = [
     judge: "Employment Judge Hindmarch",
     court: "London Central by CVP on 16 December 2022",
     description: "The tribunal struck out all claims against HMRC and the claimant's unfair dismissal and detriment claims as out of time, allowing only the unlawful deduction from wages and breach of contract claims to proceed against Mitie Limited.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -871,6 +1002,9 @@ const CASES_DATA = [
     judge: "Employment Judge Walters",
     court: "Bristol by CVP",
     description: "Mrs. Marta Grobarcikova Gonczyova brought claims against Barchester Healthcare Ltd alleging disability discrimination arising under section 15 of the Equality Act 2010 and failure to make reasonable adjustments under section 21. The Tribunal found that although the claimant was disabled, the alleged unfavourable treatment and failure to make reasonable adjustments claims were not made out and dismissed both claims.",
+    jurisdiction: [
+      "Disability Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -887,6 +1021,10 @@ const CASES_DATA = [
     judge: "EJ Edmonds",
     court: "Employment Tribunal",
     description: "Acted for the Respondent law firm in a sensitive disability discrimination claim arising from the performance management of a solicitor suffering from alcoholism.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Disability Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -898,6 +1036,7 @@ const CASES_DATA = [
     judge: "Employment Judge Gray",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -909,6 +1048,7 @@ const CASES_DATA = [
     judge: "Employment Judge Harding",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -920,6 +1060,7 @@ const CASES_DATA = [
     judge: "Employment Judge Manley",
     court: "Reading Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -931,6 +1072,7 @@ const CASES_DATA = [
     judge: "Employment Judge Webster",
     court: "Ashford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -942,6 +1084,7 @@ const CASES_DATA = [
     judge: "Employment Judge E Fowell",
     court: "London South Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Harith Taha",
     key_case_law: []
@@ -953,6 +1096,9 @@ const CASES_DATA = [
     judge: "Employment Judge Heap",
     court: "London Central Employment Tribunal",
     description: "Final Hearing (4 days).",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -964,6 +1110,11 @@ const CASES_DATA = [
     judge: "Employment Judge Webster",
     court: "London Central Employment Tribunal",
     description: "Dr A Medina brought a claim against Prodent London Ltd for unlawful deductions from wages under section 13 of the Employment Rights Act 1996. The tribunal found that the employer made unauthorised deductions from the claimant’s pay in May, June, and July 2022, which were not authorised by statute, contract, or the claimant’s prior written consent, and ordered the respondent to pay £29,384.40 in gross sums to the claimant.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -975,6 +1126,7 @@ const CASES_DATA = [
     judge: "Employment Judge Dimbylow",
     court: "Birmingham Employment Tribunal",
     description: "The claimant, Mr Luke Salter, brought a claim for constructive unfair dismissal against his employer, Muller UK & Ireland Group LLP. The Employment Tribunal found that the claim was not well-founded and dismissed it, concluding that the claimant had not established constructive unfair dismissal.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -986,6 +1138,10 @@ const CASES_DATA = [
     judge: "Employment Judge Aspinall",
     court: "Liverpool Employment Tribunal",
     description: "The claimant, John William Kennedy Boggs, brought claims against Warrington and Halton Teaching Hospitals NHS Foundation Trust for unfair dismissal, wrongful dismissal, and disability discrimination arising from autism, anxiety, and depression. The Tribunal found in favor of the respondent on unfair dismissal, wrongful dismissal, discrimination arising from disability, and harassment claims, but partially upheld the claim for failure to make reasonable adjustments.",
+    jurisdiction: [
+      "Disability Discrimination",
+      "Harassment",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1002,6 +1158,7 @@ const CASES_DATA = [
     judge: "",
     court: "London Central Employment Tribunal",
     description: "Final Hearing (1 day).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1013,6 +1170,7 @@ const CASES_DATA = [
     judge: "Employment Judge Klimov",
     court: "London Central (in public, by video)",
     description: "The claimant, Ms Anahita Ansari, brought multiple complaints against Prodent London Limited which were heard over several days in a London Central Employment Tribunal. The tribunal found that none of the claimant’s complaints were well-founded and consequently dismissed the claim in full.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1024,6 +1182,7 @@ const CASES_DATA = [
     judge: "",
     court: "Manchester Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1035,6 +1194,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1046,6 +1206,9 @@ const CASES_DATA = [
     judge: "",
     court: "Watford Employment Tribunal",
     description: "Telephone Case Management Fixture.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1057,6 +1220,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Fixture.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1068,6 +1232,7 @@ const CASES_DATA = [
     judge: "Employment Judge Balogun",
     court: "London South Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1079,6 +1244,7 @@ const CASES_DATA = [
     judge: "Employment Judge C Sharp",
     court: "Central London Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1090,6 +1256,9 @@ const CASES_DATA = [
     judge: "Employment Judge Woffenden",
     court: "Watford Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [
+      "Race Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1101,6 +1270,9 @@ const CASES_DATA = [
     judge: "Employment Judge Smail",
     court: "Bristol Employment Tribunal",
     description: "Telephone Case Management Fixture.",
+    jurisdiction: [
+      "Age Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1112,6 +1284,7 @@ const CASES_DATA = [
     judge: "",
     court: "Manchester Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1123,6 +1296,11 @@ const CASES_DATA = [
     judge: "Employment Judge Deeley",
     court: "Before:",
     description: "The claimant, Mr Mark Taylor, brought claims against Redcentric Solutions Limited for unpaid commission for February to April 2023 and wrongful dismissal regarding notice pay. The Tribunal found that the claimant was entitled to the commission payments, constituting unauthorised deductions from wages, but dismissed the wrongful dismissal claim as the respondent lawfully paid one week's notice in lieu during the claimant's probationary period.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1134,6 +1312,7 @@ const CASES_DATA = [
     judge: "Employment Judge Routley",
     court: "West Midlands Employment Tribunal (by CVP)",
     description: "The key issue in Mr G Price v Fleet Express & Logistics Ltd was whether the claimant was unfairly dismissed following incidents involving alleged aggressive behavior towards his supervisor, Mr Pugh. The Tribunal found the claimant was unfairly dismissed but reduced the compensation by 75% due to contributory conduct, awarding the claimant £2,743.19.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1147,6 +1326,11 @@ const CASES_DATA = [
     judge: "Employment Judge",
     court: "London Central Employment Tribunal",
     description: "Preliminary Hearing (Video) to manage complex whistleblowing detriments.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Health & Safety",
+      "Public Interest Disclosure",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1158,6 +1342,11 @@ const CASES_DATA = [
     judge: "Employment Judge C Lewis",
     court: "East London Employment Tribunal",
     description: "Ms J Godliman brought claims against the London Borough of Waltham Forest alleging direct disability discrimination, discrimination arising from disability, harassment related to disability, and victimisation under the Equality Act 2010. The Tribunal dismissed the claims for direct disability discrimination and several complaints of discrimination and harassment following the Claimant's withdrawal, and found the remaining complaints and the victimisation claim to fail. Overall, all claims were dismissed.",
+    jurisdiction: [
+      "Disability Discrimination",
+      "Harassment",
+      "Victimisation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1169,6 +1358,10 @@ const CASES_DATA = [
     judge: "Employment Judge Bedeau",
     court: "Watford",
     description: "The claimant, Mr David Bannister, who suffered from multiple disabilities including learning difficulties and severe hearing impairment, brought claims against DPD Group UK Ltd for disability discrimination and failure to make reasonable adjustments following his dismissal for gross misconduct. The Tribunal found the disability discrimination and failure to make reasonable adjustments claims well-founded, with the dismissal linked to issues arising from his disabilities rather than unrelated misconduct.",
+    jurisdiction: [
+      "Disability Discrimination",
+      "Statutory Discipline and Grievance Procedures",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1185,6 +1378,7 @@ const CASES_DATA = [
     judge: "Employment Judge Harrington",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing (Video) involving NHS Trust.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Sarah Norman, Sarah Norman as a respondent to the claim of public, Sarah Norman as a Respondent to his",
     key_case_law: []
@@ -1196,6 +1390,9 @@ const CASES_DATA = [
     judge: "Employment Judge Dean",
     court: "Birmingham by CVP",
     description: "Mr D Austin, a disabled employee, was found to have been unfairly dismissed by Kingspan Ltd in breach of the Employment Rights Act 1996. Although he withdrew some discrimination claims under the Equality Act 2010, the Tribunal found that he was subjected to unlawful disability discrimination under section 15 and awarded him compensation totaling £33,008.27 for unfair dismissal and injury to feelings.",
+    jurisdiction: [
+      "Disability Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1207,6 +1404,7 @@ const CASES_DATA = [
     judge: "Employment Judge Lewis",
     court: "Video Hearing",
     description: "Hearing Fixture.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Ms I Ferber",
     key_case_law: [
@@ -1230,6 +1428,7 @@ const CASES_DATA = [
     judge: "Employment Judge Sutton",
     court: "London Central Employment Tribunal",
     description: "The claimant, Mr Michael Lambrianos, brought a claim against Nowy Styl UK Limited for unpaid commission on multiple sales. The Tribunal found the respondent owed the claimant £716.40 in commission but refused both parties' applications for costs, noting the claimant's claim largely failed and the respondent's defense was reasonable and pragmatic.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1241,6 +1440,10 @@ const CASES_DATA = [
     judge: "Employment Judge Din",
     court: "Watford",
     description: "Mr Ismail Ismail claimed constructive unfair dismissal against Asda Stores Limited, alleging denial of promotion opportunities and bullying by a senior manager, Mr Preston, which breached the implied term of trust and confidence. The Employment Tribunal found that the claimant was not constructively dismissed and dismissed the claim.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Harassment",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1257,6 +1460,7 @@ const CASES_DATA = [
     judge: "Employment Judge Harding",
     court: "Wales Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1268,6 +1472,7 @@ const CASES_DATA = [
     judge: "",
     court: "East London Employment Tribunal",
     description: "Final Hearing (1 day).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1279,6 +1484,7 @@ const CASES_DATA = [
     judge: "Employment Judge Beck",
     court: "London South Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1290,6 +1496,7 @@ const CASES_DATA = [
     judge: "Employment Judge Shotter",
     court: "East London Employment Tribunal",
     description: "Video Preliminary Hearing for multiple claimants.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1301,6 +1508,7 @@ const CASES_DATA = [
     judge: "Employment Judge S Knight",
     court: "On:",
     description: "Final Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Gnanapragasan Jayachandran",
     key_case_law: []
@@ -1312,6 +1520,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1323,6 +1532,7 @@ const CASES_DATA = [
     judge: "",
     court: "London South Employment Tribunal",
     description: "Video Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1334,6 +1544,7 @@ const CASES_DATA = [
     judge: "Employment Judge Shulman",
     court: "Manchester Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "Delroy Rudd, Doug Ross, Richard Goulbourne, Roger Bailey",
     key_case_law: []
@@ -1345,6 +1556,7 @@ const CASES_DATA = [
     judge: "Employment Judge Faulkner",
     court: "Birmingham Employment Tribunal",
     description: "Preliminary Hearing fixture.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1369,6 +1581,7 @@ const CASES_DATA = [
     judge: "",
     court: "London South Employment Tribunal",
     description: "Preliminary Hearing fixture.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1380,6 +1593,7 @@ const CASES_DATA = [
     judge: "Employment Judge Loy",
     court: "Manchester Employment Tribunal",
     description: "Telephone Preliminary Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1391,6 +1605,7 @@ const CASES_DATA = [
     judge: "Employment Judge Frances Eccles",
     court: "Watford Employment Tribunal",
     description: "Final Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1402,6 +1617,7 @@ const CASES_DATA = [
     judge: "",
     court: "Birmingham Employment Tribunal",
     description: "Final Hearing (4 days).",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1413,6 +1629,11 @@ const CASES_DATA = [
     judge: "Employment Judge Mc",
     court: "Manchester (hybrid (1st day) and",
     description: "The key issue in Mr G Fuller's claim against Lancashire County Council was whether he was an employee or a casual worker during the period when alleged unauthorised deductions from his wages were made. The tribunal found that the claimant was not an employee but a casual worker and dismissed the claim for unauthorised deductions. The respondent had ceased offering shifts during an investigation period, which was not considered an unlawful deduction of wages.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
@@ -1428,6 +1649,9 @@ const CASES_DATA = [
     judge: "Employment Judge Kelly",
     court: "London South Employment Tribunal (by CVP)",
     description: "The key issue in this case was whether the claimant, Natasha Lomotey, was unfairly dismissed by Mitie Limited. The Employment Tribunal found in favor of the claimant, ruling that the dismissal was unfair and ordering a compensation payment of £12,000, with the proceedings adjourned to allow for settlement implementation.",
+    jurisdiction: [
+      "Unlawful Deduction from Wages",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1439,6 +1663,7 @@ const CASES_DATA = [
     judge: "",
     court: "Watford Employment Tribunal",
     description: "Final Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1450,6 +1675,10 @@ const CASES_DATA = [
     judge: "Employment Judge Davidson",
     court: "London Central Employment Tribunal",
     description: "The case concerned Ms Samantha Zenda Ovies' claim of unfair dismissal by Mr Mahiul Muqit, her former employer. The Tribunal found that the dismissal was unfair, awarded the claimant one day's holiday pay, and ordered payment of an outstanding £2,000 gross bonus from June 2020. The Tribunal also allowed either party to apply for a remedy hearing to determine further compensation or remedies.",
+    jurisdiction: [
+      "Unlawful Deduction from Wages",
+      "Working Time Regulations",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1461,6 +1690,7 @@ const CASES_DATA = [
     judge: "",
     court: "East London Employment Tribunal",
     description: "Final Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1472,6 +1702,11 @@ const CASES_DATA = [
     judge: "Employment Judge Mensah",
     court: "On:",
     description: "The claimant, Mr Andrew Hemming, brought claims against Ellisa Motors Limited for unpaid holiday pay, unfair dismissal, and redundancy. The tribunal found in favour of the claimant on the holiday pay claim, ordering the respondent to pay £1,843.80 for untaken accrued holiday. However, the claims for unfair dismissal and redundancy were dismissed.",
+    jurisdiction: [
+      "Redundancy",
+      "Unlawful Deduction from Wages",
+      "Working Time Regulations",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1483,6 +1718,14 @@ const CASES_DATA = [
     judge: "Employment Judge W Brady",
     court: "Employment Tribunal",
     description: "Ms D Sundar brought multiple claims against Cardiff University including unfair dismissal, detriments for protected disclosures, race, disability and marriage discrimination, breach of contract, and victimisation. After several preliminary hearings and amendment applications, all claims were dismissed by the Employment Tribunal, which found no evidence to support unfair dismissal, discrimination, victimisation, or breach of contract. The claimant was also found not to be disabled under the Equality Act 2010, resulting in dismissal of the reasonable adjustments claim.",
+    jurisdiction: [
+      "Age Discrimination",
+      "Breach of Contract",
+      "Disability Discrimination",
+      "Public Interest Disclosure",
+      "Race Discrimination",
+      "Victimisation Discrimination",
+    ],
     leading: "Alexander MacMillan",
     opposing: "Randeep Sundar",
     key_case_law: [
@@ -1501,6 +1744,10 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Appeal Tribunal",
     description: "EAT Appeal / Remission Hearing regarding high-profile whistleblowing claim.",
+    jurisdiction: [
+      "Health & Safety",
+      "Public Interest Disclosure",
+    ],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1512,6 +1759,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Tribunal",
     description: "Employment Tribunal proceedings.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1523,6 +1771,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Tribunal",
     description: "Employment Tribunal proceedings.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1534,6 +1783,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Tribunal",
     description: "Employment Tribunal proceedings.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1545,6 +1795,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Appeal Tribunal",
     description: "Appeal Hearing.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
@@ -1556,6 +1807,7 @@ const CASES_DATA = [
     judge: "Employment Judge Bax",
     court: "Employment Tribunal",
     description: "Pre-Trial proceedings.",
+    jurisdiction: [],
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: []
