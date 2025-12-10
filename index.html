@@ -73,7 +73,12 @@
         .case-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
         .case-title { font-family: var(--font-serif); font-size: 1.5rem; margin: 0; line-height: 1.2; color: var(--text-main); }
         .case-strapline { font-size: 0.9rem; color: #555; font-family: var(--font-mono); }
-        .case-meta { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: #777; text-align: right; }
+        
+        /* Interactive Case Metadata */
+        .case-meta-block { text-align: right; }
+        .case-meta { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: #777; margin-bottom: 2px; }
+        .clickable-meta { cursor: pointer; transition: all 0.2s ease; border-bottom: 1px dotted transparent; }
+        .clickable-meta:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
 
         /* BADGES */
         .case-badges-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
@@ -90,8 +95,10 @@
         .case-tag:hover .case-tooltip-popup { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
 
         /* KNOWLEDGE CARD */
-        .knowledge-card { background-color: #fff; border: 1px solid var(--text-main); border-left: 5px solid var(--text-main); padding: 1.5rem; margin-bottom: 2rem; display: none; animation: fadeIn 0.4s ease-in-out; }
+        .knowledge-card { position: relative; background-color: #fff; border: 1px solid var(--text-main); border-left: 5px solid var(--text-main); padding: 1.5rem; margin-bottom: 2rem; display: none; animation: fadeIn 0.4s ease-in-out; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .knowledge-card h4 { margin-top: 0; margin-bottom: 0.5rem; color: var(--text-main); font-family: var(--font-serif); font-size: 1.4rem; }
+        .knowledge-card-close { position: absolute; top: 0.5rem; right: 0.5rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #999; }
+        .knowledge-card-close:hover { color: #000; }
 
         /* FILTERS */
         .filters-toolbar { display: flex; gap: 1rem; margin-bottom: 2rem; padding: 1.5rem; background: #FAFAFA; border: 1px solid var(--line-color); align-items: center; flex-wrap: wrap; }
@@ -411,13 +418,17 @@
         renderCases();
     }
 
+    function closeKnowledgeCard() {
+        document.getElementById('knowledge-card-container').style.display = 'none';
+    }
+
     window.filterByBadge = function(type, value) {
         clearFilters(); 
         if (type === 'jurisdiction') {
             document.getElementById('case-type-filter').value = value;
             if (typeof KNOWLEDGE_BASE !== 'undefined' && KNOWLEDGE_BASE[value]) {
                 const card = document.getElementById('knowledge-card-container');
-                card.innerHTML = `<h4>${KNOWLEDGE_BASE[value].title}</h4><p>${KNOWLEDGE_BASE[value].content}</p>`;
+                card.innerHTML = `<button class="knowledge-card-close" onclick="closeKnowledgeCard()">×</button><h4>${KNOWLEDGE_BASE[value].title}</h4><p>${KNOWLEDGE_BASE[value].content}</p>`;
                 card.style.display = 'block';
                 card.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
@@ -427,6 +438,25 @@
             document.getElementById('case-solicitor-input').value = value;
         } else if (type === 'caselaw') {
             document.getElementById('case-search-input').value = value;
+            
+            // --- NEW: LANDMARK CASE EXPLAINER ---
+            if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
+                 // 1. Try exact lookup
+                 let summary = CASE_LAW_DICTIONARY[value];
+                 
+                 // 2. Try partial match if exact fails (e.g. for slightly different citation years)
+                 if (!summary) {
+                     const key = Object.keys(CASE_LAW_DICTIONARY).find(k => value.includes(k));
+                     if(key) summary = CASE_LAW_DICTIONARY[key];
+                 }
+
+                 if (summary) {
+                    const card = document.getElementById('knowledge-card-container');
+                    card.innerHTML = `<button class="knowledge-card-close" onclick="closeKnowledgeCard()">×</button><h4>${value}</h4><p>${summary}</p>`;
+                    card.style.display = 'block';
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                 }
+            }
         }
         renderCases();
     }
@@ -481,9 +511,11 @@
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
                 const badges = c.key_case_law.map(law => {
+                    // Strip HTML (em tags) for the search value passed to JS
                     const temp = document.createElement("div"); temp.innerHTML = law;
                     const plainText = (temp.textContent || temp.innerText || "").trim();
                     
+                    // Look up for tooltip
                     let summary = null;
                     if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
                         summary = CASE_LAW_DICTIONARY[plainText];
@@ -494,13 +526,20 @@
                     }
                     
                     const tooltip = summary ? `<span class="case-tooltip-popup">${summary}</span>` : '';
-                    const style = summary ? 'border-bottom:1px dotted #2196f3;' : '';
+                    const style = summary ? 'border-bottom:1px dotted #e65100; cursor: help;' : '';
 
                     return `<span class="case-tag clickable-badge law-tag" style="font-style:italic; ${style}" onclick="filterByBadge('caselaw', '${plainText.replace(/'/g, "\\'")}')">${law}${tooltip}</span>`;
                 }).join('');
                 
-                caseLawHtml = `<div class="case-law-section"><span class="case-law-label">Key Authorities (Hover for summary)</span><div class="case-badges-row" style="margin-top:0;">${badges}</div></div>`;
+                caseLawHtml = `<div class="case-law-section"><span class="case-law-label">Key Authorities (Hover or Click for summary)</span><div class="case-badges-row" style="margin-top:0;">${badges}</div></div>`;
             }
+
+            // --- CLICKABLE JUDGE NAME ---
+            const judgeHtml = c.judge 
+                ? `<div class="case-meta clickable-meta" onclick="filterByBadge('judge', '${c.judge.replace(/'/g, "\\'")}')" title="Filter cases heard by ${c.judge}">${c.judge}</div>`
+                : '';
+            
+            // Optional: Court name usually not needing filter, but could be added similarly.
 
             div.innerHTML = `
                 <div class="case-node"></div>
@@ -512,7 +551,7 @@
                     </div>
                     <div class="case-meta-block">
                         <div class="case-meta">${c.court || ''}</div>
-                        <div class="case-meta">${c.judge || ''}</div>
+                        ${judgeHtml}
                     </div>
                 </div>
                 <p>${c.description}</p>
