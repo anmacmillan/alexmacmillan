@@ -118,15 +118,19 @@ const CASES_DATA = [
     year: 2025,
     judge: "Employment Judge Kelly",
     court: "West Midlands Employment Tribunal",
-    description: "Telephone Preliminary Hearing for case management.",
+    description: "Telephone Preliminary Hearing. The Tribunal heard submissions on an application for a permanent anonymity order pursuant to Rule 49 (formerly Rule 50) regarding 'evidence of a personal nature' (disability). Judgment was reserved to determine whether the Claimant could meet the necessary evidential threshold. The Tribunal reiterated the principle in <em>Fallows</em> that any derogation from open justice requires clear and cogent evidence of the harm that would be caused to the applicant's Convention rights.",
     jurisdiction: [
-      "Disability Discrimination"
+      "Disability Discrimination",
+      "Practice and Procedure Issues"
     ],
     solicitor: "Gowling WLG",
     starred: false,
     leading: "Alexander MacMillan",
-    opposing: "N/A",
-    key_case_law: []
+    opposing: "Louisa Simpson (Pump Court Chambers)",
+    key_case_law: [
+      "<em>Fallows v News Group Newspapers Ltd</em> [2016] ICR 801",
+      "<em>LQP v City of York Council</em> [2022] EAT 196"
+    ]
   },
   {
     citation: "Case No: 716043",
