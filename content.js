@@ -5,6 +5,11 @@
 // --- CASE LAW SUMMARIES (For Tooltips) ---
 const CASE_LAW_DICTIONARY = {
     "Chief Constable of PSNI v Agnew": "Supreme Court ruling: A gap of 3+ months does not automatically break a 'series of deductions' for unlawful wages.",
+    "F v J": "EAT [2025]: In applications for anonymity based on future employability, the claimant need not prove objective harm on the balance of probabilities. The test is whether there is a 'reasonable foundation' for the subjective fear.",
+    "Fallows v News Group Newspapers": "EAT [2016]: Tribunals retain jurisdiction to regulate privacy orders even after a claim is withdrawn. Settlement creates a 'legitimate expectation' of privacy, but this does not automatically trump Open Justice.",
+    "Queensgate Investments v Millet": "EAT [2021]: Commercial embarrassment or reputational damage is insufficient for a private hearing. The respondent must prove 'catastrophic consequences' (e.g. insolvency) that would prevent justice from being done.",
+    "Millicom Services v Clifford": "Court of Appeal: Subjective fears of harm need not be 'well-founded' to justify an order; the question is whether the administration of justice would be prejudiced without protection.",
+    "R v Chief Registrar of Friendly Societies ex p New Cross": "High Court: Exceptional authority that a hearing may be private if publicity would destroy the subject matter of the litigation (e.g. cause immediate collapse of a building society).",
     "Kerr v The Sweater Shop": "EAT held that a notice posted on a noticeboard does not constitute written notification of a deduction term to the individual.",
     "International Packaging Corporation (UK) Ltd v Balfour": "Unilateral reduction in hours/pay without contract term is an unlawful deduction.",
     "BHS v Burchell": "The classic test for unfair dismissal misconduct: Genuine belief, reasonable grounds, reasonable investigation.",
