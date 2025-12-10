@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex MacMillan | Employment Law Barrister</title>
-    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
+    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister. Specialist in discrimination, whistleblowing, and TUPE.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Alex MacMillan | Employment Law Barrister">
     
     <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         /* CORE VARIABLES & RESET */
         :root { --bg-color: #F2F2F0; --panel-bg: #FFFFFF; --text-main: #111111; --text-muted: #555555; --line-color: #D1D1D1; --sidebar-width: 320px; --font-sans: 'Inter', sans-serif; --font-mono: 'Space Grotesk', monospace; --font-serif: 'DM Serif Display', serif; }
         body { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-main); margin: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-        
+        * { box-sizing: border-box; }
+
         /* LAYOUT */
         .site-wrapper { display: flex; min-height: 100vh; }
+        
+        /* SIDEBAR (Restored) */
         .sidebar { width: var(--sidebar-width); background-color: var(--bg-color); border-right: 1px solid var(--line-color); position: fixed; height: 100vh; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; top: 0; left: 0; overflow-y: auto; z-index: 100; transition: transform 0.3s ease; }
+        
         .main-content { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); background-color: var(--panel-bg); min-height: 100vh; }
         
         /* TYPOGRAPHY */
@@ -28,10 +35,14 @@
         .subtitle { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 2rem; }
         p { font-size: 1.05rem; color: #333; max-width: 700px; margin-bottom: 1.5rem; }
 
-        /* NAVIGATION */
+        /* NAVIGATION & SIDEBAR SECTIONS */
+        .nav-section { margin-bottom: 3rem; }
         .nav-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 1rem; display: block; cursor: pointer; }
         .sidebar-nav a { display: block; font-family: var(--font-sans); font-size: 1rem; text-decoration: none; color: var(--text-muted); padding: 0.5rem 0; transition: 0.3s; cursor: pointer; }
         .sidebar-nav a:hover, .sidebar-nav a.nav-active { color: var(--text-main); font-weight: 500; border-bottom: 1px solid var(--text-main); display: inline-block; }
+        
+        .contact-email { font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; display: block; color: var(--text-main); }
+        .testimonial-box { font-style: italic; font-family: var(--font-serif); font-size: 1.2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line-color); }
 
         /* CASES & TIMELINE */
         .case-timeline { position: relative; margin-top: 2rem; padding-left: 1.5rem; }
@@ -47,7 +58,7 @@
         .case-strapline { font-size: 0.9rem; color: #555; font-family: var(--font-mono); }
         .case-meta { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: #777; text-align: right; }
 
-        /* BADGES & TAGS */
+        /* BADGES */
         .case-badges-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
         .case-tag { display: inline-flex; align-items: center; padding: 0.25rem 0.65rem; border-radius: 4px; background-color: #EFEFEF; font-family: var(--font-mono); font-size: 0.75rem; color: #444; transition: all 0.2s ease; position: relative; }
         .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
@@ -72,6 +83,18 @@
         .clear-filters-btn { background-color: #fff; border: 1px solid #999; color: #333; font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem 1rem; cursor: pointer; margin-left: auto; text-transform: uppercase; transition: all 0.2s; }
         .clear-filters-btn:hover { background-color: #333; color: #fff; }
         .help-tip { cursor: help; text-decoration: underline dotted #aaa; }
+
+        /* CALCULATORS & UTILS */
+        .calculator-inputs { margin-bottom: 3rem; max-width: 800px; }
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 1.5rem; }
+        input[type="text"], input[type="number"], input[type="date"], select { width: 100%; padding: 0.8rem 0; border: none; border-bottom: 1px solid var(--text-main); background: transparent; font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-main); border-radius: 0; }
+        input:focus, select:focus { outline: none; border-bottom: 2px solid var(--text-main); background-color: #FAFAFA; }
+        label { display: block; font-family: var(--font-sans); font-size: 0.8rem; color: #666; margin-bottom: 0.2rem; }
+        .calc-button { font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; background: transparent; color: var(--text-main); border: 1px solid var(--text-main); padding: 1rem 2rem; cursor: pointer; transition: all 0.2s; margin-top: 1rem; width: auto; display: inline-block; }
+        .calc-button:hover { background: var(--text-main); color: #fff; }
+        .pay-result-box { background: #F9F9F9; padding: 2rem; border-left: 4px solid var(--text-main); margin-top: 2rem; }
+        .result-headline { font-family: var(--font-mono); font-size: 3rem; margin: 1rem 0; }
+        .error-message { color: #D00; font-family: var(--font-mono); margin: 1rem 0; }
 
         /* MOBILE */
         .mobile-menu-toggle { display: none; }
@@ -105,18 +128,50 @@
                 <span class="subtitle">Employment Law Barrister</span>
                 <div style="font-size:0.8rem;">St Philips Barristers</div>
             </header>
+            
             <nav style="margin-top: 3rem;">
                 <div class="nav-section">
                     <span class="nav-label">Menu</span>
                     <nav class="sidebar-nav">
-                        <a onclick="window.location.hash='#profile-view'" class="nav-active">Profile & Cases</a>
-                        <a onclick="window.location.hash='#articles-hub-view'">News & Insights</a>
+                        <a data-hash="#profile-view" class="nav-active" onclick="handleLinkClick(this)">Profile & Cases</a>
+                        <a data-hash="#articles-hub-view" onclick="handleLinkClick(this)">News & Insights</a>
                         <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank">Chambers Profile ↗</a>
+                    </nav>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-label">Tools</span>
+                    <nav class="sidebar-nav">
+                        <a data-hash="#limitation-view" onclick="handleLinkClick(this)">Limitation Calc</a>
+                        <a data-hash="#notice-pay-view" onclick="handleLinkClick(this)">Notice Pay Calc</a>
+                        <a data-hash="#holiday-pay-view" onclick="handleLinkClick(this)">Holiday Pay</a>
+                        <a data-hash="#redundancy-pay-view" onclick="handleLinkClick(this)">Redundancy</a>
+                        <a data-hash="#disciplinary-view" onclick="handleLinkClick(this)">Disciplinary Check</a>
+                        <a data-hash="#pension-loss-view" onclick="handleLinkClick(this)">Simple & Complex Pension Loss Calc</a>
+                        <a data-hash="#quantum-risk-view" onclick="handleLinkClick(this)">Quantum Risk Calc</a>
                     </nav>
                 </div>
             </nav>
         </div>
-        <footer class="sidebar-footer" style="font-size:0.7rem; color:#999;">&copy; 2025 Alex MacMillan</footer>
+
+        <div>
+            <div class="nav-section">
+                <span class="nav-label">Instruct</span>
+                <a href="mailto:employment&pi@st-philips.com" class="contact-email">employment&pi@st-philips.com</a>
+                <div style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">+44 (0) 121 246 7015</div>
+                <a href="mailto:employment&pi@st-philips.com?subject=Enquiry%20for%20Alex%20MacMillan" 
+                   style="display: block; margin-top: 1rem; text-decoration: underline; color: var(--text-main); font-size: 0.9rem;">
+                   Email Clerks Direct →
+                </a>
+            </div>
+            
+            <div class="testimonial-box">
+                "A superb and effective trial counsel."
+            </div>
+            <footer class="sidebar-footer" style="margin-top: 1rem;">
+                &copy; 2025 Alex MacMillan
+            </footer>
+        </div>
     </aside>
 
     <main class="main-content">
@@ -166,7 +221,7 @@
                 <div id="cases-list-container"></div>
                 
                 <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line-color);">
-                    <button onclick="alert('Word Report Generator would run here.')" class="calc-button">Download Word Report (.docx)</button>
+                    <button id="generate-cases-report-btn" class="calc-button">Download Word Report (.docx)</button>
                 </div>
             </section>
         </div>
@@ -175,6 +230,27 @@
             <h2>News & Insights</h2>
             <div id="articles-grid-container" class="article-grid"></div>
         </div>
+
+        <div id="holiday-pay-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>Holiday Pay</h2>
+            <p>For irregular-hours workers (52-week reference period estimate).</p>
+            <div class="calculator-inputs" style="margin-top: 2rem;">
+                <div class="calculator-grid">
+                    <div><label>Total Gross Pay (52 weeks)</label><input type="number" id="hp-total-pay" placeholder="£"></div>
+                    <div><label>Weeks Worked</label><input type="number" id="hp-weeks-worked" placeholder="e.g. 46"></div>
+                </div>
+                <button id="calculate-hp-btn" class="calc-button">Calculate</button>
+            </div>
+            <div id="hp-results" class="pay-result-box" style="display:none;"></div>
+        </div>
+
+        <div id="limitation-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Limitation Calculator</h2><p>Tool loaded.</p></div>
+        <div id="notice-pay-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Notice Pay Calculator</h2><p>Tool loaded.</p></div>
+        <div id="redundancy-pay-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Redundancy Calculator</h2><p>Tool loaded.</p></div>
+        <div id="disciplinary-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Disciplinary Check</h2><p>Tool loaded.</p></div>
+        <div id="pension-loss-view" class="page-view fade-in" style="display:none; height:100vh;"><iframe src="https://pensionloss-sfkjpwsy5kupvse623a3ko.streamlit.app/?embed=true" style="width:100%; height:100%; border:none;"></iframe></div>
+        <div id="quantum-risk-view" class="page-view fade-in" style="display:none; height:100vh;"><iframe src="https://quantum-risk-tool.streamlit.app/?embed=true" style="width:100%; height:100%; border:none;"></iframe></div>
+
     </main>
 </div>
 
@@ -182,30 +258,49 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Safety Check: Ensure data loaded
         if (typeof CASES_DATA === 'undefined') {
-            document.getElementById('cases-list-container').innerHTML = '<div style="color:red; padding:1rem;">Error: Data file (content.js) not loaded or corrupt.</div>';
+            document.getElementById('cases-list-container').innerHTML = '<div style="color:red; padding:1rem;">Error: Data file (content.js) not loaded.</div>';
             return;
         }
         initCases();
+        initPayCalculators();
         handleRoute();
     });
 
+    // Hash Navigation Logic
     window.addEventListener('hashchange', handleRoute);
+
+    function handleLinkClick(element) {
+        const target = element.getAttribute('data-hash');
+        if(target) window.location.hash = target;
+    }
 
     function handleRoute() {
         const hash = window.location.hash || '#profile-view';
+        // Hide all views
         document.querySelectorAll('.page-view').forEach(el => el.style.display = 'none');
+        // Deactivate all nav links
         document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('nav-active'));
-
-        if (hash === '#articles-hub-view') {
-            document.getElementById('articles-hub-view').style.display = 'block';
-            renderArticles();
+        
+        // Show Target
+        const targetId = hash.replace('#', '');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+            targetEl.style.display = 'block';
+            window.scrollTo(0,0);
         } else {
             document.getElementById('profile-view').style.display = 'block';
         }
+
+        // Highlight Active Link
+        const activeLink = document.querySelector(`.sidebar-nav a[data-hash="${hash}"]`);
+        if (activeLink) activeLink.classList.add('nav-active');
+        
+        // Mobile menu close
+        document.getElementById('main-sidebar').classList.remove('mobile-open');
     }
 
+    // --- CASE LOGIC ---
     function initCases() {
         const typeFilter = document.getElementById('case-type-filter');
         const judgeInput = document.getElementById('case-judge-input');
@@ -244,6 +339,7 @@
         clearBtn.addEventListener('click', clearFilters);
 
         renderCases();
+        renderArticles();
     }
 
     function clearFilters() {
@@ -258,11 +354,9 @@
 
     // Global helper for clickable badges
     window.filterByBadge = function(type, value) {
-        clearFilters(); // Reset others first to show clean results
-        
+        clearFilters(); 
         if (type === 'jurisdiction') {
             document.getElementById('case-type-filter').value = value;
-            // Safe Access to Knowledge Base
             if (typeof KNOWLEDGE_BASE !== 'undefined' && KNOWLEDGE_BASE[value]) {
                 const card = document.getElementById('knowledge-card-container');
                 card.innerHTML = `<h4>${KNOWLEDGE_BASE[value].title}</h4><p>${KNOWLEDGE_BASE[value].content}</p>`;
@@ -295,15 +389,12 @@
             const matchesType = (typeVal === 'all') || (c.jurisdiction && c.jurisdiction.includes(typeVal));
             const matchesJudge = !judgeVal || (c.judge && c.judge.toLowerCase().includes(judgeVal));
             const matchesSol = !solVal || (c.solicitor && c.solicitor.toLowerCase().includes(solVal));
-            
-            // Clean search text
             const text = `${c.title} ${c.description} ${c.court} ${c.citation}`.toLowerCase();
             const matchesSearch = !searchVal || text.includes(searchVal);
             
             let matchesStarred = true;
             if (starredVal) {
-                const cYear = c.year ? parseInt(c.year) : currentYear;
-                const isRecent = (currentYear - cYear) <= 3;
+                const isRecent = (currentYear - (c.year || currentYear)) <= 3;
                 matchesStarred = (c.starred === true) && isRecent;
             }
 
@@ -313,17 +404,15 @@
         document.getElementById('filter-count-display').innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
 
         if (filtered.length === 0) {
-            container.innerHTML = '<p style="color:#777; font-style:italic; padding:1rem;">No cases found matching filters.</p>';
+            container.innerHTML = '<p style="color:#777; padding:1rem;">No cases found matching filters.</p>';
             return;
         }
 
         filtered.forEach(c => {
             const div = document.createElement('div');
-            // Featured logic: Starred OR High Court/Appeal
             const isFeatured = /Court of Appeal|High Court|EAT/i.test(c.court || '') || c.starred;
             div.className = isFeatured ? 'case-item case-item--featured' : 'case-item';
 
-            // Badges
             let jurisBadges = (c.jurisdiction || []).map(j => 
                 `<span class="case-tag jurisdiction-tag clickable-badge" onclick="filterByBadge('jurisdiction', '${j.replace(/'/g, "\\'")}')">${j}</span>`
             ).join(' ');
@@ -331,19 +420,16 @@
             let solBadge = c.solicitor ? 
                 `<span class="case-tag clickable-badge" onclick="filterByBadge('solicitor', '${c.solicitor.replace(/'/g, "\\'")}')"><strong>Firm:</strong> ${c.solicitor}</span>` : '';
 
-            // Tooltips
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
                 const badges = c.key_case_law.map(law => {
                     const temp = document.createElement("div"); temp.innerHTML = law;
                     const plainText = (temp.textContent || temp.innerText || "").trim();
                     
-                    // Dictionary Lookup (Safe)
                     let summary = null;
                     if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
                         summary = CASE_LAW_DICTIONARY[plainText];
                         if (!summary) {
-                            // Partial match check
                             const key = Object.keys(CASE_LAW_DICTIONARY).find(k => plainText.includes(k));
                             if(key) summary = CASE_LAW_DICTIONARY[key];
                         }
@@ -355,12 +441,7 @@
                     return `<span class="case-tag clickable-badge law-tag" style="font-style:italic; ${style}" onclick="filterByBadge('caselaw', '${plainText.replace(/'/g, "\\'")}')">${law}${tooltip}</span>`;
                 }).join('');
                 
-                caseLawHtml = `
-                    <div class="case-law-section">
-                        <span class="case-law-label">Key Authorities (Hover for summary)</span>
-                        <div class="case-badges-row" style="margin-top:0;">${badges}</div>
-                    </div>
-                `;
+                caseLawHtml = `<div class="case-law-section"><span class="case-law-label">Key Authorities (Hover for summary)</span><div class="case-badges-row" style="margin-top:0;">${badges}</div></div>`;
             }
 
             div.innerHTML = `
@@ -389,8 +470,8 @@
 
     function renderArticles() {
         const container = document.getElementById('articles-grid-container');
+        if(!container) return;
         container.innerHTML = '';
-        // Safe check
         if (typeof ARTICLES_DATA !== 'undefined') {
             ARTICLES_DATA.forEach(a => {
                 container.innerHTML += `
@@ -401,6 +482,31 @@
                     </div>`;
             });
         }
+    }
+
+    // --- CALCULATORS ---
+    function initPayCalculators() {
+        const hpBtn = document.getElementById('calculate-hp-btn');
+        if(hpBtn) hpBtn.addEventListener('click', calculateHolidayPay);
+        
+        // Add listeners for other calculators here (Redundancy, Notice Pay) following same pattern
+    }
+
+    function calculateHolidayPay() {
+        const total = parseFloat(document.getElementById('hp-total-pay').value);
+        const weeks = parseFloat(document.getElementById('hp-weeks-worked').value);
+        const resDiv = document.getElementById('hp-results');
+        
+        if (isNaN(total) || isNaN(weeks) || weeks <= 0) {
+            resDiv.innerHTML = '<div class="error-message">Invalid input</div>';
+            resDiv.style.display = 'block';
+            return;
+        }
+        
+        const avg = total / weeks;
+        const ent = avg * 5.6;
+        resDiv.innerHTML = `<div class="result-headline">£${ent.toFixed(2)}</div><p>Based on avg weekly pay £${avg.toFixed(2)}</p>`;
+        resDiv.style.display = 'block';
     }
 </script>
 
