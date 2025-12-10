@@ -2099,3 +2099,13 @@ const KNOWLEDGE_BASE = {
         content: "Rights derived from the WTR 1998, including maximum working weeks, rest breaks, and holiday pay calculations. Recent case law has significantly expanded what must be included in 'normal remuneration' for holiday pay."
     }
 };
+// --- CASE LAW SUMMARIES (New Section) ---
+// Key must match the plain text of the citation exactly (without HTML tags).
+const CASE_LAW_DICTIONARY = {
+  "Chief Constable of PSNI v Agnew [2023] UKSC 33": "Supreme Court ruling that a gap of more than 3 months does not automatically break a 'series of deductions' for unlawful wages claims.",
+  "Kerr v The Sweater Shop (Scotland) Ltd [1996] IRLR 424": "Clarifies the definition of 'wages' and the requirement for written consent for deductions.",
+  "BHS v Burchell [1978] IRLR 379": "The classic test for unfair dismissal misconduct cases: Did the employer have a genuine belief, based on reasonable grounds, after a reasonable investigation?",
+  "Polkey v AE Dayton Services Ltd [1988] ICR 142": "Establishes that compensation can be reduced (the 'Polkey deduction') if a dismissal was procedurally unfair but the employee would have been dismissed anyway.",
+  "Royal Mail Group Ltd v Jhuti [2018] UKEAT/0020/16": "Important whistleblowing authority concerning whether a decision-maker's ignorance of the protected disclosure shields the employer from liability.",
+  "For Women Scotland Ltd v Scottish Ministers [2025] ICR 899": "Recent authority clarifying the definition of 'sex' in the Equality Act 2010 refers to biological sex."
+};
