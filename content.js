@@ -116,11 +116,11 @@ const CASES_DATA = [
     citation: "Case No: 6007283/2025",
     title: "Miss C Waller -v- Sanctuary Housing Association",
     year: 2025,
-    judge: "Employment Judge Jones",
+    judge: "Employment Judge Kelly",
     court: "West Midlands Employment Tribunal",
     description: "Telephone Preliminary Hearing for case management.",
     jurisdiction: [
-      "Age Discrimination"
+      "Disability Discrimination"
     ],
     solicitor: "Gowling WLG",
     starred: false,
