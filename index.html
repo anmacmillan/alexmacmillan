@@ -22,10 +22,7 @@
 
         /* LAYOUT */
         .site-wrapper { display: flex; min-height: 100vh; }
-        
-        /* SIDEBAR (Restored) */
         .sidebar { width: var(--sidebar-width); background-color: var(--bg-color); border-right: 1px solid var(--line-color); position: fixed; height: 100vh; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; top: 0; left: 0; overflow-y: auto; z-index: 100; transition: transform 0.3s ease; }
-        
         .main-content { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); background-color: var(--panel-bg); min-height: 100vh; }
         
         /* TYPOGRAPHY */
@@ -43,6 +40,26 @@
         
         .contact-email { font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; display: block; color: var(--text-main); }
         .testimonial-box { font-style: italic; font-family: var(--font-serif); font-size: 1.2rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line-color); }
+
+        /* PROFILE SECTION STYLES */
+        #about p { font-size: 1.1rem; line-height: 1.6; }
+        
+        /* TESTIMONIALS CAROUSEL */
+        .testimonials-container { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line-color); position: relative; overflow: hidden; }
+        .testimonials-wrapper { display: flex; transition: transform 0.5s ease-in-out; }
+        .testimonial-slide { min-width: 100%; padding: 1rem; box-sizing: border-box; }
+        .testimonial-text { font-family: var(--font-serif); font-size: 1.3rem; line-height: 1.5; color: var(--text-main); font-style: italic; margin-bottom: 1rem; }
+        .testimonial-author { font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+        .testimonial-controls { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+        .control-btn { background: none; border: 1px solid var(--line-color); color: var(--text-muted); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
+        .control-btn:hover { border-color: var(--text-main); color: var(--text-main); }
+
+        /* LATEST INSIGHT BOX */
+        .article-card { border: 1px solid #eee; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: 0.2s; }
+        .article-card:hover { background: #fafafa; border-color: #ddd; }
+        .article-card h3 { font-size: 1.4rem; margin: 0.5rem 0; }
+        .article-date { font-family: var(--font-mono); font-size: 0.75rem; color: #888; text-transform: uppercase; }
+        .read-more-link { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; margin-top: 1rem; display: block; }
 
         /* CASES & TIMELINE */
         .case-timeline { position: relative; margin-top: 2rem; padding-left: 1.5rem; }
@@ -84,6 +101,9 @@
         .clear-filters-btn:hover { background-color: #333; color: #fff; }
         .help-tip { cursor: help; text-decoration: underline dotted #aaa; }
 
+        /* SECTIONS */
+        section { padding: 4rem 4rem 6rem 4rem; border-bottom: 1px solid var(--line-color); }
+
         /* CALCULATORS & UTILS */
         .calculator-inputs { margin-bottom: 3rem; max-width: 800px; }
         .calculator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-bottom: 1.5rem; }
@@ -105,6 +125,7 @@
             .main-content { margin-left: 0; width: 100%; }
             .mobile-menu-toggle { display: flex; justify-content: space-between; padding: 1rem; background: var(--bg-color); border-bottom: 1px solid var(--line-color); position: sticky; top: 0; z-index: 200; }
             .filters-toolbar { flex-direction: column; align-items: stretch; }
+            section { padding: 2rem; }
         }
         
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
@@ -164,19 +185,45 @@
                    Email Clerks Direct →
                 </a>
             </div>
-            
-            <div class="testimonial-box">
-                "A superb and effective trial counsel."
-            </div>
-            <footer class="sidebar-footer" style="margin-top: 1rem;">
-                &copy; 2025 Alex MacMillan
-            </footer>
+            <div class="testimonial-box">"A superb and effective trial counsel."</div>
+            <footer class="sidebar-footer" style="margin-top: 1rem;">&copy; 2025 Alex MacMillan</footer>
         </div>
     </aside>
 
     <main class="main-content">
         <div id="profile-view" class="page-view fade-in">
-            <section style="padding: 4rem;">
+            <section id="about">
+                <h2>Profile</h2>
+                <p style="font-size: 1.4rem; font-family: var(--font-serif); line-height: 1.4;">
+                    Specialist employment advocacy for complex disputes, focusing on discrimination, whistleblowing, TUPE, and cross-border issues.
+                </p>
+                <p>
+                    Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal.
+                </p>
+                
+                <div id="home-latest-insight-container" style="margin-top: 3rem;"></div>
+                
+                <div class="testimonials-container">
+                    <span class="nav-label" style="display:block; margin-bottom:1rem;">Client Feedback</span>
+                    <div id="testimonials-wrapper" class="testimonials-wrapper"></div>
+                    <div class="testimonial-controls">
+                        <button class="control-btn" id="prev-testimonial">←</button>
+                        <button class="control-btn" id="next-testimonial">→</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; border-top: 1px solid var(--line-color); padding-top: 2rem;">
+                     <span class="nav-label">Education</span>
+                     <ul class="content-list" style="max-width: none; list-style:none; padding:0; line-height:1.8;">
+                        <li><strong>BPTC</strong> – Inns of Court School of Law (The City Law School)</li>
+                        <li><strong>GDL</strong> – University of Law</li>
+                        <li><strong>PhD, MPhil</strong> – University of Cambridge</li>
+                        <li><strong>BA</strong> – University College London</li>
+                     </ul>
+                </div>
+            </section>
+
+            <section id="notable-cases">
                 <h2>Notable Cases</h2>
                 <p>A selection of recent instructions covering the Employment Tribunal, EAT, High Court, and Court of Appeal.</p>
 
@@ -231,6 +278,11 @@
             <div id="articles-grid-container" class="article-grid"></div>
         </div>
 
+        <div id="article-reader-view" class="page-view fade-in" style="display: none; padding:4rem;">
+            <a href="javascript:void(0);" onclick="window.location.hash = '#articles-hub-view'" class="back-btn">← Index</a>
+            <div id="article-reader-content"></div>
+        </div>
+
         <div id="holiday-pay-view" class="page-view fade-in" style="display:none; padding:4rem;">
             <h2>Holiday Pay</h2>
             <p>For irregular-hours workers (52-week reference period estimate).</p>
@@ -264,10 +316,12 @@
         }
         initCases();
         initPayCalculators();
+        initTestimonialsCarousel();
+        renderArticlesHub(); // Populate teaser on home
         handleRoute();
     });
 
-    // Hash Navigation Logic
+    // Navigation Logic
     window.addEventListener('hashchange', handleRoute);
 
     function handleLinkClick(element) {
@@ -277,12 +331,21 @@
 
     function handleRoute() {
         const hash = window.location.hash || '#profile-view';
-        // Hide all views
+        
+        // 1. Check for Article ID
+        if(typeof ARTICLES_DATA !== 'undefined') {
+            const articleMatch = ARTICLES_DATA.find(a => '#' + a.id === hash);
+            if (articleMatch) {
+                openArticle(articleMatch.id);
+                return;
+            }
+        }
+
+        // 2. Hide all views
         document.querySelectorAll('.page-view').forEach(el => el.style.display = 'none');
-        // Deactivate all nav links
         document.querySelectorAll('.sidebar-nav a').forEach(el => el.classList.remove('nav-active'));
         
-        // Show Target
+        // 3. Show Target
         const targetId = hash.replace('#', '');
         const targetEl = document.getElementById(targetId);
         if (targetEl) {
@@ -292,11 +355,10 @@
             document.getElementById('profile-view').style.display = 'block';
         }
 
-        // Highlight Active Link
-        const activeLink = document.querySelector(`.sidebar-nav a[data-hash="${hash}"]`);
+        // 4. Highlight Link
+        const activeLink = document.querySelector(`.sidebar-nav a[data-hash="#${targetId}"]`);
         if (activeLink) activeLink.classList.add('nav-active');
         
-        // Mobile menu close
         document.getElementById('main-sidebar').classList.remove('mobile-open');
     }
 
@@ -309,7 +371,6 @@
         const starredFilter = document.getElementById('case-starred-filter');
         const clearBtn = document.getElementById('clear-filters-btn');
 
-        // Populate Datalists
         const jurisSet = new Set();
         const judgeSet = new Set();
         const solSet = new Set();
@@ -330,7 +391,6 @@
         const solList = document.getElementById('solicitor-datalist');
         Array.from(solSet).sort().forEach(s => { const opt = document.createElement('option'); opt.value = s; solList.appendChild(opt); });
 
-        // Listeners
         typeFilter.addEventListener('change', renderCases);
         judgeInput.addEventListener('input', renderCases);
         solInput.addEventListener('input', renderCases);
@@ -339,7 +399,6 @@
         clearBtn.addEventListener('click', clearFilters);
 
         renderCases();
-        renderArticles();
     }
 
     function clearFilters() {
@@ -352,7 +411,6 @@
         renderCases();
     }
 
-    // Global helper for clickable badges
     window.filterByBadge = function(type, value) {
         clearFilters(); 
         if (type === 'jurisdiction') {
@@ -404,7 +462,7 @@
         document.getElementById('filter-count-display').innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
 
         if (filtered.length === 0) {
-            container.innerHTML = '<p style="color:#777; padding:1rem;">No cases found matching filters.</p>';
+            container.innerHTML = '<p style="color:#777; font-style:italic; padding:1rem;">No cases found matching filters.</p>';
             return;
         }
 
@@ -468,28 +526,90 @@
         });
     }
 
-    function renderArticles() {
+    // --- ARTICLES ---
+    function renderArticlesHub() {
+        // 1. Render Main Hub Grid
         const container = document.getElementById('articles-grid-container');
-        if(!container) return;
-        container.innerHTML = '';
-        if (typeof ARTICLES_DATA !== 'undefined') {
-            ARTICLES_DATA.forEach(a => {
-                container.innerHTML += `
-                    <div class="article-card">
-                        <h3>${a.title}</h3>
-                        <div class="article-date">${a.date}</div>
-                        <p style="font-size:0.9rem; color:#555;">${a.summary}</p>
-                    </div>`;
-            });
+        if(container) {
+            container.innerHTML = '';
+            if (typeof ARTICLES_DATA !== 'undefined') {
+                ARTICLES_DATA.forEach(a => {
+                    container.innerHTML += `
+                        <div class="article-card" onclick="window.location.hash='#${a.id}'">
+                            <h3>${a.title}</h3>
+                            <div class="article-date">${a.date}</div>
+                            <p style="font-size:0.9rem; color:#555;">${a.summary}</p>
+                            <span class="read-more-link">Read Entry →</span>
+                        </div>`;
+                });
+            }
         }
+
+        // 2. Render Home Page Teaser
+        const teaserContainer = document.getElementById('home-latest-insight-container');
+        if(teaserContainer && typeof ARTICLES_DATA !== 'undefined' && ARTICLES_DATA.length > 0) {
+            const latest = ARTICLES_DATA.slice(0, 3);
+            let html = '<h3 style="margin-bottom:1rem; border-bottom:none; color:var(--text-muted); font-size:1rem; text-transform:uppercase; letter-spacing:0.05em;">Recent Updates</h3>';
+            html += '<div class="article-grid" style="border-top:1px solid var(--line-color); border-left:1px solid var(--line-color);">';
+            
+            latest.forEach(a => {
+                html += `
+                    <div class="article-card" style="border:none; border-right:1px solid var(--line-color); border-bottom:1px solid var(--line-color); margin:0;" onclick="window.location.hash='#${a.id}'">
+                        <span class="article-date">${a.date}</span>
+                        <h3 style="font-size:1.3rem; margin:0.5rem 0;">${a.title}</h3>
+                        <p style="font-size:0.9rem; color:#444;">${a.summary}</p>
+                        <span class="read-more-link">Read Full Article →</span>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            teaserContainer.innerHTML = html;
+        }
+    }
+
+    function openArticle(id) {
+        const article = ARTICLES_DATA.find(a => a.id === id);
+        if (!article) return;
+        document.getElementById('article-reader-content').innerHTML = `<h1>${article.title}</h1><div class="subtitle">${article.date}</div>${article.content}`;
+        document.querySelectorAll('.page-view').forEach(el => el.style.display = 'none');
+        document.getElementById('article-reader-view').style.display = 'block';
+        window.scrollTo(0,0);
+    }
+
+    // --- TESTIMONIALS ---
+    function initTestimonialsCarousel() {
+        const wrapper = document.getElementById('testimonials-wrapper');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        
+        if (!wrapper || typeof TESTIMONIALS_DATA === 'undefined') return;
+
+        let currentIndex = 0;
+        
+        function render() {
+            wrapper.innerHTML = '';
+            TESTIMONIALS_DATA.forEach(t => {
+                const slide = document.createElement('div');
+                slide.className = 'testimonial-slide';
+                slide.innerHTML = `<div class="testimonial-text">"${t.text}"</div><div class="testimonial-author">— ${t.author}, ${t.firm}</div>`;
+                wrapper.appendChild(slide);
+            });
+            update();
+        }
+
+        function update() {
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % TESTIMONIALS_DATA.length; update(); });
+        prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length; update(); });
+        render();
     }
 
     // --- CALCULATORS ---
     function initPayCalculators() {
         const hpBtn = document.getElementById('calculate-hp-btn');
         if(hpBtn) hpBtn.addEventListener('click', calculateHolidayPay);
-        
-        // Add listeners for other calculators here (Redundancy, Notice Pay) following same pattern
     }
 
     function calculateHolidayPay() {
