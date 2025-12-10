@@ -114,7 +114,7 @@ const CASES_DATA = [
   },
   {
     citation: "Case No: 6007283/2025",
-    title: "Miss C Waller -v- Sanctuary Housing Association",
+    title: "Z -v- Sanctuary Housing Association",
     year: 2025,
     judge: "Employment Judge Kelly",
     court: "West Midlands Employment Tribunal",
