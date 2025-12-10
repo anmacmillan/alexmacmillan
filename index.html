@@ -81,13 +81,18 @@
         .clickable-meta:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
 
         /* BADGES */
-        .case-badges-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .case-badges-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; align-items: center; }
         .case-tag { display: inline-flex; align-items: center; padding: 0.25rem 0.65rem; border-radius: 4px; background-color: #EFEFEF; font-family: var(--font-mono); font-size: 0.75rem; color: #444; transition: all 0.2s ease; position: relative; }
         .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
         .clickable-badge { cursor: pointer; border-bottom: 1px solid transparent; }
         .clickable-badge:hover { filter: brightness(0.95); transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .jurisdiction-tag { background-color: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
         .law-tag { background-color: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+        
+        /* COPY BUTTON */
+        .copy-btn { border: 1px solid var(--line-color); background: #fff; border-radius: 4px; padding: 0.25rem 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; cursor: pointer; color: #666; transition: all 0.2s; margin-left: auto; display: flex; align-items: center; gap: 4px; }
+        .copy-btn:hover { background: #333; color: #fff; border-color: #333; }
+        .copy-btn:active { transform: translateY(1px); }
 
         /* TOOLTIPS */
         .case-tooltip-popup { visibility: hidden; width: 280px; background-color: #222; color: #fff; text-align: center; border-radius: 4px; padding: 0.8rem; position: absolute; z-index: 1000; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-family: var(--font-sans); font-size: 0.85rem; line-height: 1.4; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
@@ -122,6 +127,11 @@
         .pay-result-box { background: #F9F9F9; padding: 2rem; border-left: 4px solid var(--text-main); margin-top: 2rem; }
         .result-headline { font-family: var(--font-mono); font-size: 3rem; margin: 1rem 0; }
         .error-message { color: #D00; font-family: var(--font-mono); margin: 1rem 0; }
+        
+        /* BACK TO TOP */
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 45px; height: 45px; background: var(--text-main); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 500; font-size: 1.2rem; border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .back-to-top.visible { opacity: 1; pointer-events: auto; }
+        .back-to-top:hover { transform: translateY(-3px); background: #000; }
 
         /* MOBILE */
         .mobile-menu-toggle { display: none; }
@@ -133,6 +143,7 @@
             .mobile-menu-toggle { display: flex; justify-content: space-between; padding: 1rem; background: var(--bg-color); border-bottom: 1px solid var(--line-color); position: sticky; top: 0; z-index: 200; }
             .filters-toolbar { flex-direction: column; align-items: stretch; }
             section { padding: 2rem; }
+            .back-to-top { bottom: 1.5rem; right: 1.5rem; }
         }
         
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
@@ -311,6 +322,8 @@
         <div id="quantum-risk-view" class="page-view fade-in" style="display:none; height:100vh;"><iframe src="https://quantum-risk-tool.streamlit.app/?embed=true" style="width:100%; height:100%; border:none;"></iframe></div>
 
     </main>
+
+    <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 </div>
 
 <script src="content.js"></script>
@@ -324,6 +337,7 @@
         initCases();
         initPayCalculators();
         initTestimonialsCarousel();
+        initScrollTools();
         renderArticlesHub(); // Populate teaser on home
         handleRoute();
     });
@@ -422,6 +436,33 @@
         document.getElementById('knowledge-card-container').style.display = 'none';
     }
 
+    // SCROLL & TOOLS
+    function initScrollTools() {
+        const btn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) btn.classList.add('visible');
+            else btn.classList.remove('visible');
+        });
+    }
+
+    window.copyCaseToClipboard = function(idx) {
+        const c = CASES_DATA[idx];
+        if(!c) return;
+        
+        const textToCopy = `RECOMMENDED COUNSEL:\nCase: ${c.title} (${c.year})\nJudge: ${c.judge}\nOutcome: ${c.description}\n`;
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const btn = document.getElementById(`copy-btn-${idx}`);
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "✓ Copied!";
+            btn.style.color = "green";
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.color = "";
+            }, 2000);
+        });
+    }
+
     window.filterByBadge = function(type, value) {
         clearFilters(); 
         if (type === 'jurisdiction') {
@@ -438,18 +479,12 @@
             document.getElementById('case-solicitor-input').value = value;
         } else if (type === 'caselaw') {
             document.getElementById('case-search-input').value = value;
-            
-            // --- NEW: LANDMARK CASE EXPLAINER ---
             if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
-                 // 1. Try exact lookup
                  let summary = CASE_LAW_DICTIONARY[value];
-                 
-                 // 2. Try partial match if exact fails (e.g. for slightly different citation years)
                  if (!summary) {
                      const key = Object.keys(CASE_LAW_DICTIONARY).find(k => value.includes(k));
                      if(key) summary = CASE_LAW_DICTIONARY[key];
                  }
-
                  if (summary) {
                     const card = document.getElementById('knowledge-card-container');
                     card.innerHTML = `<button class="knowledge-card-close" onclick="closeKnowledgeCard()">×</button><h4>${value}</h4><p>${summary}</p>`;
@@ -473,7 +508,9 @@
         const starredVal = document.getElementById('case-starred-filter').checked;
         const currentYear = new Date().getFullYear();
 
-        const filtered = CASES_DATA.filter(c => {
+        // Note: We need original index for the copy button, so we map first
+        const matches = CASES_DATA.map((c, i) => ({data: c, index: i})).filter(item => {
+            const c = item.data;
             const matchesType = (typeVal === 'all') || (c.jurisdiction && c.jurisdiction.includes(typeVal));
             const matchesJudge = !judgeVal || (c.judge && c.judge.toLowerCase().includes(judgeVal));
             const matchesSol = !solVal || (c.solicitor && c.solicitor.toLowerCase().includes(solVal));
@@ -489,14 +526,16 @@
             return matchesType && matchesJudge && matchesSol && matchesSearch && matchesStarred;
         });
 
-        document.getElementById('filter-count-display').innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
+        document.getElementById('filter-count-display').innerText = `${matches.length} Case${matches.length !== 1 ? 's' : ''}`;
 
-        if (filtered.length === 0) {
+        if (matches.length === 0) {
             container.innerHTML = '<p style="color:#777; font-style:italic; padding:1rem;">No cases found matching filters.</p>';
             return;
         }
 
-        filtered.forEach(c => {
+        matches.forEach(item => {
+            const c = item.data;
+            const idx = item.index;
             const div = document.createElement('div');
             const isFeatured = /Court of Appeal|High Court|EAT/i.test(c.court || '') || c.starred;
             div.className = isFeatured ? 'case-item case-item--featured' : 'case-item';
@@ -511,11 +550,8 @@
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
                 const badges = c.key_case_law.map(law => {
-                    // Strip HTML (em tags) for the search value passed to JS
                     const temp = document.createElement("div"); temp.innerHTML = law;
                     const plainText = (temp.textContent || temp.innerText || "").trim();
-                    
-                    // Look up for tooltip
                     let summary = null;
                     if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
                         summary = CASE_LAW_DICTIONARY[plainText];
@@ -524,7 +560,6 @@
                             if(key) summary = CASE_LAW_DICTIONARY[key];
                         }
                     }
-                    
                     const tooltip = summary ? `<span class="case-tooltip-popup">${summary}</span>` : '';
                     const style = summary ? 'border-bottom:1px dotted #e65100; cursor: help;' : '';
 
@@ -534,12 +569,9 @@
                 caseLawHtml = `<div class="case-law-section"><span class="case-law-label">Key Authorities (Hover or Click for summary)</span><div class="case-badges-row" style="margin-top:0;">${badges}</div></div>`;
             }
 
-            // --- CLICKABLE JUDGE NAME ---
             const judgeHtml = c.judge 
                 ? `<div class="case-meta clickable-meta" onclick="filterByBadge('judge', '${c.judge.replace(/'/g, "\\'")}')" title="Filter cases heard by ${c.judge}">${c.judge}</div>`
                 : '';
-            
-            // Optional: Court name usually not needing filter, but could be added similarly.
 
             div.innerHTML = `
                 <div class="case-node"></div>
@@ -559,6 +591,9 @@
                 <div class="case-badges-row" style="margin-top:1.25rem;">
                     ${solBadge}
                     ${jurisBadges}
+                    <button class="copy-btn" id="copy-btn-${idx}" onclick="copyCaseToClipboard(${idx})" title="Copy case summary for client email">
+                        <span>Copy Summary</span>
+                    </button>
                 </div>
             `;
             container.appendChild(div);
@@ -567,7 +602,6 @@
 
     // --- ARTICLES ---
     function renderArticlesHub() {
-        // 1. Render Main Hub Grid
         const container = document.getElementById('articles-grid-container');
         if(container) {
             container.innerHTML = '';
@@ -583,14 +617,11 @@
                 });
             }
         }
-
-        // 2. Render Home Page Teaser
         const teaserContainer = document.getElementById('home-latest-insight-container');
         if(teaserContainer && typeof ARTICLES_DATA !== 'undefined' && ARTICLES_DATA.length > 0) {
             const latest = ARTICLES_DATA.slice(0, 3);
             let html = '<h3 style="margin-bottom:1rem; border-bottom:none; color:var(--text-muted); font-size:1rem; text-transform:uppercase; letter-spacing:0.05em;">Recent Updates</h3>';
             html += '<div class="article-grid" style="border-top:1px solid var(--line-color); border-left:1px solid var(--line-color);">';
-            
             latest.forEach(a => {
                 html += `
                     <div class="article-card" style="border:none; border-right:1px solid var(--line-color); border-bottom:1px solid var(--line-color); margin:0;" onclick="window.location.hash='#${a.id}'">
@@ -620,11 +651,8 @@
         const wrapper = document.getElementById('testimonials-wrapper');
         const prevBtn = document.getElementById('prev-testimonial');
         const nextBtn = document.getElementById('next-testimonial');
-        
         if (!wrapper || typeof TESTIMONIALS_DATA === 'undefined') return;
-
         let currentIndex = 0;
-        
         function render() {
             wrapper.innerHTML = '';
             TESTIMONIALS_DATA.forEach(t => {
@@ -635,11 +663,7 @@
             });
             update();
         }
-
-        function update() {
-            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
+        function update() { wrapper.style.transform = `translateX(-${currentIndex * 100}%)`; }
         nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % TESTIMONIALS_DATA.length; update(); });
         prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length; update(); });
         render();
@@ -655,13 +679,11 @@
         const total = parseFloat(document.getElementById('hp-total-pay').value);
         const weeks = parseFloat(document.getElementById('hp-weeks-worked').value);
         const resDiv = document.getElementById('hp-results');
-        
         if (isNaN(total) || isNaN(weeks) || weeks <= 0) {
             resDiv.innerHTML = '<div class="error-message">Invalid input</div>';
             resDiv.style.display = 'block';
             return;
         }
-        
         const avg = total / weeks;
         const ent = avg * 5.6;
         resDiv.innerHTML = `<div class="result-headline">£${ent.toFixed(2)}</div><p>Based on avg weekly pay £${avg.toFixed(2)}</p>`;
