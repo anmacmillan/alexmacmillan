@@ -1708,8 +1708,17 @@
                 else if (hearingVal === 'open_prelim') matchesHearing = hearingText.includes('open preliminary hearing');
                 else if (hearingVal === 'prelim') matchesHearing = hearingText.includes('preliminary hearing') && !hearingText.includes('open');
             }
+            
+            // 7. Starred Match (New Logic)
+            let matchesStarred = true;
+            if (starredVal) {
+                // Must be starred AND recent (last 3 years)
+                const cYear = c.year ? parseInt(c.year, 10) : currentYear;
+                const isRecent = (currentYear - cYear) <= 3;
+                matchesStarred = (c.starred === true) && isRecent;
+            }
 
-            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesJudge && matchesHearing;
+            return matchesType && matchesYear && matchesSearch && matchesCourt && matchesJudge && matchesHearing && matchesStarred;
         });
 
         if(countDisplay) countDisplay.innerText = `${filtered.length} Case${filtered.length !== 1 ? 's' : ''}`;
@@ -1771,7 +1780,7 @@
                    </span>`
                 : '';
 
-            // 4. Case Law Logic (Hyperlinked with Tooltips)
+            // 4. Case Law Logic (Hyperlinked with Smart Match Tooltips)
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
                  // Map badges, make them clickable, and ADD TOOLTIPS
@@ -1781,11 +1790,18 @@
                      temp.innerHTML = law;
                      const plainText = (temp.textContent || temp.innerText || "").trim();
                      
-                     // Lookup Summary
-                     // (Check if dictionary exists first to avoid errors if content.js isn't updated yet)
-                     const summary = (typeof CASE_LAW_DICTIONARY !== 'undefined' && CASE_LAW_DICTIONARY[plainText]) 
-                                     ? CASE_LAW_DICTIONARY[plainText] 
-                                     : null;
+                     // Lookup Summary (Smart Match)
+                     let summary = null;
+                     if (typeof CASE_LAW_DICTIONARY !== 'undefined') {
+                         // 1. Try exact match
+                         summary = CASE_LAW_DICTIONARY[plainText];
+                         
+                         // 2. If no exact match, look for a partial match (e.g., "BHS v Burchell" inside "BHS v Burchell [1978]...")
+                         if (!summary) {
+                             const key = Object.keys(CASE_LAW_DICTIONARY).find(k => plainText.includes(k));
+                             if (key) summary = CASE_LAW_DICTIONARY[key];
+                         }
+                     }
 
                      // Build Tooltip HTML if summary exists
                      const tooltipHtml = summary 
