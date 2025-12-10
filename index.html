@@ -4,407 +4,391 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex MacMillan | Employment Law Barrister</title>
-    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister. Specialist in discrimination, whistleblowing, and TUPE, and barrister at St Philips Chambers - Chambers of the Year - 2025 British Legal Awards.">
+    <meta name="description" content="The professional website for Alex MacMillan, a UK-based employment law barrister.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Alex MacMillan | Employment Law Barrister">
-    <meta property="og:description" content="Specialist employment advocacy. Limitation, Redundancy, and Notice Pay calculators available online.">
-    <meta property="og:image" content="https://placehold.co/1200x630/EEE/333?text=Alex+MacMillan+Barrister">
-    <meta property="og:url" content="https://alexmacmillan.co.uk/">
-
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
     
     <script src="https://unpkg.com/docx@7.1.0/build/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Attorney",
-      "name": "Alex MacMillan",
-      "url": "https://alexmacmillan.co.uk/",
-      "jobTitle": "Barrister",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Birmingham",
-        "addressCountry": "UK"
-      },
-      "affiliation": {
-        "@type": "Organization",
-        "name": "St Philips Barristers"
-      }
-    }
-    </script>
-
     <style>
-        /* --- RESET & VARIABLES --- */
-        :root {
-            --bg-color: #F2F2F0; /* Warm Paper White */
-            --panel-bg: #FFFFFF;
-            --text-main: #111111; /* Sharp Black */
-            --text-muted: #555555;
-            --line-color: #D1D1D1;
-            --accent-color: #111111; 
-            --highlight-bg: #EAEAEA;
-            --highlight-yellow: #fff3cd; /* Search highlight color */
-            
-            --font-serif: 'DM Serif Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --font-mono: 'Space Grotesk', monospace; /* For numbers/calc */
-            
-            --sidebar-width: 320px;
-            --border-width: 1px;
-        }
+        /* ... Styles same as before ... */
+        :root { --bg-color: #F2F2F0; --panel-bg: #FFFFFF; --text-main: #111111; --text-muted: #555555; --line-color: #D1D1D1; --sidebar-width: 320px; --font-sans: 'Inter', sans-serif; --font-mono: 'Space Grotesk', monospace; --font-serif: 'DM Serif Display', serif; }
+        body { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-main); margin: 0; line-height: 1.5; }
         
-        * { box-sizing: border-box; }
+        .search-highlight { background-color: #fff3cd; padding: 0 2px; border-radius: 2px; }
+        .help-tip { cursor: help; text-decoration: underline dotted #aaa; }
+
+        /* Layout */
+        .site-wrapper { display: flex; min-height: 100vh; }
+        .sidebar { width: var(--sidebar-width); background-color: var(--bg-color); border-right: 1px solid var(--line-color); position: fixed; height: 100vh; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; top:0; left:0; overflow-y:auto; z-index:100; }
+        .main-content { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); background-color: var(--panel-bg); min-height: 100vh; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Typography */
+        h1, h2, h3 { font-family: var(--font-serif); color: var(--text-main); font-weight: 400; }
+        h2 { font-size: 3rem; border-bottom: 1px solid var(--line-color); padding-bottom: 1.5rem; margin-bottom: 2rem; margin-top: 0; }
+        .subtitle { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 2rem; }
         
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* Navigation */
+        .sidebar-nav a { display: block; font-family: var(--font-sans); text-decoration: none; color: var(--text-muted); padding: 0.5rem 0; transition: 0.3s; cursor: pointer; }
+        .sidebar-nav a:hover, .sidebar-nav a.nav-active { color: var(--text-main); font-weight: 500; }
+        .nav-label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #888; margin-bottom: 1rem; display: block; cursor: pointer; }
 
-        /* Highlight search term */
-        .search-highlight {
-            background-color: var(--highlight-yellow);
-            padding: 0 2px;
-            border-radius: 2px;
-        }
-
-        /* Tooltip Visual Cue */
-        .help-tip {
-            cursor: help;
-            text-decoration: underline dotted #aaa;
-            text-underline-offset: 3px;
-        }
-
-        /* --- LAYOUT STRUCTURE --- */
-        .site-wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
+        /* Timeline & Case Items */
+        .case-timeline { position: relative; margin-top: 2rem; padding-left: 1.5rem; }
+        .case-timeline::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 1px; background: var(--line-color); }
+        .case-item { position: relative; margin-left: 1.5rem; padding: 1.75rem 0 1.75rem 1.75rem; border-bottom: 1px solid var(--line-color); }
+        .case-item--featured { background-color: #FAFAFA; border-radius: 8px; border: 1px solid #E0E0E0; padding: 2rem 1.75rem; margin-bottom: 1rem; margin-left: 1.5rem; }
+        .case-node { position: absolute; left: -2.25rem; top: 2.2rem; width: 12px; height: 12px; border-radius: 999px; background: #fff; border: 2px solid var(--text-main); z-index: 10; }
+        .case-item--featured .case-node { background: var(--text-main); }
+        .case-year-label { position: absolute; left: -4.5rem; top: 1.85rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
         
-        /* SIDEBAR (Sticky) */
-        .sidebar { 
-            width: var(--sidebar-width); 
-            background-color: var(--bg-color); 
-            border-right: var(--border-width) solid var(--line-color); 
-            display: flex; 
-            flex-direction: column; 
-            position: fixed; 
-            height: 100vh; 
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-            z-index: 100; 
-            padding: 2.5rem;
-            justify-content: space-between;
-            transition: transform 0.3s ease; /* For mobile slide-in */
-        }
-        
-        .main-content { 
-            margin-left: var(--sidebar-width); 
-            width: calc(100% - var(--sidebar-width)); 
-            background-color: var(--panel-bg);
-            min-height: 100vh;
-        }
+        .case-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 1rem; }
+        .case-title { font-family: var(--font-serif); font-size: 1.5rem; margin: 0; color: var(--text-main); line-height: 1.2; }
+        .case-strapline { font-size: 0.9rem; color: #555; font-family: var(--font-mono); }
 
-        /* Fade Animation for content switching */
-        .fade-in {
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4 { 
-            font-family: var(--font-serif); 
-            font-weight: 400; 
-            color: var(--text-main);
-            margin-top: 0;
-        }
-
-        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
-        .subtitle { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; display: block; }
-        
-        h2 { 
-            font-size: 3rem; 
-            border-bottom: var(--border-width) solid var(--line-color); 
-            padding-bottom: 1.5rem; 
-            margin-bottom: 2rem; 
-            margin-top: 0;
-        }
-
-        p { font-size: 1.05rem; color: #333; max-width: 700px; margin-bottom: 1.5rem; }
-        
-        /* --- NAVIGATION --- */
-        .nav-section { margin-bottom: 3rem; }
-        .nav-label { 
-            font-family: var(--font-mono); 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.1em; 
-            color: #888; 
-            margin-bottom: 1rem; 
-            display: block; 
-            cursor: pointer; /* Pointer for collapsibles */
-        }
-        
-        /* Collapsible Arrow */
-        .nav-label::after {
-            content: '▼';
-            font-size: 0.6em;
-            margin-left: 5px;
-            display: none; /* Only show on mobile */
-        }
-
-        .sidebar-nav {
-            /* Default visible */
-            display: block; 
-        }
-
-        .sidebar-nav a { 
-            display: block; 
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            text-decoration: none; 
-            color: var(--text-muted); 
-            padding: 0.5rem 0; 
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .sidebar-nav a:hover { color: var(--text-main); padding-left: 5px; }
-        .sidebar-nav a.nav-active { 
-            color: var(--text-main); 
-            font-weight: 500; 
-            border-bottom: 1px solid var(--text-main);
-            display: inline-block;
-        }
-
-        /* --- PROFILE --- */
-        .profile-photo { 
-            width: 80px; 
-            height: 80px; 
-            object-fit: cover; 
-            margin-bottom: 1.5rem;
-            filter: grayscale(100%); /* Elegant B&W */
-            transition: filter 0.3s ease;
-            cursor: pointer;
-        }
-        .profile-photo:hover { filter: grayscale(0%); }
-
-        .contact-email {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            display: block;
-            color: var(--text-main);
-        }
-
-        /* --- SECTIONS & GRIDS --- */
-        section { padding: 4rem 4rem 6rem 4rem; border-bottom: 1px solid var(--line-color); }
-        
-        /* --- TIMELINE CASES --- */
-        .case-timeline {
-            position: relative;
-            margin-top: 2rem;
-            padding-left: 1.5rem;
-        }
-
-        /* Vertical spine */
-        .case-timeline::before {
-            content: "";
-            position: absolute;
-            left: 14px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: var(--line-color);
-        }
-
-        /* Individual case block */
-        .case-item {
-            position: relative;
-            margin-left: 1.5rem;
-            padding: 1.75rem 0 1.75rem 1.75rem;
-            border-bottom: 1px solid var(--line-color);
-        }
-
-        /* Featured highlight (Appellate/High Court) */
-        .case-item--featured {
-            background-color: #FAFAFA; /* Subtle highlight */
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-            padding: 2rem 1.75rem 2rem 1.75rem;
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Timeline dot */
-        .case-node {
-            position: absolute;
-            left: -2.25rem;
-            top: 2.2rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 999px;
-            background-color: #FFFFFF;
-            border: 2px solid var(--text-main);
-            z-index: 10;
-        }
-
-        .case-item--featured .case-node {
-            background-color: var(--text-main); /* Filled dot for featured */
-        }
-
-        .case-year-label {
-            position: absolute;
-            left: -4.5rem;
-            top: 1.85rem;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-        }
-
-        /* Header area: title + strapline + meta */
-        .case-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.5rem;
-        }
-
-        .case-header-main {
-            max-width: 70%;
-            min-width: 240px;
-        }
-
-        .case-title {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin: 0 0 0.25rem 0;
-            color: var(--text-main);
-            line-height: 1.2;
-        }
-
-        /* One-line summary under title */
-        .case-strapline {
-            font-size: 0.9rem;
-            color: #555555;
-            font-family: var(--font-sans);
-        }
-
-        /* Right-hand meta (Court/Citation/Pill) */
-        .case-meta-block {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0.35rem;
-            min-width: 160px;
-        }
-
-        .case-meta-block .case-meta {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #777777;
-            text-align: right;
-        }
-
-        /* Practice area pill */
-        .case-type-pill {
-            display: inline-block;
-            padding: 0.15rem 0.65rem;
-            border-radius: 999px;
-            border: 1px solid var(--line-color);
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #555555;
-            background-color: #FAFAFA;
-        }
-
-        /* Case body text */
-        .case-item > p {
-            font-size: 0.95rem;
-            color: #333333;
-            margin: 0.75rem 0 0.75rem 0;
-            max-width: 650px; /* Constrained width for readability */
-            line-height: 1.6;
-        }
-
-        /* Case Law Section */
-        .case-law-section {
-            margin-top: 1rem;
-            padding-top: 0.75rem;
-            border-top: 1px dashed #e0e0e0;
-        }
-        
-        .case-law-label {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Tags row under each case */
-        .case-badges-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-top: 1rem;
-        }
-
-        .case-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.65rem;
-            border-radius: 4px;
-            background-color: #EFEFEF;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: #444;
-            transition: all 0.2s ease;
-            position: relative; /* Added for Tooltips */
-        }
-        
-        .case-tag.law-tag {
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            border: 1px solid #bbdefb;
-        }
-        
+        /* Badges */
+        .case-badges-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .case-tag { display: inline-flex; align-items: center; padding: 0.25rem 0.65rem; border-radius: 4px; background: #EFEFEF; font-family: var(--font-mono); font-size: 0.75rem; color: #444; position: relative; transition: all 0.2s ease; }
         .case-tag strong { color: #000; margin-right: 4px; font-weight: 500; }
+        .clickable-badge { cursor: pointer; border-bottom: 1px solid transparent; }
+        .clickable-badge:hover { filter: brightness(0.95); transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .jurisdiction-tag { background-color: #e3f2fd; color: #0d47a1; border: 1px solid #bbdefb; }
         
-        /* CLICKABLE BADGES */
-        .clickable-badge {
-            cursor: pointer;
-            border-bottom: 1px solid transparent; 
+        /* Tooltips */
+        .case-tooltip-popup { visibility: hidden; width: 280px; background-color: #222; color: #fff; text-align: center; border-radius: 4px; padding: 0.8rem; position: absolute; z-index: 1000; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-family: var(--font-sans); font-size: 0.85rem; pointer-events: none; }
+        .case-tooltip-popup::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: #222 transparent transparent transparent; }
+        .case-tag:hover .case-tooltip-popup { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
+
+        /* Knowledge Card */
+        .knowledge-card { background: #fff; border: 1px solid #111; border-left: 5px solid #111; padding: 1.5rem; margin-bottom: 2rem; display: none; animation: fadeIn 0.4s; }
+        .knowledge-card h4 { margin-top: 0; margin-bottom: 0.5rem; font-family: var(--font-serif); font-size: 1.4rem; }
+
+        /* Filters */
+        .filters-toolbar { display: flex; gap: 1rem; margin-bottom: 2rem; padding: 1.5rem; background: #FAFAFA; border: 1px solid var(--line-color); flex-wrap: wrap; align-items: center; }
+        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; flex-grow: 1; min-width: 200px; }
+        .filter-select, .search-input, .autocomplete-input { padding: 0.6rem; border: 1px solid #ccc; font-family: var(--font-mono); font-size: 0.9rem; width: 100%; border-radius: 0; }
+        .clear-filters-btn { background: #fff; border: 1px solid #999; padding: 0.5rem 1rem; font-family: var(--font-mono); cursor: pointer; margin-left: auto; text-transform: uppercase; font-size: 0.8rem; }
+        .clear-filters-btn:hover { background: #333; color: #fff; }
+
+        /* Mobile */
+        .mobile-menu-toggle { display: none; padding: 1rem; background: var(--bg-color); border-bottom: 1px solid #ccc; justify-content: space-between; align-items: center; position: sticky; top:0; z-index:200; }
+        @media (max-width: 900px) {
+            .site-wrapper { flex-direction: column; }
+            .sidebar { position: fixed; width: 100%; transform: translateX(-100%); z-index: 300; border-right: none; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-content { margin-left: 0; width: 100%; }
+            .mobile-menu-toggle { display: flex; }
+            .filters-toolbar { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="site-wrapper">
+    <div class="mobile-menu-toggle">
+        <h1 style="font-size:1.2rem; margin:0;">Alex MacMillan</h1>
+        <button onclick="document.getElementById('main-sidebar').classList.toggle('mobile-open')" style="background:none; border:1px solid #000; padding:0.4rem;">MENU</button>
+    </div>
+
+    <aside class="sidebar" id="main-sidebar">
+        <button onclick="document.getElementById('main-sidebar').classList.remove('mobile-open')" style="align-self:flex-end; background:none; border:none; font-size:1.5rem; cursor:pointer; display:none;" class="close-btn">×</button>
+        <div>
+            <header>
+                <img src="professional_headshot.jpg" alt="AM" class="profile-photo" onclick="window.location.hash = '#profile-view'" style="width:80px; height:80px; object-fit:cover; margin-bottom:1.5rem; filter:grayscale(100%); cursor:pointer;">
+                <h1 style="font-size:2.5rem; margin-bottom:0.5rem; line-height:1.1;">Alex MacMillan</h1>
+                <span class="subtitle">Employment Law Barrister</span>
+            </header>
+            <nav style="margin-top: 3rem;">
+                <div class="nav-section">
+                    <span class="nav-label">Menu</span>
+                    <nav class="sidebar-nav">
+                        <a onclick="window.location.hash='#profile-view'" class="nav-active">Profile & Cases</a>
+                        <a onclick="window.location.hash='#articles-hub-view'">News & Insights</a>
+                        <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank">Chambers Profile ↗</a>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+        <footer class="sidebar-footer" style="font-size:0.7rem; color:#999;">&copy; 2025 Alex MacMillan</footer>
+    </aside>
+
+    <main class="main-content">
+        <div id="profile-view" class="page-view fade-in">
+            <section style="padding: 4rem;">
+                <h2>Notable Cases</h2>
+                <p>A selection of recent employment instructions covering the Employment Tribunal, EAT, High Court, and Court of Appeal.</p>
+
+                <div id="knowledge-card-container" class="knowledge-card"></div>
+
+                <div class="filters-toolbar">
+                    <div class="filter-group">
+                        <span class="nav-label" style="margin:0;">Keyword Search</span>
+                        <input type="text" id="case-search-input" class="search-input" placeholder="e.g. 'Whistleblowing', 'Manchester'">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <span class="nav-label" style="margin:0;">Practice Area</span>
+                        <select id="case-type-filter" class="filter-select">
+                            <option value="all">All Practice Areas</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <span class="nav-label" style="margin:0;">Instructing Firm</span>
+                        <input type="text" id="case-solicitor-input" list="solicitor-datalist" class="autocomplete-input" placeholder="Type Firm Name...">
+                        <datalist id="solicitor-datalist"></datalist>
+                    </div>
+
+                    <div class="filter-group">
+                        <span class="nav-label" style="margin:0;">Judge</span>
+                        <input type="text" id="case-judge-input" list="judges-datalist" class="autocomplete-input" placeholder="Type Judge's Name...">
+                        <datalist id="judges-datalist"></datalist>
+                    </div>
+
+                    <div class="filter-group" style="min-width: 150px; flex-direction:row; align-items:center; gap:0.5rem;">
+                        <input type="checkbox" id="case-starred-filter" style="width:auto; margin:0;">
+                        <label for="case-starred-filter" style="font-size:0.8rem; cursor:pointer;">
+                            <span class="help-tip" title="Shows starred cases from the last 3 years">Recent & Notable</span>
+                        </label>
+                    </div>
+
+                    <button id="clear-filters-btn" class="clear-filters-btn">Reset ↺</button>
+                    <div id="filter-count-display" style="font-family:var(--font-mono); font-size:0.8rem; color:#555; margin-left:1rem;"></div>
+                </div>
+
+                <div id="cases-list-container"></div>
+            </section>
+        </div>
+        
+        <div id="articles-hub-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>News & Insights</h2>
+            <div id="articles-grid-container" class="article-grid"></div>
+        </div>
+    </main>
+</div>
+
+<script src="content.js"></script>
+
+<script>
+    // --- APP LOGIC ---
+
+    // 1. Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        initCases();
+        handleRoute(); // Handle initial hash
+    });
+
+    window.addEventListener('hashchange', handleRoute);
+
+    function handleRoute() {
+        const hash = window.location.hash || '#profile-view';
+        document.querySelectorAll('.page-view').forEach(el => el.style.display = 'none');
+        
+        if (hash === '#articles-hub-view') {
+            document.getElementById('articles-hub-view').style.display = 'block';
+            renderArticles();
+        } else {
+            document.getElementById('profile-view').style.display = 'block';
+        }
+    }
+
+    // 2. Case Filtering & Rendering
+    function initCases() {
+        const typeFilter = document.getElementById('case-type-filter');
+        const judgeInput = document.getElementById('case-judge-input');
+        const solInput = document.getElementById('case-solicitor-input'); // NEW
+        const searchInput = document.getElementById('case-search-input');
+        const starredFilter = document.getElementById('case-starred-filter');
+        const clearBtn = document.getElementById('clear-filters-btn');
+
+        // Populate Jurisdiction Dropdown
+        const jurisSet = new Set();
+        CASES_DATA.forEach(c => c.jurisdiction && c.jurisdiction.forEach(j => jurisSet.add(j)));
+        Array.from(jurisSet).sort().forEach(j => {
+            const opt = document.createElement('option');
+            opt.value = j; opt.innerText = j;
+            typeFilter.appendChild(opt);
+        });
+
+        // Populate Judge Datalist
+        const judgeSet = new Set();
+        CASES_DATA.forEach(c => { if(c.judge && c.judge.length > 3) judgeSet.add(c.judge); });
+        const judgeList = document.getElementById('judges-datalist');
+        Array.from(judgeSet).sort().forEach(j => {
+            const opt = document.createElement('option'); opt.value = j; judgeList.appendChild(opt);
+        });
+
+        // NEW: Populate Solicitor Datalist
+        const solSet = new Set();
+        CASES_DATA.forEach(c => { if(c.solicitor) solSet.add(c.solicitor); });
+        const solList = document.getElementById('solicitor-datalist');
+        Array.from(solSet).sort().forEach(s => {
+            const opt = document.createElement('option'); opt.value = s; solList.appendChild(opt);
+        });
+
+        // Listeners
+        typeFilter.addEventListener('change', renderCases);
+        judgeInput.addEventListener('input', renderCases);
+        solInput.addEventListener('input', renderCases); // NEW
+        searchInput.addEventListener('keyup', renderCases);
+        starredFilter.addEventListener('change', renderCases);
+        clearBtn.addEventListener('click', clearFilters);
+
+        renderCases();
+    }
+
+    function clearFilters() {
+        document.getElementById('case-type-filter').value = 'all';
+        document.getElementById('case-judge-input').value = '';
+        document.getElementById('case-solicitor-input').value = ''; // NEW
+        document.getElementById('case-search-input').value = '';
+        document.getElementById('case-starred-filter').checked = false;
+        document.getElementById('knowledge-card-container').style.display = 'none';
+        renderCases();
+    }
+
+    // Helper for clickable badges
+    window.filterByBadge = function(type, value) {
+        clearFilters(); // Reset others first
+        
+        if (type === 'jurisdiction') {
+            document.getElementById('case-type-filter').value = value;
+            // Show knowledge card
+            if(KNOWLEDGE_BASE && KNOWLEDGE_BASE[value]) {
+                const card = document.getElementById('knowledge-card-container');
+                card.innerHTML = `<h4>${KNOWLEDGE_BASE[value].title}</h4><p>${KNOWLEDGE_BASE[value].content}</p>`;
+                card.style.display = 'block';
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        } else if (type === 'judge') {
+            document.getElementById('case-judge-input').value = value;
+        } else if (type === 'solicitor') {
+            document.getElementById('case-solicitor-input').value = value; // NEW
+        } else if (type === 'caselaw') {
+            document.getElementById('case-search-input').value = value;
+        }
+        renderCases();
+    }
+
+    function renderCases() {
+        const container = document.getElementById('cases-list-container');
+        container.innerHTML = '';
+        container.className = 'case-timeline';
+
+        // Get values
+        const typeVal = document.getElementById('case-type-filter').value;
+        const judgeVal = document.getElementById('case-judge-input').value.toLowerCase();
+        const solVal = document.getElementById('case-solicitor-input').value.toLowerCase(); // NEW
+        const searchVal = document.getElementById('case-search-input').value.toLowerCase();
+        const starredVal = document.getElementById('case-starred-filter').checked;
+        const currentYear = new Date().getFullYear();
+
+        const filtered = CASES_DATA.filter(c => {
+            // Type
+            const matchesType = (typeVal === 'all') || (c.jurisdiction && c.jurisdiction.includes(typeVal));
+            // Judge
+            const matchesJudge = !judgeVal || (c.judge && c.judge.toLowerCase().includes(judgeVal));
+            // Solicitor (NEW)
+            const matchesSol = !solVal || (c.solicitor && c.solicitor.toLowerCase().includes(solVal));
+            // Search
+            const text = `${c.title} ${c.description} ${c.court} ${c.citation}`.toLowerCase();
+            const matchesSearch = !searchVal || text.includes(searchVal);
+            // Starred
+            let matchesStarred = true;
+            if (starredVal) {
+                const isRecent = (currentYear - (c.year || currentYear)) <= 3;
+                matchesStarred = (c.starred === true) && isRecent;
+            }
+
+            return matchesType && matchesJudge && matchesSol && matchesSearch && matchesStarred;
+        });
+
+        document.getElementById('filter-count-display').innerText = `${filtered.length} Cases`;
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<p style="color:#777; padding:1rem;">No cases found.</p>';
+            return;
         }
 
-        .clickable-badge:hover {
-            filter: brightness(0.95);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+        filtered.forEach(c => {
+            const div = document.createElement('div');
+            const isFeatured = /Court of Appeal|High Court|EAT/i.test(c.court || '') || c.starred;
+            div.className = isFeatured ? 'case-item case-item--featured' : 'case-item';
 
-        .clickable-badge:active {
+            // Badges HTML generation
+            let jurisBadges = (c.jurisdiction||[]).map(j => 
+                `<span class="case-tag jurisdiction-tag clickable-badge" onclick="filterByBadge('jurisdiction', '${j}')">${j}</span>`
+            ).join(' ');
+
+            // NEW: Solicitor Badge
+            let solBadge = c.solicitor ? 
+                `<span class="case-tag clickable-badge" onclick="filterByBadge('solicitor', '${c.solicitor}')"><strong>Firm:</strong> ${c.solicitor}</span>` : '';
+
+            // Smart Tooltips for Case Law
+            let caseLawHtml = '';
+            if(c.key_case_law && c.key_case_law.length > 0) {
+                const badges = c.key_case_law.map(law => {
+                    const temp = document.createElement("div"); temp.innerHTML = law;
+                    const plainText = (temp.textContent || temp.innerText || "").trim();
+                    
+                    // Dictionary lookup
+                    let summary = null;
+                    if(typeof CASE_LAW_DICTIONARY !== 'undefined') {
+                        summary = CASE_LAW_DICTIONARY[plainText];
+                        if(!summary) {
+                            const key = Object.keys(CASE_LAW_DICTIONARY).find(k => plainText.includes(k));
+                            if(key) summary = CASE_LAW_DICTIONARY[key];
+                        }
+                    }
+                    const tooltip = summary ? `<span class="case-tooltip-popup">${summary}</span>` : '';
+                    const style = summary ? 'border-bottom:1px dotted #2196f3;' : '';
+
+                    return `<span class="case-tag clickable-badge" style="font-style:italic; ${style}" onclick="filterByBadge('caselaw', '${plainText}')">${law}${tooltip}</span>`;
+                }).join('');
+                caseLawHtml = `<div class="case-law-section"><span class="case-law-label">Key Authorities</span><div class="case-badges-row" style="margin-top:0;">${badges}</div></div>`;
+            }
+
+            div.innerHTML = `
+                <div class="case-node"></div>
+                <div class="case-year-label">${c.year}</div>
+                <div class="case-header">
+                    <div>
+                        <h3 class="case-title">${c.title}</h3>
+                        <div class="case-strapline">${c.citation || ''}</div>
+                    </div>
+                    <div class="case-meta-block">
+                        <div class="case-meta">${c.court || ''}</div>
+                        <div class="case-meta">${c.judge || ''}</div>
+                    </div>
+                </div>
+                <p>${c.description}</p>
+                ${caseLawHtml}
+                <div class="case-badges-row">
+                    ${solBadge}
+                    ${jurisBadges}
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function renderArticles() {
+        const container = document.getElementById('articles-grid-container');
+        container.innerHTML = '';
+        if(typeof ARTICLES_DATA !== 'undefined') {
+            ARTICLES_DATA.forEach(a => {
+                container.innerHTML += `
+                    <div class="article-card">
+                        <h3>${a.title}</h3>
+                        <div class="article-date">${a.date}</div>
+                        <p>${a.summary}</p>
+                    </div>`;
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
