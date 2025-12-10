@@ -384,6 +384,7 @@
             font-size: 0.75rem;
             color: #444;
             transition: all 0.2s ease;
+            position: relative; /* Added for Tooltips */
         }
         
         .case-tag.law-tag {
@@ -408,6 +409,47 @@
 
         .clickable-badge:active {
             transform: translateY(0);
+        }
+        
+        /* --- NEW TOOLTIP STYLES --- */
+        .case-tooltip-popup {
+            visibility: hidden;
+            width: 280px;
+            background-color: #222; /* Dark charcoal */
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 0.8rem;
+            position: absolute;
+            z-index: 1000;
+            bottom: 135%; /* Position above the badge */
+            left: 50%;
+            transform: translateX(-50%); /* Center it */
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            line-height: 1.4;
+            font-weight: normal;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            pointer-events: none; /* Let clicks pass through to the filter */
+        }
+        
+        .case-tooltip-popup::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: #222 transparent transparent transparent;
+        }
+        
+        .case-tag:hover .case-tooltip-popup {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px); /* Subtle lift animation */
         }
 
         .jurisdiction-tag:hover { background-color: #bbdefb !important; }
@@ -1729,25 +1771,43 @@
                    </span>`
                 : '';
 
-            // 4. Case Law Logic (Hyperlinked)
+            // 4. Case Law Logic (Hyperlinked with Tooltips)
             let caseLawHtml = '';
             if(c.key_case_law && c.key_case_law.length > 0) {
-                 // Map badges and make them clickable
+                 // Map badges, make them clickable, and ADD TOOLTIPS
                  const badges = c.key_case_law.map(law => {
+                     // Strip HTML to get the clean key for dictionary lookup
                      const temp = document.createElement("div");
                      temp.innerHTML = law;
-                     const plainText = temp.textContent || temp.innerText || "";
+                     const plainText = (temp.textContent || temp.innerText || "").trim();
+                     
+                     // Lookup Summary
+                     // (Check if dictionary exists first to avoid errors if content.js isn't updated yet)
+                     const summary = (typeof CASE_LAW_DICTIONARY !== 'undefined' && CASE_LAW_DICTIONARY[plainText]) 
+                                     ? CASE_LAW_DICTIONARY[plainText] 
+                                     : null;
+
+                     // Build Tooltip HTML if summary exists
+                     const tooltipHtml = summary 
+                         ? `<span class="case-tooltip-popup">${summary}</span>` 
+                         : '';
+
+                     // Add a visual cue (dotted underline) if there is a definition
+                     const style = summary 
+                         ? "font-style:italic; border-bottom: 1px dotted #2196f3;" 
+                         : "font-style:italic;";
+
                      return `<span class="case-tag law-tag clickable-badge" 
-                                   style="font-style:italic;"
-                                   onclick="filterByBadge('caselaw', '${plainText.replace(/'/g, "\\'")}')"
-                                   title="Find cases citing ${plainText}">
+                                   style="${style}"
+                                   onclick="filterByBadge('caselaw', '${plainText.replace(/'/g, "\\'")}')">
                                    ${law}
+                                   ${tooltipHtml}
                              </span>`;
                  }).join('');
 
                  caseLawHtml = `
                     <div class="case-law-section">
-                        <span class="case-law-label">Key Authorities Cited (Click to search)</span>
+                        <span class="case-law-label">Key Authorities Cited (Hover for summary)</span>
                         <div class="case-badges-row" style="margin-top:0;">
                              ${badges}
                         </div>
