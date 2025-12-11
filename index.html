@@ -22,7 +22,31 @@
 
         /* LAYOUT */
         .site-wrapper { display: flex; min-height: 100vh; }
-        .sidebar { width: var(--sidebar-width); background-color: var(--bg-color); border-right: 1px solid var(--line-color); position: fixed; height: 100vh; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; top: 0; left: 0; overflow-y: auto; z-index: 100; transition: transform 0.3s ease; }
+        
+        /* SIDEBAR - UPDATED TO FIX FLICKER */
+        .sidebar { 
+            width: var(--sidebar-width); 
+            background-color: var(--bg-color); 
+            border-right: 1px solid var(--line-color); 
+            position: fixed; 
+            height: 100vh; 
+            padding: 2.5rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            top: 0; 
+            left: 0; 
+            overflow-y: auto; 
+            z-index: 100; 
+            transition: transform 0.3s ease;
+            
+            /* Hardware acceleration to prevent flickering */
+            transform: translateZ(0); 
+            -webkit-transform: translateZ(0);
+            will-change: transform;
+            backface-visibility: hidden;
+        }
+
         .main-content { margin-left: var(--sidebar-width); width: calc(100% - var(--sidebar-width)); background-color: var(--panel-bg); min-height: 100vh; }
         
         /* TYPOGRAPHY */
@@ -103,8 +127,29 @@
         .copy-btn:hover { background: #333; color: #fff; border-color: #333; }
         .copy-btn:active { transform: translateY(1px); }
 
-        /* TOOLTIPS */
-        .case-tooltip-popup { visibility: hidden; width: 280px; background-color: #222; color: #fff; text-align: center; border-radius: 4px; padding: 0.8rem; position: absolute; z-index: 1000; bottom: 135%; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s; font-family: var(--font-sans); font-size: 0.85rem; line-height: 1.4; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        /* TOOLTIPS - UPDATED TO FIX FLICKER */
+        .case-tooltip-popup { 
+            visibility: hidden; 
+            width: 280px; 
+            max-width: 90vw; /* Added max-width */
+            background-color: #222; 
+            color: #fff; 
+            text-align: center; 
+            border-radius: 4px; 
+            padding: 0.8rem; 
+            position: absolute; 
+            z-index: 1000; 
+            bottom: 135%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            opacity: 0; 
+            transition: opacity 0.3s; 
+            font-family: var(--font-sans); 
+            font-size: 0.85rem; 
+            line-height: 1.4; 
+            pointer-events: none; /* Added to prevent flicker loop */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+        }
         .case-tooltip-popup::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: #222 transparent transparent transparent; }
         .case-tag:hover .case-tooltip-popup { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(-5px); }
 
@@ -372,7 +417,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof CASES_DATA === 'undefined') {
-            document.getElementById('cases-list-container').innerHTML = '<div style="color:red; padding:1rem;">Error: Data file (content.js) not loaded.</div>';
+            document.getElementById('cases-list-container').innerHTML = '<div style="color:red; padding:1rem;">Error: Data file (content.js) not loaded. Please ensure content.js is in the same folder and free of syntax errors (check console).</div>';
             return;
         }
         initCases();
