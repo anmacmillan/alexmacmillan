@@ -66,7 +66,6 @@
         .case-timeline::before { content: ""; position: absolute; left: 14px; top: 0; bottom: 0; width: 1px; background: var(--line-color); }
         .case-item { position: relative; margin-left: 1.5rem; padding: 1.75rem 0 1.75rem 1.75rem; border-bottom: 1px solid var(--line-color); }
         
-        /* FIX: HIGH CONTRAST FEATURED CASES */
         .case-item--featured { 
             background-color: #FCFCFC; 
             border: 1px solid #DCDCDC; 
@@ -85,7 +84,6 @@
         .case-title { font-family: var(--font-serif); font-size: 1.5rem; margin: 0; line-height: 1.2; color: var(--text-main); }
         .case-strapline { font-size: 0.9rem; color: #555; font-family: var(--font-mono); }
         
-        /* Interactive Case Metadata */
         .case-meta-block { text-align: right; }
         .case-meta { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; color: #777; margin-bottom: 2px; }
         .clickable-meta { cursor: pointer; transition: all 0.2s ease; border-bottom: 1px dotted transparent; }
@@ -200,7 +198,8 @@
                 <div class="nav-section">
                     <span class="nav-label">Menu</span>
                     <nav class="sidebar-nav">
-                        <a data-hash="#profile-view" class="nav-active" onclick="handleLinkClick(this)">Profile & Cases</a>
+                        <a data-hash="#profile-view" class="nav-active" onclick="handleLinkClick(this)">Profile</a>
+                        <a data-hash="#cases-view" onclick="handleLinkClick(this)">Case Database</a> 
                         <a data-hash="#articles-hub-view" onclick="handleLinkClick(this)">News & Insights</a>
                         <a href="https://www.st-philips.com/our_people/alexander-macmillan/" target="_blank">Chambers Profile ↗</a>
                     </nav>
@@ -246,6 +245,24 @@
                 <p>
                     Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal.
                 </p>
+
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line-color);">
+                    <span class="nav-label">Background & Experience</span>
+                    <ul class="content-list" style="max-width: none; list-style:none; padding:0; line-height:1.6; margin-top:1rem;">
+                        <li style="margin-bottom:1rem;">
+                            <strong>Speechwriter for the Japanese Ambassador to the OECD</strong><br>
+                            <span style="color:#666; font-size:0.95rem;">Drafting high-level diplomatic correspondence and policy addresses.</span>
+                        </li>
+                        <li style="margin-bottom:1rem;">
+                            <strong>Advocacy Officer, Legal Assistance Centre (Namibia)</strong><br>
+                            <span style="color:#666; font-size:0.95rem;">Human rights advocacy and legal research in a challenging international context.</span>
+                        </li>
+                        <li style="margin-bottom:1rem;">
+                            <strong>Director, Academic Publishing Company (2003–2013)</strong><br>
+                            <span style="color:#666; font-size:0.95rem;">Managed operations and commercial strategy for a specialized publishing house.</span>
+                        </li>
+                    </ul>
+                </div>
                 
                 <div id="home-latest-insight-container" style="margin-top: 3rem;"></div>
                 
@@ -263,15 +280,20 @@
                      <ul class="content-list" style="max-width: none; list-style:none; padding:0; line-height:1.8;">
                         <li><strong>BPTC</strong> – Inns of Court School of Law (The City Law School)</li>
                         <li><strong>GDL</strong> – University of Law</li>
-                        <li><strong>PhD, MPhil</strong> – University of Cambridge</li>
+                        <li>
+                            <strong>PhD, MPhil</strong> – University of Cambridge<br>
+                            <span style="color:#666; font-size:0.9rem;">Supervised by [Supervisor Name] | Thesis: "[Title of Thesis]"</span>
+                        </li>
                         <li><strong>BA</strong> – University College London</li>
                      </ul>
                 </div>
             </section>
+        </div>
 
+        <div id="cases-view" class="page-view fade-in" style="display:none;">
             <section id="notable-cases">
-                <h2>Notable Cases</h2>
-                <p>A selection of recent instructions covering the Employment Tribunal, EAT, High Court, and Court of Appeal.</p>
+                <h2>Case Database</h2>
+                <p>A searchable database of recent instructions covering the Employment Tribunal, EAT, High Court, and Court of Appeal.</p>
 
                 <div id="knowledge-card-container" class="knowledge-card"></div>
 
@@ -412,6 +434,7 @@
             targetEl.style.display = 'block';
             window.scrollTo(0,0);
         } else {
+            // Default fallback
             document.getElementById('profile-view').style.display = 'block';
         }
 
@@ -495,7 +518,6 @@
     function initCookieBanner() {
         const consent = localStorage.getItem('cookieConsent');
         if (!consent) {
-            // Slight delay to be polite
             setTimeout(() => {
                 document.getElementById('cookie-banner').classList.add('active');
             }, 1000);
@@ -526,6 +548,16 @@
     }
 
     window.filterByBadge = function(type, value) {
+        // Switch to case view if not already there
+        if(window.location.hash !== '#cases-view') {
+            window.location.hash = '#cases-view';
+            setTimeout(() => applyFilter(type, value), 100);
+        } else {
+            applyFilter(type, value);
+        }
+    }
+
+    function applyFilter(type, value) {
         clearFilters(); 
         if (type === 'jurisdiction') {
             document.getElementById('case-type-filter').value = value;
@@ -606,7 +638,6 @@
                 `<span class="case-tag jurisdiction-tag clickable-badge" onclick="filterByBadge('jurisdiction', '${j.replace(/'/g, "\\'")}')">${j}</span>`
             ).join(' ');
 
-            // FIX: Conditional Solicitor Badge to prevent empty tags
             let solBadge = (c.solicitor && c.solicitor.length > 1) ? 
                 `<span class="case-tag clickable-badge" onclick="filterByBadge('solicitor', '${c.solicitor.replace(/'/g, "\\'")}')"><strong>Firm:</strong> ${c.solicitor}</span>` : '';
 
