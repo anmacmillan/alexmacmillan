@@ -131,7 +131,7 @@
         .case-tooltip-popup { 
             visibility: hidden; 
             width: 280px; 
-            max-width: 90vw; /* Added max-width */
+            max-width: 90vw; /* Safety for mobile */
             background-color: #222; 
             color: #fff; 
             text-align: center; 
@@ -147,7 +147,7 @@
             font-family: var(--font-sans); 
             font-size: 0.85rem; 
             line-height: 1.4; 
-            pointer-events: none; /* Added to prevent flicker loop */
+            pointer-events: none; /* Prevents cursor flicker/stuck loop */
             box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
         }
         .case-tooltip-popup::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: #222 transparent transparent transparent; }
@@ -288,7 +288,7 @@
                     Specialist employment advocacy for complex disputes, focusing on discrimination, whistleblowing, TUPE, and cross-border issues.
                 </p>
                 <p>
-                    Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal, Alex has a busy practice balanced between Claimant and Respondent-focussed work and a growing direct access client base.
+                    Regularly instructed in high-value matters for financial institutions, retailers, and local authorities. Significant recent experience in the EAT, High Court, and Court of Appeal.
                 </p>
                 
                 <div id="home-latest-insight-container" style="margin-top: 3rem;"></div>
@@ -390,10 +390,108 @@
             <div id="hp-results" class="pay-result-box" style="display:none;"></div>
         </div>
 
-        <div id="limitation-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Limitation Calculator</h2><p>Tool loaded.</p></div>
-        <div id="notice-pay-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Notice Pay Calculator</h2><p>Tool loaded.</p></div>
-        <div id="redundancy-pay-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Redundancy Calculator</h2><p>Tool loaded.</p></div>
-        <div id="disciplinary-view" class="page-view fade-in" style="display:none; padding:4rem;"><h2>Disciplinary Check</h2><p>Tool loaded.</p></div>
+        <div id="limitation-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>Limitation Date Calculator</h2>
+            <p>Calculate the primary limitation date for Employment Tribunal claims, accounting for ACAS Early Conciliation extensions.</p>
+            
+            <div class="calculator-inputs" style="background:#fff; padding:2rem; border:1px solid #ddd; margin-top:2rem;">
+                <div class="calculator-grid">
+                    <div>
+                        <label>Date of Act / Dismissal (EDT)</label>
+                        <input type="date" id="lim-act-date">
+                    </div>
+                </div>
+                
+                <div style="margin: 2rem 0; border-top: 1px dashed #ccc; padding-top: 2rem;">
+                    <label style="font-weight:600; margin-bottom:1rem;">ACAS Early Conciliation (Optional)</label>
+                    <div class="calculator-grid">
+                        <div>
+                            <label>Day A (Notification to ACAS)</label>
+                            <input type="date" id="lim-acas-start">
+                        </div>
+                        <div>
+                            <label>Day B (Certificate Issued)</label>
+                            <input type="date" id="lim-acas-end">
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="calculateLimitation()" class="calc-button">Calculate Deadline</button>
+            </div>
+
+            <div id="lim-result" class="pay-result-box" style="display:none;"></div>
+        </div>
+
+        <div id="notice-pay-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>Statutory Notice Pay Calculator</h2>
+            <p>Calculates statutory notice entitlement based on length of service (Employment Rights Act 1996).</p>
+            
+            <div class="calculator-inputs" style="background:#fff; padding:2rem; border:1px solid #ddd; margin-top:2rem;">
+                <div class="calculator-grid">
+                    <div>
+                        <label>Completed Years of Service</label>
+                        <input type="number" id="notice-years" placeholder="e.g. 5">
+                    </div>
+                    <div>
+                        <label>Gross Weekly Pay (£)</label>
+                        <input type="number" id="notice-pay" placeholder="e.g. 500">
+                    </div>
+                </div>
+                <button onclick="calculateNotice()" class="calc-button">Calculate Notice</button>
+            </div>
+
+            <div id="notice-result" class="pay-result-box" style="display:none;"></div>
+        </div>
+
+        <div id="redundancy-pay-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>Redundancy Pay Calculator</h2>
+            <p>Calculates statutory redundancy pay based on age, service, and the current statutory cap.</p>
+            
+            <div class="calculator-inputs" style="background:#fff; padding:2rem; border:1px solid #ddd; margin-top:2rem;">
+                <div class="calculator-grid">
+                    <div><label>Age at Dismissal</label><input type="number" id="red-age"></div>
+                    <div><label>Completed Years of Service</label><input type="number" id="red-years"></div>
+                    <div><label>Gross Weekly Pay (£)</label><input type="number" id="red-pay"></div>
+                </div>
+                <button onclick="calculateRedundancy()" class="calc-button">Calculate Redundancy</button>
+            </div>
+
+            <div id="red-result" class="pay-result-box" style="display:none;"></div>
+        </div>
+
+        <div id="disciplinary-view" class="page-view fade-in" style="display:none; padding:4rem;">
+            <h2>Procedural Fairness Checker</h2>
+            <p>A quick diagnostic tool to assess the procedural fairness of a dismissal process against the ACAS Code of Practice.</p>
+            
+            <div class="calculator-inputs" style="background:#fff; padding:2rem; border:1px solid #ddd; margin-top:2rem;">
+                <div style="display:flex; flex-direction:column; gap:1rem;">
+                    <label style="display:flex; align-items:center; gap:1rem; cursor:pointer;">
+                        <input type="checkbox" id="disc-investigation" style="width:20px; height:20px;"> 
+                        1. Was a reasonable investigation carried out?
+                    </label>
+                    <label style="display:flex; align-items:center; gap:1rem; cursor:pointer;">
+                        <input type="checkbox" id="disc-letter" style="width:20px; height:20px;"> 
+                        2. Was the employee invited to a meeting in writing?
+                    </label>
+                    <label style="display:flex; align-items:center; gap:1rem; cursor:pointer;">
+                        <input type="checkbox" id="disc-evidence" style="width:20px; height:20px;"> 
+                        3. Was evidence provided to the employee beforehand?
+                    </label>
+                    <label style="display:flex; align-items:center; gap:1rem; cursor:pointer;">
+                        <input type="checkbox" id="disc-accompany" style="width:20px; height:20px;"> 
+                        4. Was the right to be accompanied offered?
+                    </label>
+                    <label style="display:flex; align-items:center; gap:1rem; cursor:pointer;">
+                        <input type="checkbox" id="disc-appeal" style="width:20px; height:20px;"> 
+                        5. Was a right of appeal offered?
+                    </label>
+                </div>
+                <button onclick="checkDisciplinary()" class="calc-button">Assess Risk</button>
+            </div>
+
+            <div id="disc-result" class="pay-result-box" style="display:none;"></div>
+        </div>
+
         <div id="pension-loss-view" class="page-view fade-in" style="display:none; height:100vh;"><iframe src="https://pensionloss-sfkjpwsy5kupvse623a3ko.streamlit.app/?embed=true" style="width:100%; height:100%; border:none;"></iframe></div>
         <div id="quantum-risk-view" class="page-view fade-in" style="display:none; height:100vh;"><iframe src="https://quantum-risk-tool.streamlit.app/?embed=true" style="width:100%; height:100%; border:none;"></iframe></div>
 
@@ -807,6 +905,161 @@
         const avg = total / weeks;
         const ent = avg * 5.6;
         resDiv.innerHTML = `<div class="result-headline">£${ent.toFixed(2)}</div><p>Based on avg weekly pay £${avg.toFixed(2)}</p>`;
+        resDiv.style.display = 'block';
+    }
+
+    // --- LIMITATION CALCULATOR LOGIC ---
+    function calculateLimitation() {
+        const actDateStr = document.getElementById('lim-act-date').value;
+        const acasStartStr = document.getElementById('lim-acas-start').value;
+        const acasEndStr = document.getElementById('lim-acas-end').value;
+        const resDiv = document.getElementById('lim-result');
+
+        if (!actDateStr) {
+            resDiv.innerHTML = '<div class="error-message">Please select a Date of Act/Dismissal.</div>';
+            resDiv.style.display = 'block';
+            return;
+        }
+
+        const actDate = new Date(actDateStr);
+        
+        // 1. Primary Limitation (3 months less 1 day)
+        let primaryLimit = new Date(actDate);
+        primaryLimit.setMonth(primaryLimit.getMonth() + 3);
+        primaryLimit.setDate(primaryLimit.getDate() - 1);
+
+        // 2. ACAS Extension Logic
+        let finalDate = new Date(primaryLimit);
+        let message = `<p><strong>Standard Primary Limitation:</strong> ${primaryLimit.toLocaleDateString('en-GB')}</p>`;
+
+        if (acasStartStr && acasEndStr) {
+            const acasStart = new Date(acasStartStr);
+            const acasEnd = new Date(acasEndStr);
+            
+            // Only apply extension if ACAS started BEFORE the primary limit expired
+            if (acasStart <= primaryLimit) {
+                // A. Stop the clock calculation
+                const pauseDuration = (acasEnd - acasStart) / (1000 * 60 * 60 * 24);
+                const extendedDate = new Date(primaryLimit);
+                extendedDate.setDate(extendedDate.getDate() + pauseDuration);
+
+                // B. "One Month After" rule
+                const monthAfterDayB = new Date(acasEnd);
+                monthAfterDayB.setMonth(monthAfterDayB.getMonth() + 1);
+
+                // The new limit is the LATER of A or B
+                if (monthAfterDayB > extendedDate) {
+                    finalDate = monthAfterDayB;
+                    message += `<p>ACAS Extension applied (Month Rule triggered).</p>`;
+                } else {
+                    finalDate = extendedDate;
+                    message += `<p>ACAS Extension applied (Stop the Clock: +${pauseDuration} days).</p>`;
+                }
+            } else {
+                message += `<p style="color:#D00">Warning: ACAS Early Conciliation started after the primary limitation period expired.</p>`;
+            }
+        }
+
+        resDiv.innerHTML = `<div class="result-headline">${finalDate.toLocaleDateString('en-GB')}</div>${message}`;
+        resDiv.style.display = 'block';
+    }
+
+    // --- NOTICE PAY LOGIC ---
+    function calculateNotice() {
+        const years = parseFloat(document.getElementById('notice-years').value);
+        const pay = parseFloat(document.getElementById('notice-pay').value);
+        const resDiv = document.getElementById('notice-result');
+
+        if (!years || !pay) {
+            resDiv.innerHTML = '<div class="error-message">Please enter valid years and pay.</div>';
+            resDiv.style.display = 'block';
+            return;
+        }
+
+        // Cap notice at 12 weeks
+        const weeksDue = Math.min(Math.max(years, 1), 12);
+        const total = weeksDue * pay;
+
+        resDiv.innerHTML = `
+            <div class="result-headline">£${total.toFixed(2)}</div>
+            <p>Based on <strong>${weeksDue} weeks</strong> statutory notice.</p>
+            <p style="font-size:0.9rem; color:#666;">(1 week per complete year of service, capped at 12).</p>
+        `;
+        resDiv.style.display = 'block';
+    }
+
+    // --- REDUNDANCY PAY LOGIC ---
+    function calculateRedundancy() {
+        const age = parseInt(document.getElementById('red-age').value);
+        const years = parseInt(document.getElementById('red-years').value);
+        let pay = parseFloat(document.getElementById('red-pay').value);
+        const resDiv = document.getElementById('red-result');
+        
+        // Statutory Cap (Example: £700 - update as needed for 2025 rates)
+        const STAT_CAP = 700.00; 
+
+        if (!age || !years || !pay) {
+            resDiv.innerHTML = '<div class="error-message">Please enter all fields.</div>';
+            resDiv.style.display = 'block';
+            return;
+        }
+
+        // Cap the pay for statutory calc
+        const actualPay = pay;
+        const cappedPay = Math.min(pay, STAT_CAP);
+        
+        // Logic: Retroactive counting back from dismissal date
+        let weeksAccrued = 0;
+        let yearsCounted = 0;
+        let currentAge = age;
+
+        for (let i = 0; i < years; i++) {
+            if (yearsCounted >= 20) break; // Max 20 years
+
+            if (currentAge >= 41) {
+                weeksAccrued += 1.5;
+            } else if (currentAge >= 22) {
+                weeksAccrued += 1.0;
+            } else {
+                weeksAccrued += 0.5;
+            }
+            
+            currentAge--;
+            yearsCounted++;
+        }
+
+        const totalStatutory = weeksAccrued * cappedPay;
+
+        resDiv.innerHTML = `
+            <div class="result-headline">£${totalStatutory.toFixed(2)}</div>
+            <p><strong>Statutory Redundancy Pay</strong></p>
+            <p>Based on ${weeksAccrued} weeks entitlement (Capped at £${STAT_CAP}/week).</p>
+            <p style="font-size:0.9rem; border-top:1px solid #ddd; padding-top:0.5rem; margin-top:0.5rem;">
+               If uncapped (Contractual), total would be: <strong>£${(weeksAccrued * actualPay).toFixed(2)}</strong>
+            </p>
+        `;
+        resDiv.style.display = 'block';
+    }
+
+    // --- DISCIPLINARY CHECKER LOGIC ---
+    function checkDisciplinary() {
+        const ids = ['disc-investigation', 'disc-letter', 'disc-evidence', 'disc-accompany', 'disc-appeal'];
+        const missing = ids.filter(id => !document.getElementById(id).checked);
+        const resDiv = document.getElementById('disc-result');
+
+        if (missing.length === 0) {
+            resDiv.innerHTML = `
+                <div class="result-headline" style="color:green;">Procedurally Sound</div>
+                <p>The basic ACAS procedural steps appear to have been followed.</p>
+                <p><em>Note: Fairness also depends on the "Band of Reasonable Responses" test regarding the substantive decision.</em></p>
+            `;
+        } else {
+            resDiv.innerHTML = `
+                <div class="result-headline" style="color:#D00;">High Risk</div>
+                <p>The process may be <strong>Procedurally Unfair</strong>.</p>
+                <p>Missing steps detected. Failure to follow the ACAS Code can result in a finding of Unfair Dismissal and a potential 25% uplift in compensation.</p>
+            `;
+        }
         resDiv.style.display = 'block';
     }
 </script>
