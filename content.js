@@ -2207,7 +2207,7 @@ const ARTICLES_DATA = [
                 <p>The Treasury Select Committee is right to challenge the tyranny of the point estimate. It is time the legal profession—and the clients we advise—did the same.</p>
             </div>
         `
-    };
+    },
 
     {
         id: "peggie-v-fife",
