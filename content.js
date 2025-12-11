@@ -2166,7 +2166,8 @@ const CASES_DATA = [
 
 // --- ARTICLES DATABASE ---
 const ARTICLES_DATA = [
-   
+    {
+
     id: "point-estimate-fallacy",
     title: "The Tyranny of the Point Estimate: Law, Finance, and False Precision",
     date: "December 2025",
