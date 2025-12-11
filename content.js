@@ -2167,6 +2167,48 @@ const CASES_DATA = [
 // --- ARTICLES DATABASE ---
 const ARTICLES_DATA = [
    {
+    id: "point-estimate-fallacy",
+    title: "The Tyranny of the Point Estimate: Law, Finance, and False Precision",
+    date: "December 2025",
+    summary: "A cross-sectoral analysis comparing the flaws of \"point estimates\" in financial forecasting (OBR fiscal headroom) and litigation risk assessment (percentage prospects), arguing for the use of uncertainty bands instead of false precision.",
+    content: `
+        <div class="article-body">
+            <p>In a piece for the <em>Financial Times</em> this week, Yuan Yang MP, a member of the Treasury Select Committee, dismantled a fallacy that plagues modern governance: the obsession with the "point estimate."</p>
+
+            <p>Yang argues that the UK’s fiscal framework is being held hostage by false precision. The Office for Budget Responsibility provides a specific figure for "fiscal headroom," which is the difference between revenue and spending four years hence. This number fluctuates by billions of pounds based on minor data inputs, yet politicians treat it as a hard constraint, slashing investment to meet a number that is, statistically speaking, a ghost.</p>
+
+            <p>As Yang writes: *"Don’t describe a number to a greater degree of accuracy than you can guarantee... The UK collectively forgets this lesson every six months."*</p>
+
+            <p>This will resonate comfortably with anyone who has ever had to value a complex discrimination claim or assess the prospects of an unfair dismissal appeal.</p>
+
+            <h2>The "Legal Headroom" Fallacy</h2>
+
+            <p>In litigation, we face our own version of the point estimate problem. Clients, insurers, and funders demand a percentage figure for "prospects of success." They want to know if a case has a "60%" or "51%" chance of winning. They demand a Schedule of Loss calculated to the penny.</p>
+
+            <p>These demands are understandable, litigation is an investment decision, but they are intellectually dangerous.</p>
+
+            <p>Just as the OBR cannot predict with certainty the tax receipts of 2029, a barrister cannot predict the mood of an Employment Judge on a wet Tuesday in Birmingham. To assign a "65%" prospect to a whistleblowing claim is to apply a veneer of actuarial science to what is, in reality, a chaotic human process. It is a point estimate where an "uncertainty band" is required.</p>
+
+            <h2>The Cost of Certainty</h2>
+
+            <p>The danger, as Yang points out, is not just theoretical; it drives bad behaviour. In government, the fixation on a single headroom figure leads to short-termism and a refusal to invest. In law, the fixation on a specific percentage or quantum figure leads to:</p>
+
+            <ol>
+                <li><strong>The Sunk Cost Trap:</strong> A client told their case is worth "£100,000" (a point estimate) may reject a sensible offer of £60,000, failing to appreciate that the £100k figure sits within a probability band that ranges from £0 to £150k.</li>
+                <li><strong>Litigation Paralysis:</strong> A case with "50/50" prospects is often viewed as a coin toss. In reality, it may be a highly meritorious claim with a single, solvable evidential complex. The number hides the nuance.</li>
+            </ol>
+
+            <h2>Embracing the Uncertainty Band</h2>
+
+            <p>Yang suggests that investors in the gilt market are smarter than the politicians: *"I don’t think we will be overly focused on what the deficit will be in 2029... the uncertainty band around that number is so high."*</p>
+
+            <p>Sophisticated litigants must adopt the same mindset. We must stop asking "What is the exact chance of winning?" and start asking: "What is the volatility of this claim? What are the outliers? Is the uncertainty band narrow (a simple unpaid wages claim) or wide (a discrimination claim relying on inference)?"</p>
+
+            <p>The Treasury Select Committee is right to challenge the tyranny of the point estimate. It is time the legal profession-and the clients we advise-did the same.</p>
+        </div>
+    `
+}
+    {
         id: "peggie-v-fife",
         title: "Peggie v Fife in Context: the balancing test in trans rights cases",
         date: "December 2025",
