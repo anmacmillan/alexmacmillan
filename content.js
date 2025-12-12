@@ -94,7 +94,8 @@ const CASE_LAW_DICTIONARY = {
     "Stringer and others v Revenue and Customs Commissioners": "Holiday Pay: Accrues during sick leave.",
     "NHS Leeds v Larner": "Holiday Pay: Carries over automatically if sick, no request needed.",
     "Perkins v Marston (Holdings) Ltd": "Indirect Discrimination: Tribunal must see evidence of group disadvantage, cannot just assume it."
-};
+}; 
+
 
 const CASES_DATA = [
   {
@@ -110,6 +111,28 @@ const CASES_DATA = [
     ],
     solicitor: "Irwin Mitchell",
     starred: true,
+    leading: "Alexander MacMillan",
+    opposing: "N/A",
+    key_case_law: [
+      "<em>Chief Constable of PSNI v Agnew</em> [2023] UKSC 33",
+      "<em>Kerr v The Sweater Shop (Scotland) Ltd</em> [1996] IRLR 424",
+      "<em>International Packaging Corporation (UK) Ltd v Balfour</em> [2003] IRLR 11"
+    ]
+  },
+    const CASES_DATA = [
+  {
+    citation: "Case No: 6011451/2025",
+    title: "Mr Ryan Bardsley -v- (1) Antony MacArthur (2) Belle Vue (Manchester) Ltd (3) Reece Page",
+    year: 2025,
+    judge: "Employment Judge Hook",
+    court: "Manchester Employment Tribunal",
+    description: "Case management of whistleblowing and sexual harassment complaints including an application to amend.",
+    jurisdiction: [
+      "s.26 sexual harassment",
+      "s103A ERA 1996 automatic unfair dismissal"
+    ],
+    solicitor: "Lyons Davidson",
+    starred: false,
     leading: "Alexander MacMillan",
     opposing: "N/A",
     key_case_law: [
