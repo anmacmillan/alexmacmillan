@@ -119,7 +119,7 @@ const CASES_DATA = [
       "<em>International Packaging Corporation (UK) Ltd v Balfour</em> [2003] IRLR 11"
     ]
   },
-    const CASES_DATA = [
+
   {
     citation: "Case No: 6011451/2025",
     title: "Mr Ryan Bardsley -v- (1) Antony MacArthur (2) Belle Vue (Manchester) Ltd (3) Reece Page",
